@@ -1,0 +1,3987 @@
+\documentclass[8pt, a4paper, twocolumn]{extarticle}
+
+\usepackage{extsizes} % Smaller text
+\usepackage[italian]{babel} % Italian support
+\usepackage{amsmath,amsfonts,amssymb,mathtools,calrsfs}
+\usepackage{bm} % Bold math
+\usepackage[latin1]{inputenc} % Accented letters
+\usepackage{fullpage}
+\usepackage[medium]{titlesec} % Smaller section's font
+\usepackage[pdftex,dvipsnames]{xcolor} % Colors for text
+\usepackage{array} % For better tables
+\usepackage{parskip} % To avoid indentation
+\usepackage{textcomp} % To have \textcelsius and other symbols
+\usepackage{multirow} % For nicer tables with split rows/columns
+\usepackage{multicol}
+\usepackage{cancel} % Cacelled equations and simplifications
+\usepackage{xargs} % Allows for multiple arguments commmands
+\usepackage{enumitem} % For more flexibility on lists
+
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+% Some useful TODO commands
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,
+	bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,
+	bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+\setlength{\marginparwidth}{2cm} % For better TODO's display
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=blue,
+	urlcolor=black
+}
+\usepackage[all]{hypcap} % To fix caption loading of hyperref
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,decorations,calc}
+\usepackage[siunitx]{circuitikz}
+% http://texdoc.net/texmf-dist/doc/latex/circuitikz/circuitikzmanual.pdf
+\usepackage{tikz-3dplot}
+
+% \usepackage{showframe} % For spaces
+% \usepackage{showkeys} % For labels and references.
+
+\setcounter{secnumdepth}{0} % sections are level 1
+\setcounter{tocdepth}{1}
+
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} % ||v||
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % |v|
+
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+	\protect\leavevmode
+	\begingroup
+	\color#1{#2}#3%
+	\endgroup
+}
+
+% For better visual in tables
+\renewcommand*{\arraystretch}{1.5}
+
+\newcommand{\divisor}{\rule{7.8cm}{0.4pt}}
+
+% For an older but clearer root. Still \oldsqrt is valid
+\usepackage{letltxmacro}
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+	\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+	\advance\dimen0-0.2\ht0
+	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+	{\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
+\makeatother
+
+\begin{document}
+\begin{center}
+	{\Huge \textbf{Formule di Fisica}}\\
+	{\large Davide Cossu}
+\end{center}
+Questo è un formulario con le formule di fisica fatte e con alcune spiegazioni teoriche.
+
+{
+	\hypersetup{linkcolor=black}
+	\tableofcontents
+}
+
+\newpage
+\textbf{Durante tutto il formulario, si userà il sistema internazionale di notazione, ovvero $.$ per 
+separare interi da decimali e $,$ per separare le migliaia se necessario.}
+\section{Costanti}
+Qui verranno riportate le costanti usate nelle formule con relativo simbolo e unità di misura.
+\begin{center}
+	\begin{tabular}{| c | m{1.8cm} | c | c |}
+		\hline
+		Simbolo & Nome & Valore & Unità di misura \\ \hline
+		\label{tab:g} $g$ & Accelerazione gravitazionale & $9.81$ & 
+			$\frac{\text{m}}{\text{s}^2}$\\ \hline
+		\label{tab:G} $G$ & Costante di Gravitazione Universale & $6.67\cdot10^{-11}$ &
+						$\frac{\text{Nm}^2}{\text{kg}^2}$\\\hline
+		\label{tab:patm} \multirow{5}[1]{*}{$p_{atm}$} & 
+			\multirow{5}[1]{1.8cm}{Pressione atmosferica} & $1$ & $\text{atm}$\\
+		&& $1.01\cdot10^{5}$ & $\text{Pa}$\\ 
+		&& $760$ & $\text{mm}\,\text{Hg}$\\
+		&& $1.01\cdot10^{5}$ & $\frac{\text{N}}{\text{m}^2}$\\
+		&& $1$ & $\text{bar}$\\ \hline
+		\label{tab:Na} $N_A$ & Numero di Avogadro & $6.02\cdot10^{23}$ & /\\ \hline
+		\label{tab:Vm} $V_m$ & Volume occupato da Gas in STP & $22.4$ & $\text{l}$\\ \hline
+		\label{tab:R} \multirow{2}[1]{*}{$R$} &
+			\multirow{2}[1]{1.8cm}{Costante universale dei Gas} & $0.0821$ & 
+			$\frac{\text{l}\cdot\text{atm}}{\text{nK}}$\\
+		&& $8.31$ & $\frac{\text{J}}{\text{nK}}$\\ \hline
+		\label{tab:cH2O} \multirow{2}[1]{*}{$c_{H_2O}$} & 
+			\multirow{2}[1]{1.8cm}{Calore specifico dell'acqua} & $4186$ &
+			$\frac{\text{C}}{\text{kg}\cdot\text{K}}$\\
+		&& $1$ & 
+			$\frac{\text{cal}}{\text{g}\cdot\text{K}}$\\\hline
+		\label{tab:kB} $k_B$ & Costante di Boltzman	& $1.381\cdot10^{-23}$ & 
+			$\frac{\text{J}}{\text{K}}$\\ \hline
+		\label{tab:c} $c$ & Velocità della luce & $3\cdot10^8$ & 
+			$\frac{\text{m}}{\text{s}}$\\\hline
+		\label{tab:I0} $I_0$ & Soglia di udibilità & $10\cdot10^{-12}$ & 
+			$\frac{\text{W}}{\text{m}^2}$\\ \hline
+		\label{tab:Im} $I_m$ & Soglia del dolore & $1$ & $\frac{\text{W}}{\text{m}^2}$\\ \hline
+		\label{tab:vs} $v$ & Velocità del suono & $343$ & $\frac{\text{m}}{\text{s}}$\\ \hline
+		\label{tab:e0} $\varepsilon_0$& Costante dielettrica nel vuoto&$8.9\cdot10^{-12}$&
+			$\dfrac{\text{C}^2}{\text{N}\cdot\text{m}^2}$\\ \hline
+		\label{tab:k0} $k_0$ & Costante di Coulomb & $9\cdot10^9$ & 
+			$\frac{\text{N}\cdot\text{m}^2}{\text{C}^2}$\\ \hline
+		\label{tab:e-} $e^{-}$ & Carica di un elettrone & $-1.60\cdot10^{-19}$ & $\text{C}$\\ \hline
+		\label{tab:me-} $m_{e^{-}}$ & Massa di un elettrone & $9.11\cdot10^{-28}$ & 
+			$\text{kg}$\\\hline
+		\label{tab:mu0} $\mu_0$ & Permeabilità magnetica nel vuoto & 
+			$4\pi\cdot10^{-7}$ & $\frac{\text{N}}{\text{A}^2}$\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\newpage
+\section{Unità di misura}
+\begin{center}
+	\begin{tabular}{| m{1.8cm} | m{1.8cm} | c | c |}
+		\hline
+		Grandezza & Nome & Simbolo & Definizione \\ \hline
+		\textbf{Lunghezza} & Metro & m & / \\ \hline
+		\textbf{Massa} & Kilogrammo & kg & / \\ \hline
+		\textbf{Tempo} & Secondo & s & / \\ \hline
+		\textbf{Corrente elettrica} & Ampére & A & / \\ \hline
+		\textbf{Temperatura} & Kelvin & K & / \\ \hline
+		\textbf{Quantità di sostanza} & Mole & mol & / \\ \hline
+		Area & Metro quadrato & m$^2$ & / \\ \hline
+		Volume & Metro cubo & m$^3$ & / \\ \hline
+		Velocità & Metro al secondo & m/s & / \\ \hline
+		Accelerazione & Metro al secondo quadrato & m/s$^2$ & / \\ \hline
+		Frequenza & Hertz & Hz & s$^{-1}$ \\ \hline
+		Angolo & Radiante & rad & / \\ \hline
+		Forza & Newton & N & m$\cdot$kg$\cdot$s$^{-2}$ \\ \hline
+		Pressione & Pascal & Pa & N/m$^2$ \\ \hline
+		Energia, Lavoro, Quantità di calore & Joule & J & N$\cdot$m \\ \hline
+		Carica Elettrica & Coulomb & C & s$\cdot$A \\ \hline
+		Potenziale Elettrico & Volt & V & W/A \\ \hline
+		Capacità & Farad & F & C/V \\ \hline
+	\end{tabular}
+\end{center}
+Le unità in grassetto, sono le unità fondamentali.
+
+\section{Vettori}
+Questa prima sezione è introduttiva ad uno dei concetti più comuni in fisica: il \emph{vettore}.\\
+Un vettore può essere rappresentato in molti modi, tra cui:
+\begin{equation*}
+\vec{v} = 
+\begin{bmatrix*}
+a\\b\\\vdots
+\end{bmatrix*} = 
+(a, b, \dots)
+\end{equation*}
+Un vettore è composto di un numero definito di \emph{componenti}, solitamente una per ciascuna
+dimensione in cui si lavora. Quindi è decisamente più comune trovare vettori \emph{bidimensionali}
+che non con un numero maggiore di componenti.\\
+\begin{center}
+	\begin{tikzpicture}
+		\draw[step=1, very thin] (0,0) grid (4,4);
+		\draw[-latex, thick] (0,0) -- (4,0)
+			node[pos=1, below]{$X$};
+		\draw[-latex, thick] (0,0) -- (0,4)
+			node[pos=1, left]{$Y$};
+		\draw[-latex, very thick, cyan] (1.5, 1) -- (3, 3.5)
+			node[pos=0.6, above left]{$\vec{v}$};
+		\draw[dashed, thick, blue] (1.5, 1) -- (3, 1)
+			node[pos=0.5, below]{$i$};
+		\draw[dashed, thick, red] (3, 1) -- (3, 3.5)
+			node[pos=0.5, left]{$j$};
+	\end{tikzpicture}
+\end{center}
+In questa immagine è possibile vedere un vettore $\mathcolor{cyan}{\vec{v}}(\mathcolor{blue}{i},
+\mathcolor{red}{j})$ e le sue componenti.\\
+\\
+D'ora in poi sarà dato per scontato che i vettori siano bi-dimensionali.
+
+\subsection{Operazioni tra vettori}
+Le operazioni come addizione e sottrazione funzionano molto semplicemente sommando algebricamente
+le componenti tra di loro:
+\begin{equation*}
+\mathcolor{red}{\vec{v_1}\left(a_1, b_1\right)} \pm 
+\mathcolor{blue}{\vec{v_2}\left(a_2, b_2\right)} = 
+\mathcolor{purple}{\vec{v}}\left(\mathcolor{red}{a_1}\pm \mathcolor{blue}{a_2}, 
+\mathcolor{red}{b_1}\pm \mathcolor{blue}{b_2}\right)
+\end{equation*}
+
+La moltiplicazione tra vettori può avere come risultato o un \emph{vettore} o uno \emph{scalare}.
+
+\subsubsection{Prodotto scalare}
+\begin{equation*}
+\mathcolor{red}{\vec{v_1}} \cdot \mathcolor{blue}{\vec{v_2}} = 
+\mathcolor{red}{a_1}\mathcolor{blue}{a_2} + \mathcolor{red}{b_1}\mathcolor{blue}{b_2}
+\end{equation*}
+Come si può notare il prodotto scalare tra due vettori torna uno scalare (ovvero un numero).
+In fisica però è molto più comune trovare questa definizione di prodotto scalare:
+\begin{equation*}
+\mathcolor{red}{\vec{v_1}} \cdot \mathcolor{blue}{\vec{v_2}} =
+\norm{\mathcolor{red}{\vec{v_1}}}\cdot\norm{\mathcolor{blue}{\vec{v_2}}}\cos\theta
+\end{equation*}
+$\norm{\vec{v}}$ è il modulo del vettore $\vec{v}$, ovvero la sua lunghezza. $\theta$ è l'angolo
+formato dai due vettori.
+
+\subsubsection{Prodotto vettoriale}\label{subsec:vettori:prodottoVettoriale}
+\begin{equation*}
+\mathcolor{red}{\vec{v_1}} \times \mathcolor{blue}{\vec{v_2}} =
+n\norm{\mathcolor{red}{\vec{v_1}}}\cdot\norm{\mathcolor{blue}{\vec{v_2}}}\sin\theta
+\end{equation*}
+$\norm{\vec{v}}$ è il modulo del vettore $\vec{v}$, ovvero la sua lunghezza. $\theta$ è l'angolo
+formato dai due vettori. $n$ è la \emph{normale} del piano su cui stanno i vettori. Una \emph{normale}
+è un vettore perpendicolare ad un oggetto dato.
+
+\section{Cinematica}\label{sec:cinematica}
+La cinematica si occupa dello studio dei moti dei corpi. Infatti viene anche definita come 
+\emph{geometria del movimento}. In tutti i problemi verrà ignorato l'attrito con l'aria.\\
+Per gli esercizi si vada \hyperref[ex:cinematica]{qui}.
+
+\subsection{Moto Rettilineo Uniforme}\label{subsec:cinematica:mru}
+\begin{equation*}
+x = x_0 + vt
+\end{equation*}
+$x$: posizione finale dell'oggetto\\
+$x_0$: posizione iniziale dell'oggetto\\
+$v$: velocità\\
+$t$: tempo
+
+\subsection{Moto Rettilineo Uniformemente Accelerato}
+\begin{equation*}
+v = v_0 + at
+\end{equation*}
+\begin{equation*}
+x = x_0 + v_0t + \frac{1}{2}at^2
+\end{equation*}
+\begin{equation*}
+t = \frac{v-v_0}{a}
+\end{equation*}
+\begin{equation*}
+v^2 = v_0^2 + 2a\cdot\Delta x
+\end{equation*}
+$v$: velocità finale\\
+$v_0$: velocità iniziale\\
+$a$: accelerazione\\
+$t$: tempo\\
+$x$: posizione finale\\
+$x_0$: posizione iniziale\\
+$\Delta x$: $x - x_0$
+\subsection{Moto Parabolico}\label{subsec:cinematica:mp}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thin] (0,0) -- (5,0);
+		\draw[thin] (0,0) -- (0,1);
+		\draw[-latex, teal, thick] (0,0) to[out=30, in=150] (5,0);
+		
+		\draw[|<->|, orange] (0, -0.3) -- (5, -0.3)
+			node[pos=0.5, below]{$G$};
+		\draw[|<->|, cyan] (2.5, 0) -- (2.5, 0.75)
+			node[pos=0.5, right]{$h_{max}$};
+		\draw[-latex, thick] (0,0) -- (0.86, 0.5)
+			node[pos=0.5, above left]{$\vec{v}$};
+		\draw[|<->|, red] (0,-0.1) -- (0.86, -0.1)
+			node[pos=0.8, above]{$v_{0_x}$};
+		\draw[|<->|, blue] (-0.1, 0) -- (-0.1, 0.5)
+			node[pos=0.5, left]{$v_{0_y}$};
+	\end{tikzpicture}
+\end{center}
+Ovviamente valgono sempre le formule del \textit{Moto Rettilineo} e \textit{Moto rettilineo 
+uniformemente accelerato}.\\
+$v_{0_x}$ è costante per tutto il moto, $v_{0_y}$ è $0$ quando si trova nel punto di massima altezza.
+
+\subsubsection{Tempo}
+\begin{equation*}
+t = \frac{x}{\mathcolor{red}{v_{0_x}}} =
+\frac{2\mathcolor{blue}{v_{0_y}}}{g}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$x$: posizione dell'oggetto sull'asse $X$\\
+$y$: posizione dell'oggetto sull'asse $Y$\\
+$v_0$: velocità iniziale (vettore)\\
+\\
+Da queste si deriva che
+\begin{equation*}
+y = v_{0_y}t - \frac{1}{2}g\left(\frac{x}{v_{0_x}}\right)^2
+\end{equation*}
+
+\subsubsection{Gittata}
+\begin{equation*}
+G = \frac{2\mathcolor{red}{v_{0_x}}\mathcolor{blue}{v_{0_y}}}{g}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$: $9.81\,\text{m/s}^2$\\
+$v_0$: velocità iniziale (vettore)
+
+\subsubsection{Altezza massima}
+\begin{equation*}
+\mathcolor{cyan}{h_{max}} = \frac{\mathcolor{blue}{v_{0_y}}^2}{2g}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$v_0$: velocità iniziale (vettore)
+
+\subsubsection{Velocità in un punto}
+\begin{equation*}
+v = \sqrt{v_{0_x}^2+v_{0_y}^2}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$
+
+\subsection{Moto Circolare Uniforme} \label{subsec:mcu}
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) circle (1);
+		\draw[latex-latex, red] (0,0) -- (1,0)
+			node[pos=0.5, below]{$r$};
+		\draw[-latex, blue] (1,0) -- (1, 0.7)
+			node[pos=0.5, right]{$v_t$};
+		\draw[-latex, orange] (0.5,0) to[out=45, in=-30] (0.366, 0.5)
+			node[above]{$\omega$};
+	\end{tikzpicture}
+\end{center}
+Nel moto circolare, si distinguono due generi diversi di velocità: \emph{tangenziale} e\
+\emph{angolare}.\\\\
+La velocità tangenziale ($\mathcolor{blue}{v_t}$) è quella che cambia ad ogni istante direzione e che
+porterebbe il corpo a lasciare la traiettoria.\\
+La velocità angolare ($\mathcolor{orange}{\omega}$) è costante per ogni punto della circonferenza e 
+indica quanto veloce un corpo ruota.\\
+\\
+Si noti anche che $\mathcolor{red}{r}$ indica la distanza dal centro di rotazione al corpo in oggetto.
+\\\\
+\textbf{Velocità tangenziale}
+\begin{equation*}
+\mathcolor{blue}{v_t} = \frac{2\pi\mathcolor{red}{r}}{T} =
+\mathcolor{orange}{\omega}\mathcolor{red}{r}
+\end{equation*}
+$r$: raggio della circonferenza\\
+$T$: periodo del moto, ovvero quanto impiega a compiere un giro completo\\
+$\mathcolor{orange}{\omega}$: velocità angolare
+
+\textbf{Velocità angolare}
+\begin{equation*}
+\mathcolor{orange}{\omega} = \frac{\alpha}{t} = \frac{2\pi}{T}
+\end{equation*}
+$\alpha$: angolo a cui si trova il corpo\\
+$t$: tempo\\
+$T$: periodo del moto
+
+\textbf{Accelerazione centrifuga}
+\begin{equation*}
+a_c = \frac{\Delta \mathcolor{blue}{v}}{T} = \frac{2\pi\mathcolor{orange}{\omega}}{T} = 
+\mathcolor{orange}{\omega}^2\mathcolor{red}{r} = \frac{\mathcolor{blue}{v}^2}{\mathcolor{red}{r}} = 
+\mathcolor{orange}{\omega}\mathcolor{blue}{v}
+\end{equation*}
+$\Delta\mathcolor{blue}{v}$: variazione di velocità\\
+$T$: periodo del moto\\
+$\mathcolor{orange}{\omega}$: velocità angolare\\
+$\mathcolor{red}{r}$: raggio della circonferenza
+
+\subsection{Moto Armonico}
+Molte delle formule del moto armonico sono ricavabili dal moto circolare.
+\begin{equation*}
+x = \mathcolor{red}{r}\sin\mathcolor{orange}{\omega}t
+\end{equation*}
+\begin{equation*}
+\vec{a} = -\mathcolor{orange}{\omega}\vec{x}
+\end{equation*}
+$\mathcolor{red}{r}$: raggio della circonferenza\\
+$\mathcolor{orange}{\omega}$: velocità angolare\\
+$x$: posizione dell'oggetto\\
+$\alpha$: accelerazion angolare
+
+\subsection{Moto Circolare Uniformemente Accelerato}\label{subsec:cinematica:mrua}
+\label{subsec:mrua}
+Le formule sono praticamente le stesse del moto rettilineo, solo che invece di $x$ si ha $\theta$,
+invece di $v$ si ha $\omega$ e invece di $a$ si ha $\alpha$.
+\begin{equation*}
+\theta = \theta_0 + \mathcolor{orange}{\omega}t
+\end{equation*}
+\begin{equation*}
+\mathcolor{orange}{\omega} = \omega_0 + \alpha t
+\end{equation*}
+\begin{equation*}
+\theta = \theta_0 + \omega_0t + \frac{1}{2}\alpha t
+\end{equation*}
+\begin{equation*}
+a_t = \alpha \mathcolor{red}{r}
+\end{equation*}
+$\theta$: posizione angolare\\
+$\mathcolor{orange}{\omega}$: velocità angolare\\
+$\mathcolor{red}{r}$: raggio della circonferenza\\
+$t$: tempo\\
+$a_t$: accelerazione tangenziale\\
+$\alpha$: accelerazione angolare
+
+\section{Dinamica}\label{sec:dinamica}
+La dinamica si occupa di studiare le forze che interrcorrono tra corpi e che li fanno muovere.\\
+Per gli esercizi si vada \hyperref[ex:dinamica]{qui}.
+\subsection{Secondo Principio della Dinamica}
+\begin{equation*}
+\vec{F} = m\vec{a}
+\end{equation*}
+
+\subsection{Attrito}
+Ci sono vari tipi di attrito: \emph{statico}, \emph{dinamico} e \emph{volvente} ma tutti si basano
+sullo stessa idea: moltiplicare il coefficiente di attrito tra le superfici per la forza premente.
+\begin{equation*}
+F_d = \mu_dF_p
+\end{equation*}
+\begin{equation*}
+F_s = \mu_sF_p
+\end{equation*}
+$F_p$: forza premente
+
+\subsection{Piano Inclinato}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (5,0);
+		\coordinate (C) at (0,2);
+		\coordinate (P) at (1, 1.8); % Block center
+		
+		\draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
+		\draw[thin] ($(P) + (-0.2,0.3)$) -- ($(P) + (-0.4,-0.01)$) -- 
+		($(P) + (0.2,-0.25)$) -- ($(P) + (0.3,0.1)$) -- cycle; % Block
+		\draw[-latex, very thick, red] (P) -- ($(P) + (0, -0.5)$)
+			node[pos=0.5, below right]{$\vec{P}$}; % P
+		\draw[-latex, thick, blue] (P) -- ($(P) + (-0.2, -0.45)$)
+			node[pos=0.5, left]{$P_\perp$}; % P_perp
+		\draw[-latex, thick, cyan] (P) -- ($(P) + (0.3, -0.15)$)
+			node[pos=0.5, above right]{$P_\Vert$}; % P_par
+		\filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
+		\draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\mathcolor{blue}{P_\perp} = \mathcolor{red}{P}\cos\mathcolor{orange}{\alpha}
+\end{equation*}
+\begin{equation*}
+\mathcolor{cyan}{P_\Vert} = m\cdot a_x = \mathcolor{red}{P}\sin\mathcolor{orange}{\alpha}
+\end{equation*}
+\begin{equation*}
+a_x = g\sin\mathcolor{orange}{\alpha}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$m$: massa del corpo\\
+$a_x$: accelerazione sul piano inclinato\\
+$\mathcolor{red}{\vec{P}}$: vettore della forza peso. Si noti che $\mathcolor{red}{P}$ è il suo 
+modulo\\
+$\mathcolor{orange}{\alpha}$: alzo del piano
+
+\subsection{Funi e carrucole}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (5,0);
+		\coordinate (C) at (0,2);
+		\coordinate (D) at ($(C) + (-0.2, 0.2)$); % Circle center
+		\coordinate (M1) at ($(D) + (-0.2, -0.5)$);
+		\coordinate (M2) at ($(D) + (1, -0.25)$);
+		
+		\draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
+		\filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
+		\draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
+		\filldraw[fill=teal!20, very thin] (D) circle (0.2)
+			node[teal]{$m$}; % Circle
+		\draw[very thin] (D) -- (C); % Line from C to circle
+		\draw[very thin] ($(D) + (-0.2, 0)$) -- (M1);
+		\draw[red] ($(M1) + (-0.2, 0)$) -- ($(M1) + (-0.2, -0.3)$) -- ($(M1) + (0.2, -0.3)$) --
+		($(M1) + (0.2, 0)$) -- cycle
+			node[pos=0.5, below]{$m_1$}; % Box 1
+		\draw[very thin] ($(D) + (0.15, 0.15)$) -- (M2);
+		\draw[blue] ($(M2) + (0.1, 0.2)$) -- ($(M2) + (0.5, 0.01)$) -- ($(M2) + (0.35, -0.4)$) --
+		($(M2) + (-0.1, -0.2)$) -- cycle
+			node[pos=0, right]{$m_2$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+a = \frac{\mathcolor{red}{m_1}g - \mathcolor{blue}{m_2}g\sin\mathcolor{orange}{\alpha}}
+{\mathcolor{red}{m_1}+\mathcolor{blue}{m_2} + \frac{\mathcolor{teal}{m}}{2}}
+\end{equation*}
+Si noti che questa formula è particolare per questo caso. Si noti anche che 
+$\dfrac{\mathcolor{teal}{m}}{2}$ è
+da aggiungere solo se si ha la massa della carrucola e quindi il suo peso non è trascurabile.\\
+Per una formula più generale si usi
+\begin{equation*}
+a= \frac{\sum \vec{F}}{\sum m}
+\end{equation*}
+Per gli esercizi relativi a queste tre sottosezioni, si vada \hyperref[ex:dinamica:piano]{qui}.
+\label{subsec:dinamica:piano}
+
+\subsection{Lavoro, Energia e Potenza}\label{subsec:dinamica:potenziale}
+\begin{equation*}
+\vec{L} = \vec{F} \cdot \vec{S} = \Delta E
+\end{equation*}
+\begin{equation*}
+E_c = \frac{1}{2}mv^2
+\end{equation*}
+\begin{equation*}
+P = \frac{L}{t}
+\end{equation*}
+\begin{equation*}
+U = mgh
+\end{equation*}
+\begin{equation*}
+U_1 + E_1 = U_2 + E_2
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$L$: lavoro\\
+$F$: forza\\
+$S$: spostamento\\
+$E_c$: energia cinetica\\
+$P$: potenza\\
+$U$: energia potenziale\\
+$m$: massa del corpo\\
+$v$: velocità del corpo\\
+\\
+Il \emph{Lavoro} è un vettore che si compone della forza applicata sul corpo e del suo spostamento.\\
+L'\emph{Enegia cinetica} è l'energia di un corpo in movimento.\\
+La \emph{Potenza} indica la quantità di energia scambiata nel tempo.\\
+L'\emph{Energia potenziale} è quanto energia potrebbe generare quel corpo. Dipende dall'altezza.\\
+
+Queste sono formule generali, che danno le definizioni. Negli esercizi verrà particolarmente utile
+$U_1 + E_1 = U_2 + E_2$ in quanto permette di trovare la velocità o la massa o l'altezza di un corpo
+in due diverse situazioni.\\
+Per gli esercizi si vada \hyperref[ex:potenziale]{qui}.\\\\
+Vediamo ora alcune formule particolari:
+\subsubsection{Legge di Hooke e energia elastica}
+\begin{equation*}
+\vec{F} = -k\vec{x}
+\end{equation*}
+\begin{equation*}
+U_e = \frac{1}{2}k\Delta x^2
+\end{equation*}
+$k$: costante elastica della molla\\
+$\vec{x} \approx \Delta x$: variazione di posizione\\
+\\
+Queste formule sono relative a molle.\\
+
+\subsection{Quantità di moto e teorema dell'impulso}
+\label{subsec:qtaMoto}
+\begin{equation*}
+\vec{q} = m\vec{v}
+\end{equation*}
+\begin{equation*}
+\vec{I} = \Delta \vec{q} = \vec{F}\Delta t
+\end{equation*}
+$m$: massa del corpo\\
+$\vec{v}$: velocità del corpo\\
+$\vec{F}$: forza applicata sul corpo\\
+$t$: tempo\\
+\\
+La quantità di moto indica la forza necessaria a fermare un oggetto in movimento in un dato lasso di
+tempo.
+
+\subsection{Urti}\label{subsec:dinamica:urti}
+Si distinguono 2 tipi di urti: \emph{elastici} e \emph{anaelastici}.\\
+\\
+Negli urti \emph{elastici} i due corpi collidono ma rimangono separati. Ad esempio due palle
+da biliardo.\\
+Negli urti \emph{anaelastici} i due corpi che collidono rimangono attaccati l'uno all'altro,
+come nel caso di un pesce che ne mangia un alro o di un proiettile che colpisce un sacco.\\
+
+Per gli esercizi si vada \hyperref[ex:urti]{qui}.
+
+\subsubsection{Elastico}
+\begin{equation*}
+v_{1_f} = \frac{v_{1_i}\left(m_1-m_2\right) + 2m_2v_{2_i}}{m_1+m_2}
+\end{equation*}
+\begin{equation*}
+v_{2_f} = \frac{2m_1v_{1_i} + v_{2_i}\left(m_2-m_1\right)}{m_1+m_2}
+\end{equation*}
+$_1$: relativo al primo corpo\\
+$_2$: relativo al secondo corpo
+
+\subsubsection{Anaelastico}
+\begin{equation*}
+m_1v_1 + m_2v_2 = v(m_1+m_2)
+\end{equation*}
+$_1$: relativo al primo corpo\\
+$_2$: relativo al secondo corpo
+
+\subsubsection{Proiettile contro un corpo}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (ROT) at (1, 2);
+		\coordinate (CenterB1) at ($(ROT) + (0, -1.5)$);
+		\coordinate (CenterB2) at ($(ROT) + (2, -1.3)$);
+		\coordinate (CenterP) at (0,0.5);
+		
+		\draw (ROT) -- ($(CenterB1) + (0, 0.5)$);
+		\draw (ROT) -- ($(CenterB2) + (-0.5, 0.5)$);
+		
+		\draw[very thin] ($(CenterB1) + (-0.5, -0.5)$) -- ($(CenterB1) + (-0.5, +0.5)$) --
+		($(CenterB1) + (0.5, 0.5)$) -- ($(CenterB1) + (0.5, -0.5)$) -- cycle % Box1
+			node[pos=0.5, above, red]{$M$};
+		\draw[very thin,
+		densely dashed] ($(CenterB2) + (-0.5, -0.5)$) -- ($(CenterB2) + (-0.5, +0.5)$) --
+		($(CenterB2) + (0.5, 0.5)$) -- ($(CenterB2) + (0.5, -0.5)$) -- cycle;
+		\draw[densely dotted] (CenterB1) -- ($(CenterB1) + (2.5, 0)$);
+		\draw[blue, thick] ($(CenterB1) + (2, 0)$) -- (CenterB2)
+			node[pos=0.5, right]{$h$};
+		\draw ($(CenterP) + (-0.2, -0.1)$) -- ($(CenterP) + (0.2, -0.1)$) --
+		($(CenterP) + (0.2, 0.1)$) -- ($(CenterP) + (-0.2, 0.1)$) -- cycle
+			node[teal, below]{$\vec{v_p}$}
+			node[teal, above left]{$m$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\mathcolor{teal}{v_p} = 
+\frac{\mathcolor{red}{M} + \mathcolor{teal}{m}}{\mathcolor{teal}{m}}\sqrt{2g\mathcolor{blue}{h}}
+\end{equation*}
+\begin{equation*}
+\mathcolor{blue}{h} = 
+\frac{\mathcolor{teal}{v_p}^2\mathcolor{teal}{m}^2}{2g\left(\mathcolor{red}{M} +
+\mathcolor{teal}{m}\right)^2}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$
+
+\subsubsection{Urti obliqui}
+Un urto obliquo è come nel seguente caso, ovvero quando due corpi collidono e partono in direzioni
+diverse.\\
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (C1) at (-1,0);
+		\coordinate (C2) at (1,0);
+		\coordinate (D) at (1.3,0);
+		\coordinate (E1) at (2.5, 0.5);
+		\coordinate (E2) at (2.5, -0.7);
+		
+		\draw[orange] (C1) circle (0.25)
+			node[]{A};
+		\draw[teal] (C2) circle (0.25)
+			node[]{B};
+		\draw[-latex] ($(C1) + (0.35,0)$) -- ($(C2) + (-0.35,0)$);
+		\draw[-latex, dashed] (D) -- ($(D) + (1.5, 0)$);
+		\draw[-latex] (D) -- (E1);
+		\draw[-latex] (D) -- (E2);
+		\filldraw[blue, fill=blue!30] (D) -- ($(D) + (0.4,0)$) arc(0:9:1) -- cycle;
+		\draw[blue] (D) +(10:0.5) node{$\alpha$};
+		\filldraw[red, fill=red!30] (D) -- ($(D) + (0.4,0)$) arc(0:-13:1) -- cycle;
+		\draw[red] (D) +(-13:0.7) node{$\beta$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\vec{q}
+\begin{cases*}
+\mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\sin\mathcolor{red}{\alpha}-
+\mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\sin\mathcolor{blue}{\beta} = v_0m\\
+\mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\cos-\mathcolor{red}{\alpha}-
+\mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\cos-\mathcolor{blue}{\beta} = 0
+\end{cases*}
+\end{equation*}
+
+\subsection{Centro di Massa}\label{subsec:dinamica:cm}
+Il centro di massa è un punto in un corpo. In quel punto si potrebbe concentrare tutta la massa del 
+corpo per renderlo puntiforme.\\
+Le formule riportate possono valere per tutte le dimensioni, qui però
+verrà presa in considerazione solo una per semplicità.
+
+\begin{alignat*}{3}
+x &= \frac{\sum\limits_{i=0}^{n} m_ix_i}{\sum\limits_{i=0}^{n} m_i} &\quad
+\vec{v}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{v_i}}{\sum\limits_{i=0}^{n} m_i} &\quad
+\vec{a}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{a_i}}{\sum\limits_{i=0}^{n} m_i}
+\end{alignat*}
+Per gli esercizi si vada \hyperref[ex:cm]{qui}.
+
+\subsection{Momento Angolare e Inerzia}\label{subsec:dinamica:inerzia}
+Il momento angolare ($\vec{L}$) è la quantità di moto per le rotazioni.\\
+Al concetto di \emph{momento angoalare} si accompagna anche quello di \textbf{momento di inerzia}. 
+L'inerzia ($I$) indica quanto si muove la massa rispetto alla posizione.\\
+\begin{equation*}
+\vec{L} = \vec{r} \times \vec{q}
+\end{equation*}
+Da qui si nota la relazione stretta con la \nameref{subsec:qtaMoto}.
+\begin{equation*}
+L = rq\sin\alpha = r\cdot v\cdot m\cdot q\sin\alpha = mr^2\omega\sin\alpha = I\omega\sin\alpha
+\end{equation*}
+\begin{equation*}
+I = mr^2 = \sum\limits_{i=0}^{n}m_ir_i^2
+\end{equation*}
+$m$: massa del corpo\\
+$\omega$: velocità angolare\\
+$v$: velocità tangenziale\\
+$\alpha$: angolo di rotazione\\
+$q$: quantità di moto\\
+\\
+Se l'\textbf{asse} su cui è applicata l'inerzia non coincide con quello di rotazione ma gli \textbf{è 
+parallelo},si usi questa formula
+\begin{equation*}
+I = I_{CM}+md^2
+\end{equation*}
+In aggiunta al momento angolare e al momento di inerzia, c'è la \textbf{forza angolare} ($\vec{M}$).
+Molto semplicemente è definita
+\begin{equation*}
+\vec{M} = I\vec{\alpha}
+\end{equation*}
+che è una forma molto simile a $\vec{F} = m\vec{a}$. Infatti $\alpha$ identifica 
+\hyperref[subsec:mrua]{l'accelerazione angolare}.\\
+Una particolarità è che studiando la statica di un corpo rigido, si scopre questa formula
+\begin{equation*}
+\vec{M} = \vec{r} \times \vec{F}
+\end{equation*}
+
+\subsubsection{Teorema di König}
+Il teorema di König descrive un moto roto-traslato. Ad esempio una ruota che si muove sull'asfalto.
+\begin{equation*}
+E_c = \frac{1}{2} I\omega^2 + \frac{1}{2}mv_{CM}^2
+\end{equation*}
+$I$: inerzia\\
+$\omega$: velocità angolare\\
+$v_{CM}$: velocità del centro di massa\\\\
+Per gli esercizi si vada \hyperref[ex:inerzia]{qui}.
+
+\section{Gravitazione}\label{sec:gravitazione}
+La gravitazione si occupa di studiare le forze che intercorrono tra corpi celesti come soli e 
+pianeti.\\ 
+Essendo le orbite ellittiche, $a$ e $b$ si riferiscono ai semiassi rispettivamente maggiore e 
+minore.\\
+Per gli esercizi si vada \hyperref[ex:gravitazione]{qui}.
+
+\subsection{Terza legge di Keplero}
+\begin{equation*}
+\frac{a^3}{T^2} = k
+\end{equation*}
+$T$: periodo di rivoluzione
+
+\subsection{Legge di Gravitazione Universale}
+\begin{equation*}
+F = G\frac{m_1m_2}{r^2}
+\end{equation*}
+\hyperref[tab:g]{$G$}: $6.67\cdot10^{-11}\,\text{Nm}^2\text{/kg}^2$\\
+$m$: massa di un pianeta/corpo\\
+$r$: raggio/distanza tra i corpi
+
+\subsection{Accelerazione Gravitazionale su un pianeta}
+\begin{equation*}
+g = G\frac{M}{R}
+\end{equation*}
+\hyperref[tab:g]{$G$}: $6.67\cdot10^{-11}\,\text{Nm}^2\text{/kg}^2$\\
+$M$: massa del pianeta\\
+$R$: raggio del pianeta
+
+\subsection{Velocità di un satellite}
+\begin{equation*}
+v = \sqrt{\frac{GM}{R}}
+\end{equation*}
+\hyperref[tab:g]{$G$}: $6.67\cdot10^{-11}\,\text{Nm}^2\text{/kg}^2$\\
+$M$: massa del pianeta\\
+$R$: $r + h$: raggio del pianeta più quota
+
+\subsection{Velocità di fuga}
+\begin{equation*}
+v = \sqrt{\frac{2GM}{R}}
+\end{equation*}
+\hyperref[tab:g]{$G$}: $6.67\cdot10^{-11}\,\text{Nm}^2\text{/kg}^2$\\
+$M$: massa del pianeta\\
+$R$: raggio del pianeta\\
+La velocità di fuga è la velocità che un corpo deve avere per poter entrare in orbita del pianeta.
+
+\section{Idrostatica}
+L'idrostatica studia le situazioni di equilibrio di fluidi. Studia anche le pressioni.
+\subsubsection{Legge di Stevino}
+La legge di Stevino trova la pressione ad una data profondità.
+\begin{equation*}
+p = p_{atm} + \delta gh
+\end{equation*}
+$\delta$: densità\\
+\hyperref[tab:patm]{$p_{atm}$}: $1\,\text{atm} = 1.01\cdot10^5\,\text{Pa} = 760\,\text{mm\,Hg} = 
+1.01\cdot10^5\,\text{N/m}^2 = 1\,\text{bar}$\\
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$h$: profondità\\\\
+Se vista in un modo più generale si trova la pressione tra due punti
+\begin{equation*}
+p_2 = p_1 + \delta g\Delta h
+\end{equation*}
+$\delta$: densità\\
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$h$: profondità
+
+\subsection{Legge dei vasi comunicanti}
+\begin{equation*}
+\frac{h_1}{h_2} = \frac{\delta_2}{\delta_1}
+\end{equation*}
+I livelli di liquidi sono inversamente proporzionali alla densità dei liquidi. Si presti attenzione
+alla densità corretta.
+
+\subsection{Principio di Archimede}
+Il principio di Archimede permette di trovare la forza di galleggiamento.
+\begin{equation*}
+F_g = \delta_fVg
+\end{equation*}
+Al principio di Archimede è collegata la condizione di equilibrio di un corpo in un fluido:\\
+\begin{center}
+	\emph{`Un corpo è in equilibrio in un fluido se la sua forza peso compensa la spinta di 
+		Archimede, cioè se il suo peso è uguale al peso del fluido spostato.'}
+\end{center}
+
+\subsection{Volume della parte immersa}
+\begin{equation*}
+V_{imm} = V_s\frac{\delta_s}{\delta_f}
+\end{equation*}
+$_s$: relativo al solido\\
+$_f$: relativo al fluido
+
+\section{Idrodinamica} \label{sec:idrodinamica}
+L'idrodinamica studia i movimenti dei liquidi e la loro relazione con il contenitore.\\
+Il seguete disegno verrà utilizzato per definire le formule e far capire il significato delle 
+lettere.\\
+Per gli esercizi, si vada \hyperref[ex:idrodinamica]{qui}.
+\\
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+		% Coordinates for bottom curve
+		\coordinate (BottomLeft) at (-5,0);
+		\coordinate (BottomJunct1) at (-1, 0);
+		\coordinate (BottomJunct2) at (1, 0.8);
+		\coordinate (BottomRight) at (5, 0.8);
+		% Coordinates for top curve
+		\coordinate (TopLeft) at ($(BottomLeft) + (0,1)$);
+		\coordinate (TopJunct1) at ($(BottomJunct1) + (0,1)$);
+		\coordinate (TopJunct2) at ($(BottomJunct2) + (0,1.3)$);
+		\coordinate (TopRight) at ($(BottomRight) + (0,1.3)$);
+		% Defines the 2 radiuses for the circles and cilinders
+		\def\Rs{0.5};
+		\def\RB{0.65};
+		% Define the centers of the circles for the cilinders
+		\coordinate (BottomCircL) at (-4, \Rs);
+		\coordinate (BottomCircR) at (-2.5, \Rs);
+		\coordinate (TopCircL) at (2.5, 0.8+\RB);
+		\coordinate (TopCircR) at (4, 0.8+\RB);
+		
+		% Draws the bottom line
+		\draw (-6, -1) -- (6, -1);
+		% Draws the pipe
+		\draw (BottomLeft) -- (BottomJunct1) to[out=0, in=180] (BottomJunct2) -- (BottomRight);
+		\draw (TopLeft) -- (TopJunct1) to[out=0, in=180] (TopJunct2) -- (TopRight);
+		% Draws the ellipses
+		\filldraw[cyan!40] (BottomCircL) ellipse (0.1 and \Rs);
+		\draw[dashed, cyan] (BottomCircR) ellipse (0.1 and \Rs);
+		\filldraw[cyan!40] (TopCircL) ellipse (0.1 and \RB);
+		\draw[dashed, cyan] (TopCircR) ellipse (0.1 and \RB);
+		% Draws the comments
+		% h_1
+		\draw[|<->|, red] ($(BottomCircL) + (1, 0)$) -- ++(0, -1.5)
+			node[pos=0.5, right]{$h_1$};
+		% h_2
+		\draw[|<->|, red] ($(TopCircL) + (1, 0)$) -- ++(0, -2.45)
+			node[pos=0.5, left]{$h_2$};
+		% A_1
+		\node[cyan] (A1) at ($(BottomCircL) + (-0.5, -1)$) {$A_1$};
+		\draw[-stealth, cyan] ($(BottomCircL)$) to[out=180, in=90] (A1);
+		% A_2
+		\node[cyan] (A2) at ($(TopCircL) + (-0.5, -1)$) {$A_2$};
+		\draw[-stealth, cyan] ($(TopCircL)$) to[out=180, in=90] (A2);
+		% L_1
+		\draw[|<->|, blue] ($(BottomCircL) + (0, 0.7)$) -- ($(BottomCircR) + (0, 0.7)$)
+			node[pos=0.5, above]{$\mathcolor{olive}{v_1}\Delta t = l_1$};
+		% L_2
+		\draw[|<->|, blue] ($(TopCircL) + (0, 0.9)$) -- ($(TopCircR) + (0, 0.9)$)
+			node[pos=0.5, above]{$\mathcolor{olive}{v_2}\Delta t = l_2$};
+		% P_1
+		\draw[-latex, double, olive] ($(BottomCircL) + (-0.8, 0)$) -- ++(0.8, 0)
+			node[pos=0, left] {$p_1$};
+		% P_2
+		\draw[-latex, double, olive] ($(TopCircL) + (-0.8, 0)$) -- ++(0.8, 0)
+			node[pos=0, left] {$p_2$};
+		% P_1
+		\draw[-latex, double, orange] (BottomCircR) -- ++(0.8, 0)
+			node[pos=1, right] {$v_1$};
+		% P_2
+		\draw[-latex, double, orange] (TopCircR) -- ++(0.8, 0)
+			node[pos=1, right] {$v_2$};
+	\end{tikzpicture}
+\end{center}
+
+Nelle seguenti formule, $S$ è definito come $\mathcolor{cyan}{A}\cdot\mathcolor{blue}{l}$.
+
+\subsection{Equazione di Bernoulli}
+Quest'equazione descrive un qualsiasi moto tra due punti di un qualsiasi fluido.
+\begin{equation*}
+\mathcolor{olive}{p_1} + \delta g\mathcolor{red}{h_1} +
+\frac{1}{2}\delta\mathcolor{orange}{v_1}^2 = 
+\mathcolor{olive}{p_2} + \delta g\mathcolor{red}{h_2} +
+\frac{1}{2}\delta\mathcolor{orange}{v_2}^2
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$\delta$: densità del fluido
+
+\subsection{Se il tubo è orizzontale}
+\begin{equation*}
+\mathcolor{cyan}{A_1}\mathcolor{orange}{v_1} = 
+\mathcolor{cyan}{A_2}\mathcolor{orange}{v_2}
+\end{equation*}
+
+\subsection{Equazione di Torricelli}
+Si usi questa formula quando si deve trovare a che velocità esce un liquido da un contenitore.
+\begin{equation*}
+v = \sqrt{2g\mathcolor{red}{h}}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$\mathcolor{red}{h}$: livello del fluido
+
+\section{Termodinamica}\label{sec:termodinamica}
+La termodinamica si occupa di studiare come un corpo si modifica alla variazione di 
+\emph{temperatura}, \emph{pressione} e \emph{volume}.\\
+Si tenga conto che $t$ rappresenta la temperatura in \textcelsius\ e $T$ in $K$.\\
+Per gli esercizi si vada \hyperref[ex:termodinamica]{qui}.
+
+\subsection{Dilatazione}
+Ci sono 3 tipi di dilatazione dipendentemente da quante dimensioni coinvolge.
+
+\subsubsection{Lineare}
+\begin{equation*}
+l = l_0\left(1+\lambda\Delta t\right)
+\end{equation*}
+\begin{equation*}
+\Delta l = l_0\lambda\Delta t
+\end{equation*}
+$\lambda$: coefficiente di dilatazione lineare
+
+\subsubsection{Superficiale}
+\begin{equation*}
+S = S_0\left(1+\beta\Delta t\right)
+\end{equation*}
+\begin{equation*}
+\Delta S = S_0\beta\Delta t
+\end{equation*}
+$\beta$: $2\lambda$, coefficiente di dilatazione superficiale
+
+\textbf{Volumetrica}
+\begin{equation*}
+V = V_0\left(1+\alpha\Delta t\right)
+\end{equation*}
+\begin{equation*}
+\Delta V = V_0\alpha\Delta t
+\end{equation*}
+$\alpha$: $3\lambda$, coefficiente di dilatazione superficiale\\
+
+\subsection{Leggi di Gay-Lussac e Boyle-Mariotte}
+Queste 3 leggi definiscono la base della termodinamica e vengono usate in casi particoalari.
+
+\subsubsection{Prima legge di Gay-Lussac}
+Da usarsi quando $p = \text{costante}$, trova il nuovo volume al variare della temperatura.
+\begin{equation*}
+V = \frac{V_0}{T_0}T
+\end{equation*}
+
+\subsubsection{Seconda legge di Gay-Lussac}
+Da usarsi quando $V = \text{costante}$, trova la nuova pressione al variare della temperatura.
+\begin{equation*}
+p = \frac{p_0}{T_0}T
+\end{equation*}
+
+\subsubsection{Legge di Boyle-Mariotte}
+Da usarsi quando $T = \text{costante}$, definisce un prodotto costante tra volume e pressione.
+\begin{equation*}
+pV = \text{costante}
+\end{equation*}
+Questa formula diventa specialmente utile quando si hanno 2 situazioni e si puo mettere a sistema.
+
+\subsection{Gas}
+Questa sottosezione si dedicherà agli studi effettuati sui gas.
+
+\subsubsection{Equazione di stato dei gas perfetti}
+\begin{equation*}
+pV = nRT
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+$n$: numero di moli\\
+
+\subsubsection{Proprietà dei Gas}
+\begin{equation*}
+\frac{p_1V_1}{T_1} = \frac{p_2V_2}{T_2}
+\end{equation*}
+Questa proprietà è indispensabile in alcuni esercizi in quanto mette in relazione due situazioni e
+permette di trovare tutte le caratteristiche.
+
+\subsection{Calorimetria}
+Questa sottosezione è dedicata a descrivere le formule relative alla quantità di calore e capacità
+termica.
+
+\subsubsection{Capacità termica}
+Indica quanto velocemente un corpo assorbe calore.
+\begin{equation*}
+C = \frac{Q}{\Delta T}
+\end{equation*}
+$Q$: quantità di calore assorbito dal corpo\\
+$\Delta T$: variazione di temperatura\\
+
+\subsubsection{Calore specifico}
+\begin{equation*}
+c = \frac{C}{m} = \frac{Q}{m\Delta T}
+\end{equation*}
+$C$: capacità termica
+
+\subsubsection{Quantità di calore}
+\begin{equation*}
+Q = C\Delta t = mc\Delta T
+\end{equation*}
+$C$: capacità termica
+
+\subsubsection{Temperatura di equilibrio}
+La temperatura di equilibrio è la temperatura che raggiungono due corpi a contatto fra di loro.
+\begin{equation*}
+t_e = \frac{m_1c_1t_1 + m_2c_2t_2}{m_1c_2 + m_2c_2}
+\end{equation*}
+$_1$: relativo al primo corpo\\
+$_2$: relativo al secondo corpo\\
+\\
+Si ricordi che se o le masse o i calori specifici si possono eliminare fra di loro e di conseguenza 
+semplificare la formula.
+
+\subsubsection{Calore latente}
+Il calore latente è la quantità di calore scambiata nel passaggio di fase di un corpo.
+\begin{equation*}
+Q_L = c_Lm
+\end{equation*}
+$c_L$: calore specifico latente, diverso dal \emph{calore specifico}
+
+\subsection{Teoria Cientico-Molecolare}
+La teoria cinetico-molecolare descrive i movimenti delle molecole all'interno di un gas.\\
+Una lettera che si trova molto spesso in questa sottosezione e nelle successive è la $l$, ovvero
+il grado di libertà del corpo.\\
+\begin{center}
+	\begin{tabular}{c | c}
+		$\boldsymbol{l}$ & \textbf{Tipo di Gas}\\ \hline
+		$3$ & Monoatomico \\ \hline
+		$5$ & Biatomico\\
+	\end{tabular}
+\end{center}
+
+\subsubsection{Forza in una mole}
+\begin{equation*}
+F_{\text{mole}} = \frac{N}{3}\frac{m}{l}\left\langle v\right\rangle^2
+\end{equation*}
+$N$: numero di molecole\\
+$\left\langle v\right\rangle$: velocità media
+
+\subsubsection{Pressione}
+\begin{equation*}
+p = \frac{N}{3}\frac{m}{V}\left\langle v\right\rangle^2 = \frac{2}{3}\frac{NE_c}{V}
+\end{equation*}
+$N$: numero di molecole\\
+$V$: volume\\
+$\left\langle v\right\rangle$: velocità media\\
+$E_c$: energia cinetica\\
+
+\subsubsection{Quantità di moto della parete}
+\begin{equation*}
+\Delta\vec{q} = 2m\left\langle \vec{v}\right\rangle
+\end{equation*}
+
+\subsubsection{Energia cinetica}
+\begin{equation*}
+E_c = \frac{l}{2}\frac{R}{N}T = \frac{l}{2}k_BT
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+\hyperref[tab:kB]{$k_B$}: $1.318\cdot10^{-23}\,\text{J/K}$\\
+$T$: temperatura in Kelvin
+
+\subsubsection{Energia interna}
+\begin{equation*}
+U = \sum\limits_{i=0}^{n} E_{c_i} + \sum\limits_{i=0}^{n} U_{g_i} = \frac{1}{2}nRT
+\end{equation*}
+$U_g$: potenziale gravitazionale, se è un gas perfetto vale $0$\\
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+
+\subsection{Termodinamica (Lavoro)}
+
+\subsubsection{Primo principio della termodinamica}
+\begin{equation*}
+Q = L+\Delta U
+\end{equation*}
+
+\subsubsection{Lavoro di un'isobara}
+Un'isobara è una trasforamazione che mantiene costante la pressione.
+\begin{equation*}
+L = p\Delta V
+\end{equation*}
+\begin{equation*}
+Q = \frac{2+l}{2}nR\Delta T
+\end{equation*}
+\begin{equation*}
+c_p = \frac{l+2}{2}R
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+
+\subsubsection{Lavoro di un'isoterma}
+Un'isoterma è una trasformazione che mantiene costante la temperatura.
+\begin{equation*}
+L = Q = nRT\ln\frac{V_2}{V_1}
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+
+\subsubsection{Lavoro di un'isocora}
+Un'isocora è una trasformazione che mantiene costante il volume.
+\begin{equation*}
+L = 0
+\end{equation*}
+\begin{equation*}
+Q = \Delta U = \frac{l}{2}nR\Delta T
+\end{equation*}
+\begin{equation*}
+c_V = \frac{l}{2}R
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+
+\subsubsection{Lavoro di un ciclo}
+\begin{equation*}
+L = \sum\limits_{i=0}^{n} Q_i
+\end{equation*}
+
+\subsubsection{Lavoro di un'adiabatica}
+Un'adiabatica è una trasformazione che non cede calore all'esterno.
+\begin{equation*}
+L = -\Delta U
+\end{equation*}
+
+\subsubsection{Equazione di Meyer}
+\begin{equation*}
+c_p - c_V = R
+\end{equation*}
+$c$: calore specifico molare
+
+\subsubsection{Equazioni di Poisson}
+\begin{equation*}
+pV^\gamma = \text{costante}
+\end{equation*}
+\begin{equation*}
+V_1^{\gamma-1}T_1 = V_2^{\gamma-1}T_2
+\end{equation*}
+\begin{equation*}
+p_1^{1-\gamma}T_1^\gamma = p_2^{1-\gamma}T_2^\gamma
+\end{equation*}
+$\gamma$: rapporto tra $c_p$ e $c_V$, si veda la seguente tabella:
+
+\begin{center}
+	\begin{tabular}{c | c | c | c}
+		Tipo di gas & $c_p$ & $c_V$ & $\gamma=\frac{c_p}{c_V}$\\ \hline
+		Monoatomico & $\frac{5}{2}R$ & $\frac{3}{2}R$ & $1.\bar{6}$\\ \hline
+		Biatomico & $\frac{7}{2}R$ & $\frac{5}{2}R$ & $1.4$\\
+	\end{tabular}
+\end{center}
+
+\subsubsection{Macchina di Carnot}
+\begin{equation*}
+\mu = 1-\frac{Q_1}{Q_2} = \frac{L}{Q_2}
+\end{equation*}
+\begin{equation*}
+\mu_c = 1 - \frac{T_1}{T_2}
+\end{equation*}
+La prima formula definisce il rendimento ($\mu$) di una qualsiasi macchina termica, la seconda solo
+per una macchina di Carnot.
+\begin{equation*}
+P = \frac{Q\mu}{t}
+\end{equation*}
+$P$: potenza\\
+$\mu$: rendimento
+
+\subsection{Entropia}\label{subsec:termodinamica:entropia}
+Per definire l'entropia, definiamo la \textbf{disuguaglianza di Clausius} che ci aiuterà a capire la 
+definizione di entropia.
+\begin{equation*}
+\sum\limits_{i = 1}^{n}\frac{\Delta Q_i}{T_i} \leq 0
+\end{equation*}
+se il ciclo è reversibile si ha questa forma
+\begin{equation*}
+\left(\sum\limits_{i = 1}^{n}\frac{\Delta Q_i}{T_i}\right)_\text{rev} = 0
+\end{equation*}
+L'\textbf{entropia} è in definitiva una formulazione più generale del secondo principio della 
+termodinamica che sia appropriato per ogni trasformazione. L'entropia è una funzione di stato.\\
+Per uno stato $C$ e uno stato di riferimento $R$ per cui $S(R) = 0\,\text{J/K}$, l'entropia è così 
+definita:
+\begin{equation*}
+S(C) = S(C) - S(R) = \left(\sum\limits_{i = 1}^{n}\frac{\Delta Q_i}{T_i}\right)_{\substack{R\to C\\
+\text{rev}}}
+\end{equation*}
+Per gli esercizi, si vada \hyperref[ex:entropia]{qui}.
+
+\subsubsection{Proprietà dell'entropia}
+L'entropia è una grandezza estensiva, ovvero che preso un sistema $\Omega$ che sia l'unione di due
+sottositemi indipendenti $\Omega_1$ e $\Omega_2$ ($\Omega = \Omega_1 \cup \Omega_2$), la sua entropia
+è pari a
+\begin{align*}
+S(C) = \left(\sum\limits_{i=1}^{n}\frac{\Delta Q_i}{T_i}\right)_{\substack{R\to C\\\text{rev}}} &=\\ 
+\left(\sum\limits_{i=1}^{n}\frac{\Delta Q_i}{T_i}\right)^{\Omega_1}_{\substack{R\to C\\\text{rev}}} &+
+\left(\sum\limits_{i=1}^{n}\frac{\Delta Q_i}{T_i}\right)^{\Omega_2}_{\substack{R\to C\\\text{rev}}}
+\end{align*}
+
+\subsubsection{Entropia di un sistema isolato}
+In un sistema isolato l'entropia ha una variazione pari a \textbf{zero} solo se la trasformazione è
+\textit{reversibile}, \textbf{maggiore di zero} altrimenti.
+
+\subsubsection{Entropia dell'universo}
+L'entropia dell'universo è sempre in crescita in quanto non c'è un "ambiente esterno".
+
+\subsubsection{Entropia di un sistema non isolato}
+Se una trasformazione reale provoca in un un sistema una diminuzione di entropia pari a 
+$\vert \Delta S \vert$, nel resto dell'universo è maggiore di $\vert \Delta S \vert$.
+
+\subsubsection{Macrostati e microstati}
+Un \emph{microstato} è una precisa combinazione di elementi microscopici, un \emph{macrostato} è 
+descritto dalle variabili macroscopiche che ne descrivono le proprietà.\\
+Ad esempio: un macrostato per un sistema termodinamico è descritto da almeno due delle tipiche 
+variabili (pressione, volume e temperatura). Un microstato invece è lo stato di ogni molecola di gas 
+nel sistema.\\
+Un microstato corrisponde ad un solo macrostato, un macrostato può essere descritto da più macrostati.
+Si noti anche che più un macrostato è disordinato, più è probabile che si realizzi spontaneamente.
+
+\subsubsection{Molteplicità di un macrostato}
+Sia $A$ un macrostato. Si definisce $W(A)$ come \textbf{molteplicità}, ovvero il numero di microstati 
+distinti che corrispondono ad $A$.
+
+
+\subsubsection{Equazione di Boltzman}
+\begin{equation*}
+S(A) = k_B\ln W(A)
+\end{equation*}
+\hyperref[tab:kB]{$k_B$}: $1.318\cdot10^{-23}\,\text{J/K}$
+
+\section{Onde}\label{sec:onde}
+Questa sezione si dedica alle formule ed esperimenti relativi allo studio del moto ondoso dei corpi.
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.75]
+		\draw[samples=500, domain=-0:pi*3] plot (\x, {-cos(2*\x r)});
+		
+		\draw[|<->|, blue, dashed] (0,-1.2) -- (9.42,-1.2)
+			node[pos=0.5, below]{$L$};
+		\draw[|<->|, red, dashed] (-0.2, -1) -- (-0.2, 1)
+			node[pos=0.5, left]{$A$};
+		\draw[|<->|, teal] (1.5, 1.2) -- (4.7, 1.2)
+			node[pos=0.5, above]{$\lambda$};
+	\end{tikzpicture}
+\end{center}
+
+Il grafico qua sopra è il grafico della funzione $\cos x$ che rappresenta un possibile moto di un'
+onda. Sono anche rappresentate le 3 caratteristiche principali: l'\emph{ampiezza}
+($\mathcolor{red}{A}$), la \emph{lunghezza} ($\mathcolor{blue}{L}$) e la \emph{lunghezza d'onda}
+($\mathcolor{teal}{\lambda}$).\\\\
+Per gli esercizi, si vada \hyperref[ex:onde]{qui}.
+
+\subsection{Formule sperimentali} \label{subsec:onde:sper}
+Di seguito vengono riportate formule sperimentali che quindi dipendono da caretteristiche fisiche.
+
+\begin{equation*}
+v = \sqrt{\frac{T}{\mu}}
+\end{equation*}
+\begin{equation*}
+\mu = \frac{m}{\mathcolor{blue}{L}}
+\end{equation*}
+$T$: tensione della corda\\
+$\mu$: densità lineare della corda\\
+$m$: massa della corda\\
+$\mathcolor{blue}{L}$: lunghezza della corda
+
+\subsection{Relazione fondamentale}
+\begin{equation*}
+v = \frac{\mathcolor{teal}{\lambda}}{T} = \mathcolor{teal}{\lambda}f
+\end{equation*}
+Questa formula mette in relazione la velocità, il periodo, la lunghezza d'onda e la frequenza
+di oscillazione.
+
+\subsection{Equazioni dell'onda}
+Esistono più equazioni dell'onda, dalla più generale a le due particolari.
+
+\subsubsection{Equazione con $x$ fissato}
+Questa formula definisce l'equazione dell'onda in un punto fisso.
+\begin{equation*}
+f(\bar{x}, t) = \mathcolor{red}{A}\cos\frac{2\pi}{T}t
+\end{equation*}
+
+\subsubsection{Equazione con $t$ fissato}
+Questa formula definisce l'equazioned dell'onda ad un particolare istante.
+\begin{equation*}
+f(x, \bar{t}) = \mathcolor{red}{A} \cos\frac{2\pi}{\mathcolor{teal}{\lambda}}x
+\end{equation*}
+
+\subsubsection{Equazione generale del'onda}
+Queste sono le formule più generali dell'equazione dell'onda.
+\begin{equation*}
+f(x, t) = \mathcolor{red}{A}\cos\left[\frac{2\pi}{\mathcolor{teal}{\lambda}}(x\mp vt)\right] =
+\mathcolor{red}{A}\cos2\pi\left(\frac{x}{\mathcolor{teal}{\lambda}}\mp\frac{t}{T}\right)
+\end{equation*}
+
+La cosa più importante da notare è il segno. Se l'onda si propaga a \emph{destra} si usi $-$, se
+verso \emph{sinistra} si usi $+$.
+
+\subsection{Equazione di Huygens}
+L'equazione di Huygens definisce il rapporto tra il raggio di propagazione di un onda e il tempo.
+La seguente figura farà capire meglio.
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.5]
+		\draw (0,0) circle (1);
+		\draw[dashed] (0,0) circle (2);
+		
+		\draw[|<->|, red] (1,0) -- (2,0)
+			node[pos=0.5, above]{$r$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\mathcolor{red}{r} = \Delta t\cdot v
+\end{equation*}
+
+\subsection{Rifrazione}\label{subsec:onde:rifrazione}
+Questa sezione si occuperà della luce che attraversa due mezzi e si rifratte/riflette.\\
+Per gli esercizi si vada \hyperref[ex:rifrazione]{qui}.
+Un concetto unico a questa sezione è quello dell'\emph{indice di rifrazione}. Ce ne sono di 2 tipi:
+\emph{assoluto} relativo solo alle onde elettromagnetiche e \emph{relativo}.\\
+Per calcolare quello relativo si usi:
+\begin{equation*}
+n_{2,1} = \frac{\sin\hat{i}}{\sin\hat{r}}
+\end{equation*}
+Qui introduciamo anche due simboli: $\hat{i}$ e $\hat{r}$. Il primo ($\hat{i}$) indica l'angolo di
+\emph{incidenza} con il secondo mezzo e $\hat{r}$ l'angolo di rifrazione. Per capire meglio, si
+faccia riferimento alla seguente figura:
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+		\coordinate (A) at (-2,1);
+		\coordinate (B) at (2,1);
+		\coordinate (C) at (2,-1);
+		\coordinate (D) at (-2,-1);
+		
+		\coordinate (In) at (-1,-1);
+		\coordinate (Out) at (1, 1);
+		
+		% Rectangle
+		\draw (A) -- (B) -- (C) -- (D) -- cycle;
+		% Angles
+		\filldraw[orange, fill=orange!30] (In) -- ($(In) + (0, -0.6)$) arc(-90:-105:1) -- cycle;
+		\draw[orange] (In) +(-97:1) node{$\hat{i}$};
+		\filldraw[cyan, fill=cyan!30] (In) -- ($(In) + (0, 0.6)$) arc(90:61:1) -- cycle;
+		\draw[cyan] (In) +(80:1) node{$\hat{r}$};
+		% Construction lines
+		\draw[densely dotted] ($(In) + (0, -0.5)$) -- ++(0,2.5);
+		\draw[densely dotted]($(Out) + (0, 0.5)$) -- ++(0,-2.5);
+		\draw[dashed, -latex] (In) -- (Out);
+		% In line
+		\draw[-latex] (-1.5,-2) -- (In);
+		\draw[-latex] (Out) -- (1.5, 2);
+		%\draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
+		%	node[pos=0.5, above]{$\delta$};
+		%\draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
+		%	node[pos=0.5, left]{$d$};
+	\end{tikzpicture}
+\end{center}
+
+Si tenga cont che questa immagine si riferisce al fenomeno della \emph{rifrazione} che ha queste
+caratteristiche:
+\begin{equation*}
+\frac{\sin\mathcolor{orange}{\hat{i}}}{\sin\mathcolor{cyan}{\hat{r}}} = \frac{v_1}{v_2} = 
+\frac{\lambda_1}{\lambda_2} = \frac{c}{v_2}
+\end{equation*}
+
+Se invece ci troviamo in un caso di \emph{riflessione} ha questa proprietà:
+\begin{equation*}
+\mathcolor{orange}{\hat{i}} =\mathcolor{cyan}{\hat{r}}
+\end{equation*}
+
+\subsubsection{Relazione di Snell}
+La relazione di Snell mette appunto in relazione gli indici di rifrazione con gli angoli $\hat{i}$ 
+e $\hat{r}$.
+\begin{equation*}
+\frac{n_2}{n_1} = \frac{\sin\mathcolor{orange}{\hat{i}}}{\sin\mathcolor{cyan}{\hat{r}}}
+\end{equation*}
+
+\subsubsection{Distanza di Rifrazione}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+	\coordinate (A) at (-2,1);
+	\coordinate (B) at (2,1);
+	\coordinate (C) at (2,-1);
+	\coordinate (D) at (-2,-1);
+	
+	\coordinate (In) at (-1,-1);
+	\coordinate (Out) at (1, 1);
+	
+	% Rectangle
+	\draw (A) -- (B) -- (C) -- (D) -- cycle;
+	% Angles
+	\filldraw[orange, fill=orange!30] (In) -- ($(In) + (0, -0.6)$) arc(-90:-105:1) -- cycle;
+	\draw[orange] (In) +(-97:1) node{$\hat{i}$};
+	\filldraw[cyan, fill=cyan!30] (In) -- ($(In) + (0, 0.6)$) arc(90:61:1) -- cycle;
+	\draw[cyan] (In) +(80:1) node{$\hat{r}$};
+	% Construction lines
+	\draw[densely dotted] ($(In) + (0, -0.5)$) -- ++(0,2.5);
+	\draw[densely dotted]($(Out) + (0, 0.5)$) -- ++(0,-2.5);
+	\draw[dashed, -latex] (In) -- (Out);
+	% In line
+	\draw[-latex] (-1.5,-2) -- (In);
+	\draw[-latex] (Out) -- (1.5, 2);
+	\draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
+		node[pos=0.5, above]{$\delta$};
+	\draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
+		node[pos=0.5, left]{$d$};
+	\end{tikzpicture}
+\end{center}
+
+\begin{equation*}
+\mathcolor{blue}{\delta} = \frac{\mathcolor{red}{d}\sin(
+	\mathcolor{orange}{\hat{i}}-\mathcolor{cyan}{\hat{r}})}
+{\cos\mathcolor{cyan}{\hat{r}}}
+\end{equation*}
+
+\subsubsection{Angolo limite}
+L'angolo limite è quell'angolo che segna se si tratta di un fenomeno di rifrazione o di riflessione.
+
+\begin{equation*}
+\hat{a}_l = \arcsin\frac{n_2}{n_1}
+\end{equation*}
+
+\subsection{Interferenza}\label{subsec:onde:interferenza}
+Il fenomeno dell'interferenza avviene quando due fonti distinte emettono onde e queste impattano
+fra loro. Il seguente disegno aiuterà a spiegare il fenomeno.\\
+Per gli esercizi si vada \hyperref[ex:interferenza]{qui}.
+
+\begin{center}
+	\begin{tikzpicture}[scale=1.5]
+		\coordinate (A) at (-0.3,0);
+		\coordinate (B) at (0.3,0);
+		
+		\draw[gray, dashed] (A) circle (0.25);
+		\draw[gray] (A) circle (0.5);
+		\draw[gray, dashed] (A) circle (0.75);
+		
+		\draw[gray, dashed] (B) circle (0.25);
+		\draw[gray] (B) circle (0.5);
+		\draw[gray, dashed] (B) circle (0.75);
+		
+		\filldraw[red] (0, 0.7) circle (0.05)
+			node[above]{A};
+		\filldraw[orange] (0, 0.4) circle (0.05)
+			node[right]{B};
+		\filldraw[blue] (-0.25, 0.5) circle (0.05)
+			node[left]{C};
+		
+		\draw[|<->|, thick, cyan] (-0.2, 0) -- (-0.55, 0)
+			node[pos=0.5, above]{$\lambda$};
+	\end{tikzpicture}
+\end{center}
+
+In questa immagine sono stati segnati 3 punti. Nel punto \textcolor{red}{A} si ha un'interferenza 
+\textbf{distruttiva}. Nel punto \textcolor{orange}{B} si ha un'interferenza \textbf{costruttiva}.
+Infine nel punto \textcolor{blue}{C} non si ha interferenza in quanto si incontrano due tipi di
+onde diversi.
+
+\subsubsection{Interferenza Costruttiva}
+\begin{equation*}
+\left\lvert \overline{PS}_1-\overline{PS}_2 \right\rvert = k\mathcolor{cyan}{\lambda}
+\end{equation*}
+$\bar{PS}$: distanza tra l'origine dell'onda e il punto $P$\\
+$k$: $k\in\mathbb{Z}$ indica il numero dell'interferenza che interessa, ovvero il numero dell'onda
+
+\subsubsection{Interferenza Distruttiva}
+\begin{equation*}
+\left\lvert \overline{PS}_1-\overline{PS}_2 \right\rvert = 
+(2k + 1)\frac{\mathcolor{cyan}{\lambda}}{2}
+\end{equation*}
+$\bar{PS}$: distanza tra l'origine dell'onda e il punto $P$\\
+$k$: $k\in\mathbb{Z}$ indica il numero dell'interferenza che interessa, ovvero il numero dell'onda\\
+
+\subsection{Esperienza di Young}\label{subsec:onde:young}
+Young studiava la luce. Il suo esperimento dimostra la natura ondulatoria della luce. Di seguito
+viene riportato un diagramma che rappresenta semplicemente la sua struttura.
+
+\begin{center}
+	\begin{tikzpicture}[xscale=0.8]
+		\coordinate (MidL) at (-3.2, 0);
+		\coordinate (MidR) at (3, 0);
+		
+		\coordinate (BlockTop) at (-2.8, 0.5);
+		\coordinate (BlockBot) at (-2.8, -0.5);
+		\coordinate (BlockMid) at (-2.8, 0);
+		
+		\coordinate (P) at (3, 1.5);
+		
+		\coordinate (MidBar) at (4.3, 0);
+
+		\draw[dashed] (MidL) -- (MidR);
+		\draw ($(P) + (0, 0.5)$) -- ++(0, -3.5);
+		
+		% Two holes
+		\filldraw[lightgray, draw=black] 
+			($(BlockTop) + (0,0.5)$) -- (BlockTop) -- ++(-0.4, 0) -- ++(0, 0.5);
+		\filldraw[lightgray, draw=black] 
+			($(BlockBot) + (0,-0.5)$) -- (BlockBot) -- ++(-0.4, 0) -- ++(0, -0.5);
+		\filldraw[lightgray, draw=black] 
+			($(BlockMid) + (0,0.25)$) -- ($(BlockMid) + (0,-0.25)$) -- 
+			++(-0.4, 0) -- ++(0, 0.5) -- cycle;		
+			
+		% Lines to P
+		\filldraw[black] (P) circle (0.05)
+			node[right]{P};
+		\draw[very thin] (BlockTop) -- (P);
+		\draw (BlockMid) -- (P);
+		\draw[very thin] (BlockBot) -- (P);
+		
+		% Delta x
+		\draw[densely dotted] (BlockTop) -- ++(0.5, -0.84);
+		\draw[|<->|] ($(BlockBot) + (0.2, -0.25)$) -- ($(BlockTop) + (0.6, -1.1)$)
+			node[pos=0.5, below right]{$\Delta x =
+				\mathcolor{red}{d}\sin\mathcolor{orange}{\theta_n}$};
+		
+		% Captions
+		\filldraw[orange, fill=orange!50] (BlockMid) -- ++(1,0) arc(0:15:1) -- cycle;
+		\draw[orange] (BlockMid) +(7:1.5) node{$\theta_n$};
+		\draw[|<->|, blue] (-2.8, -1.5) -- ++(5.8, 0)
+			node[pos=0.5, above]{$l$};
+		\draw[|<->|] ($(P) + (0.5, 0)$) -- ++(0, -1.5)
+			node[pos=0.5, right]{$y_n$};
+		\draw[|<->|, red] ($(BlockTop) + (-0.9, 0)$) -- ++(0, -1)
+			node[pos=0.5, right]{$d$};
+			
+		% Bar on right
+		\coordinate (M) at ($(MidBar) + (0, 1.5)$);
+		\foreach \y/\c in {0, 0.4, 0.8, ..., 3}{
+			\filldraw[magenta!50] 
+				($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
+		}
+		\foreach \y/\c in {0.2, 0.6, 1, ..., 2.6}{
+			\filldraw[cyan] 
+				($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
+		}
+		\draw ($(MidBar) + (0,1.5)$) -- ++(0.5, 0) -- ++(0, -3) -- ++(-0.5, 0) -- cycle;
+		
+		\draw[|<->|, teal] ($(M) + (0.9, -0.2)$) -- ++(0, -0.2)
+			node[pos=0.5, right]{$\frac{\mathcolor{blue}{l}\lambda}{\mathcolor{red}{d}}$};
+		
+		\node[magenta] (C) at (1.5, -2) {Distruttiva};
+		\node[cyan] (C) at (1.5, -2.5) {Costruttiva};
+	\end{tikzpicture}
+\end{center}
+
+La barra a destra fa vedere l'alternarsi di zone chiare e scure. Ciascuna di quelle zone è definita
+\emph{frangia}.\\
+Per gli esercizi si vada \hyperref[ex:young]{qui}.
+
+\subsubsection{Altezza dell'$n$-esima frangia}
+La seguente formula trova l'altezza di una qualsiasi frangia.
+\begin{equation*}
+y_n = \mathcolor{blue}{l}\tan\mathcolor{orange}{\theta_n}
+\end{equation*}
+
+Le prossime due invece trovano l'$n$-esima frangia costruttiva ($_C$) o distruttiva ($_D$).
+\begin{equation*}
+y_{n_C} = \frac{\mathcolor{blue}{l}\cdot n\cdot\mathcolor{cyan}{\lambda}}{\mathcolor{red}{d}}
+\end{equation*}
+\begin{equation*}
+y_{n_D} = \frac{\mathcolor{blue}{l}\cdot (2n+1)\cdot\mathcolor{cyan}{\lambda}}{2\mathcolor{red}{d}}
+\end{equation*}
+
+\subsubsection{Angolo dell'$n$-esima frangia}
+Se la frangia è costruttiva
+\begin{equation*}
+\sin\mathcolor{orange}{\theta_n} = n\frac{\mathcolor{teal}{\lambda}}{\mathcolor{red}{d}}
+\end{equation*}
+Se è distruttiva
+\begin{equation*}
+\sin\mathcolor{orange}{\theta_n} =
+\left(n-\frac{1}{2}\right)\frac{\mathcolor{teal}{\lambda}}{\mathcolor{red}{d}}
+\end{equation*}
+
+\subsubsection{Differenza di percorso tra i due fori}
+Nel grafico identificata come $\Delta x$
+\begin{equation*}
+\Delta x = \mathcolor{red}{d}\sin\mathcolor{orange}{\theta_n}
+\end{equation*}
+Se l'angolo è riferito ad una frangia costruttiva è anche
+\begin{equation*}
+\Delta x = n\mathcolor{teal}{\lambda}
+\end{equation*}
+Se l'angolo è riferito ad una frangia distruttiva è anche
+\begin{equation*}
+\Delta x = (2n+1)\mathcolor{teal}{\lambda}
+\end{equation*}
+
+\subsection{Lenti}\label{subsec:onde:lenti}
+Nonostante le lenti abbiano in definitiva 2 formule totali, meritano una sottosezione a sè in quanto
+può non essere sempre immediato identificare oggetti ed immagini. Il disegno sotto aiuterà a capire.
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (p) at (-3, 0);
+		\coordinate (hO) at (-3, 0.75);
+		\coordinate (f) at (1.2, 0);
+		\coordinate (L) at (0, 0);
+		\coordinate (q) at (2, 0);
+		\coordinate (hI) at (2, -0.5);
+		
+		% Construction
+		\draw[very thin] (p) -- (q);
+		\draw[red, thick] (p) -- (hO)
+			node[pos=0.5, left]{$h_O$}
+			node[pos=0, below]{$p$};
+		\draw[blue, thick] (q) -- (hI)
+			node[pos=0.5, right]{$h_I$}
+			node[pos=0, above]{$q$};
+		\draw[<->] ($(L) + (0, 1)$) -- ($(L) + (0, -1)$);
+		
+		% Connection lines
+		\draw[dashed] (hO) -- (hI);
+		\draw[densely dotted] (hO) -- ($(L) + (0, 0.75)$) -- (hI);
+		
+		% Sign for F
+		\draw[orange, thick] ($(f) + (0, -0.2)$) -- ++(0, 0.4)
+			node[pos=1, above]{$f$};
+	\end{tikzpicture}
+\end{center}
+
+Da quest'immagine possiamo capire due caratteristiche fondamentali:
+\begin{itemize}
+	\item Una linea perpendicolare alla lente viene deviata in modo che passerà per il fuoco;
+	\item Una linea passante per il centro della lente continuerà il suo percorso senza deviazioni;
+\end{itemize}
+Questo ci porta alle formule fondamentali.\\
+Per gli esercizi si vada \hyperref[ex:lenti]{qui}.
+
+\subsubsection{Equazione generale}
+\begin{equation*}
+\frac{1}{\mathcolor{orange}{f}} = \frac{1}{\mathcolor{red}{p}} + \frac{1}{\mathcolor{blue}{q}}
+\end{equation*}
+
+\subsubsection{Ingrandimento}
+\begin{equation*}
+G = \frac{\mathcolor{red}{h_I}}{\mathcolor{blue}{h_O}} =
+-\frac{\mathcolor{blue}{q}}{\mathcolor{red}{q}}
+\end{equation*}
+
+\subsubsection{Diottria}
+\begin{equation*}
+D = \frac{1}{\mathcolor{orange}{f}}
+\end{equation*}
+
+\subsection{Onde Stazionarie}
+L'effetto delle onde stazionarie è un effetto molto particolare che si verifica in caso due onde
+siano sincrone ma con versi opposti. Il risultato è il seguente
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[samples=500, domain=-0:pi] plot (\x, {-sin(2*\x r)});
+		\draw[samples=500, domain=-0:pi] plot (\x, {sin(2*\x r)});
+		
+		\filldraw[red] (0,0) circle(0.05)
+			node[left]{Nodo};
+		\filldraw[blue] (pi/4, 1) circle(0.05)
+			node[above]{Ventre};
+	\end{tikzpicture}
+\end{center}
+
+Per le onde stazionarie, vengono definiti \emph{nodi} i punti in cui le onde si "incrociano",
+\emph{ventri} quelli in cui si "allontanano". Si è definito anche $n$ il numero di ventri che 
+esistono nell'onda.\\
+
+Per trovare la posizione di un nodo o di un ventre si usi
+\begin{equation*}
+\mathcolor{red}{\text{Nodo: }} x = \frac{\lambda}{4}+k\frac{\lambda}{2}
+\end{equation*}
+\begin{equation*}
+\mathcolor{blue}{\text{Ventre: }} x = k\frac{\lambda}{2}
+\end{equation*}
+dove $k$ identifica il numero del ventre o nodo desiderato.
+
+\subsubsection{Equazione dell'onda stazionaria}
+\begin{equation*}
+y = A\cos\left(\frac{2\pi x}{\lambda}\right)\sin\left(\frac{2\pi t}{T}\right)
+\end{equation*}
+
+\subsubsection{Lunghezza dell'onda}
+La lunghezza dell'onda è determinata dal numero di ventri e dalla loro lunghezza d'onda.
+\begin{equation*}
+L = n\frac{\lambda_n}{2}
+\end{equation*}
+Dove $\lambda_n$ è definita come
+\begin{equation*}
+\lambda_n = \frac{2L}{n}
+\end{equation*}
+
+\subsubsection{Frequenza del ventre}
+\begin{equation*}
+f_n = \frac{n}{2L}v
+\end{equation*}
+$v$: velocità (che può essere espressa come $\sqrt{\frac{T}{\mu}}$)
+
+\subsection{Suono}\label{subsec:onde:suono}
+Il suono si propaga in forma ondosa, quindi rientra in questa sezione. Il suono si propaga in forma
+sferica da un punto.\\\\
+Per gli esercizi, si vada \hyperref[ex:suono]{qui}.
+
+\subsubsection{Intensità}
+L'intensità indica quanto forte è un suono. \\
+Dato che il suono si propaga in forma sferica, 
+$S = 4\pi r$ dove $r$ indica la distanza dell'uditore dalla sorgente.
+\begin{equation*}
+I = \frac{E}{St} = \frac{P}{S}
+\end{equation*}
+$E$: energia\\
+$P$: potenza, solitamente espressa in $W$\\ \\
+
+L'intensità ha anche un'altra formula importante:
+\begin{equation*}
+I_1r_1^2 = I_2r_2^2
+\end{equation*}
+
+\subsubsection{Livello sonoro}
+Il livello sonoro indica quanto forte un suono appare all'udito umano. La sua unità di misura è il
+\emph{decibel} ($dB$).
+
+\begin{equation*}
+	L = 10\log_{10}\frac{I}{I_0}
+\end{equation*}
+\hyperref[tab:I0]{$I_0$}: $10^{-12}\,\text{W/m}^2$
+
+\subsubsection{Effetto Doppler}
+L'effetto Doppler è un effetto che tutti quanti conoscono e hanno sperimentato (un'ambulanza che fa
+suono diverso in base a dove si trova rispetto all'uditore) e che mette in relazione la frequenza del
+suono e la velocità dei due corpi (uditore e sorgente).\\
+
+La cosa più complicata dell'effetto Doppler sono i segni. Questa è la formula più generale
+\begin{equation*}
+f_O = f_S\frac{v\pm v_U}{v\mp v_S}
+\end{equation*}
+\hyperref[tab:vs]{$v$}\\
+$U$: uditore\\
+$S$: sorgente\\
+
+Come si nota, al numeratore e al denominatore si invertono i segni. Questa tabella aiuterà a far 
+capire come scegliere.
+
+\begin{center}
+	\begin{tabular}{| c | c | c |}
+		\hline
+		\multicolumn{1}{|c}{\multirow{2}{*}{Uditore}} & 
+			\multicolumn{1}{|c|}{Avvicina} & $+$\\ \cline{2-3}
+		\multicolumn{1}{|c}{} &
+			\multicolumn{1}{|c|}{Allontana} & $-$\\ 
+		\hline\hline
+		\multicolumn{1}{|c}{\multirow{2}{*}{Sorgente}} & 
+			\multicolumn{1}{|c|}{Avvicina} & $-$\\ \cline{2-3}
+		\multicolumn{1}{|c}{} &
+			\multicolumn{1}{|c|}{Allontana} & $+$\\
+		\hline 
+	\end{tabular}
+\end{center}
+
+\subsubsection{Battimenti}
+I battimenti sono un fenomeno che si verifica quando due sorgenti vibrano a frequenze molto simili,
+quindi $f_1 \approx f_2$. Se questa condizione non è presente, non è un battimento.\\
+Un tipico esempio è un diapason che comincia a vibrare quando si canta alla giusta tonalità.
+
+\begin{equation*}
+f_B = \left\vert f_1 - f_2 \right\vert
+\end{equation*}
+
+\section{Elettrostatica}\label{sec:elettrostatica}
+L'Elettrostatica studia le cariche elettriche nei corpi e come reagiscono fra di loro.\\
+Un concetto fondamentale è quello di \textbf{carica}. La carica (identificata con $Q$) è il numero
+di elettroni all'interno di un corpo. La sua unità di misura è il \emph{Coulomb} ($C$).\\\\
+Si noti che nelle seguenti formule, $\varepsilon$ è definito come 
+$\varepsilon = \varepsilon_0\varepsilon_r$ dove $\varepsilon_0$ è \hyperref[tab:e0]{la costante
+dielettrica nel vuoto} e $\varepsilon_r$ è la costante dielettrica nel mezzo desiderato.\\
+Per gli esercizi si vada \hyperref[ex:elettrostatica]{qui}.
+
+\subsection{Legge di Coulomb}
+La legge di Coulomb (da non essere confusa con il teorema di Coulomb) trova la forza che intercorre
+tra due corpi carichi. Si noti che questa formula può essere usata solo se i corpi sono puntiformi e
+fermi.
+\begin{equation*}
+F = k_0\frac{Q_1Q_2}{r^2} = k_0\frac{1}{4\pi\varepsilon}\frac{Q_1Q_2}{r^2}
+\end{equation*}
+\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$
+
+\subsection{Campo elettrico}
+Il campo elettrico è generato da una carica. Esso è un campo vettoriale, ciò significa che ad ogni
+suo punto si associa un vettore.\\ 
+Il campo elettrico può essere uniforme, ovvero a tutti i punti si associa un vettore uguale. Nel caso
+in cui non lo sia però punti diversi possono avere vettori diversi.\\
+Verranno ora riportate tutte le formule che permettono di trovare o il modulo o il vettore di un
+campo elettrico.
+
+\begin{alignat*}{2}
+\vec{E} &= \frac{\vec{F}}{q} &\qquad \vec{E} &= \sum\limits_{i=0}^{n} \vec{E}_n\\
+E &= k_0\frac{Q}{r^2} & &\text{Solo se puntiforme}\\
+E &= \frac{\sigma}{2\varepsilon_0} & &\text{Se in un condensatore, si divida solo per } \varepsilon\\
+E &= -\frac{\Delta V}{\Delta x} & & \\
+E &= \frac{\left\lvert\sigma\right\rvert}{\epsilon_0} & &\text{Se è una superficie piana}
+\end{alignat*}
+\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$\\
+$\sigma$: densità di carica\\
+$\Delta V$: d.d.p\\
+$\Delta x$: distanza tra le superfici
+
+\subsection{Teorema di Coulomb}
+Il teorema di Coulomb definisce il campo elettrico per una qualsiasi superficie \emph{piana}.
+\begin{equation*}
+E = \frac{\sigma}{\epsilon_0}
+\end{equation*}
+
+
+\subsection{Flusso} \label{subsec:flusso}
+Il flusso ($\Phi$) è la quantità di carica generata da un campo elettrico ($\vec{E}$), che 
+attraversa una superficie ($\vec{S}$).\\
+Verranno ora riportate le formule per calcolare il flusso di una superficie.
+
+\begin{alignat*}{2}
+\Phi_i\left(\vec{E}\right) &= \vec{E}_i \cdot \vec{S_i} &\qquad 
+\Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\Phi_{S_i}\left(\vec{E}_i\right)\\
+\Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\vec{E}_\cdot\vec{S_i} & 
+\Phi_{S_{CH}}&\left(\vec{E}\right) = \frac{\sum\limits_{i=0}^{n}Q_i}{\varepsilon}\\
+\Phi_S\left(\vec{E}\right) &= E\cdot S\cos\theta & &\text{Se } S \text{ è piana e } E \text{ 
+uniforme} 
+\end{alignat*}
+
+\subsection{Teorema di Gauss}
+Il teorema di Gauss definisce il flusso di una superficie \emph{chiusa}.
+\begin{equation*}
+\Phi_{S_{CH}}\left(\vec{E}\right) = \frac{\sum\limits_{i=0}^{n}Q_i}{\varepsilon}
+\end{equation*}
+
+\subsection{Lavoro di un campo elettrico}
+Quanto lavoro deve fare un campo elettrico per spostare una carica? Questa sottsezione è dedicata 
+proprio a questo.
+
+\begin{alignat*}{2}
+L &= \Delta U &\qquad  &\text{Se riferito ad un campo elettrico}\\
+L &= -\Delta U & &\text{Se riferito ad una carica}\\
+L &= q\left[V_A - V_B\right] & &
+\end{alignat*}
+
+Al lavoro sono direttamente collegati \textbf{l'energia potenziale elettrica} ($U$) e 
+\textbf{il potenziale elettrico} ($V$). Molto similmente alle energie gravitazionali, queste due
+sono molto importanti. Vengono ora riportate le formule per calcolarle.
+
+\begin{alignat*}{2}
+U &= k_0\frac{Q_1Q_2}{r} &\qquad V &= k_0\frac{Q}{r}
+\end{alignat*}
+\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$
+
+\subsubsection{Lavoro di una carica in un condensatore}
+Il lavoro di una carica è equivalente all'energia interna.
+\begin{equation*}
+L = \frac{1}{2}qV = \frac{1}{2}CV^2 = \frac{1}{2}\frac{q^2}{C}
+\end{equation*}
+
+\subsection{Capacità elettrica}
+La capacità elettrica indica quanta carica può immagazzinare un conduttore isolato. Verranno ora 
+riportate le formule per calcolarla.
+
+\begin{alignat*}{2}
+C &= \frac{Q}{V} &\qquad &\text{Anche in un condensatore}\\
+C &= 4\pi\varepsilon & &\text{In una sfera isolata}\\
+C &= \frac{S\varepsilon}{d} & &\text{In un condensatore piano}
+\end{alignat*}
+Nell'ultima formula, $d$ indica la distanza tra le due armature di un condensatore.
+
+\subsection{Circuitazione}
+La circuitazione ($C$) indica quanta carica passa per una linea chiusa ($\Gamma$).
+
+\begin{equation*}
+C_\Gamma\left(\vec{E}\right) = \sum\limits_{i=0}^{n}\vec{E}_i\cdot\vec{l}_i = 
+\sum\limits_{i=0}^{n} E_i\cdot l_i\cos\theta
+\end{equation*}
+$l$: differenza di spostamento\\
+Si noti che $theta$ è rispetto alla tangente, non alla normale come nel 
+\hyperref[subsec:flusso]{Flusso}.
+
+\subsection{Dielettrico all'interno di un condensatore}
+Come cambia il campo elettrico all'interno di un condensatore se si inserisce un dielettrico?
+\begin{equation*}
+E_{RIS} = \frac{\sigma\cdot\sigma_p}{\varepsilon}
+\end{equation*}
+
+\section{Circuiti elettrici}\label{sec:circElettr}
+Questa sezione è strettamente legata alla precedente ma, vista l'importanza ne merita una sua.\\
+I circuiti elettrici sono usati ovunque nel mondo d'oggi e hanno una simbologia tutta loro. Di 
+seguito viene riportato un circuito elementare.
+
+\begin{center}
+	    \begin{circuitikz}
+			\draw (0,0)
+			to[battery1, l=9<\volt>] (0,2)
+			to[short] (2,2)
+			to[R=$R_1$, l=10<\kilo\ohm>] (2,0)
+			to[short] (0,0);
+		\end{circuitikz}
+\end{center}
+
+Questo circuito non ha una funzione in quanto è composto solo da una batteria
+\begin{center}
+	\begin{circuitikz}
+		\draw (0,0) to[battery1, l=9<\volt>] (2,0);
+	\end{circuitikz}
+\end{center}
+ed una resistenza
+\begin{center}
+	\begin{circuitikz}
+		\draw (0,0) to[R=$R_1$, l=10<\kilo\ohm>](2,0);
+	\end{circuitikz}
+\end{center}
+
+L'ultimo simbolo che verrà frequentemento usato è quello del condensatore
+\begin{center}
+	\begin{circuitikz}
+		\draw (0,0) to[C=$C_1$, l=10<\pico\farad>](2,0);
+	\end{circuitikz}
+\end{center}
+
+Per gli esercizi, si vada \hyperref[ex:circElettr]{qui}.
+
+\subsection{Corrente elettrica}
+La corrente elettrica ($i$) è equivalente alla ddp nei non-conduttori e alla quantità di cariche
+libere altrimenti.\\
+In pratica indica quante cariche si muovono all'interno di un corpo conduttore.
+
+\subsection{Collegamenti}
+Ci sono 2 tipi di collegamenti: \textbf{in serie} ed \textbf{in parallelo}.\\
+Se due componenti sono in serie, la stessa corrente $i$ li attraversa e sono posti uno dietro 
+l'altro. Se sono in parallelo invece la corrente si divide.
+
+\subsubsection{In serie}
+\begin{center}
+	\begin{circuitikz}
+		\draw (-1, 0)
+		to [short] (0, 0)
+		to [R] (1,0)
+		to [short] (2,0)
+		to [R] (3,0)
+		to [short] (4,0);
+	\end{circuitikz}
+\end{center}
+
+\subsubsection{In parallelo}
+\begin{center}
+	\begin{circuitikz}
+		\draw 
+		(-1,0)
+		to [short, o-] (0,0)
+		to [short, *-] (0,1)
+		to [short] (1,1)
+		to [R] (2,1)
+		to [short] (3,1)
+		to [short] (3,0)
+		
+		(0,0) 
+		to [short, *-] (0,-1)
+		to [short] (1,-1)
+		to [R] (2,-1)
+		to [short] (3,-1)
+		to [short] (3,0)
+		
+		(3,0)
+		to [short, *-o] (4,0);
+	\end{circuitikz}
+\end{center}
+
+\subsection{Condensatori}
+Un condensatore è composto da due \emph{armature} che hanno cariche di segno opposto, una positiva e
+l'altra negativa. Il compito di un condensatore all'interno di un circuito è di immagazzinare carica
+e rilasciarla in un attimo. Viene usato ad esempio nei flash delle macchine fotografiche dove viene
+rilasciata in un attimo la carica immagazzinata in un certo tempo.\\
+La loro unità di misura è il Farad (F).
+
+\subsubsection{Capacità equivalente di condensatori in \emph{serie}}
+\begin{center}
+	\begin{circuitikz}
+		\draw
+		(0,0)
+		to [short] (1,0)
+		to [C=$C_1$] (2,0)
+		to [short] (3,0)
+		to [C=$C_2$] (4,0)
+		to [short] (5,0);
+	\end{circuitikz}
+\end{center}
+
+Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità deve essere
+\begin{equation*}
+\frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}
+\end{equation*}
+
+\subsubsection{Capacità equivalente di condensatori in \emph{parallelo}}
+\begin{center}
+	\begin{circuitikz}
+		\draw 
+		(-1,0)
+		to [short, o-] (0,0)
+		to [short, *-] (0,1)
+		to [short] (1,1)
+		to [C=$C_1$] (2,1)
+		to [short] (3,1)
+		to [short] (3,0)
+		
+		(0,0) 
+		to [short, *-] (0,-1)
+		to [short] (1,-1)
+		to [C=$C_2$] (2,-1)
+		to [short] (3,-1)
+		to [short] (3,0)
+		
+		(3,0)
+		to [short, *-o] (4,0);
+	\end{circuitikz}
+\end{center}
+
+Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità deve essere
+\begin{equation*}
+C_e = C_1 + C_2
+\end{equation*}
+
+\subsubsection{Proprietà di condensatori in serie ed in parallelo}
+Una caratteristca di questi due collegamenti è quello che rimane costante tra i condensatori.\\\\
+Due condensatori \textbf{in serie} mantengono la stessa $Q$.\\
+Due condensatori \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
+
+\subsection{Resistenze}
+Le resistenze servono appunto a opporre resistenza alla corrente elettrica. Permettono di collegare
+componenti con una tensione di rendimento bassa a circuiti che ne forniscono una alta.\\
+La loro unità di misura è l'Ohm ($\Omega$).
+
+\subsubsection{Leggi di Ohm}
+Le leggi di Ohm mettono in relazione ddp e resistenza, e le caratteristiche fisiche di una 
+resistenza.
+
+\begin{alignat*}{2}
+R &= \frac{\Delta V}{i} &\qquad R &= \rho\frac{l}{S}
+\end{alignat*}
+La prima mette in relazione la ddp e la corrente con la resistenza.\\
+La seconda mette in relazione la resistività ($\rho$), la lunghezza del corpo ($l$) e la sezione 
+($S$) con la resistenza.
+
+\subsubsection{Capacità equivalente di resistenze in \emph{serie}}
+\begin{center}
+	\begin{circuitikz}
+		\draw
+		(0,0)
+		to [short] (1,0)
+		to [R=$R_1$] (2,0)
+		to [short] (3,0)
+		to [R=$R_2$] (4,0)
+		to [short] (5,0);
+	\end{circuitikz}
+\end{center}
+
+Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità deve essere
+\begin{equation*}
+R_e = R_1 + R_2
+\end{equation*}
+
+\subsubsection{Capacità equivalente di resistenze in \emph{parallelo}}
+\begin{center}
+	\begin{circuitikz}
+		\draw 
+		(-1,0)
+		to [short, o-] (0,0)
+		to [short, *-] (0,1)
+		to [short] (1,1)
+		to [R=$R_1$] (2,1)
+		to [short] (3,1)
+		to [short] (3,0)
+		
+		(0,0) 
+		to [short, *-] (0,-1)
+		to [short] (1,-1)
+		to [R=$R_2$] (2,-1)
+		to [short] (3,-1)
+		to [short] (3,0)
+		
+		(3,0)
+		to [short, *-o] (4,0);
+	\end{circuitikz}
+\end{center}
+
+Questo "circuito" può essere ridotto ad una sola resistenza la cui capacità deve essere
+\begin{equation*}
+\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}
+\end{equation*}
+Vige anche questa proprietà:
+\begin{equation*}
+R_1i_1 = R_2i_2
+\end{equation*}
+
+\subsubsection{Proprietà di condensatori in serie ed in parallelo}
+Una caratteristca di questi due collegamenti è quello che rimane costante tra le resistenze.\\\\
+Due resistenze \textbf{in serie} mantengono la stessa $i$.\\
+Due resistenze \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
+
+\subsection{Tabella riassuntiva delle formule}
+
+\begin{center}
+	\begin{tabular}{c | c | c}
+		& Serie & Parallelo \\ \hline
+		Condensatori & $\frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}$ & $C_e = C_1 + C_2$\\ \hline
+		Resistenze & $R_e = R_1 + R_2$ & $\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}$\\
+	\end{tabular}
+\end{center}
+
+\subsection{Generatori}
+I generatori generano, abbastanza logicamente, corrente elettrica. Ce ne sono di due tipi:
+\emph{Ideali} e \emph{Reali}. L'unica differenza è che i generatori ideali non hanno resistenza
+interna.
+
+\subsubsection{Forza elettromotrice}
+\begin{equation*}
+\mathcal{E} = \overbrace{iR}^{\Delta V} + \underbrace{ir}_{\text{caduta di tensione}}
+\end{equation*}
+$R$: resistenza\\
+\\
+Si noti che la forza elettromotrice è anche equivalente alla d.d.p. che attraversa la batteria.
+\subsubsection{Potenza elettrica}
+\begin{equation*}
+P = Vi
+\end{equation*}
+Se per conduttori ohmici
+\begin{equation*}
+P = iR^2 = \frac{V^2}{R}
+\end{equation*}
+
+\section{Magnetismo}
+Il magnetismo si occupa di come i magneti interagiscano fra di loro e con i corpi circostanti.Il 
+campo magnetico ($\vec{B}$) è quello che influenza i corpi al suo interno. La sua direzione è
+sempre dal polo NORD a quello SUD.\\ 
+La sua unità di misura è il \emph{Tesla} ($T = \frac{N}{Am}$)\\
+Può essere definito in due modi, prenderemo in considerazione quello più usato in ambito liceale.
+
+\subsection{Forza in un campo magnetico}
+\begin{equation*}	
+\vec{F} = i\cdot\vec{l}\times\vec{B}
+\end{equation*}
+Si ricordi che $\times$ indica il \hyperref[subsec:vettori:prodottoVettoriale]{prodotto vettoriale} 
+tra due vettori. $\vec{l}$ è un vettore che rappresenta un filo che attraversa il campo magnetico.
+$i$: corrente
+
+\subsection{Legge di Biot-Savant}
+La legge di Biot-Savant definisce un campo magnetico generato da un filo rettilineo percorso da
+una corrente.\\
+La direzione è la tangente alla linea di forza generata dal filo, il verso è antiorario se la
+corrente esce, orario altrimenti.
+\begin{equation*}
+B = \frac{\mu_0}{2\pi}\frac{i}{d}
+\end{equation*}
+\hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$\\
+$i$: corrente\\
+$d$: distanza dal filo\\
+
+\subsection{Legge di Ampére}
+La legge di Ampére descrive la forza che intercorre tra due fili paralleli attraversati da una
+corrente.
+\begin{equation*}
+F = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+\end{equation*}
+\hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$\\
+$i$: corrente\\
+$d$: distanza tra i due fili\\
+\\
+Molto spesso si vuole definire la forza su di una certa dimensione del filo, quindi si ottiene
+la formula in questa forma:
+\begin{equation*}
+\frac{F}{l} = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+\end{equation*}
+La formula calcola il modulo del vettore. La forza è attrattiva se i versi delle correnti sono 
+uguali, repulsiva altrimenti.
+
+\subsection{Forza di Lorenz}
+La forza di Lorenz è la forza che una carica risente all'interno di un campo magnetico.
+\begin{equation*}
+\vec{F} = q\vec{v}\times\vec{B}
+\end{equation*}
+
+Si presti attenzione al verso di questa forza. Se la carica è \emph{positiva} si usi la solita
+regola della mano, altrimenti si inverta semplicemente il verso.\\\\	
+Una particolarità è che una carica che entra in un campo magnetico viene deviata dal suo percorso.
+Il moto che ne deriva è \emph{elicoidale}. Ovviamente questo nel caso più generale, il disegno
+di seguito aiuterà a capire in che modo l'elettrone viene spostato
+
+\begin{center} % https://tex.stackexchange.com/questions/129860/helix-on-a-cylinder
+	\tdplotsetmaincoords{70}{15}
+	\begin{tikzpicture}[tdplot_main_coords]
+	
+		% --- Independent parameters ---
+		\def\h{3}                          % cylinder height
+		\pgfmathtruncatemacro\tA{350}      % A angle
+		\def\zA{1}                         % A applicate
+		\pgfmathtruncatemacro\tB{150}      % B angle
+		\def\zB{2}                         % B applicate
+		\pgfmathtruncatemacro\n{3}         % number of additional turns
+		\pgfmathtruncatemacro\NbPt{100}    % number of dots for drawing the helix portion
+		\def\rhelixdots{0.05}              % radius of dots forming helix
+		\def\rAB{0.05}                     % radius of A and B dots
+		
+		% lower circle
+		\draw[black,very thin] (1,0,0) 
+		\foreach \t in {2,3,...,360}
+		{
+			--({cos(\t)},{sin(\t)},0)
+		}
+		--cycle;
+		
+		% upper circle
+		\draw[black,very thin] (1,0,\h) 
+		\foreach \t in {2,4,...,360}
+		{
+			--({cos(\t)},{sin(\t)},\h)
+		}
+		--cycle;
+		
+		% --- Draw helix ---
+		\pgfmathsetmacro\tone{\tA}
+		\pgfmathsetmacro\tlast{\tB+\n*360}
+		\pgfmathsetmacro\ttwo{\tone+(\tlast-\tone)/(\NbPt-1)}
+		\pgfmathsetmacro\p{360*(\zB-\zA)/(\tB-\tA+360*\n)}
+		\foreach \t in {\tone,\ttwo,...,\tlast}{%
+			\fill[red!80] ({cos(\t)},{sin(\t)},{\p*(\t-\tA)/360+\zA}) circle[radius=\rhelixdots];
+		}
+		
+		% --- Draw A and B ---
+		\fill[blue] ({cos(\tA)},{sin(\tA)},\zA) circle [radius=\rAB]node[right]{$A$};
+		\fill[blue] ({cos(\tB)},{sin(\tB)},\zB) circle [radius=\rAB]node[left]{$B$};
+	\end{tikzpicture}
+\end{center}
+Questa è una rappresentazione del moto di una cairca all'interno del campo magnetico. Alcune formule
+permettono di trovare il \emph{raggio}, \emph{periodo} e il \emph{passo} dell'elica.
+\begin{alignat*}{2}
+r &= \frac{m\cdot v}{q\cdot B} &\qquad  T &= \frac{m\cdot v_x}{q\cdot B}\\
+\delta S &= v_y = T &\qquad F &= m\frac{v^2}{r}
+\end{alignat*}
+L'ultima formula di queste quattro trova la forza centripeta che mantiene la carica all'interno del
+moto. Questa è la forza di Lorenz (supposto che $\vec{B}\perp\vec{v}$).\\
+Sempre supposto che $\vec{B}\perp\vec{v}$, il periodo si può scrivere anche come
+\begin{equation*}
+T = \frac{2\pi\cdot m}{q\cdot B}
+\end{equation*}
+
+\subsection{Selettore di velocità}
+Il selettore di velocità è un particolare dispositivo che permette di "selezionare" alcune cariche che
+vanno solo ad una determinata velocità attraverso una fessura. Il loro utilizzo è molto ampio, 
+specialmente in dispositivi come televisioni a tubo catodico.\\
+Il loro funzionamento si basa su due campi $\vec{E}$ e $\vec{B}$ uniformi incrociati fra di loro.\\
+Sulla carica deve agire una forza $\vec{F}$ pari a
+\begin{equation*}
+\vec{F} = q\vec{E} + q\vec{v}\times\vec{B}
+\end{equation*}
+Una carica passa nel selettore se e solo se la sua velocità è pari a
+\begin{equation*}
+v = \frac{E}{B}
+\end{equation*}
+
+\subsection{Conduttori nei metalli}
+In questa sottosezione si trovano le formule per trovare la carica massima che può ottenere e la
+velocità di deriva degli elettroni.\\
+
+\subsubsection{Carica massima}
+\begin{equation*}
+i = n\cdot A\cdot v_d\cdot e
+\end{equation*}
+\hyperref[tab:e-]{$e$}\\
+$n$: numero di elettroni di conduzione77
+$A$: sezione del conduttore
+
+\subsubsection{Velocità di deriva}
+\begin{equation*}
+v_d = \frac{i}{n\cdot A\cdot e}
+\end{equation*}
+\hyperref[tab:e-]{$e$}\\
+$n$: numero di elettroni di conduzione77
+$A$: sezione del conduttore
+
+\section{Esercizi}
+Questa sezione è dedicata ad alcuni esercizi con relativa risoluzione e spiegazione. Il suo scopo
+è quello di chiarire i concetti teorici con esempi pratici.
+
+\subsection{Consigli}
+Ecco alcuni consigli che saranno utili nello svolgimento degli esercizi:
+\begin{enumerate}
+	\item \textbf{Leggere più volte il problema};
+	\item \textbf{Partire dalle formule generali.} Questo aiuterà a imparare le formule e ad 
+	applicarle. Leformule particolari sono generalmente derivate e alcune volte anche in casi 
+	particolari (alcune	variabili pari a zero, masse uguali, ...);
+	\item \textbf{Guardare corpo per corpo le forze che interagiscono.} Andare per ordine e con calma 
+	è una garanzia per evitare di fare errori di calcolo o di teoria. Personalmente, una volta presa
+	questa abitudine, ho di gran lunga ridotto il numero di errori di distrazione;
+	\item \textbf{Avere un sistema unico di risoluzione.} Abituarsi al proprio sistema, seguendo o 
+	meno questi consigli, aiuterà ad essere costanti e ad evitare errori di distrazione;
+	\item \textbf{Mettere tutti i dati in una "tabella".} Aiuta a visualizzare ciò che si ha e capire
+	come ottenere ciò che serve;
+	\item \textbf{Scrivere le formule utilizzabili.} Assieme al punto precedente, aiuta ad avere un
+	quadro generale di ciò che si va ad affrontare;
+	\item \textbf{Ricontrollare i conti a fine di ogni riga.} Nessuno è infallibile, è facile 
+	scambiare un segno o fare stupidi errori, ricontrollare scongiura la loro propagazione;
+\end{enumerate}
+
+\subsection{\hyperref[sec:cinematica]{Cinematica}}\label{ex:cinematica}
+
+\subsubsection{\hyperref[subsec:cinematica:mru]{Moto Rettilineo Uniforme}}\label{ex:mru}
+\paragraph{Esercizio 1}
+Un poliziotto sta inseguendo un fuggitivo su una strada rettilinea. La velocità del fuggitivo è 
+costante a $v_f = 120\,\text{km/h}$ e il poliziotto è a distanza $d=500\,\text{m}$ e ha velocità
+pari a $v_p = 180\,\text{km/h}$. Qual è la \textbf{velocità relativa} del poliziotto rispetto al
+fuggitivo? Quanto \textbf{tempo} ci vuole perché lo raggiunga?
+
+\divisor
+
+La velocità relativa è molto semplicemente la differenza tra le velocità.
+\begin{equation*}
+v_r = v_p-v_f \rightarrow v_r = 180-120 = \boxed{60\,\text{km/h}}
+\end{equation*}
+
+Per trovare quando i due individui si incontrano basta mettere a sistema le loro due equazioni
+della posizione
+\begin{equation*}
+\begin{cases}
+x = x_0 + v_ft\\x = v_pt
+\end{cases}\rightarrow
+180t = 120t + 500 \rightarrow t = \frac{50}{6} = \boxed{8.3\,\text{s}}
+\end{equation*}
+
+\subsubsection{\hyperref[subsec:cinematica:mrua]{Moto Rettilineo Uniformemente Accelerato}}
+\label{ex:mrua}
+
+\paragraph{Esercizio 1}
+Un corpo cade liberamente fino a terra che si trova ad una distanza $h$. Sapendo che nell'ultimo 
+secondo di volo percorre una distanza pari a $\dfrac{h}{2}$, \textbf{quanto vale $h$}?
+
+\divisor
+
+Dalla formula del MRUA $v^2 = v_0^2 + 2ay$, possiamo sostituire le informazioni che abbiamo per per
+trovare la velocità quando il corpo si trova a $\dfrac{h}{2}$
+\begin{equation*}
+v^2 = v_0^2 + 2ay \rightarrow v = \sqrt{gh}
+\end{equation*}
+Inserendo ora la velocità nell'equazione oraria possiamo ricavare $h$
+\begin{equation*}
+y = y_0 + v_0t + \frac{1}{2}gt^2 \rightarrow y = \sqrt{gh} + \frac{1}{2}gt^2
+\end{equation*}
+e ora non resta che sostituire i dati
+\begin{align*}
+\frac{h}{2} &= \sqrt{9.81\cdot h} + 9.81 \rightarrow h = 2\sqrt{9.81\cdot h} + 9.81\\
+(h-9.81)^2 &= 39.24h \rightarrow h^2 -58.86h + 96.2361 = 0 \rightarrow\\
+&\begin{cases}
+h_1 \approx 57\,\text{m}\\
+h_2 \approx 1.7\,\text{m}
+\end{cases}
+\end{align*}
+Avendo due soluzioni, come scegliamo quella corretta? Sappiamo che il corpo vola per più di un 
+secondo, quindi vediamo quanta distanza potrebbe percorrere quel corpo in un secondo
+\begin{equation*}
+h = \frac{gt^2}{2} = 4.9\,\text{m}
+\end{equation*}
+Da questo è evidente che $1.7\,\text{m}$ non può essere la nostra altezza in quanto è evidentemente 
+inferiore alla distanza percorsa in un secondo. Di conseguenza
+\begin{equation*}
+\boxed{h = 57\,\text{m}}
+\end{equation*}
+
+\subsubsection{\hyperref[subsec:cinematica:mp]{Moto Parabolico}}\label{ex:mp}
+\paragraph{Esercizio 1}
+Una pallina è lanciata a $\alpha = \ang{60}$ rispetto l'orizzntale. Atterra ad una distanza 
+$d=2\,\text{m}$ dal bordo di un tetto piatto che si trova ad una altezza $h = 20\,\text{m}$. La parete
+del tetto si trova ad una distanza $l=38\,\text{m}$ dal lanciatore. A che \textbf{velocità} è stata
+lanciata la pallina?
+
+\begin{center}
+	\begin{tikzpicture}
+		\filldraw[orange, fill=orange!40] (0,0.5) -- (0.5,0.5) arc (0:60:0.45) -- cycle
+			node[below right]{$\alpha = \ang{60}$};
+		\draw[dashed, -stealth] (0,0.5) to[out=60, in=110] (4,2);
+		\draw[dashed] (0,0.5) -- (1,0.5);
+		
+		\draw (0,0) -- (5,0);
+		\draw (3.5,2) -- (3.5,0);
+		\draw (3.5,2) -- (5,2);
+		
+		\draw[|<->|] (0,-0.5) -- ++(3.5,0)
+			node[pos=0.5, above]{$l=38\,\text{m}$};
+		\draw[stealth-stealth] (3.7,2) -- ++(0,-2)
+			node[pos=0.5, right]{$h = 20\,\text{m}$};
+		\draw[|<->|] (3.5,2.25) -- ++(0.5,0)
+			node[pos=0.5, above right]{$d=2\,\text{m}$};
+	\end{tikzpicture}
+\end{center}
+
+\divisor
+
+La distanza totale che la pallina percorre è $x = l + d = 40\,\text{m}$. Quindi il tempo passato prima
+dell'atterraggio è pari a 
+\begin{equation*}
+t = \frac{x}{v_{0_x}} \rightarrow t = \frac{x}{v_0\cos\alpha} = \frac{2x}{v_0}
+\end{equation*}
+Avendo poi a mente l'equazione oraria
+\begin{equation*}
+y = v_{0_y}t - \frac{1}{2}gt^2
+\end{equation*}
+possiamo sostituire le informazioni conosciute
+\begin{equation*}
+20 = \sin60v_0\frac{2x}{v_0} - \frac{1}{2}g\frac{2x}{v_0}^2 \rightarrow
+v_0 = \frac{\sqrt{31,360}}{49.3} = \boxed{25.2\,\text{m/s}}
+\end{equation*}
+
+\paragraph{Esercizio 2}
+Una pallina è lanciata verticalmente con una velocità $v_y = 10\,\text{m/s}$ da un tetto ad altezza
+$h = 20\,\text{m}$. \textbf{Quanto tempo} passa prima che tocchi il terreno? \textbf{A quale velocità}
+lo colipirà?
+
+\divisor
+
+Quanto tempo è facilmente individuabile. Prendiamo la formula oraria
+\begin{equation*}
+y = y_0 + v_0t+\frac{1}{2}at^2 \rightarrow y = \cancel{y_0}+\cancel{v_0t}+\frac{1}{2}at^2
+\end{equation*}
+Abbiamo tagliato le variabili che sono pari a $0$ nel nostro caso. Isoliamo $t$ e abbiamo
+\begin{equation*}
+t = \sqrt{\frac{2y}{g}}
+\end{equation*}
+Stiamo però attenti. Questa formula presuppone che $v_{0_y} = 0$ e nel nostro caso non è così. Però
+$v_{0_y} = 0$ quando la pallina ha raggiunto l'altezza massima dopo il lancio e torna a scendere.
+Infatti anche $y$ non è solo $20$ perché quando la pallina comincia a cadere ha già raggiunto una 
+certa altezza. Troviamola
+\begin{equation*}
+h_{max} = \frac{v_{0_y}^2}{2g} \rightarrow h_{max} = \frac{100}{2\cdot9.81} = 5\,\text{m}
+\end{equation*}
+Possiamo ora sostituire nella formula precedente per trovare il tempo
+\begin{equation*}
+t = \sqrt{\frac{2y}{g}} \rightarrow t = \sqrt{\frac{2\cdot(20+5)}{9.81}} \approx\boxed{2\,\text{s}}
+\end{equation*}
+La velocità è ricavabile dalla formula
+\begin{align*}
+v^2 &= v_0^2 + 2a\Delta x \rightarrow v = \sqrt{2gh} \rightarrow\\
+v &= \sqrt{2\cdot9.81\cdot25}\approx
+\boxed{22.41\,\text{m/s}}
+\end{align*}
+
+\subsection{\hyperref[sec:dinamica]{Dinamica}}\label{ex:dinamica}
+\subsubsection{\hyperref[subsec:dinamica:piano]{Funi, carrucole, piani inclinati e attrito}}
+\label{ex:dinamica:piano}
+\paragraph{Esercizio 1}
+Un corpo di massa $2\,\text{kg}$ scivola lungo un piano inclinato liscio (senza attrito). Determina \\
+l'\textbf{accelerazione} con la quale si muove e il \textbf{tempo} che impiega a percorrere tutto il
+piano, sapendo che la lunghezza del piano è $1\,\text{m}$ e la sua altezza è $0.5\,\text{m}$.
+\divisor
+
+L'accelerazione è veramente semplice trovarla in quanto basta ricordarsi una formula:
+\begin{equation*}
+a = g\sin\alpha \rightarrow a = 9.81\cdot\sin\ang{30} = 9.81 \cdot 0.5 = \boxed{4.905\,\text{m/s}^2}
+\end{equation*}
+Come sapevamo l'angolo? Essendo il piano inclinato l'ipotenusa, la trigonometria dice che perché
+l'altezza sia di $0.5$ l'angolo deve essere di $\ang{30}$.\\\\
+E ora, avendo l'accelerazione è un semplice esercizio di cinematica. Per prima cosa si trova la
+velocità finale usando una delle formule più utili di sempre
+\begin{align*}
+v^2= v_0^2+2a\cdot\Delta x \rightarrow v^2 = 0^2 + 2\cdot4.905\cdot1 = 9.81 \rightarrow\\
+v = \sqrt{v^2} = \sqrt{9.81} \approx \underline{3.31\,\text{m/s}}
+\end{align*}
+e ora si trova il tempo
+\begin{equation*}
+v = v_0 + at \rightarrow t = \frac{v-v_0}{a} \rightarrow t = \frac{3.13}{4.905} \approx 
+\boxed{0.64\,\text{s}}
+\end{equation*}
+
+\paragraph{Esercizio 2}
+Un blocco A di massa $M = 0.6\,\text{kg}$ si muove senza attrito su un piano inclinato di $\ang{30}$. 
+Mediante una fune priva di massa, il blocco A è connesso ad un blocco B di $22.0\,\text{kg}$ come 
+mostrato in figura. La carrucola ha massa trascurabile e si muove senza attrito. Determina 
+l'\textbf{accelerazione} di ciascun blocco e la \textbf{tensione} della corda.
+
+\begin{center}
+	\begin{tikzpicture}
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (5,0);
+	\coordinate (C) at (0,2);
+	\coordinate (D) at ($(C) + (-0.2, 0.2)$); % Circle center
+	\coordinate (M1) at ($(D) + (-0.2, -0.5)$);
+	\coordinate (M2) at ($(D) + (1, -0.25)$);
+	
+	\draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
+	\filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle
+	node[pos=0, below left]{$\alpha$}; % Arc
+	\filldraw[fill=teal!20, very thin] (D) circle (0.2)
+	node[teal]{$m$}; % Circle
+	\draw[very thin] (D) -- (C); % Line from C to circle
+	\draw[very thin] ($(D) + (-0.2, 0)$) -- (M1);
+	\draw[red] ($(M1) + (-0.2, 0)$) -- ($(M1) + (-0.2, -0.3)$) -- ($(M1) + (0.2, -0.3)$) --
+	($(M1) + (0.2, 0)$) -- cycle
+	node[pos=0.5, below]{$B$}; % Box 1
+	\draw[very thin] ($(D) + (0.15, 0.15)$) -- (M2);
+	\draw[blue] ($(M2) + (0.1, 0.2)$) -- ($(M2) + (0.5, 0.01)$) -- ($(M2) + (0.35, -0.4)$) --
+	($(M2) + (-0.1, -0.2)$) -- cycle
+	node[pos=0, right]{$A$};
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Si trova l'accelerazione molto rapidamente mediante l'uso di una singola formula:
+\begin{align*}
+a = \frac{m_Bg - m_A\sin\alpha}{m_A+m_B} \rightarrow a =
+\frac{22\cdot9.81-8\cdot9.81\cdot\sin\ang{30}}{22+8}\rightarrow\\
+a = \frac{215.82 - 39.24}{31} \rightarrow \frac{176.58}{31} \approx \boxed{5.69\,\text{m/s}^2}
+\end{align*}
+Per la tensione la questione è un po' più particolare. La tensione rappresenta la risultante
+tra la forza che tira da ciascuna parte. Quindi, per prima cosa troviamole
+\begin{equation*}
+F_A = m_A\sin\alpha \rightarrow F_A = 8\cdot9.81\sin\ang{30} = \underline{39.24\,\text{N}}
+\end{equation*}
+\begin{equation*}
+F_B = m_Bg \rightarrow F_B = 22\cdot9.81 = \underline{215.82\,N}
+\end{equation*}
+Ora per trovare la tensione vediamo che il blocco che "tira" è il blocco B. Quindi
+\begin{equation*}
+T = \frac{F_B-F_A}{2} \rightarrow T = \frac{215.82-39.24}{2} = \boxed{88.29\,\text{N}}
+\end{equation*}
+Da notare che si divide per due in quanto la tensione che troviamo è da entrambe le parti, a noi
+interessa solo una.
+
+\paragraph{Esercizio 3}
+Considera il sistema di blocchi $m_1 = 80.0\,\text{kg}$, $m_2 = 90\,\text{kg}$ tirati da una massa 
+$m_3 = 60\,\text{kg}$. Se il coefficiente di attrito dinamico tra le superfici dei blocchi e il 
+binario orizzontale vale $\mu_d = 0.3$, determina \textbf{l'accelerazione} del sistema e le 
+\textbf{tensioni} dei fili.
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (m1) at (0,0);
+		\coordinate (m2) at (2,0);
+		\coordinate (m3) at (4.8,-2);
+		
+		\draw (-2,-0.5) -- (4.1,-0.5) -- (4.1,-4);
+		\draw (4.1,-0.5) -- ++(0.3,0.2);
+		\draw (4.6,-0.2) circle (0.2);
+		
+		\draw ($(m1) + (-0.5,0.5)$) -- ++(1,0) -- ++(0,-1) -- ++(-1,0) -- cycle;
+		\draw ($(m2) + (-0.5,0.5)$) -- ++(1,0) -- ++(0,-1) -- ++(-1,0) -- cycle;
+		\draw ($(m3) + (-0.5,0.5)$) -- ++(1,0) -- ++(0,-1) -- ++(-1,0) -- cycle;
+		\draw ($(m1) + (0.5,0)$) -- ($(m2) + (-0.5,0)$);
+		\draw ($(m2) + (0.5,0)$) -- ++(2.1,0);
+		\draw (4.8,-0.2) -- ($(m3) + (0,0.5)$);
+		
+		\node (m) at (m1){$m_1$};
+		\node (m) at (m2){$m_2$};
+		\node (m) at (m3){$m_3$};
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Per risolvere questo tipo di esercizi, bisogna essere metodici. Per prima cosa troviamo la forza
+peso di $m_3$ che è anche l'unica forza che agisce direttamente.
+\begin{equation*}
+P = m\cdot g \rightarrow P = 60\cdot9.81 = \underline{588.6\,\text{N}}
+\end{equation*}
+Ora noi utilizzeremo la definizione di forza per calcolare l'accelerazione. Quindi dobbiamo vedere
+la forza che agisce direttamente sul sitema. Per ora abbiamo calcolato $P$, però in contrasto
+ci sono anche le forze di attrito. Calcoliamole.
+\begin{equation*}
+F_{a_1} = P_1\cdot\mu_d \rightarrow F_{a_1} = 80\cdot9.81\cdot0.3 = \underline{235.44\,\text{N}}
+\end{equation*}
+\begin{equation*}
+F_{a_2} = P_2\cdot\mu_d \rightarrow F_{a_2} = 90\cdot9.81\cdot0.3 = \underline{264.87\,N}
+\end{equation*}
+E ora possiamo trovarci la forza che agisce sul sistema. Dato che le forze di attrito contrastano
+la forza peso, si tolgono da quest'ultima.
+\begin{align*}
+F = \sum F \rightarrow F = P - F_{a_1} - F_{a_2} \rightarrow\\
+F = 588.6 - 235.44 - 264.87 = \underline{88.29\,\text{N}}
+\end{align*}
+E infine sfruttando la definizione di forza, possiamo ricavare l'accelerazione.
+\begin{equation*}
+F = ma \rightarrow a = \frac{F}{m} \rightarrow a = \frac{88.29}{80+90+60} 
+\approx\boxed{0.38\,\text{m/s}^2}
+\end{equation*}
+Per le tensioni possiamo immediatamente trovare $T_1$ in quanto è l'unica che agisce su $m_1$ che è
+isolato.
+\begin{equation*}
+T_1 = a\cdot m_1 \rightarrow T_1 = 0.38\cdot80 = \boxed{30.4\,\text{N}}
+\end{equation*}
+E quesat è la prima, la seconda invece richiede un attimo di attenzione. Su $m_2$ agiscono sia $T_1$ 
+che $T_2$. Dato che sappiamo che il sistema non è in equilibrio (è presente un'accelerazione),
+sappiamo anche che le $T_2-T_1 = m_2\cdot a$ in quanto sul corpo $m_2$ è presente l'accelerazione e
+agiscono le due tensioni.
+\begin{align*}
+T_2-T_1 = m_2\cdot a \rightarrow T_2 = T_1 + m_2\cdot a \rightarrow\\
+T_2 = 30.4 + 90\cdot0.38 = \boxed{64.6\,\text{N}}
+\end{align*}
+
+\subsubsection{\hyperref[subsec:dinamica:potenziale]{Lavoro, Energia e Potenza}}\label{ex:potenziale}
+\paragraph{Esercizio 1}
+Un ragazzo su uno skateboard parte nel punto A rappresentato in figura, e sale fino ad un'altezza
+di $2.64\,m$ al di sopra dell'estremità della rampa nel punto B. Qual era il modulo della
+\textbf{velocità} iniziale del ragazzo nel punto A?
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) to[out=-90,in=-90] (4,0);
+		\draw[dashed] (0,0) -- (4,0)
+			node[pos=0, above]{A};
+		\draw[|<->|, densely dotted] (4,0) -- (4,1)
+			node[pos=0.5, right]{$2.64\,m$}
+			node[pos=1, left]{B};
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Siamo in un caso di sistema conservativo e quindi possiamo sfruttare la formula $U_1+E_{c_1} = 
+U_2 + E_{c_2}$. Sfruttando questa caratteristica possiamo semplicemente risolvere.
+\begin{equation*}
+U_1+E_{c_1} = U_2 + E_{c_2} \rightarrow mgh_1 + \frac{1}{2}mv_1^2 = mgh_2 + \frac{1}{2}mv_2^2
+\end{equation*}
+Ora però, prima di passare ai calcoli, possiamo subito semplificare la formula in quanto sappiamo
+che nel secondo momento il ragazzo si ferma quando raggiunge i $2.64\,m$. Quindi semplifichiamola.
+\begin{align*}
+mgh_1 + \frac{1}{2}mv_1^2 = mgh_2 + \frac{1}{2}mv_2^2 \rightarrow \\
+mgh_1 + \frac{1}{2}mv_1^2 = mgh_2 + \cancel{\frac{1}{2}mv_2^2} \rightarrow\\
+\cancel{m}gh_1 + \frac{1}{2}\cancel{m}v_1^2 = \cancel{m}gh_2 \rightarrow
+gh_1 + \frac{1}{2}v_1^2 = gh_2
+\end{align*}
+Abbiamo anche cancellato la $m$ in quanto è costante a tutti gli elementi.\\
+Ora possiamo sostituire a $h_2$ il suo valore effettivo, ovvero $h_1+2.64$. Questo perché non 
+sappiamo a che altezza parte ma sappiamo che la supera di $2.64\,m$.
+\begin{align*}
+gh_1 + \frac{1}{2}v_1^2 = gh_2 \rightarrow gh_1 + \frac{1}{2}v_1^2 = g\left(h_1+.64\right)\\
+gh_1 + \frac{1}{2}v_1^2 = gh_1 + g\cdot2.64
+\end{align*}
+E ora non ci resta che isolare $v$.
+\begin{align*}
+gh_1 + \frac{1}{2}v_1^2 = gh_1 + g\cdot2.64 \rightarrow
+\frac{1}{2}v_1^2 = \cancel{gh_1} + g\cdot2.64 -\cancel{gh_1} \rightarrow\\
+v_1^2 = 9.81\cdot2.64\cdot2 \rightarrow\\
+v_1 = \sqrt{9.81\cdot2.64\cdot2} = \sqrt{51.8}
+\approx\boxed{7.2\,\text{m/s}}
+\end{align*}
+
+\paragraph{Esercizio 2}
+Un pendolo semplice ha la lunghezza di $.75\,\text{m}$ e una pallina con una massa d 
+$0.15\,\text{kg}$. La pallina viene lasciata andare quando il filo forma un angolo di $\ang{25}$ 
+rispetto alla verticale.
+\begin{itemize}[label={$\bullet$}]
+	\item \textbf{Dimostra} che l'altezza da cui la pallina del pendolo viene lasciata andare è 
+	$h=l\cdot(1-\cos\ang{25})$
+	\item Qual è l'\textbf{energia cinetica} del pendolo quando, durante l'oscillazione, il filo 
+	forma un angolo di $\ang{9.0}$?
+	\item Qual è la \textbf{velocità} del pendolo nel punto più basso della sua oscillazione?
+\end{itemize}
+
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (Top) at (0,3);
+		\coordinate (Ball) at (1,.1);
+		\coordinate (H) at (0,-0.1);
+		
+		\draw (Top) -- (Ball);
+		\draw[dashed] (Top) -- ++(0,-4);
+		\draw[dashed] (Ball) -- ++(-1,0);
+		\draw[dashed] (Ball) to[out=190, in=0] (H);
+		\draw (Top) -- ++(0,-0.8) arc (-90:-75:1)
+			node[pos=0.5, below]{$\ang{25}$};
+		\draw[|<->|] ($(Top) + (0.4, 0.)$) -- ($(Ball) + (0.4,0.)$)
+			node[pos=0.5, right]{$l = 0.75\,m$};
+		\draw[|<->|] ($(H) + (-0.2,0.)$) -- ($(Ball) + (-1.2,0.)$)
+			node[pos=0.5, left]{$h$};
+		
+		\filldraw[gray] (Ball) circle (0.2);
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Dimostrare il primo punto è estremamente semplice e richied solo nozioni di trigonometria. Il
+successivo disegno aiuterà a chiarire:
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw (0,0) -- (1,0);
+		\draw (0,0) -- (0.9,0.42);
+		\draw[dashed] (0.9,0.42) -- ++(0,-0.42);
+		\draw (0,0) -- (1,0) arc (0:40:1);
+		\draw[|<->|] (0,-0.2) -- ++(0.9,0)
+			node[pos=0.5, below]{$\cos\ang{25}$};
+		\draw[|<->|] (0.9,-0.2) -- ++(0.1,0)
+			node[pos=0.5, right]{$1-\cos\ang{25}$};
+	\end{tikzpicture}
+\end{center}
+Come si può vedere, la lunghezza $1-\cos\ang{25}$ è il nostro $h$. Quindi perché moltiplicarla per 
+$l$? Perché la lunghezza della corda non è quella della circonferenza goniometrica ($0.75 \neq 1$).\\
+Avendo quindi chiarito il primo punto, possiamo concentrarci sul secondo.\\\\
+
+Per prima cosa, ricordando la formula per l'energia cinetica ($E_c = \dfrac{1}{2}mv^2$) notiamo che ci
+manca solo la velocità. Come trovarla? Utilizando la solita formula $U_1+E_{c_1} = U_2 + E_{c_2}$.
+\begin{equation*}
+U_1+E_{c_1} = U_2 + E_{c_2} \rightarrow mgh_1 + \frac{1}{2}mv_1^2 = mgh_2 + \frac{1}{2}mv_2^2
+\end{equation*}
+Prima di proseguire i calcoli, possiamo subito eliminare due dei quattro elementi.
+\begin{align*}
+mgh_1 + \frac{1}{2}mv_1^2 &= mgh_2 + \frac{1}{2}mv_2^2 \rightarrow\\
+mgh_1 + \cancel{\frac{1}{2}mv_1^2} &= \cancel{mgh_2} + \frac{1}{2}mv_2^2 \rightarrow\\
+\cancel{m}gh_1 &= \frac{1}{2}\cancel{m}v_2^2
+\end{align*}
+Possiamo ora trovarci la velocità. Non serve neanche facciamo la radice quadrata in quanto dopo 
+comunque lo ri-eleveremmo al quadrato.
+\begin{align*}
+gh_1 &= \frac{1}{2}v_2^2 \rightarrow \\
+v_2^2 &= 2\cdot9.81\cdot(1-\cos\ang{25})\cdot0.75 = 
+\underline{13.3416\,\text{m/s}}
+\end{align*}
+E ora troviamo l'energia cinetica
+\begin{equation*}
+E_c = \frac{1}{2}mv^2 \rightarrow \frac{1}{2}\cdot0.15\cdot13.3416 = \boxed{1\,\text{J}}
+\end{equation*}
+Ora manca solo l'ultimo punto. La teoria è molto simile alla prima parte, in definitiva cambia solo 
+l'altezza.
+\begin{align*}
+mgh_1 + \frac{1}{2}mv_1^2 &= mgh_2 + \frac{1}{2}mv_2^2 \rightarrow\\
+mgh_1 + \cancel{\frac{1}{2}mv_1^2} &= \cancel{mgh_2} + \frac{1}{2}mv_2^2 \rightarrow\\
+\cancel{m}gh_1 &= \frac{1}{2}\cancel{m}v_2^2 \rightarrow
+v = \sqrt{2\cdot9.81\cdot0.75} \approx \boxed{3.83\text{m/s}}
+\end{align*}
+
+\paragraph{Esercizio 3}
+Una gru solleva un peso di massa $m = 500\,\text{kg}$ verticalmente a velocità costante 
+$v = 2\,\text{m/s}$. Trova la \textbf{potenza spesa dal motore della gru}. Qual è il \textbf{lavoro}
+fatto dalla gru se solleva il peso di $h = 20\,\text{m}$?\\
+Una seconda gru è capace di sollevare la stessa massa al doppio della velocità. Trova la potenza
+e il lavoro fatti dalla seconda gru alzando il peso della stessa altezza.
+
+\divisor
+
+Il lavoro è definito come $L = F\cdot S\cdot \cos\alpha$ e quindi sostituendo ciò che abbiamo
+\begin{equation*}
+L = F\cdot S\cdot \cos\alpha \rightarrow L = 500\cdot0\cdot20\cdot\cos90 = 
+\boxed{0\,\text{N}\cdot\text{m}}
+\end{equation*}
+Per trovare la potenza abbiamo bisogno anche del tempo. Troviamolo
+\begin{equation*}
+x = x_0 _vt \rightarrow 20 = 0+2t \rightarrow t = 10\,\text{s}
+\end{equation*}
+
+\subsubsection{\hyperref[subsec:dinamica:urti]{Urti}}\label{ex:urti}
+\paragraph{Esercizio 1}
+Una mitragliatrice di massa $30\,\text{kg}$ (comprendente quella dei proiettili) è installata a bordo 
+di un carrello di massa $100\,\text{kg}$ e spara verso sinistra una sventagliata di $10$ proiettili 
+ciascuno di massa $30\,g$ con la velocità di $60\,\text{m/s}$. Quale \textbf{velocità} verso destra 
+acquisterà il carrello?
+\divisor
+
+Qui siamo in un caso in di urto elastico, quindi vige il principio di conservazione del moto. Di
+conseguenza la soluzione di quest'esercizio è estremamente semplice.
+\begin{equation*}
+m_1v_1 = m_2v_2 \rightarrow 60\cdot0.30 = 129.7\cdot v_2
+\end{equation*}
+Perché $129.7$? Perché sappiamo che la mitragliatrice e il carrello pesano insieme $100 + 30 = 
+130\,Kg$ ma sono stati sparati $10$ colpi da $0.03\,Kg$  l'uno, quindi il peso finale sarà
+$130 - 10\cdot0.03 = 129.7\,Kg$.\\
+Ora non resta che risolvere semplicemente.
+\begin{equation*}
+v_2 = \frac{60\cdot0.30}{129.7} \approx\boxed{0.139\,\text{m/s}}
+\end{equation*}
+
+\paragraph{Esercizio 2}
+Una pallottola di massa $m = 10\,g$ colpisce alla velocità $v_p = 280\,m/s$ un pendolo balistico di
+massa $M = 2.0\,Kg$, restando incorporata nel pendolo. Calcola l'\textbf{altezza} $h$ di cui s'innalza
+il pendolo.
+\divisor
+
+Questo esercizio è estremamente semplice in quanto siamo in una situazione di un proiettile contro
+un corpo e abbiamo tutti i dati necessari.
+\begin{align*}
+v_p = \frac{M+m}{m}\sqrt{2gh} \rightarrow h &= \frac{v_p^2m^2}{2g\left(M+m\right)^2} \rightarrow\\
+h = \frac{280^2\cdot0.01^2}{2\cdot9.81\cdot(2+0.01)^2} \rightarrow h &= \frac{7.84}{86.5242} = 
+\boxed{0.09\,\text{m}}
+\end{align*}
+
+\subsubsection{\hyperref[subsec:dinamica:cm]{Centro di Massa}}\label{ex:cm}
+\paragraph{Esercizio 1}
+Una racchetta da tennis può essere schematizzata in un cerchio di raggio $r$ e massa $m_1 $ a cui è 
+attaccato un bastone uniforme di lunghezza $l$ e massa $m_1$. Ponendo $r = l/2$ e $m_1=m_2$, trova il
+\textbf{centro di massa} della racchetta. Viene poi aggiunta una massa $m_3 = m_2/2$ nel punto più
+lontano dal bastone. Trova il \textbf{nuovo centro di massa}.
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) circle (1);
+		\filldraw[white, draw=black] (1,0.1) -- ++(2,0) -- ++(0,-0.2) -- ++(-2,0) -- cycle;
+		\filldraw (0,0) circle (0.05);
+		\filldraw (2,0) circle (0.05);
+		\draw[|<->|, red] (-1,0) -- (0,0)
+			node[pos=0.5, above]{$r$};
+		\draw[|<->|, blue] (1,0) -- (3,0)
+			node[pos=0.5, below]{$l = 2r$};
+		\draw[|<->|, orange] (-1,-1.2) -- (3,-1.2)
+			node[pos=0.5, below]{$2l = 4r$};
+	\end{tikzpicture}
+\end{center}
+
+\divisor
+
+Sappiamo che in un corpo uniforme il centro di massa si trova nel baricentro. Nel caso del cerchio è
+nel centro stesso e nel caso del rettangolo è a a metà della sua lunghezza. Dato che abbiamo due 
+possibilità, scegliamo di scrivere tutto in funzione di $r$. È generalmente meglio scegliere la \\
+variabile più "piccola" perché dona più flessibilità. Decidiamo anche di porre l'origine al manico 
+della racchetta.\\
+A questo punto procediamo con i calcoli. Dal disegno vediamo già tutte le distanze
+\begin{equation*}
+x = \frac{\sum xm}{\sum m} \rightarrow x = \frac{m\cdot r + m\cdot 3r}{2m} \rightarrow
+x = \frac{4rm}{2m} = \boxed{2r}
+\end{equation*}
+Il centro di massa si trova quindi all'attaccatura del manico.\\
+Aggiunta la nuova massa, aggiorniamo i calcoli
+\begin{align*}
+x &= \frac{\sum xm}{\sum m} \rightarrow 
+x=\frac{\frac{m}{2}4r + m\cdot r + m\cdot 3r}{2m+\frac{m}{2}}\rightarrow\\
+x &= \frac{7mr}{\frac{5}{2}m} \rightarrow x = \boxed{\frac{14}{5}r}
+\end{align*}
+
+\subsubsection{\hyperref[subsec:dinamica:inerzia]{Momento Angolare ed Inerzia}}\label{ex:inerzia}
+\paragraph{Esercizio 1}
+Una penna di lunghezza $12\,\text{cm}$ viene appoggiata in posizione verticale su un piano con 
+attrito. Essa inizialmente ferma, cade ruotando attorno al punto di contatto con il piano. Calcola
+\textbf{la velocità lineare} della testa della penna e l'\textbf{accelerazione angolare} nell'istante 
+dell'impatto con il piano.
+\divisor
+
+Essendo un problema di dinamica in cui il sistema è conservativo, possiamo scrivere subito
+\begin{equation*}
+U_1 + E_{c_1} = U_2 + E_{c_2}
+\end{equation*}
+In questo modo possiamo anche subito eliminare due elementi. Sappiamo che parte da ferma e arriva ad
+essere ferma. Questo significa che all'inizio c'è solo energia potenziale, alla fine solo cinetica.
+\begin{equation*}
+U_1 + E_{c_1} = U_2 + E_{c_2} \rightarrow U_1 + \cancel{E_{c_1}} = \cancel{U_2} + E_{c_2}
+\end{equation*}
+Quindi ora abbiamo un'equazione in cui possiamo cominciare a sostituire
+\begin{equation*}
+U_1 = E_{c_2} \rightarrow mg\frac{l}{2} = \frac{1}{2}I\omega^2
+\end{equation*}
+Come mai $\frac{l}{2}$ e non $l$? Questo perché l'energia si concentra nel centro di massa che si 
+trova a metà distanza tra la punta e la testa della penna. Ora possiamo sostituire a $I$ l'inerzia
+di una barra che è equivalente a $\dfrac{1}{12}ml^2 + m\dfrac{l^2}{4}$
+\begin{gather*}
+\frac{1}{2}mgl = \frac{1}{2}\left(\frac{1}{12}ml^2 + m\frac{l^2}{4}\right)\omega^2 \rightarrow\\
+\cancel{\frac{1}{2}}\cancel{m}gl = \cancel{\frac{1}{2}}\left(\frac{1}{3}\cancel{m}l^2\right)\omega^2 
+\rightarrow\\
+g\cancel{l} = \frac{1}{3}l^{\cancel{2}}\omega^2 \rightarrow \omega = \sqrt{\frac{3g}{l}} \rightarrow\\
+\omega = \sqrt{\frac{3\cdot9.81}{0.12}} \approx \underline{15.6\,\text{rad/s}}
+\end{gather*}
+E ora non resta che trovare la velocità tangenziale avendo quella angolare
+\begin{equation*}
+v = \omega r \rightarrow v = 15.6\cdot0.12 = \boxed{1.8\,\text{m/s}}
+\end{equation*}
+E ora è da trovare solo l'accelerazione angolare. Anche qui sfruttiamo la conservitività del sistema.
+\begin{equation*}
+\frac{1}{2}\cancel{m}g\cancel{l} = \frac{1}{3}\cancel{m}l^{\cancel{2}}\alpha \rightarrow
+\alpha = \frac{3g}{2l} \rightarrow \alpha = \frac{3\cdot9.81}{2\cdot0.12} = 
+\boxed{122.6\,\text{rad/s}^2}
+\end{equation*}
+
+\paragraph{Esercizio 2}
+Una ruota è costituita da un anello di spessore trascurabile di massa $M=20\,\text{kg}$, sostenuto da 
+raggi di massa trascurabile e di lunghezza $R = 0.5\,\text{m}$. Essa sta ruotando attorno al proprio
+asse alla frequenza di $5\,\text{Hz}$. Alla sua periferia viene accostata una piastra con la quale 
+essa sviluppa una forza di $50\,\text{N}$ tangente alla ruota. Determinare \textbf{quanti giri} deve 
+compiere la ruota prima di fermarsi.
+\divisor
+
+Per prima cosa identifichiamo che abbiamo un corpo che ruota e una forza che generano un momento. 
+Quindi troviamoci quanto vale la decelerazione causata da questa forza tangenziale
+\begin{gather*}
+M = I\alpha \rightarrow -F_a\cancel{r} = mr^{\cancel{2}}\alpha \rightarrow
+\alpha = \frac{-F_a}{mr} \rightarrow \\\alpha -\frac{50}{20\cdot0.5} = \underline{-5\,\text{rad/s}^2}
+\end{gather*}
+Ora possiamo facilmente trovarci la velocità angolare così poi da poter usare la legge oraria
+\begin{equation*}
+\omega = \frac{2\pi}{T} \rightarrow \omega = \frac{2\pi}{\frac{1}{f}} \rightarrow \omega = 2\pi f
+\rightarrow \omega = \underline{10\pi}
+\end{equation*}
+Per comodità per ora non approssimiamo. Ora se vogliamo usare la seguente legge oraria
+\begin{equation*}
+\theta = \theta_0+\omega_0t+\frac{1}{2}\alpha t^2
+\end{equation*}
+dobbiamo trovare il tempo $t$.
+\begin{equation*}
+\omega = \omega_0 + \alpha t \rightarrow t = \frac{\omega-\omega_0}{\alpha} \rightarrow
+t = \frac{0 - 10\pi}{-5} = \underline{2\pi\,\text{s}}
+\end{equation*}
+E ora abbiamo tutto ciò che ci serve.
+\begin{gather*}
+\theta = \theta_0+\omega_0t+\frac{1}{2}\alpha t^2 \rightarrow\\
+\theta = \cancel{\theta_0}+\omega_0t+\frac{1}{2}\alpha t^2
+\end{gather*}
+Perché abbiamo cancellato quell'elemento? Beh, noi vogliamo sapere quanti giri, quindi partiamo da
+una posizione $theta_0 = 0$. Continuiamo la risoluzione
+\begin{gather*}
+\theta = \omega_0t+\frac{1}{2}\alpha t^2 \rightarrow
+\theta = 10\pi\cdot2\pi + \frac{1}{2}\cdot-5\cdot4\pi^2\\
+\theta = 20\pi^2 - 5\cdot2\pi^2 \rightarrow \theta = 20\pi^2-10\pi^2 = 10\pi^2 \rightarrow \\
+\theta = 10\cdot3.14^2 = \boxed{98.69\,\text{rad}}
+\end{gather*}
+Dato che ci vengono chiesti i giri, semplicemente dividiamo per $2\pi$
+\begin{equation*}
+\text{giri } = \frac{98.69}{2\pi} = \boxed{15.7\,\text{giri}}
+\end{equation*}
+	
+\subsection{\hyperref[sec:gravitazione]{Gravitazione}}\label{ex:gravitazione}
+\paragraph{Esercizio 1}
+La figura mostra tre corpi allineati che sono molto lontani da qualsiasi altro corpo. Le loro masse 
+sono:
+\begin{itemize}[label={$\bullet$}]
+	\item $m_A = 363\,\text{kg}$
+	\item $m_B = 517\,\text{kg}$
+	\item $m_C = 154\,\text{kg}$
+\end{itemize}
+Determina \textbf{modulo}, \textbf{direzione} e \textbf{verso} della forza gravitazionale totale 
+che agisce su ciascuno di essi.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[dashed] (0,0) -- (6,0);
+		\draw (1,0) circle (0.2) node{A};
+		\draw (3.5,0) circle (0.2) node{B};
+		\draw (5,0) circle (0.2) node{C};
+		\draw[|<->|] (1,-0.5) -- (3.5,-0.5)
+			node[pos=0.5, below]{$0.5\,m$};
+		\draw[|<->|] (3.5,-0.5) -- (5,-0.5)
+			node[pos=0.5, below]{$0.25\,m$};
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Ricordando la formula della forza gravitazionale, possiamo semplicemente sommare i vettori forza fra
+di loro.
+\begin{align*}
+F &= G\frac{m_1m_2}{r^2} \rightarrow \\
+&\begin{cases*}
+F_{AB}  = 6.67\cdot10^{-11}\cdot\dfrac{363\cdot517}{0.5^2}\\
+F_{AC}  = 6.67\cdot10^{-11}\cdot\dfrac{363\cdot154}{0.75^2}
+\end{cases*} \rightarrow\\
+&\begin{cases*}
+F_{AB}  = 5\cdot10^{-5}\\
+F_{AC}  = 6.62\cdot10^{-6}
+\end{cases*} \rightarrow\\
+F &= 5\cdot10^{-5}+6.62\cdot10^{-6} = \\&
+\boxed{5.62\cdot10^{-5}\,\text{N}}
+\end{align*}
+Questo era per il corpo A. Il procedimento è identico per il corpo C, cambia leggermente per il 
+corpo B.
+\begin{align*}
+F &= G\frac{m_1m_2}{r^2} \rightarrow\\
+&\begin{cases*}
+F_{BA} = 6.67\cdot10^{-11}\cdot\dfrac{517\cdot363}{0.5^2}\\
+F_{BC} = 6.67\cdot10^{-11}\cdot\dfrac{517\cdot154}{0.25^2}
+\end{cases*} \rightarrow\\
+&\begin{cases*}
+F_{BA}  = 5\cdot10^{-5}\\
+F_{BC}  = 8.5\cdot10^{-5}
+\end{cases*} \rightarrow\\
+F &= -5\cdot10^{-5}+8.5\cdot10^{-5} = \\
+&\boxed{3.5\cdot10^{-5}\,\text{N}}
+\end{align*}
+La differenza principale sta in quel $-$ nell'ultimo passaggio. Questo perché la forza 
+gravitazionale del corpo A attira verso sè B rendendo quindi il vettore negativo.
+
+\paragraph{Esercizio 2}
+L'orbita della cometa Halley, che passa intorno al sole ogni $76$ anni, ha forma ellittica. Quando
+è nel suo punto più vicino al Sole (perielio) è ad una distanza di $8.823\cdot10^{10}\,\text{m}$ e si
+muove ad una velocità di modulo $54.6\,\text{km/s}$. Il punto di maggiore distanza tra la cometa 
+Halley e il Sole (afelio) è $6.152\cdot10^{12}\,\text{m}$.\\
+Il modulo della \textbf{velocità} della cometa Halley è maggiore o minore di $54.5\,\text{km/s}$ 
+quando è all'afelio? Giustifica la risposta e calcola il modulo della sua velocità all'afelio.
+\divisor
+
+La risposta sta tutta nella seconda legge di Keplero.\\
+{\centering  ``\textit{Il raggio vettore che parte dal Sole e 
+arriva al pianeta, spazza aree uguali in tempi uguali}''.}\\
+Sapendo questo sappiamo con certezza che quando il pianeta si trova più lontano dal sole, avrà una
+velocità minore. Ora ci rimane solo da trovare la velocità. Da quella frase, possiamo sapere che il
+rapporto velocità/spazio è costante, quindi
+\begin{equation*}
+v_1S_1 = v_2S_2 \rightarrow 54600\cdot8.823\cdot10^{10} = x\cdot3.152\cdot10^{12}
+\end{equation*}
+E non ci resta che isolare la $x$
+\begin{equation*}
+x = \frac{54600\cdot8.823\cdot10^{10}}{3.152\cdot10^{12}} \approx \boxed{783\,\text{m/s}}
+\end{equation*}
+$783\,\text{m/s}$ è sicuramente minore di $54.6\,Km/s$. Si noti che nella prima formula, abbiamo 
+convertito i $Km/s$ in $m/s$ per convenzione.
+
+\subsection{\hyperref[sec:idrodinamica]{Idrodinamica}}\label{ex:idrodinamica}
+\paragraph{Esercizio 1}
+Un condotto orizzontale di sezione costante $A_1 = 200\,\text{cm}^2$ si strozza raggiungendo una 
+sezione $A_2 = 40\,\text{cm}^2$. Se la velocità e la pressione dell'acqua nella sezione larga sono 
+$v_1 = 1\,\text{m/s}$ e $p_1 = 1\,\text{atm}$ rispettivamente, calcolare la \textbf{velocità} $v_2$ e 
+la \textbf{pressione} $p_2$ nella strozzatura.
+\divisor
+
+Dato che sappiamo che il tubo è orizzontale, possiamo sfruttare questa formula $A_1v_1=A_2v_2$ per
+trovare la velocità.
+\begin{equation*}
+A_1v_1 = A_2v_2 \rightarrow 200\cdot 1 = 40\cdot v_2 \rightarrow v_2 = \frac{200\cdot1}{40} = 
+\boxed{5\,\text{m/s}}
+\end{equation*}
+
+E ora non resta che usare Bernoulli per	calcolare la pressione.
+\begin{gather*}
+p_1 + \cancel{\delta gh_1} + 
+\frac{1}{2}\delta v_1^2 = 
+p_2 + \cancel{\delta gh_2} +
+\frac{1}{2}\delta v_2^2 \rightarrow \\
+p_2 = p_1 + \frac{1}{2}\delta v_1^2 - \frac{1}{2}\delta v_2^2 \rightarrow\\
+p_2 = 1\cdot10^5 + \frac{1}{2}\cdot1000\cdot1^2 - \frac{1}{2}\cdot1000\cdot5^2 =\\
+\boxed{0.89\cdot10^5\,\text{Pa}}
+\end{gather*}
+
+Si è eliminato l'elemento $\delta gh$ in quanto i due pezzi di tubo si trovano alla stessa altezza
+e quindi non c'è variazione di altezza.
+
+\subsection{\hyperref[sec:termodinamica]{Termodinamica}}\label{ex:termodinamica}
+
+\paragraph{Esercizio 1}
+Un calorimetro contiene  $400\,\text{g}$ di acqua alla temperatura di $20\,\text{\textcelsius}$ e una 
+massa complementare (detto anche equivalente in acqua del calorimetro) di $40\,\text{\textcelsius}$. 
+In esso viene immerso un pezzo di ghiaccio di massa $50\,\text{g}$ alla temperatura di 
+$0\,\text{\textcelsius}$. Sapendo che il calore latente di fusione del ghiaccio è $80\,\text{cal/g}$, 
+calcolare \textbf{la temperatura finale di equilibrio} dell'acqua.
+\divisor
+
+Dato che dobbiamo trovare la temperatura di equilibrio, possiamo dire che la quantità di calore 
+iniziale e finale sono uguali ma opposte in quanto la quantità di calore finale è $0$. Questo implica 
+che $Q_1 + Q_2 = 0$. Però abbiamo anche un passaggio di stato, quindi dobbiamo tenere conto anche del
+calore latente. Quindi la nostra equazione diventa $Q_1 + Q_2 + Q_L = 0$.\\\\
+Ora dobbiamo trasformare. Per prima cosa calcoliamo il calore latente
+\begin{equation*}
+Q_L = c\cdot m \rightarrow Q_L = 328\cdot50 = \underline{16500\,\text{J}}
+\end{equation*}
+Da dove viene fuori il $328$? Dato che tutte le quantità di calore sono in Joule, possiamo convertire
+da cal/g a J sapendo che $1\,\text{cal} = 4.1\,\text{J}$.\\\\
+Ora possiamo cominciare a sostituire (si presti attenzione che il calore latente è negativo in quanto
+è energia in più richiesta per la trasformazione)
+\begin{equation*}
+-Q_L + Q_1 + Q_2 = 0 \rightarrow 16500 + m_1c_1\Delta T + m_2c_2\Delta T = 0
+\end{equation*}
+Quanto valgono le masse? Immediatamente verrebbe da dire $400$ e $50$. Però se si nota nel testo è
+presente l'equivalente in acqua del calorimetro. Non possiamo dimenticarcene quindi otteniamo
+\begin{gather*}
+-Q_L + Q_1 + Q_2 = 0 \rightarrow \\
+16500 + 440\cdot4.1\cdot(20-T_e)+50\cdot4.1\cdot(-T_e) = 0
+\end{gather*}
+E ora non resta che isolare e risolvere per $T_e$.
+\begin{gather*}
+-16500 + 440\cdot4.1\cdot(20-T_e)+50\cdot4.1\cdot(-T_e) = 0 \rightarrow \\
+-16500 + 1804\cdot(20-T_e)+205\cdot(-T_e) = 0 \rightarrow\\
+-16500 + 36080 - 1804T_e - 205T_e = 0 \rightarrow\\
+-16500 + 36080 = 205T_e + 1804T_e \rightarrow\\
+19580 = 2054T_e \rightarrow\\
+T_e = \boxed{9.5\,\text{\textcelsius}}
+\end{gather*}
+
+\paragraph{Esercizio 2}
+Una massa $m_1$ di ossigeno ($O_2$) occupa, alla temperatura di $7\,\text{\textcelsius}$, un 
+recipiente che ha un volume pari a $20\,\text{dm}^3$, alla pressione di $2\cdot10^5\,\text{N/m}^2$. 
+Una massa $m_2$ di idrogeno ($H_2$) occupa, alla temperatura di $27\,\text{\textcelsius}$, un 
+recipiente di volume pari a $50\,\text{dm}^3$, alla pressione di $1\,\text{atm}$. Calcola la 
+\textbf{pressione} che eserciterebbe il miscuglio dei due gas in un recipiente di volume pari a 
+$70\,\text{l}$ alla temperatura di $0\,\text{\textcelsius}$.
+\divisor\improvement{Aggiungere risultato e soluzione ad esercizio 2}
+
+\paragraph{Esercizio 3}
+Un gas perfetto caratterizzato da $\gamma = 1.67$ esegue un ciclo formato dall'isoterma AB, 
+dall'isocora BC, dall'isobara CD e dall'adiabatica DA che chiude il ciclo delle quattro trasformazioni
+reversibili. Sapendo che:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item $V_A = 5\,\text{l}$
+		\item $p_A = 20\,\text{atm}$
+		\item $T_A = 300\,\text{K}$
+		\item $V_B = 25\,\text{l}$
+		\item $p_C = 2\,\text{atm}$
+	\end{itemize}
+\end{multicols}
+\begin{enumerate}[label=$\alph*)$]
+	\item Rappresenta graficamente il ciclo;
+	\item Gli altri parametri termodinamici degli stati A, B, C, D;
+	\item La quantità di calore scambiato in ognuna delle quattro trasformazioni;
+\end{enumerate}
+\divisor\improvement{Aggiungere risultato e soluzione ad esercizio 3}
+
+\paragraph{Esercizio 4}
+Una macchina di Carnot lavora tra due sorgenti alle temperature $T_1 = 390\,\text{K}$ e 
+$T_2 = 273\,\text{K}$ compiendo ad ogni ciclo un lavoro $L = 10^5\,\text{J}$. La sorgente alla
+temperatura più bassa è costituita da una massa di ghiaccio $M = 10^4\,\text{kg}$ (calore latente
+di fusione $80\,\text{cal/g}$). Si chiede di determinare dopo \textbf{quanti cicli} il ghiaccio è 
+totalmente sciolto.
+\divisor\improvement{Aggiungere risultato e soluzione ad esercizio 4}
+
+\subsubsection{\hyperref[subsec:termodinamica:entropia]{Entropia}}\label{ex:entropia}
+Un blocco d ghiaccio che ha una massa $m = 450\,\text{g}$ e che si trova alla temperatura di 
+$0\,\text{\textcelsius}$ fonde completamente.
+\begin{itemize}
+	\item \textbf{Quanto vale la variazione di entropia dovuta alla fusione del ghiaccio?} In seguito 
+	la'entropia del sistema diminuisce e diventa la metà
+	\item \textbf{Quanto ghiaccio si crea?}
+\end{itemize}
+Calore latente $c_L = 3.34\cdot10^5\,\text{J/Kg}$
+\divisor
+
+Innanzitutto troviamo la quantità di calore necessaria a sciogliere tutto il ghiaccio
+\begin{equation*}
+Q_L = c_Lm \rightarrow Q_L = 3.34\cdot10^5\cdot 0.45 = \underline{1.5\cdot10^5\,\text{J}}
+\end{equation*}
+Poi sapendo che c'è solo una sorgente di calore (non è specificato altrimenti), possiamo calcolare 
+molto facilmente la differenza di entropia
+\begin{equation*}
+\Delta S = \frac{Q_L}{T} \rightarrow \Delta S = \frac{1.5\cdot10^5}{273} = \underline{549\,\text{J/K}}
+\end{equation*}
+Sappiamo però che l'entropia del sistema dimezza
+\begin{equation*}
+\Delta S = -\Delta S \cdot 0.5 \rightarrow \Delta S = -549 \cdot 0.5 = \underline{-275\,\text{J/K}}
+\end{equation*}
+La differenza è negativa in quanto l'entropia diminuisce.\\
+E ora non ci resta che calcolare la nuova quantità di calore e trovare la massa
+\begin{equation*}
+Q = \Delta ST \rightarrow Q = -275\cdot273 = \underline{7.51\cdot10^4\,\text{J}}
+\end{equation*}
+\begin{equation*}
+m = \frac{Q_L}{c_L} \rightarrow m = \frac{7.51\cdot10^4}{3.34\cdot10^5} = \boxed{0.225\,\text{kg}}
+\end{equation*}
+
+\paragraph{Esercizio 2}
+Due moli di $O_2$ a pressione atmosferica e a temperatura ambiente ($300\,\text{K}$) si trovano all'
+interno di un recipiente adiabatico. Quando viene aperto il rubinetto che separa il primo recipiente
+dal secondo, in cui era stato fatto il vuoto, il gas si espande andando a occupare tutto il volume, 
+pari a $82.5\,\text{dm}^3$.\\
+Calcola: \textbf{la variazione di entropia del sistema}, \textbf{la variazione di entropia 
+dell'universo} e \textbf{quanto sarebbe dovuto essere il volume finale per avere una variazione di
+entropia doppia}.
+\divisor
+
+Innanzitutto sappiamo che questa trasformazione è irreversibile, quindi ci aspettiamo che l'entropia
+aumenti. Non avendo la temperatura, non possiamo usare direttamente la formula. Ricordandoci che in 
+una espansione isoterma (come in questo caso) la quantità di calore è pari a 
+$Q = nRT\ln\frac{V_f}{V_i}$. Inserndolo nella formula dell'entropia otteniamo
+\begin{equation*}
+\Delta S = \frac{Q}{T} = \frac{nR\cancel{T}\ln\frac{V_f}{V_i}}{\cancel{T}} = nR\ln\frac{V_f}{V_i}
+\end{equation*}
+Da questo notiamo che ci manca solo $V_i$ per poter risolvere.
+\begin{equation*}
+p_iV_i = nRT \rightarrow V_i = \frac{nRT}{p_i} \rightarrow V =
+\frac{2\cdot8.315\cdot300}{1.01\cdot10^5} = 
+\underline{0.0494\,\text{m}^3}
+\end{equation*}
+E ora
+\begin{equation*}
+\Delta S = nR\ln\frac{V_f}{V_i} \rightarrow \Delta S = 2\cdot8.315\cdot\ln\frac{0.0835}{0.0494} =
+\boxed{8.7\,\text{J/K}}
+\end{equation*}
+Quanto vale l'entropia nell'universo? Essendo adiabatica, la trasformazione non scambia con l'esterno,
+quindi l'entropia è pari all'entropia del sistema.\\
+Per trovare il volume finale per avere una differenza doppia, invertiamo la formula e isoliamo il 
+volume
+\begin{align*}
+\Delta S' &= nR\ln\frac{V_f'}{V_i} \rightarrow \frac{\Delta S'}{nR} = \ln\frac{V_f'}{V_i} \rightarrow
+V_f' = V_ie^{\frac{\Delta S'}{nR}} \rightarrow\\ 
+V_f' &= V_ie^{\frac{2\Delta S}{nR}}
+\end{align*}
+E ora non resta che risolvere
+\begin{equation*}
+V_f' = V_ie^{\frac{2\Delta S}{nR}} \rightarrow V_f' = 0.0494\cdot e^{\frac{2\cdot8.73}{2\cdot8.315}} =
+\boxed{0.14\,\text{m}^3}
+\end{equation*}
+
+\subsection{\hyperref[sec:onde]{Onde}}\label{ex:onde}
+
+\subsubsection{Formule generali}
+\paragraph{Esercizio 1}
+Una corda ha densità lineare $8.5\cdot 10^{-1}\,kg/m$ è sottoposta ad una tensione di 
+$280\,N$. La corda è lunga $1.8\,m$, è fissata agli estremi.\\
+Determina \textbf{velocità}, \textbf{lunghezza d'onda} e \textbf{frequenza} delle onde che formano
+l'onda stazionaria.
+\divisor
+
+Come sappiamo da \hyperref[subsec:onde:sper]{queste formule}, la velocità la possiamo trovare
+facilmente:
+\begin{equation*}
+\boldsymbol{v} = 
+\sqrt{\frac{T}{\mu}} \rightarrow \sqrt{\frac{280}{8.5\cdot 10^{-3}}} \approx\boxed{181.50\,\text{m/s}}
+\end{equation*}
+Trovata la velocità, possiamo trovarci la lunghezza d'onda facendo $\lambda = vT$.
+\begin{equation*}
+\lambda = vT \rightarrow 181.50\cdot 8.5\cdot10^{-3} \approx\boxed{1.5\,\text{m}}
+\end{equation*}
+Infine troviamo la frequenza sfruttando un'altra formula: $v = \lambda f$.
+\begin{equation*}
+f = \frac{v}{\lambda} \rightarrow f = \frac{181.50}{1.5} \approx\boxed{121\, \text{Hz}}
+\end{equation*}
+
+Questo esercizio era anche risolvibile usando le formule delle onde stazionarie, dato che sapevamo
+la lunghezza della corda. Come sempre, ci sono varie strade che portano a risultati simili.
+
+\paragraph{Esercizio 2}
+Una formula sperimentale per individuare la velocità del suono nell'aria è $v_s = 331 +0.6\cdot t_c$
+dove $t_c$ è la temperatura in \textcelsius. Mediante uno strumento a corda, viene prodotta una 
+nota musicale di frequenza $440\,Hz$. La temperatura dell'aria è di $20\,$\textcelsius.\\
+All'incirca, \textbf{quante vibrazioni} effettua la corda prima che il suono da essa prodotto 
+raggiunga una persona distante 30 metri?
+\divisor
+
+Il testo chiede "quante vibrazioni" che non significa altro che quanti ventri ci sono in quell'onda.
+Prima di tutto però, troviamo la velocità del suono:
+\begin{equation*}
+v_s = 331 + 0.6\cdot t_c \rightarrow v_s = 331+0.6\cdot20 = \underline{343\,\text{m/s}}
+\end{equation*}
+A noi chiede quanti ventri, quindi possiamo calcolare $n$ semplicemente come $\dfrac{L}{\lambda}$
+dato che il suono si comporta come un'onda stazionaria.
+\begin{equation*}
+v = f\lambda \rightarrow \lambda = \frac{v}{f} \rightarrow \lambda = \frac{343}{440} \approx 
+\underline{0.78\,\text{m}}
+\end{equation*}
+\begin{equation*}
+n = \frac{L}{\lambda} \rightarrow n = \frac{30}{0.78} \approx\boxed{38}
+\end{equation*}
+
+Questo esercizio sfrutta il principio che un'emettitore sonoro, emette sempre alla stessa 
+frequenza, quindi le onde generate sono considerabili stazionarie.
+
+\subsubsection{\hyperref[subsec:onde:rifrazione]{Rifrazione}}\label{ex:rifrazione}
+\paragraph{Esercizio 1}
+Un vetro di spessore $d = 1.5\,\text{cm}$ ha un'indice di rifrazione rispetto all'aria di $1.62$. 
+\textbf{Trova lo scostamento} $s$, rispetto alla traiettoria originaria, che subisce un raggio 
+luminoso incidente sulla superficie di vetro con un angolo di $\ang{54}$ e uscente nuovamente 
+in aria.
+\begin{center}
+	\begin{tikzpicture}[scale=0.6]
+	\coordinate (A) at (-2,1);
+	\coordinate (B) at (2,1);
+	\coordinate (C) at (2,-1);
+	\coordinate (D) at (-2,-1);
+	
+	\coordinate (In) at (-1,-1);
+	\coordinate (Out) at (1, 1);
+	
+	% Rectangle
+	\draw (A) -- (B) -- (C) -- (D) -- cycle;
+	% Angles
+	\filldraw[orange, fill=orange!30] (In) -- ($(In) + (0, -0.6)$) arc(-90:-105:1) -- cycle
+	node[pos=0, below right]{$\hat{i}$};
+	\filldraw[cyan, fill=cyan!30] (In) -- ($(In) + (0, 0.6)$) arc(90:61:1) -- cycle
+	node[pos=0, above left]{$\hat{r}$};
+	% Construction lines
+	\draw[densely dotted] ($(In) + (0, -0.5)$) -- ++(0,2.5);
+	\draw[densely dotted]($(Out) + (0, 0.5)$) -- ++(0,-2.5);
+	\draw[dashed, -latex] (In) -- (Out);
+	% In line
+	\draw[-latex] (-1.5,-2) -- (In);
+	\draw[densely dotted, gray] (In) -- ++(1.5, 2.5);
+	\draw[-latex] (Out) -- (1.5, 2);
+	\draw[dashed, olive] (Out) -- ++(-0.65,0.25)
+	node[pos=0.5, above]{$s$};
+	%\draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
+	%	node[pos=0.5, above]{$\delta$};
+	%\draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
+	%	node[pos=0.5, left]{$d$};
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Conoscendo l'angolo di incidenza e l'indice di rifrazione, possiamo usare la relazione di Snell per
+trovare l'angolo di rifrazione
+\begin{align*}
+\frac{n_2}{n_1} = \frac{\sin\hat{i}}{\sin\hat{r}} \rightarrow
+\hat{r} = \arcsin\left(\frac{n_1}{n_2}\sin\hat{i}\right) \rightarrow\\
+\hat{r} = \arcsin\left(\frac{1}{1.62}\sin54\right) \rightarrow
+\hat{r} \approx \underline{\ang{30}}
+\end{align*}
+Una volta fatto questo, possiamo trovarci la lunghezza distanza che il raggio percorre all'interno
+del vetro
+\begin{equation*}
+\Delta d = \frac{d}{\cos\hat{r}} \approx \underline{1.73\,cm}
+\end{equation*}
+Infine troviamo $s$
+\begin{equation*}
+s = \sin(\hat{i}-\hat{r})\cdot\Delta d \rightarrow \sin24\cdot\Delta d \approx \boxed{0.7\,\text{cm}}
+\end{equation*}
+In questo esercizio, così come in molti altri del suo genere, si usa estensivamente trigonometria
+in quanto si possono facilmente individuare triangoli rettangoli all'interno di vetri.
+
+\subsubsection{\hyperref[subsec:onde:interferenza]{Interferenza}}\label{ex:interferenza}
+\paragraph{Esercizio 1}
+Due altoparlanti A e B, che vibrano in fase alla frequenza di $85\,\text{Hz}$, sono posizionati come 
+in figura. Una ragazza è ferma nel punto C a $1.0\,\text{m}$ di distanza dall'altoparlante A. 
+Assumendo che il suono si propaghi nell'aria a $340\,\text{m/s}$, determina qual è la 
+\textbf{distanza minima} fra i due altoparlanti tale da far sì che la ragazza dalla sua postazione 
+non oda nulla.
+\begin{center}
+	\begin{tikzpicture}
+	\filldraw[cyan!30] (0,0) -- (0.5,0) arc(0:40:0.5) -- cycle;
+	\draw (0,0) -- (3, 0)
+	node[pos=0.6, below]{$x$}
+	node[pos=1, right]{B} 
+	-- (1,0.866) -- cycle
+	node[pos=0, above]{C}
+	node[pos=1, left]{A};
+	\draw[dashed] (1,0.86)--++(0,-0.866)
+	node[pos=0.5, below left]{60\textdegree	};
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+La prima cosa da notare è il tipo di interferenza richiesto. Dato che viene chiesto quando un 
+ascoltatore non sente più alcun suono, l'interferenza è distruttiva.\\
+Per prima cosa però, è trovare la distanza $\overline{CB}$. Per fare ciò, poniamo $x$ la distanza
+da B all'altezza.
+\begin{equation*}
+\overline{CB} = \sqrt{\sin(60)^2 + x^2} = \sqrt{\left(\frac{\sqrt{3}}{2}\right)^2 +
+x^2} = \sqrt{\frac{3}{4} + x^2}
+\end{equation*}
+Il perché di questo è che $\sin(60)$ è l'altezza del triangolo e abbiamo posto $x$ come uno dei
+cateti del triangolo rettangolo a destra.\\
+Ora possiamo impostare la formula dell'interferenza distruttiva
+\begin{align*}
+\left\lvert \overline{PS}_1-\overline{PS}_2 \right\rvert = 
+(2k + 1)\frac{\lambda}{2} \rightarrow \\
+\sqrt{\frac{3}{4} + x^2} - 1 = \left(\frac{1}{2}+k\right)\cdot85
+\end{align*}
+Ora non resta che risolvere. Alla fine si dovrebbe arrivare ad un'equazione di questo genere
+\begin{equation*}
+x = \sqrt{18k^2 + 40k + 8.25}
+\end{equation*}
+Questa è un'equazione parametrica, nel parametro $k$. In questo caso assegnamo $k = 0$ in quanto il
+testo chiede la \textbf{distanza minima} perché ci sia interferenza distruttiva. La prima frangia
+distruttiva ha come $k$ il valore $0$. Terminando quindi
+\begin{align*}
+x = \sqrt{18k^2 + 40k + 8.25} \rightarrow \\
+x = \sqrt{\cancel{18k^2} + \cancel{40k} + 8.25} \approx
+\underline{2.87\,\text{m	}}
+\end{align*}
+Non è questo però il risultato finale. Il motivo è che $x$ non rappresenta completamente la
+distanza tra A e B. Bisogna ancora aggiungere quella da A all'altezza. Quindi
+\begin{equation*}
+\overline{AB} = x + \cos(60) = 2.87 + 0.5 = \boxed{3.37\,\text{m}}
+\end{equation*}
+
+\subsubsection{\hyperref[subsec:onde:young]{Esperienza di Young}}\label{ex:young}
+\paragraph{Esercizio 1}
+Nell'interferenza tra due fenditure poste a distanza $d = 25\,\text{cm}$ tra loro, si forma su uno 
+schermo di distanza $l = 1\,\text{m}$ una figura il cui secondo massimo di intensità si trova ad $x = 
+20\,\text{cm}$ dal massimo centrale. Calcola la \textbf{lunghezza d'onda dell'onda incidente}.
+\divisor
+
+Abbiamo come sempre varie strade per risolvere questo problema. La più facile è quella di invertire
+la formula per trovare l'altezza di una frangia costruttiva. È costruttiva perché ci dice che è
+\emph{il [...] secondo massimo di intensità} che stiamo cercando. Quindi, invertiamo la formula
+\begin{equation*}
+y_n = \frac{l\cdot n\cdot\lambda}{d} \rightarrow \lambda = \frac{y_n\cdot d}{l\cdot n}
+\end{equation*}
+e semplicemente sostituiamo
+\begin{equation*}
+\lambda = \frac{y_n\cdot d}{l\cdot n} \rightarrow \lambda = \frac{0.2\cdot0.25}{1\cdot2} \rightarrow
+\lambda = \boxed{0.025\,m} = \boxed{2.5\,\text{cm}}
+\end{equation*}
+Si noti che è stato posto $n=2$ in quanto chiede il secondo massimo.
+
+\paragraph{Esercizio 2}
+Nell'esperimento della doppia fenditura di Young, la prima frangia scura sopra la frangia centrale 
+chiara appare ad un angolo di $\ang{0.29}$.\\
+Calcola il \textbf{rapporto} tra la separazione delle fenditure $\boldsymbol{d}$ e la lunghezza 
+d'onda della luce $\boldsymbol{\lambda}$.
+\divisor
+
+Per prima cosa, individuiamo la formula da usare. Abbiamo l'angolo e ci chiede $\dfrac{d}{\lambda}$.
+Osservando che è una frangia scura, notiamo questa formula:
+\begin{equation*}
+\sin\theta_n = \left(n-\frac{1}{2}\right)\frac{\lambda}{d}
+\end{equation*}
+Notiamo che abbiamo tutto quello che ci serve per isolare $\dfrac{\lambda}{d}$ e poi farne il 
+reciproco per ottenere quello che ci serve. Isolando quindi il risultato desiderato otteniamo
+\begin{equation*}
+\sin\theta_n = \left(n-\frac{1}{2}\right)\frac{\lambda}{d} \rightarrow
+\frac{\sin\theta_n}{n-\frac{1}{2}} = \frac{\lambda}{d} \rightarrow
+\frac{d}{\lambda} = \frac{n-\frac{1}{2}}{\sin\theta_n}
+\end{equation*}
+E ora non ci resta che inserire i valori
+\begin{equation*}
+\frac{d}{\lambda} = \frac{n-\frac{1}{2}}{\sin\theta_n} \rightarrow
+\frac{d}{\lambda} = \frac{1-\frac{1}{2}}{\sin(0.29)} \rightarrow
+\frac{d}{\lambda} \approx \frac{\frac{1}{2}}{0.005} \rightarrow
+\frac{d}{\lambda} = \boxed{100}
+\end{equation*}
+Ovviamente con migliori approssimazioni si ottengono risultati più simili a $99$ ma un errore di
+$1/100$ è accettabile.
+
+\subsubsection{\hyperref[subsec:onde:suono]{Suono}}\label{ex:suono}
+
+\paragraph{Esercizio 1}
+Due altoparlanti sono montati su una giostra di raggio $9.01\,\text{m}$. Quando la giostra è ferma, i 
+due altoparlanti producono lo stesso suono alla frequenza di $100.0\,\text{Hz}$. Sono messi in 
+posizione diametralmente opposta. La velocità del suono è $343.00\,\text{m/s}$ e la giostra fa un 
+giro di $20.0\,\text{s}$. Qual è il \textbf{battimento} rilevato da un ascoltatore quando la giostra 
+è posta in modo da avere gli altoparlanti paralleli all'ascoltatore?
+\divisor
+
+Come ricordiamo, la formula per i battimenti richiede due frequenze. Essendo che stiamo lavorando 
+con il suono e la sorgente si muove, si usa Doppler.\\
+Per prima cosa, troviamoci la velocità a cui ruota la giostra.
+\begin{equation*}
+v_t = \frac{2\pi r}{T} \rightarrow \frac{2\pi\cdot 9.01}{20} \approx \underline{2.83\,\text{m/s}}
+\end{equation*}
+Trovata la velocità, possiamo usare Doppler per trovare la frequenza percepita. Raddoppiamo il 
+processo in quanto gli altoparlanti prima si avvicinano e poi si allontanano. Noi dobbiamo trovare
+i battimenti prodotti da questo movimento.
+\begin{equation*}
+f = \frac{v + v_o}{v + v_s}\cdot f_s \rightarrow f = \frac{343+0}{343+2.83}\cdot 100
+\approx\underline{99.19\,\text{Hz}}
+\end{equation*}
+\begin{equation*}
+f = \frac{v + v_o}{v - v_s}\cdot f_s \rightarrow f = \frac{343+0}{343-2.83}\cdot 100
+\approx\underline{100.83\,\text{Hz}}
+\end{equation*}
+In fine, usiamo i battimenti
+\begin{equation*}
+f_b = \left\vert f_o - f_s \right\vert \rightarrow f_b = \left\vert 100.83-99.19 \right\vert
+\approx\boxed{1.64\,\text{Hz}}
+\end{equation*}
+
+
+\paragraph{Esercizio 2}
+Una persona che si trova a $4.0\,m$ da una parte lancia un grido tale che il suono coplisce la 
+parete con un'intensità di $2.5\cdot10^{-4}\,\text{W/m}^2$. Supponendo che la parete assorba il $20\%$
+dell'energia sonora incidente e che rifletta il resto, qual è \textbf{il livello di intensità 
+sonora} immediatamente prima e dopo che il suono è stato riflesso?
+\divisor
+
+Per prima cosa ci troviamo la superficie in cui il suono si diffonde. Dato che sappiamo il suono
+si espande in forma sferica
+\begin{equation*}
+S = 4\pi r^2 \rightarrow S = 4\cdot16\pi \approx \underline{201.06\,\text{m}^2}
+\end{equation*}
+Avendo l'intensità e la superficie, possiamo trovarci l'energia semplicemente invertendo la formula
+\begin{equation*}
+I = \frac{E}{S} \rightarrow E = IS \rightarrow 2.5\cdot10^{-4}\cdot 201.06 \approx 
+\underline{5.026\cdot10^{-2}\,\text{J}}
+\end{equation*}
+Questa è l'energia prima colpisca la parete, per trovare quella dopo
+\begin{equation*}
+20\%\cdot 5.026\cdot10^{-3} \approx 1\cdot10^{-3}\,\text{J}
+\end{equation*}
+e quindi l'$80\%$ equivale semplicemente a
+\begin{equation*}
+5.026\cdot10^{-4} - 1\cdot10^{-3} = \underline{4.026\cdot10^{-3}\,\text{J}}
+\end{equation*}
+Ci manca solo l'intensità nel secondo momento
+\begin{equation*}
+I = \frac{E}{S} \rightarrow I = \frac{4.026\cdot10^{-3}}{201.06} \approx
+\underline{2\cdot10^{-5}\,\text{W/m}^2}
+\end{equation*}
+Ora abbiamo tutto quello che ci serve per finire l'esercizio. Ci troviamo dunque i livelli sonori
+\begin{equation*}
+L = 10\log_{10}\frac{I}{I_0} \rightarrow L_1 = 10\log_{10}\frac{2.5\cdot10^{-3}}{10^{-12}}
+\approx\boxed{83.9\,\text{dB}}
+\end{equation*}
+\begin{equation*}
+L = 10\log_{10}\frac{I}{I_0} \rightarrow L_2 = 10\log_{10}\frac{2\cdot10^{-5}}{10^{-12}}
+\approx\boxed{83\,\text{dB}}
+\end{equation*}
+
+\subsubsection{\hyperref[subsec:onde:lenti]{Lenti}}\label{ex:lenti}
+\paragraph{Esercizio 1}
+Due lenti sono disposte come in figura. Un fiammifero di altezza $2\,\text{cm}$ si trova a 
+$5\,\text{cm}$ alla destra di una lente A che ha distanza focale $\overline{C_AF_A}$ pari a 
+$3\,\text{cm}$. La seconda lente B, con una distanza focale $\overline{C_BF_B}$ di $5\,\text{cm}$, 
+deve essere posta a sinitra rispetto all'immaigne reale generata dalla prima, in maniera tale che 
+essa formi un'immagine virtuale tre volte maggiore nei confronti dell'altezza del fiammifero vero e 
+proprio. \textbf{Quale distanza separa le due lenti?}
+
+\begin{center}
+	\begin{tikzpicture}[scale=0.5]
+		\coordinate (Cb) at (0,0);
+		\coordinate (fb) at (2,0);
+		\coordinate (fa) at (3,0);
+		\coordinate (Ca) at (6,0);
+		\coordinate (fa1) at (9,0);
+		\coordinate (O) at (12,0);
+		
+		\draw ($(Cb) + (-0.5,0)$) -- ($(O) + (0.5,0)$);
+		% Lenses
+		\draw[<->] ($(Cb) + (0, -0.7)$) -- ($(Cb) + (0, 0.7)$)
+			node[pos=1, above]{B};
+		\draw[<->] ($(Ca) + (0, -0.7)$) -- ($(Ca) + (0, 0.7)$)
+			node[pos=1, above]{A};
+		\draw ($(fb) + (0, -0.3)$) -- ($(fb) + (0, 0.3)$)
+			node[pos=1, above]{$f_B$};
+		\draw ($(fa) + (0, -0.3)$) -- ($(fa) + (0, 0.3)$)
+			node[pos=1, above]{$f_A$};
+		\draw ($(fa1) + (0, -0.3)$) -- ($(fa1) + (0, 0.3)$)
+			node[pos=1, above]{$f_A$};
+		\draw ($(O) + (0, -0.5)$) -- ($(O) + (0, 0.5)$)
+			node[pos=1, above]{Fiammifero};
+ 	\end{tikzpicture}
+\end{center}
+\divisor
+
+Quest'esercizio non è facile e non è breve ma una volta risolto, si dovrebbe capire chiaramente come
+risolvere altri esercizi sulle lenti.\\
+Per prima cosa, si trovi la posizione dell'immagine nella prima riflessione
+\begin{align*}
+\frac{1}{f} = \frac{1}{q} + \frac{1}{f} \rightarrow
+\frac{1}{q} = \frac{1}{f} - \frac{1}{p} \rightarrow\\
+\frac{1}{q} = \frac{1}{3} - \frac{1}{5} \rightarrow
+\frac{1}{q} = \frac{2}{15} \rightarrow q = \underline{7.5\,\text{cm}}
+\end{align*}
+A questo punto, sapendo che deve essere ingrandita di tre volte ($G = 3$), possiamo usare la formula
+dell'ingrandimento ed invertendola isolare $p$ per sapere la posizione dell'immagine e quindi sapere
+la distanza tra le due lenti perché si ingrandisca tre volte. Possiamo farlo dato che la posizione 
+dell'immagine della prima lente coincide con quella dell'oggetto della seconda lente.
+\begin{equation*}
+G = -\frac{q}{p} \rightarrow p = -\frac{q}{G} \rightarrow p = -\frac{q}{3}
+\end{equation*}
+La lasciamo in forma parametrica con il parametro $q$ in quanto è la nostra incognita.\\
+Dato che ora stiamo lavorando con un'altra lente, riapplichiamo la prima formula
+\begin{align*}
+\frac{1}{f} = \frac{1}{q} + \frac{1}{f} \rightarrow
+\frac{1}{5} = \frac{1}{-\frac{q}{3}} + \frac{1}{q} \rightarrow\\
+\frac{1}{5} = -\frac{3}{q} + \frac{1}{q} \rightarrow
+\frac{1}{5} = -\frac{2}{q} \rightarrow\\
+\frac{q}{5} = -2 \rightarrow
+q = \boxed{-10\,\text{cm}}
+\end{align*}
+Il risultato è negativo in quanto si trova dietro la prima lente, nostro punto di riferimento per
+questo esercizio.
+
+\subsection{\hyperref[sec:elettrostatica]{Elettrostatica}}\label{ex:elettrostatica}
+\paragraph{Esercizio 1}
+Le armature di un condensatore piano hanno una superficie $S = 1\,m^2$ e distano $1\,\text{cm}$. Tra 
+di loro c'è il vuoto. La differenza di potenziale applicata ai capi delle armature è $V = 
+10^4\,\text{V}$. Calcolare la \textbf{capacità} del condesatore, la \textbf{carica} su ogni armatura, 
+la \textbf{densità} di carica superficiale, l'\textbf{intensità} del campo elettrico.\\
+Tra le armature del condensatore viene inserita una lamina di dielettrico di spessore $1\,\text{cm}$ 
+e di costante elettrica relativa $\varepsilon_r = 5$. Calcolare la \textbf{densità} di carica 
+superficiale, l'\textbf{intensità} del campo elettrico, la \textbf{d.d.p.} ai capi delle armature e 
+la \textbf{capacità}.
+\divisor
+
+Questo esercizio è un esercizio direi riassuntivo di tutte le formule riguardanti i condensatori.
+Per prima cosa possiamo immediatamente trovare la capacità del condensatore applicando una sola 
+formula.
+\begin{equation*}
+C = \frac{S\varepsilon}{d} \rightarrow C = \frac{S\varepsilon_0}{d} \rightarrow 
+C = \frac{1\cdot8.8\cdot10^{-12}}{0.01} = \boxed{8.8\cdot10^{-10}\,\text{F}}
+\end{equation*}
+E immediata viene anche la carica, invertendo la formula $C = \dfrac{Q}{V}$
+\begin{equation*}
+C = \frac{Q}{V} \rightarrow Q = C\cdot V \rightarrow Q = 8.8\cdot10^{-10}\cdot10^4 = 
+\boxed{8.8\cdot\,\mu\text{C}}
+\end{equation*}
+La densità di carica ora viene immediata anch'essa
+\begin{equation*}
+\sigma = \frac{Q}{S} \rightarrow \sigma = \frac{8.8\cdot10{-6}}{1} = 
+\boxed{8.8\cdot10^{-6}\,\text{C/m}^2}
+\end{equation*}
+E ora manca solo il campo elettrico, abbiamo due modi per trovarlo, questo è uno
+\begin{equation*}
+E = \frac{\Delta V}{\Delta x} \rightarrow \frac{10^4}{0.01} = \boxed{10^6\,\text{V/m}}
+\end{equation*}
+E questo era metà esercizio. Ora abbiamo lo stesso condensatore con un dielelettrico al suo interno.\\
+La prima richiesta è la densità di carica. Risulta essere uguale a
+\begin{equation*}
+\sigma = \boxed{8.8\cdot10^{-6}\,\text{C/m}^2}
+\end{equation*}
+Ma è identica a prima? Come mai? Pensando un attimo, vediamo che il condensatore è isolato, quindi non
+ci sono modi per cui le cariche si spostino. Essendo poi le due armature isolate fra di loro, la
+carica non può spostarsi da una all'altra quindi la densità non varia.\\
+Avendo chiarito questo punto, possiamo trovare l'intensità del campo elettrico
+\begin{equation*}
+E = \frac{\sigma}{\varepsilon} \rightarrow E = \frac{E_0}{\varepsilon_r} = 
+\frac{10^6}{5} = \boxed{0.2\cdot10^{-6}\,\text{V/m}}
+\end{equation*}
+Qui abbiamo semplicemente scomposto la formula del campo elettrico:
+\begin{equation*}
+E = \frac{\sigma}{\varepsilon} \rightarrow E = \frac{\sigma}{\varepsilon_0\varepsilon_r} \rightarrow
+E = \frac{\sigma}{\varepsilon}\cdot\frac{1}{\varepsilon_r} \rightarrow E = \frac{E_0}{\varepsilon_r}
+\end{equation*}
+E ora si trova la d.d.p.
+\begin{equation*}
+E = \frac{\Delta V}{\Delta x} \rightarrow \Delta V = E\Delta x \rightarrow 
+\Delta V = 0.2\cdot10^{6}\cdot0.01 = \boxed{0.2\cdot10^{4}\,\text{V}}
+\end{equation*}
+Infine manca la capacità
+\begin{align*}
+C = \frac{\varepsilon S}{d} \rightarrow C =\frac{\varepsilon_0}{d}\varepsilon_r \rightarrow\\
+C = C_0\varepsilon_r \rightarrow C = 8.8\cdot10^{-10}\cdot5 = \boxed{4.4\cdot10^{-9}\,\text{F}}
+\end{align*}
+
+\paragraph{Esercizio 2}
+L'elettrone rappresentato in figura \textbf{è destinato a raggiungere l'armatura} del consdensatore 
+caricata negativamente se questa dista $5\,\text{mm}$ dall'armatura positivamente? Se sì, determina 
+con quale velocità, se no, determina quale avrebbe dovuto essere la velocità iniziale minima in grado 
+di consentirgli di raggiungere l'armatura.
+\begin{itemize}
+	\item $v_0 = 750\,\text{m/s}$
+	\item $\text{E} = 3.5\cdot10^{-4}\,\text{N/C}$
+\end{itemize}
+\begin{center}
+	\begin{tikzpicture}[scale=1.8]
+		\draw (0,0) circle (0.1)
+			node[below]{$\text{e}^{-}$};
+		\draw[->] (0.3, 0) -- ++(0.7, 0)
+			node[pos=0.5, below]{$\vec{v_0}$};
+		\draw (1.3,0.5) -- (1.3,0.1) node[pos=0.5,left]{+} -- (1.5,0.1) -- (1.5,0.5) -- cycle;
+		\draw (1.3,-0.5) -- (1.3,-0.1) node[pos=0.5,left]{+} -- (1.5,-0.1) -- (1.5,-0.5) -- cycle;
+		\draw (1.7,0.5) -- (1.7,-0.5) -- (1.9,-0.5) -- (1.9,0.5) node[pos=0.5,right]{-} -- cycle;
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Allora, per prima cosa vediamo da che parte il campo elettrico va: dato che le cariche positive sono a
+sinistra, il campo segue questo verso ed è in linea con la velocità. Poi però notiamo che appena 
+l'elettrone entra nel condensatore subirà una forza contraria in quanto ha carica negativa così come 
+l'armatura di destra.\\\\
+
+Chiariti questi punti, come possiamo sapere se arriverà alla seconda armatura? Una formula molto 
+comoda del modo rettilineo uniformemente accelerato torna utile:
+\begin{equation*}
+v_f^2 - v_i^2 = 2aS
+\end{equation*}
+Con questa possiamo sapere quanta distanza percorre il nostro elettrone. Se è inferiore alla distanza
+tra le armature, allora la velocità non è sufficiente. Ora il problema è: come troviamo 
+l'accelerazione? Ci tocca invertire la formula fondamentale della dinamica
+\begin{equation*}
+\vec{F} = m\vec{a} \rightarrow \vec{a} = \frac{\vec{F}}{m}
+\end{equation*}
+ma il problema è: qual è la forza? Ovviamente è quella repulsiva che l'elettrone sente a causa 
+dell'armatura caricata negativamente. Come trovarla? Semplice
+\begin{equation*}
+\vec{F} = q\vec{E} \rightarrow F = qE = -1.60\cdot10^{-19}\cdot3.5\cdot10^{-4} = 
+\underline{-5.6\cdot10^{-23}\,\text{N}}
+\end{equation*}
+E ora possiamo trovare l'accelerazione
+\begin{equation*}
+a = \frac{F}{m} \rightarrow a = \frac{-5.6\cdot10^{-23}}{9.11\cdot10^{-28}} = 
+\underline{-6.1\cdot10^4}
+\end{equation*}
+Ora completiamo l'equazione precedente
+\begin{equation*}
+v_f^2 - v_i^2 = 2aS \rightarrow S = \frac{v_f^2 - v_i^2}{2a} \rightarrow 
+S = \frac{0^2 - 750^2}{2\cdot6.1\cdot10^4} = \boxed{4.5\,\text{mm}}
+\end{equation*}
+Essendo questa distanza inferiore a $5\,\text{mm}$, l'elettrone non raggiungerà l'altra armatura.\\
+Seguendo lo stesso ragionamento invertiamo questa formula per trovare $v_i$ sapendo la distanza.
+\begin{align*}
+v_f^2 - v_i^2 = 2aS \rightarrow v_i = \sqrt{2aS + v_f^2} \rightarrow \\
+v_i = \sqrt{2\cdot6.1\cdot10^4\cdot5} \approx \boxed{784\,\text{m/s}}
+\end{align*}
+
+
+\subsection{\hyperref[sec:circElettr]{Circuiti Elettrici}}\label{ex:circElettr}
+\paragraph{Esercizio 1}
+Se la corrente nel resistore di $6\,\Omega$ della figura è di $2\,A$:
+\begin{itemize}[label={$\bullet$}]
+	\item La caduta di potenziale tra a e b;
+	\item La corrente totale del circuito;
+\end{itemize}
+\begin{center}
+	\ctikzset{bipoles/length=.8cm}
+	\begin{circuitikz}
+		\draw 
+		(-1,0) node[above]{a}
+		to [short, o-] (0,0)
+		to [short, *-] (0,1)
+		to [short] (1,1)
+		to [R, l=10<\ohm>] (2,1)
+		to [short] (3,1)
+		to [R, l=6<\ohm>] (4,1)
+		to [short] (4.5,1)
+		to [short] (4.5,0)
+		
+		(0,0) 
+		to [short, *-] (0,-1)
+		to [short] (0.5,-1)
+		to [short] (0.5,-0.5)
+		to [short] (1, -0.5)
+		to [R, l=8<\ohm>] (2,-0.5)
+		to [short] (2.5,-0.5)
+		to [short] (2.5,-1)
+		(0.5,-1)
+		to [short] (0.5,-1.5)
+		to [short] (1,-1.5)
+		to [R, l=8<\ohm>] (2,-1.5)
+		to [short] (2.5,-1.5)
+		to [short] (2.5,-1)
+		
+		(2.5,-1)
+		to [short] (3,-1)
+		to [R, l=8<\ohm>] (4,-1)
+		to [short] (4.5,-1)
+		to [short] (4.5,0);
+		
+		\draw(4.5,0)
+		to [short, *-o] (5.5,0) node[above]{b};
+	\end{circuitikz}
+\end{center}
+
+Per prima cosa, si semplifichino le resistenze da $8\,\Omega$ che sono in parallelo fra di loro
+\begin{equation*}
+\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2} \rightarrow
+\frac{1}{R_e} = \frac{1}{8} + \frac{1}{8} \rightarrow
+R_e = \underline{4\,\Omega}
+\end{equation*}
+
+Quindi ora il circuito è come questo
+\begin{center}
+	\ctikzset{bipoles/length=.8cm}
+	\begin{circuitikz}
+		\draw 
+		(-1,0) node[above]{a}
+		to [short, o-] (0,0)
+		to [short, *-] (0,1)
+		to [short] (1,1)
+		to [R, l=10<\ohm>] (2,1)
+		to [short] (3,1)
+		to [R, l=6<\ohm>] (4,1)
+		to [short] (4.5,1)
+		to [short] (4.5,0)
+		
+		(0,0) 
+		to [short, *-] (0,-1)
+		to [short] (1,-1)
+		to [R, l=4<\ohm>] (2,-1)
+		to [short] (3,-1)
+		to [R, l=8<\ohm>] (4,-1)
+		to [short] (4.5,-1)
+		to [short] (4.5,0);
+		
+		\draw(4.5,0)
+		to [short, *-o] (5.5,0) node[above]{b};
+	\end{circuitikz}
+\end{center}
+
+Semplifichiamolo ulterirormente riducendo le resistenze in serie
+\begin{equation*}
+R_{e_1} = 10 + 6 = \underline{16\,\Omega}
+\end{equation*}
+\begin{equation*}
+R_{e_2} = 4 + 8 = \underline{12\,\Omega}
+\end{equation*}
+
+E il circuito ora rimane molto semplicemente
+\begin{center}
+	\ctikzset{bipoles/length=.8cm}
+	\begin{circuitikz}
+		\draw
+		(-1,0) node[above]{a}
+		to [short, o-] (0,0)
+		to [short, *-] (0,1)
+		to [short] (1,1)
+		to [R, l=16<\ohm>] (2,1)
+		to [short] (3,1)
+		to [short, -*] (3,0);
+		
+		\draw
+		(0,0)
+		to [short, *-] (0,-1)
+		to [short] (1,-1)
+		to [R, l=12<\ohm>] (2,-1)
+		to [short] (3,-1)
+		to [short, -*] (3,0)
+		to [short, -o] (4,0) node[above]{b};
+	\end{circuitikz}
+\end{center}
+
+Sapevamo che nella resistenza da $6\,\Omega$ del primo circuito passvano $2\,A$. Dato che si trova 
+in serie con una da $10\,\Omega$, anche in questa passeranno $2\,A$.\\
+Sfruttando la formula
+\begin{equation*}
+V = Ri
+\end{equation*}
+possiamo trovarci la caduta di potenziale tra a e b.
+\begin{equation*}
+V = Ri \rightarrow V = 16\cdot2 = \boxed{32\,\text{V}}
+\end{equation*}
+
+Sapendo ora la d.d.p. e sapendo che le resistenze sono in parallelo, possiamo trovarci la corrente
+che passa nella resistenza di $12\,\Omega$ invertendo quella formula
+\begin{equation*}
+V = Ri \rightarrow i = \frac{V}{R} \rightarrow i = \frac{32}{12} \approx \underline{2.66\,\text{V}}
+\end{equation*}
+
+Infine, la sommiamo alla corrente del ramo "superiore" del circuito e otteniamo la corrente totale
+\begin{equation*}
+i_t = i_1 + i+2 = 2 + 2.66 = \boxed{4.66\,\text{A}}
+\end{equation*}
+
+\paragraph{Esercizio 2}
+Calcolare la resistenza $R_{eq}$ vista ai morsetti \textbf{A-B}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item $R_1 = R_3 = 0.2\,\Omega$
+		\item $R_2 = 0.4\,\Omega$
+		\item $R_4 = R_5 = 1\,\Omega$
+		\item $R_6 =3\,\Omega$
+	\end{itemize}
+\end{multicols}
+
+\begin{center}
+	\ctikzset{bipoles/length=1cm}
+	\begin{circuitikz}[scale=1.9]
+		\draw (1,0) to[R=$R_1$, -*] (1,1) node[above]{A} % A
+		to[R=$R_2$, -*] (2,1) node[above]{C}
+		to[R=$R_5$] (3,1)
+		to[R=$R_6$] (3,0)
+		to[short, -*] (2,0) node[below]{D}
+		to[short, -*] (1,0) node[below]{B};
+		\draw (2,1) to[R=$R_3$] (1,0);
+		\draw (2,1) to[R=$R_4$] (2,0);
+	\end{circuitikz}
+\end{center}
+\divisor
+
+Quest'esercizio, per quanto apparentemente intimidatorio, non è così complicato. La prima cosa da fare
+è trovare in che relazione sono le resistenze fra di loro. È immediato vedere che $R_5$ e $R_6$ sono
+in serie fra di loro in quanto non hanno collegamenti nel mezzo.\\
+E ora come scoprire i collegamenti di quell'aggroviglio di resistenze? Bisogna andare con molta calma
+e osservare come si diffonde la corrente. Sappiamo che A e B sono i poli della batteria quindi 
+ipotizziamo che in A si trovi il polo positivo (metterlo in B non cambierebbe nulla). Il seguente
+schema chiarisce i versi delle correnti.
+\begin{center}
+	\ctikzset{bipoles/length=1cm}
+	\begin{circuitikz}[scale=1.9]
+		\draw (1,0) to[R=$R_1$, i^=$i_4$, -*] (1,1) node[above]{A} % A
+		to[R=$R_2$, i^=$i$, -*] (2,1) node[above]{C}
+		to[R=$R_5$, i^=$i_1$] (3,1)
+		to[R=$R_6$, i^=$i_1$] (3,0)
+		to[short, -*] (2,0) node[below]{D}
+		to[short, -*] (1,0) node[below]{B};
+		\draw (2,1) to[R=$R_3$, i^=$i_2$] (1,0);
+		\draw (2,1) to[R=$R_4$, i^=$i_3$] (2,0);
+	\end{circuitikz}
+\end{center}
+Come possiamo notare in C la corrente si divide in 3: $i_1$, $i_2$ e $i_3$. Questo cosa ci dice? Che i
+tre collegamenti sono fra di loro in parallelo! Una proprietà dei collegamenti in serie è che la 
+corrente si mantiene costante tra le resistenze, dato che in questo caso non avviene il collegamento
+è in parallelo.\\
+Abbiamo quindi definito che $R_5$ ed $R_6$ sono in serie fra di loro; la loro equivalente, $R_4$ ed
+$R_3$ sono in parallelo fra di loro. Manca solo $R_1$ ed $R_2$. $R_2$ è immediatamente visibile che 
+sarà in serie con la risultante di $R_5$, $R_6$, $R_4$ ed $R_3$. Quando rimarranno solo due 
+resistenze, $R_1$ e l'altra saranno in parallelo.\\\\
+
+Per rendere tutto più chiaro, cominciamo a fare i calcoli e semplificare il circuito.
+\begin{equation*}
+R_{5/6} = R_5 + R_6 \rightarrow R_{5/6} = 1 + 3 = \underline{4\,\Omega}
+\end{equation*}
+
+\begin{center}
+	\ctikzset{bipoles/length=1cm}
+	\begin{circuitikz}[scale=1.9]
+		\draw (1,0) to[R=$R_1$, i^=$i_4$, -*] (1,1) node[above]{A} % A
+		to[R=$R_2$, i^=$i$, -*] (2,1) node[above]{C}
+		to[short] (3,1)
+		to[R=$R_{5/6}$, i^=$i_5$] (3,0)
+		to[short, -*] (2,0) node[below]{D}
+		to[short, -*] (1,0) node[below]{B};
+		\draw (2,1) to[R=$R_3$, i^=$i_2$] (1,0);
+		\draw (2,1) to[R=$R_4$, i^=$i_3$] (2,0);
+	\end{circuitikz}
+\end{center}
+Avendo già stabilito il verso di percorrenza della corrente e i tipi di collegamento, semplifichiamo
+$R_{5/6}$, $R_4$ e $R_3$.
+\begin{align*}
+R_{3/4/5/6} = \left(\frac{1}{R_3} + \frac{1}{R_4} + \frac{1}{R_{5/6}}\right)^{-1} \rightarrow\\
+\left(\frac{1}{0.2} + \frac{1}{1} + \frac{1}{4}\right)^{-1} = \underline{0.16\,\Omega}
+\end{align*}
+
+\begin{center}
+	\ctikzset{bipoles/length=1cm}
+	\begin{circuitikz}[scale=1.9]
+		\draw (1,0) to[R=$R_1$, i^=$i_4$, -*] (1,1) node[above]{A} % A
+		to[R=$R_2$, i^=$i$, -*] (2,1) node[above]{C}
+		to[R=$R_{3/4/5/6}$, i^=$i$, -*] (2,0) node[below]{D}
+		to[short, -*] (1,0) node[below]{B};
+	\end{circuitikz}
+\end{center}
+Ora semplifichiamo le due resistenze in serie ($R_2$ e l'ultima calcolata)
+\begin{align*}
+R_{2/3/4/5/6} = R_2 + R_{3/4/5/6} \rightarrow \\
+R_{2/3/4/5/6} = 0.4 + 0.16 = \underline{ 0.56\,\Omega}
+\end{align*}
+
+\begin{center}
+	\ctikzset{bipoles/length=1cm}
+	\begin{circuitikz}[scale=1.9]
+		\draw (0.5,0) to[R=$R_1$, i^=$i_4$] (0.5,1)
+		to[short, -*] (1,1) node[above]{A} % A
+		to[short] (1.5,1)
+		to[R=$R_{2/3/4/5/6}$, i^=$i$] (1.5,0)
+		to[short, -*] (1,0) node[below]{B}
+		to[short] (0.5,0);
+	\end{circuitikz}
+\end{center}
+E ora possiamo vedere che le due resistenze sono in parallelo fra di loro e quindi possiamo
+semplificarle con facilità
+\begin{align*}
+R_{eq} = \left(\frac{1}{R_1} + \frac{1}{R_{2/3/4/5/6}}\right)^{-1} \rightarrow\\
+R_{eq} = \left(\frac{1}{0.2} + \frac{1}{0.56}\right)^-1 = \boxed{0.147\,\Omega}
+\end{align*}
+Ed ecco il nostro risultato. Il modo migliore per risolvere questi esercizi è cercare di capire
+in che verso va la corrente e vedere i collegamenti. Andando con calma si riuscirà senza problemi a 
+risolvere qualsiasi esercizio proposto.
+
+\paragraph{Esercizio 3}
+Per la disposizione mostrata in figura si trovino:
+\begin{itemize}[label={$\bullet$}]
+	\item La capacità equivalente tra i terminali
+	\item La carica immagazzinata in ciascun condensatore
+	\item L'energia accumulata nei condensatori
+\end{itemize}
+\begin{center}
+		\ctikzset{bipoles/length=1cm}
+	\begin{circuitikz}
+		\draw (0,0) to[short, o-] (3,0)
+		to[short] (4,0)
+		to[C, l_=12<\micro\farad>] (4,2)
+		to[short] (4,2)
+		to[short, -o] (0,2);
+		\draw (2,0) to[C=4<\micro\farad>] (2,1)
+		to[C=15<\micro\farad>] (2,2);
+		\path node[above] (0,1) {$200\,\text{V}$};
+	\end{circuitikz}
+\end{center}
+\divisor
+
+È evidente che i due condesatori da $15$ e $4$ sono in serie fra di loro. Il condesatore da $12$ 
+invece è in parallelo con questi due. Per risolvere il primo punto calcoliamoci l'equivalente dei
+due condensatori in serie.
+\begin{equation*}
+\frac{1}{C_{eq}} = \frac{1}{C_1} + \frac{1}{C_2} \rightarrow
+C_{eq} = \left(\frac{1}{15} + \frac{1}{4}\right)^{-1} \approx\underline{3.15\,\text{pF}}
+\end{equation*}
+Ora il circuito è come questo
+\begin{center}
+	\ctikzset{bipoles/length=1cm}
+	\begin{circuitikz}
+		\draw (0,0) to[short, o-] (1,0)
+		to[short] (2,0)
+		to[C, l_=12<\micro\farad>] (2,2)
+		to[short] (2,2)
+		to[short, -o] (0,2);
+		\draw (1,0) to[C=3.15<\micro\farad>] (1,2);
+	\end{circuitikz}
+\end{center}
+Ora basta solo trovare l'equivalente di questi due in parallelo.
+\begin{equation*}
+C_{eq} = C_1 + C_2 \rightarrow 3.15 + 12 = \boxed{15.15\,\text{pF}}
+\end{equation*}
+
+Per il secondo punto possiamo sfruttare la formula per la capacità elettrica $C = \dfrac{Q}{V}$. Dato
+che i due condensatori dell'ultimo circuito sono in parallelo fra di loro, la d.d.p. rimane uguale. 
+Quindi possiamo invertire la formula e trovare immediatamente la carica nel condesatore da 12.
+\begin{equation*}
+C = \frac{Q}{V} \rightarrow Q = C\cdot V \rightarrow Q = 12\cdot10^{-6}\cdot200 =
+\boxed{2400\,\mu\text{C}}
+\end{equation*}
+E possiamo fare lo stesso con la resistenza equivalente. Una volta fatto otterremo anche la carica su 
+ciascuno dei due condensatori in quanto sono in serie e due condensatori in serie hanno la stessa 
+carica.
+\begin{equation*}
+C = \frac{Q}{V} \rightarrow Q = C\cdot V \rightarrow Q = 3.15\cdot200 = \boxed{630\,\mu\text{C}}
+\end{equation*}	
+\improvement{Aggiungere esercizi sul magnetismo}
+
+% List of TODOs
+\newpage
+\listoftodos[Note]
+\end{document}
