@@ -560,7 +560,7 @@ $\vec{x} \approx \Delta x$: variazione di posizione\\
 \\
 Queste formule sono relative a molle.\\
 
-\subsection{Quantità di moto e teorema dell'impulso}
+\subsection{Quantità di moto e teorema dell'impulso}\label{subsec:dinamica:impulso}
 \label{subsec:qtaMoto}
 \begin{equation*}
 \vec{q} = m\vec{v}
@@ -574,7 +574,8 @@ $\vec{F}$: forza applicata sul corpo\\
 $t$: tempo\\
 \\
 La quantità di moto indica la forza necessaria a fermare un oggetto in movimento in un dato lasso di
-tempo.
+tempo.\\
+Per gli esercizi si vada \hyperref[ex:impulso]{qui}.
 
 \subsection{Urti}\label{subsec:dinamica:urti}
 Si distinguono 2 tipi di urti: \emph{elastici} e \emph{anaelastici}.\\
@@ -736,10 +737,18 @@ $v_{CM}$: velocità del centro di massa\\\\
 Per gli esercizi si vada \hyperref[ex:inerzia]{qui}.
 
 \section{Gravitazione}\label{sec:gravitazione}
-La gravitazione si occupa di studiare le forze che intercorrono tra corpi celesti come soli e 
-pianeti.\\ 
-Essendo le orbite ellittiche, $a$ e $b$ si riferiscono ai semiassi rispettivamente maggiore e 
-minore.\\
+La gravitazione si occupa di studiare le forze che intercorrono tra corpi celesti.\\ 
+Essendo le orbite ellittiche (come dice la prima legge di Keplero), $a$ e $b$ si riferiscono ai 
+semiassi rispettivamente maggiore e minore.
+\begin{center}
+	\begin{tikzpicture}	
+	\draw[red] ellipse (2 and 1);
+	\draw (-2,0) -- ++(4,0)
+		node[pos=0.25,below]{$a$};
+	\draw (0,1) -- ++(0,-2)
+		node[pos=0.25,right]{$b$};
+	\end{tikzpicture}
+\end{center}
 Per gli esercizi si vada \hyperref[ex:gravitazione]{qui}.
 
 \subsection{Terza legge di Keplero}
@@ -758,7 +767,7 @@ $r$: raggio/distanza tra i corpi
 
 \subsection{Accelerazione Gravitazionale su un pianeta}
 \begin{equation*}
-g = G\frac{M}{R}
+g = G\frac{M}{R^2}
 \end{equation*}
 \hyperref[tab:g]{$G$}: $6.67\cdot10^{-11}\,\text{Nm}^2\text{/kg}^2$\\
 $M$: massa del pianeta\\
@@ -770,7 +779,7 @@ v = \sqrt{\frac{GM}{R}}
 \end{equation*}
 \hyperref[tab:g]{$G$}: $6.67\cdot10^{-11}\,\text{Nm}^2\text{/kg}^2$\\
 $M$: massa del pianeta\\
-$R$: $r + h$: raggio del pianeta più quota
+$R$: $r + h$: raggio del pianeta più distanza dalla superficie
 
 \subsection{Velocità di fuga}
 \begin{equation*}
@@ -782,13 +791,13 @@ $R$: raggio del pianeta\\
 La velocità di fuga è la velocità che un corpo deve avere per poter entrare in orbita del pianeta.
 
 \section{Idrostatica}
-L'idrostatica studia le situazioni di equilibrio di fluidi. Studia anche le pressioni.
+L'idrostatica studia i fluidi in stato di equilibrio. Studia anche le pressioni.
 \subsubsection{Legge di Stevino}
 La legge di Stevino trova la pressione ad una data profondità.
 \begin{equation*}
 p = p_{atm} + \delta gh
 \end{equation*}
-$\delta$: densità\\
+$\delta$: densità del liquido\\
 \hyperref[tab:patm]{$p_{atm}$}: $1\,\text{atm} = 1.01\cdot10^5\,\text{Pa} = 760\,\text{mm\,Hg} = 
 1.01\cdot10^5\,\text{N/m}^2 = 1\,\text{bar}$\\
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
@@ -797,7 +806,7 @@ Se vista in un modo più generale si trova la pressione tra due punti
 \begin{equation*}
 p_2 = p_1 + \delta g\Delta h
 \end{equation*}
-$\delta$: densità\\
+$\delta$: densità del liquido\\
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
 $h$: profondità
 
@@ -2685,7 +2694,9 @@ rispetto alla verticale.
 \end{center}
 \divisor
 
-Dimostrare il primo punto è estremamente semplice e richied solo nozioni di trigonometria. Il
+Dimostrare il primo punto è estremamente semplice e richiede\begin{flushleft}
+	
+\end{flushleft} solo nozioni di trigonometria. Il
 successivo disegno aiuterà a chiarire:
 \begin{center}
 	\begin{tikzpicture}[scale=2]
@@ -2745,13 +2756,38 @@ e il lavoro fatti dalla seconda gru alzando il peso della stessa altezza.
 
 Il lavoro è definito come $L = F\cdot S\cdot \cos\alpha$ e quindi sostituendo ciò che abbiamo
 \begin{equation*}
-L = F\cdot S\cdot \cos\alpha \rightarrow L = 500\cdot0\cdot20\cdot\cos90 = 
-\boxed{0\,\text{N}\cdot\text{m}}
+L = F\cdot S\cdot \cos\alpha \rightarrow L = 500\cdot9.81\cdot20\cdot\cos90 = 
+\boxed{98100\,\text{N}\cdot\text{m}}
 \end{equation*}
 Per trovare la potenza abbiamo bisogno anche del tempo. Troviamolo
 \begin{equation*}
-x = x_0 _vt \rightarrow 20 = 0+2t \rightarrow t = 10\,\text{s}
+x = x_0 +vt \rightarrow 20 = 0+2t \rightarrow t = 10\,\text{s}
 \end{equation*}
+La potenza può essere trovata facilmente usando l'altra formula per il lavoro
+\begin{equation*}
+P = \frac{L}{t} \rightarrow P = \frac{98100}{10} = \boxed{9800\,\text{W}}
+\end{equation*}
+Per l'ultimo punto, dato che abbiamo una forza costante che agisce, possiamo usare la seguente formula
+\begin{equation*}
+P = Fv \rightarrow P = mav\rightarrow 500\cdot9.81\cdot4 = \boxed{19620\,\text{W}}
+\end{equation*}
+La formula si ricava da $\frac{F\cdot S}{t}\rightarrow Fv$.\\
+Il lavoro lo si trova esattamente come prima
+\begin{equation*}
+L = F\cdot S\cdot \cos\alpha \rightarrow L = 500\cdot9.81\cdot20\cdot\cos90 = 
+\boxed{98100\,\text{N}\cdot\text{m}}
+\end{equation*}
+Notiamo allora che il lavoro rimane costante mentre la potenza raddoppia.
+
+\subsubsection{\hyperref[subsec:dinamica:impulso]{Impulso}}\label{ex:impulso}
+\paragraph{Esercizio 1}
+Una barca e i suoi occupanti di massa $M = 200\,\text{kg}$ contiene $10$ sacchi di carbone ciascuno di
+$5\,\text{kg}$. La barca è stazionaria nella sua posizione. Gli occupanti cercano di raggiungere la
+riva lanciando fuori i sacchi di carbone ad una velocità orizzontale relativa $v_r$. Assumendo 
+l'attrito nullo, \textbf{qual è la velocità dopo il primo sacco}? \textbf{E dopo il secondo?} Scrivi
+i risultati in termini di $v_r$.
+\divisor
+
 
 \subsubsection{\hyperref[subsec:dinamica:urti]{Urti}}\label{ex:urti}
 \paragraph{Esercizio 1}
@@ -2986,8 +3022,8 @@ quando è all'afelio? Giustifica la risposta e calcola il modulo della sua veloci
 \divisor
 
 La risposta sta tutta nella seconda legge di Keplero.\\
-{\centering  ``\textit{Il raggio vettore che parte dal Sole e 
-arriva al pianeta, spazza aree uguali in tempi uguali}''.}\\
+``\textit{Il segmento (raggio vettore) che unisce il centro del Sole con il centro del 
+pianeta descrive aree uguali in tempi uguali.}''.\\
 Sapendo questo sappiamo con certezza che quando il pianeta si trova più lontano dal sole, avrà una
 velocità minore. Ora ci rimane solo da trovare la velocità. Da quella frase, possiamo sapere che il
 rapporto velocità/spazio è costante, quindi
