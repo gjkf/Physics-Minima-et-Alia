@@ -906,7 +906,8 @@ Per gli esercizi, si vada \hyperref[ex:idrodinamica]{qui}.
 	\end{tikzpicture}
 \end{center}
 
-Nelle seguenti formule, $S$ è definito come $\mathcolor{cyan}{A}\cdot\mathcolor{blue}{l}$.
+Nelle seguenti formule, $S$ (la superficie trasversale del tubo) è definito come 
+$\mathcolor{cyan}{A}\cdot\mathcolor{blue}{l}$.
 
 \subsection{Equazione di Bernoulli}
 Quest'equazione descrive un qualsiasi moto tra due punti di un qualsiasi fluido.
@@ -921,17 +922,32 @@ $\delta$: densità del fluido
 
 \subsection{Se il tubo è orizzontale}
 \begin{equation*}
-\mathcolor{cyan}{A_1}\mathcolor{orange}{v_1} = 
+\text{Portata} = 
+\mathcolor{cyan}{A_1}\mathcolor{orange}{v_1} - 
 \mathcolor{cyan}{A_2}\mathcolor{orange}{v_2}
 \end{equation*}
 
 \subsection{Equazione di Torricelli}
 Si usi questa formula quando si deve trovare a che velocità esce un liquido da un contenitore.
+\begin{center}
+	\begin{tikzpicture}
+	\draw (0,0) ellipse (1 and 0.5);
+	\draw (0,-2) ellipse (1 and 0.5);
+	
+	\filldraw[cyan] (-1,-0.75) -- (-1,-2) -- (1,-2) -- (1,-0.75) -- cycle;
+	\filldraw[black, fill = cyan] (0,-2) ellipse (1 and 0.5);
+	\draw (1,-1.8) -- ++(0,0.2) -- ++(0.3,0) -- ++(0,-0.2) -- cycle;
+	\draw (-1,0) -- ++(0,-2);
+	\draw (1,0) -- ++(0,-2);
+	\draw[|<->|] (1.5,-1.7) -- (1.5,-0.75)
+	node[red, pos=0.5, left]{$h$};
+	\end{tikzpicture}
+\end{center}
 \begin{equation*}
 v = \sqrt{2g\mathcolor{red}{h}}
 \end{equation*}
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
-$\mathcolor{red}{h}$: livello del fluido
+$\mathcolor{red}{h}$: altezza della colonna di fluido premente sul punto d'uscita
 
 \section{Termodinamica}\label{sec:termodinamica}
 La termodinamica si occupa di studiare come un corpo si modifica alla variazione di 
@@ -2788,6 +2804,27 @@ l'attrito nullo, \textbf{qual è la velocità dopo il primo sacco}? \textbf{E dopo
 i risultati in termini di $v_r$.
 \divisor
 
+Innanzitutto sappiamo che il sistema è conservativo in quanto non ci sono forze esterne. Detto questo,
+sappiamo anche che quindi $q_1 = q_2$. Prima di cominciare, sappiamo che il sistema ha massa 
+$200+5\cdot10$\\
+Nel primo caso vediamo che la barca è ferma quindi sappiamo già che $q_1 = 0$. Quindi possiamo 
+scrivere
+\begin{align*}
+&0 = 245v - 5v_r\rightarrow v = \frac{5v_r}{245} = \boxed{\frac{1}{43}v_r}
+\end{align*}
+$245$ perché nella situazione finale è che la barca ha perso una sacca ed essa sta volando. Sappiamo 
+quindi la velocità nel primo caso.\\
+Nel secondo caso, la barca ha già una sua velocità quindi scriviamo
+\begin{align*}
+&\frac{1}{43}v_r = 240v + 5\left(-v_r + \frac{1}{43}v_r\right)
+\intertext{Isoliamo $v$ e otteniamo}
+&\boxed{v \approx 4\cdot10^{-2}\,\text{m/s}}
+\end{align*}
+Abbiamo risolto il problema ma perché abbiamo scritto $-v_r + \dfrac{1}{43}v_r$? Nella seconda 
+situazione la barca ha già una velocità propria che è opposta a quella che ottiene il sacco lanciato.
+La situazione è simile a quella di un treno in corsa da cui si spara un proiettile in verso opposto.
+Ci stiamo spostando ad una velocità pari a $\dfrac{1}{43}v_r$ e la sacca ha velocità in verso opposto
+pari a $v_r$.
 
 \subsubsection{\hyperref[subsec:dinamica:urti]{Urti}}\label{ex:urti}
 \paragraph{Esercizio 1}
