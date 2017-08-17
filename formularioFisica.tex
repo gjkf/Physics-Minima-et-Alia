@@ -40,7 +40,7 @@
 \usepackage[all]{hypcap} % To fix caption loading of hyperref
 
 \usepackage{tikz}
-\usetikzlibrary{arrows,decorations,calc}
+\usetikzlibrary{arrows,decorations,calc,intersections}
 \usepackage[siunitx]{circuitikz}
 % http://texdoc.net/texmf-dist/doc/latex/circuitikz/circuitikzmanual.pdf
 \usepackage{tikz-3dplot}
@@ -49,10 +49,28 @@
 % \usepackage{showkeys} % For labels and references.
 
 \setcounter{secnumdepth}{0} % sections are level 1
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{3}
 
 \DeclarePairedDelimiter\norm{\lVert}{\rVert} % ||v||
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} % |v|
+
+\newcommand\markangle[7][red]{% [color] origin A B radius radiusmark mark
+	% fill red circle
+	\begin{scope}
+		\path[clip] (#2) -- (#3) -- (#4);
+		\fill[color=#1,fill opacity=0.5,draw=#1,name path=circle]
+		(#2) circle (#5);
+	\end{scope}
+	% middle calculation
+	\path[name path=line one] (#2) -- (#3);
+	\path[name path=line two] (#2) -- (#4);
+	\path[%
+	name intersections={of=line one and circle, by={inter one}},
+	name intersections={of=line two and circle, by={inter two}}
+	] (inter one) -- (inter two) coordinate[pos=.5] (middle);
+	% put mark
+	\node at ($(#2)!#6!(middle)$) {#7};
+}
 
 \def\mathcolor#1#{\@mathcolor{#1}}
 \def\@mathcolor#1#2#3{%
@@ -1279,7 +1297,8 @@ Questa sezione si dedica alle formule ed esperimenti relativi allo studio del mo
 		\draw[|<->|, red, dashed] (-0.2, -1) -- (-0.2, 1)
 			node[pos=0.5, left]{$A$};
 		\draw[|<->|, teal] (1.5, 1.2) -- (4.7, 1.2)
-			node[pos=0.5, above]{$\lambda$};
+			node[pos=0.5, above]{$\lambda$}
+			node[pos=0.5, anchor=north, yshift=-5]{$T = \frac{\lambda}{t}$};
 	\end{tikzpicture}
 \end{center}
 
@@ -1359,7 +1378,7 @@ Un concetto unico a questa sezione è quello dell'\emph{indice di rifrazione}. Ce
 \emph{assoluto} relativo solo alle onde elettromagnetiche e \emph{relativo}.\\
 Per calcolare quello relativo si usi:
 \begin{equation*}
-n_{2,1} = \frac{\sin\hat{i}}{\sin\hat{r}}
+n_{2,1} = \frac{\sin\hat{i}}{\sin\hat{r}} = \frac{n_2}{n_1}
 \end{equation*}
 Qui introduciamo anche due simboli: $\hat{i}$ e $\hat{r}$. Il primo ($\hat{i}$) indica l'angolo di
 \emph{incidenza} con il secondo mezzo e $\hat{r}$ l'angolo di rifrazione. Per capire meglio, si
@@ -1402,11 +1421,26 @@ caratteristiche:
 \frac{\sin\mathcolor{orange}{\hat{i}}}{\sin\mathcolor{cyan}{\hat{r}}} = \frac{v_1}{v_2} = 
 \frac{\lambda_1}{\lambda_2} = \frac{c}{v_2}
 \end{equation*}
-
+Da notare che $\dfrac{c}{v_2}$ vale solo se la luce arriva dal vuoto.\\
 Se invece ci troviamo in un caso di \emph{riflessione} ha questa proprietà:
 \begin{equation*}
 \mathcolor{orange}{\hat{i}} =\mathcolor{cyan}{\hat{r}}
 \end{equation*}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (O) at (0,0);
+		\coordinate (A) at (-1,1);
+		\coordinate (B) at (1,1);
+		\coordinate (M1) at (-1,0);
+		\coordinate (M2) at (1,0);
+		
+		\draw (-1,0) -- ++(2,0);
+		\draw[-stealth] (A) -- (O);
+		\draw[-stealth] (O) -- (B);
+		\markangle[orange]{O}{A}{M1}{0.5}{1.5}{$\hat{i}$}
+		\markangle[cyan]{O}{B}{M2}{0.5}{1.5}{$\hat{r}$}
+	\end{tikzpicture}
+\end{center}
 
 \subsubsection{Relazione di Snell}
 La relazione di Snell mette appunto in relazione gli indici di rifrazione con gli angoli $\hat{i}$ 
@@ -1500,7 +1534,7 @@ onde diversi.
 \begin{equation*}
 \left\lvert \overline{PS}_1-\overline{PS}_2 \right\rvert = k\mathcolor{cyan}{\lambda}
 \end{equation*}
-$\bar{PS}$: distanza tra l'origine dell'onda e il punto $P$\\
+$\overline{PS}$: distanza tra l'origine dell'onda e il punto $P$\\
 $k$: $k\in\mathbb{Z}$ indica il numero dell'interferenza che interessa, ovvero il numero dell'onda
 
 \subsubsection{Interferenza Distruttiva}
@@ -1508,7 +1542,7 @@ $k$: $k\in\mathbb{Z}$ indica il numero dell'interferenza che interessa, ovvero i
 \left\lvert \overline{PS}_1-\overline{PS}_2 \right\rvert = 
 (2k + 1)\frac{\mathcolor{cyan}{\lambda}}{2}
 \end{equation*}
-$\bar{PS}$: distanza tra l'origine dell'onda e il punto $P$\\
+$\overline{PS}$: distanza tra l'origine dell'onda e il punto $P$\\
 $k$: $k\in\mathbb{Z}$ indica il numero dell'interferenza che interessa, ovvero il numero dell'onda\\
 
 \subsection{Esperienza di Young}\label{subsec:onde:young}
@@ -2315,11 +2349,11 @@ v_d = \frac{i}{n\cdot A\cdot e}
 $n$: numero di elettroni di conduzione77
 $A$: sezione del conduttore
 
-\section{Esercizi}
+\section*{Esercizi}
 Questa sezione è dedicata ad alcuni esercizi con relativa risoluzione e spiegazione. Il suo scopo
 è quello di chiarire i concetti teorici con esempi pratici.
 
-\subsection{Consigli}
+\subsection*{Consigli}
 Ecco alcuni consigli che saranno utili nello svolgimento degli esercizi:
 \begin{enumerate}
 	\item \textbf{Leggere più volte il problema};
@@ -2339,9 +2373,9 @@ Ecco alcuni consigli che saranno utili nello svolgimento degli esercizi:
 	scambiare un segno o fare stupidi errori, ricontrollare scongiura la loro propagazione;
 \end{enumerate}
 
-\subsection{\hyperref[sec:cinematica]{Cinematica}}\label{ex:cinematica}
+\subsection*{\hyperref[sec:cinematica]{Cinematica}}\label{ex:cinematica}
 
-\subsubsection{\hyperref[subsec:cinematica:mru]{Moto Rettilineo Uniforme}}\label{ex:mru}
+\subsubsection*{\hyperref[subsec:cinematica:mru]{Moto Rettilineo Uniforme}}\label{ex:mru}
 \paragraph{Esercizio 1}
 Un poliziotto sta inseguendo un fuggitivo su una strada rettilinea. La velocità del fuggitivo è 
 costante a $v_f = 120\,\text{km/h}$ e il poliziotto è a distanza $d=500\,\text{m}$ e ha velocità
@@ -2364,7 +2398,7 @@ x = x_0 + v_ft\\x = v_pt
 180t = 120t + 500 \rightarrow t = \frac{50}{6} = \boxed{8.3\,\text{s}}
 \end{equation*}
 
-\subsubsection{\hyperref[subsec:cinematica:mrua]{Moto Rettilineo Uniformemente Accelerato}}
+\subsubsection*{\hyperref[subsec:cinematica:mrua]{Moto Rettilineo Uniformemente Accelerato}}
 \label{ex:mrua}
 
 \paragraph{Esercizio 1}
@@ -2402,7 +2436,7 @@ inferiore alla distanza percorsa in un secondo. Di conseguenza
 \boxed{h = 57\,\text{m}}
 \end{equation*}
 
-\subsubsection{\hyperref[subsec:cinematica:mp]{Moto Parabolico}}\label{ex:mp}
+\subsubsection*{\hyperref[subsec:cinematica:mp]{Moto Parabolico}}\label{ex:mp}
 \paragraph{Esercizio 1}
 Una pallina è lanciata a $\alpha = \ang{60}$ rispetto l'orizzntale. Atterra ad una distanza 
 $d=2\,\text{m}$ dal bordo di un tetto piatto che si trova ad una altezza $h = 20\,\text{m}$. La parete
@@ -2479,8 +2513,8 @@ v &= \sqrt{2\cdot9.81\cdot25}\approx
 \boxed{22.41\,\text{m/s}}
 \end{align*}
 
-\subsection{\hyperref[sec:dinamica]{Dinamica}}\label{ex:dinamica}
-\subsubsection{\hyperref[subsec:dinamica:piano]{Funi, carrucole, piani inclinati e attrito}}
+\subsection*{\hyperref[sec:dinamica]{Dinamica}}\label{ex:dinamica}
+\subsubsection*{\hyperref[subsec:dinamica:piano]{Funi, carrucole, piani inclinati e attrito}}
 \label{ex:dinamica:piano}
 \paragraph{Esercizio 1}
 Un corpo di massa $2\,\text{kg}$ scivola lungo un piano inclinato liscio (senza attrito). Determina \\
@@ -2629,7 +2663,7 @@ T_2-T_1 = m_2\cdot a \rightarrow T_2 = T_1 + m_2\cdot a \rightarrow\\
 T_2 = 30.4 + 90\cdot0.38 = \boxed{64.6\,\text{N}}
 \end{align*}
 
-\subsubsection{\hyperref[subsec:dinamica:potenziale]{Lavoro, Energia e Potenza}}\label{ex:potenziale}
+\subsubsection*{\hyperref[subsec:dinamica:potenziale]{Lavoro, Energia e Potenza}}\label{ex:potenziale}
 \paragraph{Esercizio 1}
 Un ragazzo su uno skateboard parte nel punto A rappresentato in figura, e sale fino ad un'altezza
 di $2.64\,m$ al di sopra dell'estremità della rampa nel punto B. Qual era il modulo della
@@ -2710,9 +2744,7 @@ rispetto alla verticale.
 \end{center}
 \divisor
 
-Dimostrare il primo punto è estremamente semplice e richiede\begin{flushleft}
-	
-\end{flushleft} solo nozioni di trigonometria. Il
+Dimostrare il primo punto è estremamente semplice e richiede solo nozioni di trigonometria. Il
 successivo disegno aiuterà a chiarire:
 \begin{center}
 	\begin{tikzpicture}[scale=2]
@@ -2795,7 +2827,7 @@ L = F\cdot S\cdot \cos\alpha \rightarrow L = 500\cdot9.81\cdot20\cdot\cos90 =
 \end{equation*}
 Notiamo allora che il lavoro rimane costante mentre la potenza raddoppia.
 
-\subsubsection{\hyperref[subsec:dinamica:impulso]{Impulso}}\label{ex:impulso}
+\subsubsection*{\hyperref[subsec:dinamica:impulso]{Impulso}}\label{ex:impulso}
 \paragraph{Esercizio 1}
 Una barca e i suoi occupanti di massa $M = 200\,\text{kg}$ contiene $10$ sacchi di carbone ciascuno di
 $5\,\text{kg}$. La barca è stazionaria nella sua posizione. Gli occupanti cercano di raggiungere la
@@ -2826,7 +2858,7 @@ La situazione è simile a quella di un treno in corsa da cui si spara un proietti
 Ci stiamo spostando ad una velocità pari a $\dfrac{1}{43}v_r$ e la sacca ha velocità in verso opposto
 pari a $v_r$.
 
-\subsubsection{\hyperref[subsec:dinamica:urti]{Urti}}\label{ex:urti}
+\subsubsection*{\hyperref[subsec:dinamica:urti]{Urti}}\label{ex:urti}
 \paragraph{Esercizio 1}
 Una mitragliatrice di massa $30\,\text{kg}$ (comprendente quella dei proiettili) è installata a bordo 
 di un carrello di massa $100\,\text{kg}$ e spara verso sinistra una sventagliata di $10$ proiettili 
@@ -2861,7 +2893,7 @@ h = \frac{280^2\cdot0.01^2}{2\cdot9.81\cdot(2+0.01)^2} \rightarrow h &= \frac{7.
 \boxed{0.09\,\text{m}}
 \end{align*}
 
-\subsubsection{\hyperref[subsec:dinamica:cm]{Centro di Massa}}\label{ex:cm}
+\subsubsection*{\hyperref[subsec:dinamica:cm]{Centro di Massa}}\label{ex:cm}
 \paragraph{Esercizio 1}
 Una racchetta da tennis può essere schematizzata in un cerchio di raggio $r$ e massa $m_1 $ a cui è 
 attaccato un bastone uniforme di lunghezza $l$ e massa $m_1$. Ponendo $r = l/2$ e $m_1=m_2$, trova il
@@ -2903,7 +2935,7 @@ x=\frac{\frac{m}{2}4r + m\cdot r + m\cdot 3r}{2m+\frac{m}{2}}\rightarrow\\
 x &= \frac{7mr}{\frac{5}{2}m} \rightarrow x = \boxed{\frac{14}{5}r}
 \end{align*}
 
-\subsubsection{\hyperref[subsec:dinamica:inerzia]{Momento Angolare ed Inerzia}}\label{ex:inerzia}
+\subsubsection*{\hyperref[subsec:dinamica:inerzia]{Momento Angolare ed Inerzia}}\label{ex:inerzia}
 \paragraph{Esercizio 1}
 Una penna di lunghezza $12\,\text{cm}$ viene appoggiata in posizione verticale su un piano con 
 attrito. Essa inizialmente ferma, cade ruotando attorno al punto di contatto con il piano. Calcola
@@ -2991,7 +3023,7 @@ Dato che ci vengono chiesti i giri, semplicemente dividiamo per $2\pi$
 \text{giri } = \frac{98.69}{2\pi} = \boxed{15.7\,\text{giri}}
 \end{equation*}
 	
-\subsection{\hyperref[sec:gravitazione]{Gravitazione}}\label{ex:gravitazione}
+\subsection*{\hyperref[sec:gravitazione]{Gravitazione}}\label{ex:gravitazione}
 \paragraph{Esercizio 1}
 La figura mostra tre corpi allineati che sono molto lontani da qualsiasi altro corpo. Le loro masse 
 sono:
@@ -3074,7 +3106,7 @@ x = \frac{54600\cdot8.823\cdot10^{10}}{3.152\cdot10^{12}} \approx \boxed{783\,\t
 $783\,\text{m/s}$ è sicuramente minore di $54.6\,Km/s$. Si noti che nella prima formula, abbiamo 
 convertito i $Km/s$ in $m/s$ per convenzione.
 
-\subsection{\hyperref[sec:idrodinamica]{Idrodinamica}}\label{ex:idrodinamica}
+\subsection*{\hyperref[sec:idrodinamica]{Idrodinamica}}\label{ex:idrodinamica}
 \paragraph{Esercizio 1}
 Un condotto orizzontale di sezione costante $A_1 = 200\,\text{cm}^2$ si strozza raggiungendo una 
 sezione $A_2 = 40\,\text{cm}^2$. Se la velocità e la pressione dell'acqua nella sezione larga sono 
@@ -3103,7 +3135,7 @@ p_2 = 1\cdot10^5 + \frac{1}{2}\cdot1000\cdot1^2 - \frac{1}{2}\cdot1000\cdot5^2 =
 Si è eliminato l'elemento $\delta gh$ in quanto i due pezzi di tubo si trovano alla stessa altezza
 e quindi non c'è variazione di altezza.
 
-\subsection{\hyperref[sec:termodinamica]{Termodinamica}}\label{ex:termodinamica}
+\subsection*{\hyperref[sec:termodinamica]{Termodinamica}}\label{ex:termodinamica}
 
 \paragraph{Esercizio 1}
 Un calorimetro contiene  $400\,\text{g}$ di acqua alla temperatura di $20\,\text{\textcelsius}$ e una 
@@ -3181,7 +3213,7 @@ di fusione $80\,\text{cal/g}$). Si chiede di determinare dopo \textbf{quanti cic
 totalmente sciolto.
 \divisor\improvement{Aggiungere risultato e soluzione ad esercizio 4}
 
-\subsubsection{\hyperref[subsec:termodinamica:entropia]{Entropia}}\label{ex:entropia}
+\subsubsection*{\hyperref[subsec:termodinamica:entropia]{Entropia}}\label{ex:entropia}
 Un blocco d ghiaccio che ha una massa $m = 450\,\text{g}$ e che si trova alla temperatura di 
 $0\,\text{\textcelsius}$ fonde completamente.
 \begin{itemize}
@@ -3257,9 +3289,9 @@ V_f' = V_ie^{\frac{2\Delta S}{nR}} \rightarrow V_f' = 0.0494\cdot e^{\frac{2\cdo
 \boxed{0.14\,\text{m}^3}
 \end{equation*}
 
-\subsection{\hyperref[sec:onde]{Onde}}\label{ex:onde}
+\subsection*{\hyperref[sec:onde]{Onde}}\label{ex:onde}
 
-\subsubsection{Formule generali}
+\subsubsection*{Formule generali}
 \paragraph{Esercizio 1}
 Una corda ha densità lineare $8.5\cdot 10^{-1}\,kg/m$ è sottoposta ad una tensione di 
 $280\,N$. La corda è lunga $1.8\,m$, è fissata agli estremi.\\
@@ -3311,7 +3343,7 @@ n = \frac{L}{\lambda} \rightarrow n = \frac{30}{0.78} \approx\boxed{38}
 Questo esercizio sfrutta il principio che un'emettitore sonoro, emette sempre alla stessa 
 frequenza, quindi le onde generate sono considerabili stazionarie.
 
-\subsubsection{\hyperref[subsec:onde:rifrazione]{Rifrazione}}\label{ex:rifrazione}
+\subsubsection*{\hyperref[subsec:onde:rifrazione]{Rifrazione}}\label{ex:rifrazione}
 \paragraph{Esercizio 1}
 Un vetro di spessore $d = 1.5\,\text{cm}$ ha un'indice di rifrazione rispetto all'aria di $1.62$. 
 \textbf{Trova lo scostamento} $s$, rispetto alla traiettoria originaria, che subisce un raggio 
@@ -3372,7 +3404,7 @@ s = \sin(\hat{i}-\hat{r})\cdot\Delta d \rightarrow \sin24\cdot\Delta d \approx \
 In questo esercizio, così come in molti altri del suo genere, si usa estensivamente trigonometria
 in quanto si possono facilmente individuare triangoli rettangoli all'interno di vetri.
 
-\subsubsection{\hyperref[subsec:onde:interferenza]{Interferenza}}\label{ex:interferenza}
+\subsubsection*{\hyperref[subsec:onde:interferenza]{Interferenza}}\label{ex:interferenza}
 \paragraph{Esercizio 1}
 Due altoparlanti A e B, che vibrano in fase alla frequenza di $85\,\text{Hz}$, sono posizionati come 
 in figura. Una ragazza è ferma nel punto C a $1.0\,\text{m}$ di distanza dall'altoparlante A. 
@@ -3428,7 +3460,7 @@ distanza tra A e B. Bisogna ancora aggiungere quella da A all'altezza. Quindi
 \overline{AB} = x + \cos(60) = 2.87 + 0.5 = \boxed{3.37\,\text{m}}
 \end{equation*}
 
-\subsubsection{\hyperref[subsec:onde:young]{Esperienza di Young}}\label{ex:young}
+\subsubsection*{\hyperref[subsec:onde:young]{Esperienza di Young}}\label{ex:young}
 \paragraph{Esercizio 1}
 Nell'interferenza tra due fenditure poste a distanza $d = 25\,\text{cm}$ tra loro, si forma su uno 
 schermo di distanza $l = 1\,\text{m}$ una figura il cui secondo massimo di intensità si trova ad $x = 
@@ -3477,7 +3509,7 @@ E ora non ci resta che inserire i valori
 Ovviamente con migliori approssimazioni si ottengono risultati più simili a $99$ ma un errore di
 $1/100$ è accettabile.
 
-\subsubsection{\hyperref[subsec:onde:suono]{Suono}}\label{ex:suono}
+\subsubsection*{\hyperref[subsec:onde:suono]{Suono}}\label{ex:suono}
 
 \paragraph{Esercizio 1}
 Due altoparlanti sono montati su una giostra di raggio $9.01\,\text{m}$. Quando la giostra è ferma, i 
@@ -3551,7 +3583,7 @@ L = 10\log_{10}\frac{I}{I_0} \rightarrow L_2 = 10\log_{10}\frac{2\cdot10^{-5}}{1
 \approx\boxed{83\,\text{dB}}
 \end{equation*}
 
-\subsubsection{\hyperref[subsec:onde:lenti]{Lenti}}\label{ex:lenti}
+\subsubsection*{\hyperref[subsec:onde:lenti]{Lenti}}\label{ex:lenti}
 \paragraph{Esercizio 1}
 Due lenti sono disposte come in figura. Un fiammifero di altezza $2\,\text{cm}$ si trova a 
 $5\,\text{cm}$ alla destra di una lente A che ha distanza focale $\overline{C_AF_A}$ pari a 
@@ -3616,7 +3648,7 @@ q = \boxed{-10\,\text{cm}}
 Il risultato è negativo in quanto si trova dietro la prima lente, nostro punto di riferimento per
 questo esercizio.
 
-\subsection{\hyperref[sec:elettrostatica]{Elettrostatica}}\label{ex:elettrostatica}
+\subsection*{\hyperref[sec:elettrostatica]{Elettrostatica}}\label{ex:elettrostatica}
 \paragraph{Esercizio 1}
 Le armature di un condensatore piano hanno una superficie $S = 1\,m^2$ e distano $1\,\text{cm}$. Tra 
 di loro c'è il vuoto. La differenza di potenziale applicata ai capi delle armature è $V = 
@@ -3740,7 +3772,7 @@ v_i = \sqrt{2\cdot6.1\cdot10^4\cdot5} \approx \boxed{784\,\text{m/s}}
 \end{align*}
 
 
-\subsection{\hyperref[sec:circElettr]{Circuiti Elettrici}}\label{ex:circElettr}
+\subsection*{\hyperref[sec:circElettr]{Circuiti Elettrici}}\label{ex:circElettr}
 \paragraph{Esercizio 1}
 Se la corrente nel resistore di $6\,\Omega$ della figura è di $2\,A$:
 \begin{itemize}[label={$\bullet$}]
