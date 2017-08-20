@@ -1475,10 +1475,14 @@ e $\hat{r}$.
 	% In line
 	\draw[-latex] (-1.5,-2) -- (In);
 	\draw[-latex] (Out) -- (1.5, 2);
+	\draw[dashed] (In) -- (0,1);
+	\draw[|<->|, olive] (0,1) -- (0.6,0.65)
+		node[pos=0.5, below left]{$\gamma$};
+	
 	\draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
 		node[pos=0.5, above]{$\delta$};
 	\draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
-		node[pos=0.5, left]{$d$};
+			node[pos=0.5, left]{$d$};
 	\end{tikzpicture}
 \end{center}
 
@@ -1487,13 +1491,16 @@ e $\hat{r}$.
 	\mathcolor{orange}{\hat{i}}-\mathcolor{cyan}{\hat{r}})}
 {\cos\mathcolor{cyan}{\hat{r}}}
 \end{equation*}
+\begin{equation*}
+\mathcolor{olive}{\gamma} = \mathcolor{red}{d}\tan\mathcolor{cyan}{\hat{r}}
+\end{equation*}
 
 \subsubsection{Angolo limite}
 L'angolo limite è quell'angolo che segna se si tratta di un fenomeno di rifrazione o di riflessione.
-
 \begin{equation*}
 \hat{a}_l = \arcsin\frac{n_2}{n_1}
 \end{equation*}
+Se viene superato l'angolo limite avviene il fenomeno di rifrazoine assoluta.
 
 \subsection{Interferenza}\label{subsec:onde:interferenza}
 Il fenomeno dell'interferenza avviene quando due fonti distinte emettono onde e queste impattano
