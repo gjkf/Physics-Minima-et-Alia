@@ -1,4 +1,4 @@
-\documentclass[8pt, a4paper, twocolumn]{extarticle}
+\documentclass[8pt, a4paper, twocolumn, usenames, dvipsnames]{extarticle}
 
 \usepackage{extsizes} % Smaller text
 \usepackage[italian]{babel} % Italian support
@@ -397,6 +397,19 @@ $\Delta\mathcolor{blue}{v}$: variazione di velocità\\
 $T$: periodo del moto\\
 $\mathcolor{orange}{\omega}$: velocità angolare\\
 $\mathcolor{red}{r}$: raggio della circonferenza
+
+\subsubsection{Forza centrifuga/centripeta}
+Nonostante siano forze (e quindi argomento di dinamica) sono strettamente collegate al MCU. Le due 
+forze sono quelle che spingono verso l'interno o l'esterno un corpo entrato in rotazione.
+\begin{equation*}
+F_c = m\cdot a_c
+\end{equation*}
+$a_c$: accelerazione centrifuga\\
+\\
+Se nel caso di un'auto in curva, la forza centrifuga è pari a
+\begin{equation*}
+F_c = \mu\cdot F_p = F_{\text{attrito}}
+\end{equation*}
 
 \subsection{Moto Armonico}
 Molte delle formule del moto armonico sono ricavabili dal moto circolare.
@@ -1532,10 +1545,11 @@ Per gli esercizi si vada \hyperref[ex:interferenza]{qui}.
 	\end{tikzpicture}
 \end{center}
 
-In questa immagine sono stati segnati 3 punti. Nel punto \textcolor{red}{A} si ha un'interferenza 
-\textbf{distruttiva}. Nel punto \textcolor{orange}{B} si ha un'interferenza \textbf{costruttiva}.
-Infine nel punto \textcolor{blue}{C} non si ha interferenza in quanto si incontrano due tipi di
-onde diversi.
+In questa immagine sono stati segnati 3 punti. Nel punto \textcolor{red}{A} e nel punto 
+\textcolor{orange}{B} si ha un'interferenza \textbf{costruttiva} in quando due tipi uguali di onde
+si incontrano.\\
+Nel punto \textcolor{blue}{C} si ha un'interferenza \textbf{distruttiva} in quando due tipi di onde
+diversi si incontrano.
 
 \subsubsection{Interferenza Costruttiva}
 \begin{equation*}
@@ -1607,11 +1621,11 @@ viene riportato un diagramma che rappresenta semplicemente la sua struttura.
 		% Bar on right
 		\coordinate (M) at ($(MidBar) + (0, 1.5)$);
 		\foreach \y/\c in {0, 0.4, 0.8, ..., 3}{
-			\filldraw[magenta!50] 
+			\filldraw[Violet] 
 				($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
 		}
 		\foreach \y/\c in {0.2, 0.6, 1, ..., 2.6}{
-			\filldraw[cyan] 
+			\filldraw[Goldenrod!50] 
 				($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
 		}
 		\draw ($(MidBar) + (0,1.5)$) -- ++(0.5, 0) -- ++(0, -3) -- ++(-0.5, 0) -- cycle;
@@ -1619,8 +1633,8 @@ viene riportato un diagramma che rappresenta semplicemente la sua struttura.
 		\draw[|<->|, teal] ($(M) + (0.9, -0.2)$) -- ++(0, -0.2)
 			node[pos=0.5, right]{$\frac{\mathcolor{blue}{l}\lambda}{\mathcolor{red}{d}}$};
 		
-		\node[magenta] (C) at (1.5, -2) {Distruttiva};
-		\node[cyan] (C) at (1.5, -2.5) {Costruttiva};
+		\node[Violet](C) at (1.5, -2) {Distruttiva};
+		\node[Goldenrod] (C) at (1.5, -2.5) {Costruttiva};
 	\end{tikzpicture}
 \end{center}
 
@@ -1667,8 +1681,8 @@ Se l'angolo è riferito ad una frangia distruttiva è anche
 \Delta x = (2n+1)\mathcolor{teal}{\lambda}
 \end{equation*}
 
-\subsection{Lenti}\label{subsec:onde:lenti}
-Nonostante le lenti abbiano in definitiva 2 formule totali, meritano una sottosezione a sè in quanto
+\subsection{Lenti e Specchi}\label{subsec:onde:lenti}
+Nonostante le lenti abbiano in definitiva 3 formule totali, meritano una sottosezione a sè in quanto
 può non essere sempre immediato identificare oggetti ed immagini. Il disegno sotto aiuterà a capire.
 
 \begin{center}
@@ -1706,7 +1720,15 @@ Da quest'immagine possiamo capire due caratteristiche fondamentali:
 	\item Una linea passante per il centro della lente continuerà il suo percorso senza deviazioni;
 \end{itemize}
 Questo ci porta alle formule fondamentali.\\
-Per gli esercizi si vada \hyperref[ex:lenti]{qui}.
+Per gli esercizi si vada \hyperref[ex:lenti]{qui}.\\
+Gli specchi funzionano nello stesso modo delle lenti, quindi si possono accorpare in questa 
+sottosezione.\\
+\\
+Per lenti sottili, si considera la convenzione che la distanza focale $f > 0$ per lenti convergenti
+e $f<0$ per lenti divergenti. La distanza dell'oggetto $p$ è sempre positiva e la distanza dell'
+immagine è positiva quando $q$ è dall'altro lato della lente.\\
+Un'immagine virtuale ha $q < 0$. L'ingrandimento è positivo per un'immagine dritta e negativo per una
+rovesciata.
 
 \subsubsection{Equazione generale}
 \begin{equation*}
@@ -3113,6 +3135,13 @@ x = \frac{54600\cdot8.823\cdot10^{10}}{3.152\cdot10^{12}} \approx \boxed{783\,\t
 $783\,\text{m/s}$ è sicuramente minore di $54.6\,Km/s$. Si noti che nella prima formula, abbiamo 
 convertito i $Km/s$ in $m/s$ per convenzione.
 
+\paragraph{Esercizio 3}
+Un pianeta che non ruota ha raggio $R$ ha un'orbita circolare di raggio $a$ attorno al sole di massa 
+$M$. Dimostra che sul pianeta l'effettiva attrazione gravitazionale $g_{eff}$ è minima ai punti più
+vicini e lontani dal sole e massima nei punti equidistanti da questi due.
+\divisor
+
+
 \subsection*{\hyperref[sec:idrodinamica]{Idrodinamica}}\label{ex:idrodinamica}
 \paragraph{Esercizio 1}
 Un condotto orizzontale di sezione costante $A_1 = 200\,\text{cm}^2$ si strozza raggiungendo una 
@@ -3141,6 +3170,11 @@ p_2 = 1\cdot10^5 + \frac{1}{2}\cdot1000\cdot1^2 - \frac{1}{2}\cdot1000\cdot5^2 =
 
 Si è eliminato l'elemento $\delta gh$ in quanto i due pezzi di tubo si trovano alla stessa altezza
 e quindi non c'è variazione di altezza.
+
+\paragraph{Esercizio 2}
+Un recipiente largo è pieno di acqua fino ad una profondità $H$. Si fa un piccolo foro ad una 
+distanza $h$ dal livello dell'acqua e un flusso di acqua esce. A che distanza arriva il flusso?
+\divisor
 
 \subsection*{\hyperref[sec:termodinamica]{Termodinamica}}\label{ex:termodinamica}
 
@@ -3654,6 +3688,10 @@ q = \boxed{-10\,\text{cm}}
 \end{align*}
 Il risultato è negativo in quanto si trova dietro la prima lente, nostro punto di riferimento per
 questo esercizio.
+
+\paragraph{Esercizio 2}
+
+
 
 \subsection*{\hyperref[sec:elettrostatica]{Elettrostatica}}\label{ex:elettrostatica}
 \paragraph{Esercizio 1}
