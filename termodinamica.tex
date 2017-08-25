@@ -1,0 +1,319 @@
+%!TEX ROOT=formularioFisica.tex
+
+\section{Termodinamica}\label{sec:termodinamica}
+La termodinamica si occupa di studiare come un corpo si modifica alla variazione di 
+\emph{temperatura}, \emph{pressione} e \emph{volume}.\\
+Si tenga conto che $t$ rappresenta la temperatura in \textcelsius\ e $T$ in $K$.\\
+Per gli esercizi si vada \hyperref[ex:termodinamica]{qui}.
+
+\subsection{Dilatazione}
+Ci sono 3 tipi di dilatazione dipendentemente da quante dimensioni coinvolge.
+
+\subsubsection{Lineare}
+\begin{equation*}
+l = l_0\left(1+\lambda\Delta t\right)
+\end{equation*}
+\begin{equation*}
+\Delta l = l_0\lambda\Delta t
+\end{equation*}
+$\lambda$: coefficiente di dilatazione lineare
+
+\subsubsection{Superficiale}
+\begin{equation*}
+S = S_0\left(1+\beta\Delta t\right)
+\end{equation*}
+\begin{equation*}
+\Delta S = S_0\beta\Delta t
+\end{equation*}
+$\beta$: $2\lambda$, coefficiente di dilatazione superficiale
+
+\textbf{Volumetrica}
+\begin{equation*}
+V = V_0\left(1+\alpha\Delta t\right)
+\end{equation*}
+\begin{equation*}
+\Delta V = V_0\alpha\Delta t
+\end{equation*}
+$\alpha$: $3\lambda$, coefficiente di dilatazione superficiale\\
+
+\subsection{Leggi di Gay-Lussac e Boyle-Mariotte}
+Queste 3 leggi definiscono la base della termodinamica e vengono usate in casi particoalari.
+
+\subsubsection{Prima legge di Gay-Lussac}
+Da usarsi quando $p = \text{costante}$, trova il nuovo volume al variare della temperatura.
+\begin{equation*}
+V = \frac{V_0}{T_0}T
+\end{equation*}
+
+\subsubsection{Seconda legge di Gay-Lussac}
+Da usarsi quando $V = \text{costante}$, trova la nuova pressione al variare della temperatura.
+\begin{equation*}
+p = \frac{p_0}{T_0}T
+\end{equation*}
+
+\subsubsection{Legge di Boyle-Mariotte}
+Da usarsi quando $T = \text{costante}$, definisce un prodotto costante tra volume e pressione.
+\begin{equation*}
+pV = \text{costante}
+\end{equation*}
+Questa formula diventa specialmente utile quando si hanno 2 situazioni e si puo mettere a sistema.
+
+\subsection{Gas}
+Questa sottosezione si dedicherà agli studi effettuati sui gas.
+
+\subsubsection{Equazione di stato dei gas perfetti}
+\begin{equation*}
+pV = nRT
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+$n$: numero di moli\\
+
+\subsubsection{Proprietà dei Gas}
+\begin{equation*}
+\frac{p_1V_1}{T_1} = \frac{p_2V_2}{T_2}
+\end{equation*}
+Questa proprietà è indispensabile in alcuni esercizi in quanto mette in relazione due situazioni e
+permette di trovare tutte le caratteristiche.
+
+\subsection{Calorimetria}
+Questa sottosezione è dedicata a descrivere le formule relative alla quantità di calore e capacità
+termica.
+
+\subsubsection{Capacità termica}
+Indica quanto velocemente un corpo assorbe calore.
+\begin{equation*}
+C = \frac{Q}{\Delta T}
+\end{equation*}
+$Q$: quantità di calore assorbito dal corpo\\
+$\Delta T$: variazione di temperatura\\
+
+\subsubsection{Calore specifico}
+\begin{equation*}
+c = \frac{C}{m} = \frac{Q}{m\Delta T}
+\end{equation*}
+$C$: capacità termica
+
+\subsubsection{Quantità di calore}
+\begin{equation*}
+Q = C\Delta t = mc\Delta T
+\end{equation*}
+$C$: capacità termica
+
+\subsubsection{Temperatura di equilibrio}
+La temperatura di equilibrio è la temperatura che raggiungono due corpi a contatto fra di loro.
+\begin{equation*}
+t_e = \frac{m_1c_1t_1 + m_2c_2t_2}{m_1c_2 + m_2c_2}
+\end{equation*}
+$_1$: relativo al primo corpo\\
+$_2$: relativo al secondo corpo\\
+\\
+Si ricordi che se o le masse o i calori specifici si possono eliminare fra di loro e di conseguenza 
+semplificare la formula.
+
+\subsubsection{Calore latente}
+Il calore latente è la quantità di calore scambiata nel passaggio di fase di un corpo.
+\begin{equation*}
+Q_L = c_Lm
+\end{equation*}
+$c_L$: calore specifico latente, diverso dal \emph{calore specifico}
+
+\subsection{Teoria Cientico-Molecolare}
+La teoria cinetico-molecolare descrive i movimenti delle molecole all'interno di un gas.\\
+Una lettera che si trova molto spesso in questa sottosezione e nelle successive è la $l$, ovvero
+il grado di libertà del corpo.\\
+\begin{center}
+	\begin{tabular}{c | c}
+		$\boldsymbol{l}$ & \textbf{Tipo di Gas}\\ \hline
+		$3$ & Monoatomico \\ \hline
+		$5$ & Biatomico\\
+	\end{tabular}
+\end{center}
+
+\subsubsection{Forza in una mole}
+\begin{equation*}
+F_{\text{mole}} = \frac{N}{3}\frac{m}{l}\left\langle v\right\rangle^2
+\end{equation*}
+$N$: numero di molecole\\
+$\left\langle v\right\rangle$: velocità media
+
+\subsubsection{Pressione}
+\begin{equation*}
+p = \frac{N}{3}\frac{m}{V}\left\langle v\right\rangle^2 = \frac{2}{3}\frac{NE_c}{V}
+\end{equation*}
+$N$: numero di molecole\\
+$V$: volume\\
+$\left\langle v\right\rangle$: velocità media\\
+$E_c$: energia cinetica\\
+
+\subsubsection{Quantità di moto della parete}
+\begin{equation*}
+\Delta\vec{q} = 2m\left\langle \vec{v}\right\rangle
+\end{equation*}
+
+\subsubsection{Energia cinetica}
+\begin{equation*}
+E_c = \frac{l}{2}\frac{R}{N}T = \frac{l}{2}k_BT
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+\hyperref[tab:kB]{$k_B$}: $1.318\cdot10^{-23}\,\text{J/K}$\\
+$T$: temperatura in Kelvin
+
+\subsubsection{Energia interna}
+\begin{equation*}
+U = \sum\limits_{i=0}^{n} E_{c_i} + \sum\limits_{i=0}^{n} U_{g_i} = \frac{1}{2}nRT
+\end{equation*}
+$U_g$: potenziale gravitazionale, se è un gas perfetto vale $0$\\
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+
+\subsection{Termodinamica (Lavoro)}
+
+\subsubsection{Primo principio della termodinamica}
+\begin{equation*}
+Q = L+\Delta U
+\end{equation*}
+
+\subsubsection{Lavoro di un'isobara}
+Un'isobara è una trasforamazione che mantiene costante la pressione.
+\begin{equation*}
+L = p\Delta V
+\end{equation*}
+\begin{equation*}
+Q = \frac{2+l}{2}nR\Delta T
+\end{equation*}
+\begin{equation*}
+c_p = \frac{l+2}{2}R
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+
+\subsubsection{Lavoro di un'isoterma}
+Un'isoterma è una trasformazione che mantiene costante la temperatura.
+\begin{equation*}
+L = Q = nRT\ln\frac{V_2}{V_1}
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+
+\subsubsection{Lavoro di un'isocora}
+Un'isocora è una trasformazione che mantiene costante il volume.
+\begin{equation*}
+L = 0
+\end{equation*}
+\begin{equation*}
+Q = \Delta U = \frac{l}{2}nR\Delta T
+\end{equation*}
+\begin{equation*}
+c_V = \frac{l}{2}R
+\end{equation*}
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+
+\subsubsection{Lavoro di un ciclo}
+\begin{equation*}
+L = \sum\limits_{i=0}^{n} Q_i
+\end{equation*}
+
+\subsubsection{Lavoro di un'adiabatica}
+Un'adiabatica è una trasformazione che non cede calore all'esterno.
+\begin{equation*}
+L = -\Delta U
+\end{equation*}
+
+\subsubsection{Equazione di Meyer}
+\begin{equation*}
+c_p - c_V = R
+\end{equation*}
+$c$: calore specifico molare
+
+\subsubsection{Equazioni di Poisson}
+\begin{equation*}
+pV^\gamma = \text{costante}
+\end{equation*}
+\begin{equation*}
+V_1^{\gamma-1}T_1 = V_2^{\gamma-1}T_2
+\end{equation*}
+\begin{equation*}
+p_1^{1-\gamma}T_1^\gamma = p_2^{1-\gamma}T_2^\gamma
+\end{equation*}
+$\gamma$: rapporto tra $c_p$ e $c_V$, si veda la seguente tabella:
+
+\begin{center}
+	\begin{tabular}{c | c | c | c}
+		Tipo di gas & $c_p$ & $c_V$ & $\gamma=\frac{c_p}{c_V}$\\ \hline
+		Monoatomico & $\frac{5}{2}R$ & $\frac{3}{2}R$ & $1.\bar{6}$\\ \hline
+		Biatomico & $\frac{7}{2}R$ & $\frac{5}{2}R$ & $1.4$\\
+	\end{tabular}
+\end{center}
+
+\subsubsection{Macchina di Carnot}
+\begin{equation*}
+\mu = 1-\frac{Q_1}{Q_2} = \frac{L}{Q_2}
+\end{equation*}
+\begin{equation*}
+\mu_c = 1 - \frac{T_1}{T_2}
+\end{equation*}
+La prima formula definisce il rendimento ($\mu$) di una qualsiasi macchina termica, la seconda solo
+per una macchina di Carnot.
+\begin{equation*}
+P = \frac{Q\mu}{t}
+\end{equation*}
+$P$: potenza\\
+$\mu$: rendimento
+
+\subsection{Entropia}\label{subsec:termodinamica:entropia}
+Per definire l'entropia, definiamo la \textbf{disuguaglianza di Clausius} che ci aiuterà a capire la 
+definizione di entropia.
+\begin{equation*}
+\sum\limits_{i = 1}^{n}\frac{\Delta Q_i}{T_i} \leq 0
+\end{equation*}
+se il ciclo è reversibile si ha questa forma
+\begin{equation*}
+\left(\sum\limits_{i = 1}^{n}\frac{\Delta Q_i}{T_i}\right)_\text{rev} = 0
+\end{equation*}
+L'\textbf{entropia} è in definitiva una formulazione più generale del secondo principio della 
+termodinamica che sia appropriato per ogni trasformazione. L'entropia è una funzione di stato.\\
+Per uno stato $C$ e uno stato di riferimento $R$ per cui $S(R) = 0\,\text{J/K}$, l'entropia è così 
+definita:
+\begin{equation*}
+S(C) = S(C) - S(R) = \left(\sum\limits_{i = 1}^{n}\frac{\Delta Q_i}{T_i}\right)_{\substack{R\to C\\
+\text{rev}}}
+\end{equation*}
+Per gli esercizi, si vada \hyperref[ex:entropia]{qui}.
+
+\subsubsection{Proprietà dell'entropia}
+L'entropia è una grandezza estensiva, ovvero che preso un sistema $\Omega$ che sia l'unione di due
+sottositemi indipendenti $\Omega_1$ e $\Omega_2$ ($\Omega = \Omega_1 \cup \Omega_2$), la sua entropia
+è pari a
+\begin{align*}
+S(C) = \left(\sum\limits_{i=1}^{n}\frac{\Delta Q_i}{T_i}\right)_{\substack{R\to C\\\text{rev}}} &=\\ 
+\left(\sum\limits_{i=1}^{n}\frac{\Delta Q_i}{T_i}\right)^{\Omega_1}_{\substack{R\to C\\\text{rev}}} &+
+\left(\sum\limits_{i=1}^{n}\frac{\Delta Q_i}{T_i}\right)^{\Omega_2}_{\substack{R\to C\\\text{rev}}}
+\end{align*}
+
+\subsubsection{Entropia di un sistema isolato}
+In un sistema isolato l'entropia ha una variazione pari a \textbf{zero} solo se la trasformazione è
+\textit{reversibile}, \textbf{maggiore di zero} altrimenti.
+
+\subsubsection{Entropia dell'universo}
+L'entropia dell'universo è sempre in crescita in quanto non c'è un "ambiente esterno".
+
+\subsubsection{Entropia di un sistema non isolato}
+Se una trasformazione reale provoca in un un sistema una diminuzione di entropia pari a 
+$\vert \Delta S \vert$, nel resto dell'universo è maggiore di $\vert \Delta S \vert$.
+
+\subsubsection{Macrostati e microstati}
+Un \emph{microstato} è una precisa combinazione di elementi microscopici, un \emph{macrostato} è 
+descritto dalle variabili macroscopiche che ne descrivono le proprietà.\\
+Ad esempio: un macrostato per un sistema termodinamico è descritto da almeno due delle tipiche 
+variabili (pressione, volume e temperatura). Un microstato invece è lo stato di ogni molecola di gas 
+nel sistema.\\
+Un microstato corrisponde ad un solo macrostato, un macrostato può essere descritto da più macrostati.
+Si noti anche che più un macrostato è disordinato, più è probabile che si realizzi spontaneamente.
+
+\subsubsection{Molteplicità di un macrostato}
+Sia $A$ un macrostato. Si definisce $W(A)$ come \textbf{molteplicità}, ovvero il numero di microstati 
+distinti che corrispondono ad $A$.
+
+
+\subsubsection{Equazione di Boltzman}
+\begin{equation*}
+S(A) = k_B\ln W(A)
+\end{equation*}
+\hyperref[tab:kB]{$k_B$}: $1.318\cdot10^{-23}\,\text{J/K}$

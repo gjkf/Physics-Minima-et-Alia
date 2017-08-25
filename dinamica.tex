@@ -1,0 +1,321 @@
+%!TEX ROOT=formularioFisica.tex
+
+\section{Dinamica}\label{sec:dinamica}
+La dinamica si occupa di studiare le forze che interrcorrono tra corpi e che li fanno muovere.\\
+Per gli esercizi si vada \hyperref[ex:dinamica]{qui}.
+\subsection{Secondo Principio della Dinamica}
+\begin{equation*}
+\vec{F} = m\vec{a}
+\end{equation*}
+
+\subsection{Attrito}
+Ci sono vari tipi di attrito: \emph{statico}, \emph{dinamico} e \emph{volvente} ma tutti si basano
+sullo stessa idea: moltiplicare il coefficiente di attrito tra le superfici per la forza premente.
+\begin{equation*}
+F_d = \mu_dF_p
+\end{equation*}
+\begin{equation*}
+F_s = \mu_sF_p
+\end{equation*}
+$F_p$: forza premente
+
+\subsection{Piano Inclinato}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (5,0);
+		\coordinate (C) at (0,2);
+		\coordinate (P) at (1, 1.8); % Block center
+		
+		\draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
+		\draw[thin] ($(P) + (-0.2,0.3)$) -- ($(P) + (-0.4,-0.01)$) -- 
+		($(P) + (0.2,-0.25)$) -- ($(P) + (0.3,0.1)$) -- cycle; % Block
+		\draw[-latex, very thick, red] (P) -- ($(P) + (0, -0.5)$)
+			node[pos=0.5, below right]{$\vec{P}$}; % P
+		\draw[-latex, thick, blue] (P) -- ($(P) + (-0.2, -0.45)$)
+			node[pos=0.5, left]{$P_\perp$}; % P_perp
+		\draw[-latex, thick, cyan] (P) -- ($(P) + (0.3, -0.15)$)
+			node[pos=0.5, above right]{$P_\Vert$}; % P_par
+		\filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
+		\draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\mathcolor{blue}{P_\perp} = \mathcolor{red}{P}\cos\mathcolor{orange}{\alpha}
+\end{equation*}
+\begin{equation*}
+\mathcolor{cyan}{P_\Vert} = m\cdot a_x = \mathcolor{red}{P}\sin\mathcolor{orange}{\alpha}
+\end{equation*}
+\begin{equation*}
+a_x = g\sin\mathcolor{orange}{\alpha}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$m$: massa del corpo\\
+$a_x$: accelerazione sul piano inclinato\\
+$\mathcolor{red}{\vec{P}}$: vettore della forza peso. Si noti che $\mathcolor{red}{P}$ è il suo 
+modulo\\
+$\mathcolor{orange}{\alpha}$: alzo del piano
+
+\subsection{Funi e carrucole}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (5,0);
+		\coordinate (C) at (0,2);
+		\coordinate (D) at ($(C) + (-0.2, 0.2)$); % Circle center
+		\coordinate (M1) at ($(D) + (-0.2, -0.5)$);
+		\coordinate (M2) at ($(D) + (1, -0.25)$);
+		
+		\draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
+		\filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
+		\draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
+		\filldraw[fill=teal!20, very thin] (D) circle (0.2)
+			node[teal]{$m$}; % Circle
+		\draw[very thin] (D) -- (C); % Line from C to circle
+		\draw[very thin] ($(D) + (-0.2, 0)$) -- (M1);
+		\draw[red] ($(M1) + (-0.2, 0)$) -- ($(M1) + (-0.2, -0.3)$) -- ($(M1) + (0.2, -0.3)$) --
+		($(M1) + (0.2, 0)$) -- cycle
+			node[pos=0.5, below]{$m_1$}; % Box 1
+		\draw[very thin] ($(D) + (0.15, 0.15)$) -- (M2);
+		\draw[blue] ($(M2) + (0.1, 0.2)$) -- ($(M2) + (0.5, 0.01)$) -- ($(M2) + (0.35, -0.4)$) --
+		($(M2) + (-0.1, -0.2)$) -- cycle
+			node[pos=0, right]{$m_2$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+a = \frac{\mathcolor{red}{m_1}g - \mathcolor{blue}{m_2}g\sin\mathcolor{orange}{\alpha}}
+{\mathcolor{red}{m_1}+\mathcolor{blue}{m_2} + \frac{\mathcolor{teal}{m}}{2}}
+\end{equation*}
+Si noti che questa formula è particolare per questo caso. Si noti anche che 
+$\dfrac{\mathcolor{teal}{m}}{2}$ è
+da aggiungere solo se si ha la massa della carrucola e quindi il suo peso non è trascurabile.\\
+Per una formula più generale si usi
+\begin{equation*}
+a= \frac{\sum \vec{F}}{\sum m}
+\end{equation*}
+Per gli esercizi relativi a queste tre sottosezioni, si vada \hyperref[ex:dinamica:piano]{qui}.
+\label{subsec:dinamica:piano}
+
+\subsection{Lavoro, Energia e Potenza}\label{subsec:dinamica:potenziale}
+\begin{equation*}
+\vec{L} = \vec{F} \cdot \vec{S} = \Delta E
+\end{equation*}
+\begin{equation*}
+E_c = \frac{1}{2}mv^2
+\end{equation*}
+\begin{equation*}
+P = \frac{L}{t}
+\end{equation*}
+\begin{equation*}
+U = mgh
+\end{equation*}
+\begin{equation*}
+U_1 + E_1 = U_2 + E_2
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$L$: lavoro\\
+$F$: forza\\
+$S$: spostamento\\
+$E_c$: energia cinetica\\
+$P$: potenza\\
+$U$: energia potenziale\\
+$m$: massa del corpo\\
+$v$: velocità del corpo\\
+\\
+Il \emph{Lavoro} è un vettore che si compone della forza applicata sul corpo e del suo spostamento.\\
+L'\emph{Enegia cinetica} è l'energia di un corpo in movimento.\\
+La \emph{Potenza} indica la quantità di energia scambiata nel tempo.\\
+L'\emph{Energia potenziale} è quanto energia potrebbe generare quel corpo. Dipende dall'altezza.\\
+
+Queste sono formule generali, che danno le definizioni. Negli esercizi verrà particolarmente utile
+$U_1 + E_1 = U_2 + E_2$ in quanto permette di trovare la velocità o la massa o l'altezza di un corpo
+in due diverse situazioni.\\
+Per gli esercizi si vada \hyperref[ex:potenziale]{qui}.\\\\
+Vediamo ora alcune formule particolari:
+\subsubsection{Legge di Hooke e energia elastica}
+\begin{equation*}
+\vec{F} = -k\vec{x}
+\end{equation*}
+\begin{equation*}
+U_e = \frac{1}{2}k\Delta x^2
+\end{equation*}
+$k$: costante elastica della molla\\
+$\vec{x} \approx \Delta x$: variazione di posizione\\
+\\
+Queste formule sono relative a molle.\\
+
+\subsection{Quantità di moto e teorema dell'impulso}\label{subsec:dinamica:impulso}
+\label{subsec:qtaMoto}
+\begin{equation*}
+\vec{q} = m\vec{v}
+\end{equation*}
+\begin{equation*}
+\vec{I} = \Delta \vec{q} = \vec{F}\Delta t
+\end{equation*}
+$m$: massa del corpo\\
+$\vec{v}$: velocità del corpo\\
+$\vec{F}$: forza applicata sul corpo\\
+$t$: tempo\\
+\\
+La quantità di moto indica la forza necessaria a fermare un oggetto in movimento in un dato lasso di
+tempo.\\
+Per gli esercizi si vada \hyperref[ex:impulso]{qui}.
+
+\subsection{Urti}\label{subsec:dinamica:urti}
+Si distinguono 2 tipi di urti: \emph{elastici} e \emph{anaelastici}.\\
+\\
+Negli urti \emph{elastici} i due corpi collidono ma rimangono separati. Ad esempio due palle
+da biliardo.\\
+Negli urti \emph{anaelastici} i due corpi che collidono rimangono attaccati l'uno all'altro,
+come nel caso di un pesce che ne mangia un alro o di un proiettile che colpisce un sacco.\\
+
+Per gli esercizi si vada \hyperref[ex:urti]{qui}.
+
+\subsubsection{Elastico}
+\begin{equation*}
+v_{1_f} = \frac{v_{1_i}\left(m_1-m_2\right) + 2m_2v_{2_i}}{m_1+m_2}
+\end{equation*}
+\begin{equation*}
+v_{2_f} = \frac{2m_1v_{1_i} + v_{2_i}\left(m_2-m_1\right)}{m_1+m_2}
+\end{equation*}
+$_1$: relativo al primo corpo\\
+$_2$: relativo al secondo corpo
+
+\subsubsection{Anaelastico}
+\begin{equation*}
+m_1v_1 + m_2v_2 = v(m_1+m_2)
+\end{equation*}
+$_1$: relativo al primo corpo\\
+$_2$: relativo al secondo corpo
+
+\subsubsection{Proiettile contro un corpo}
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (ROT) at (1, 2);
+		\coordinate (CenterB1) at ($(ROT) + (0, -1.5)$);
+		\coordinate (CenterB2) at ($(ROT) + (2, -1.3)$);
+		\coordinate (CenterP) at (0,0.5);
+		
+		\draw (ROT) -- ($(CenterB1) + (0, 0.5)$);
+		\draw (ROT) -- ($(CenterB2) + (-0.5, 0.5)$);
+		
+		\draw[very thin] ($(CenterB1) + (-0.5, -0.5)$) -- ($(CenterB1) + (-0.5, +0.5)$) --
+		($(CenterB1) + (0.5, 0.5)$) -- ($(CenterB1) + (0.5, -0.5)$) -- cycle % Box1
+			node[pos=0.5, above, red]{$M$};
+		\draw[very thin,
+		densely dashed] ($(CenterB2) + (-0.5, -0.5)$) -- ($(CenterB2) + (-0.5, +0.5)$) --
+		($(CenterB2) + (0.5, 0.5)$) -- ($(CenterB2) + (0.5, -0.5)$) -- cycle;
+		\draw[densely dotted] (CenterB1) -- ($(CenterB1) + (2.5, 0)$);
+		\draw[blue, thick] ($(CenterB1) + (2, 0)$) -- (CenterB2)
+			node[pos=0.5, right]{$h$};
+		\draw ($(CenterP) + (-0.2, -0.1)$) -- ($(CenterP) + (0.2, -0.1)$) --
+		($(CenterP) + (0.2, 0.1)$) -- ($(CenterP) + (-0.2, 0.1)$) -- cycle
+			node[teal, below]{$\vec{v_p}$}
+			node[teal, above left]{$m$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\mathcolor{teal}{v_p} = 
+\frac{\mathcolor{red}{M} + \mathcolor{teal}{m}}{\mathcolor{teal}{m}}\sqrt{2g\mathcolor{blue}{h}}
+\end{equation*}
+\begin{equation*}
+\mathcolor{blue}{h} = 
+\frac{\mathcolor{teal}{v_p}^2\mathcolor{teal}{m}^2}{2g\left(\mathcolor{red}{M} +
+\mathcolor{teal}{m}\right)^2}
+\end{equation*}
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$
+
+\subsubsection{Urti obliqui}
+Un urto obliquo è come nel seguente caso, ovvero quando due corpi collidono e partono in direzioni
+diverse.\\
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (C1) at (-1,0);
+		\coordinate (C2) at (1,0);
+		\coordinate (D) at (1.3,0);
+		\coordinate (E1) at (2.5, 0.5);
+		\coordinate (E2) at (2.5, -0.7);
+		
+		\draw[orange] (C1) circle (0.25)
+			node[]{A};
+		\draw[teal] (C2) circle (0.25)
+			node[]{B};
+		\draw[-latex] ($(C1) + (0.35,0)$) -- ($(C2) + (-0.35,0)$);
+		\draw[-latex, dashed] (D) -- ($(D) + (1.5, 0)$);
+		\draw[-latex] (D) -- (E1);
+		\draw[-latex] (D) -- (E2);
+		\filldraw[blue, fill=blue!30] (D) -- ($(D) + (0.4,0)$) arc(0:9:1) -- cycle;
+		\draw[blue] (D) +(10:0.5) node{$\alpha$};
+		\filldraw[red, fill=red!30] (D) -- ($(D) + (0.4,0)$) arc(0:-13:1) -- cycle;
+		\draw[red] (D) +(-13:0.7) node{$\beta$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+\vec{q}
+\begin{cases*}
+\mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\sin\mathcolor{red}{\alpha}-
+\mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\sin\mathcolor{blue}{\beta} = v_0m\\
+\mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\cos-\mathcolor{red}{\alpha}-
+\mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\cos-\mathcolor{blue}{\beta} = 0
+\end{cases*}
+\end{equation*}
+
+\subsection{Centro di Massa}\label{subsec:dinamica:cm}
+Il centro di massa è un punto in un corpo. In quel punto si potrebbe concentrare tutta la massa del 
+corpo per renderlo puntiforme.\\
+Le formule riportate possono valere per tutte le dimensioni, qui però
+verrà presa in considerazione solo una per semplicità.
+
+\begin{alignat*}{3}
+x &= \frac{\sum\limits_{i=0}^{n} m_ix_i}{\sum\limits_{i=0}^{n} m_i} &\quad
+\vec{v}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{v_i}}{\sum\limits_{i=0}^{n} m_i} &\quad
+\vec{a}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{a_i}}{\sum\limits_{i=0}^{n} m_i}
+\end{alignat*}
+Per gli esercizi si vada \hyperref[ex:cm]{qui}.
+
+\subsection{Momento Angolare e Inerzia}\label{subsec:dinamica:inerzia}
+Il momento angolare ($\vec{L}$) è la quantità di moto per le rotazioni.\\
+Al concetto di \emph{momento angoalare} si accompagna anche quello di \textbf{momento di inerzia}. 
+L'inerzia ($I$) indica quanto si muove la massa rispetto alla posizione.\\
+\begin{equation*}
+\vec{L} = \vec{r} \times \vec{q}
+\end{equation*}
+Da qui si nota la relazione stretta con la \nameref{subsec:qtaMoto}.
+\begin{equation*}
+L = rq\sin\alpha = r\cdot v\cdot m\cdot q\sin\alpha = mr^2\omega\sin\alpha = I\omega\sin\alpha
+\end{equation*}
+\begin{equation*}
+I = mr^2 = \sum\limits_{i=0}^{n}m_ir_i^2
+\end{equation*}
+$m$: massa del corpo\\
+$\omega$: velocità angolare\\
+$v$: velocità tangenziale\\
+$\alpha$: angolo di rotazione\\
+$q$: quantità di moto\\
+\\
+Se l'\textbf{asse} su cui è applicata l'inerzia non coincide con quello di rotazione ma gli \textbf{è 
+parallelo},si usi questa formula
+\begin{equation*}
+I = I_{CM}+md^2
+\end{equation*}
+In aggiunta al momento angolare e al momento di inerzia, c'è la \textbf{forza angolare} ($\vec{M}$).
+Molto semplicemente è definita
+\begin{equation*}
+\vec{M} = I\vec{\alpha}
+\end{equation*}
+che è una forma molto simile a $\vec{F} = m\vec{a}$. Infatti $\alpha$ identifica 
+\hyperref[subsec:mrua]{l'accelerazione angolare}.\\
+Una particolarità è che studiando la statica di un corpo rigido, si scopre questa formula
+\begin{equation*}
+\vec{M} = \vec{r} \times \vec{F}
+\end{equation*}
+
+\subsubsection{Teorema di König}
+Il teorema di König descrive un moto roto-traslato. Ad esempio una ruota che si muove sull'asfalto.
+\begin{equation*}
+E_c = \frac{1}{2} I\omega^2 + \frac{1}{2}mv_{CM}^2
+\end{equation*}
+$I$: inerzia\\
+$\omega$: velocità angolare\\
+$v_{CM}$: velocità del centro di massa\\\\
+Per gli esercizi si vada \hyperref[ex:inerzia]{qui}.

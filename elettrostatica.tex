@@ -1,0 +1,119 @@
+%!TEX ROOT=formularioFisica.tex
+
+\section{Elettrostatica}\label{sec:elettrostatica}
+L'Elettrostatica studia le cariche elettriche nei corpi e come reagiscono fra di loro.\\
+Un concetto fondamentale è quello di \textbf{carica}. La carica (identificata con $Q$) è il numero
+di elettroni all'interno di un corpo. La sua unità di misura è il \emph{Coulomb} ($C$).\\\\
+Si noti che nelle seguenti formule, $\varepsilon$ è definito come 
+$\varepsilon = \varepsilon_0\varepsilon_r$ dove $\varepsilon_0$ è \hyperref[tab:e0]{la costante
+dielettrica nel vuoto} e $\varepsilon_r$ è la costante dielettrica nel mezzo desiderato.\\
+Per gli esercizi si vada \hyperref[ex:elettrostatica]{qui}.
+
+\subsection{Legge di Coulomb}
+La legge di Coulomb (da non essere confusa con il teorema di Coulomb) trova la forza che intercorre
+tra due corpi carichi. Si noti che questa formula può essere usata solo se i corpi sono puntiformi e
+fermi.
+\begin{equation*}
+F = k_0\frac{Q_1Q_2}{r^2} = k_0\frac{1}{4\pi\varepsilon}\frac{Q_1Q_2}{r^2}
+\end{equation*}
+\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$
+
+\subsection{Campo elettrico}
+Il campo elettrico è generato da una carica. Esso è un campo vettoriale, ciò significa che ad ogni
+suo punto si associa un vettore.\\ 
+Il campo elettrico può essere uniforme, ovvero a tutti i punti si associa un vettore uguale. Nel caso
+in cui non lo sia però punti diversi possono avere vettori diversi.\\
+Verranno ora riportate tutte le formule che permettono di trovare o il modulo o il vettore di un
+campo elettrico.
+
+\begin{alignat*}{2}
+\vec{E} &= \frac{\vec{F}}{q} &\qquad \vec{E} &= \sum\limits_{i=0}^{n} \vec{E}_n\\
+E &= k_0\frac{Q}{r^2} & &\text{Solo se puntiforme}\\
+E &= \frac{\sigma}{2\varepsilon_0} & &\text{Se in un condensatore, si divida solo per } \varepsilon\\
+E &= -\frac{\Delta V}{\Delta x} & & \\
+E &= \frac{\left\lvert\sigma\right\rvert}{\epsilon_0} & &\text{Se è una superficie piana}
+\end{alignat*}
+\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$\\
+$\sigma$: densità di carica\\
+$\Delta V$: d.d.p\\
+$\Delta x$: distanza tra le superfici
+
+\subsection{Teorema di Coulomb}
+Il teorema di Coulomb definisce il campo elettrico per una qualsiasi superficie \emph{piana}.
+\begin{equation*}
+E = \frac{\sigma}{\epsilon_0}
+\end{equation*}
+
+
+\subsection{Flusso} \label{subsec:flusso}
+Il flusso ($\Phi$) è la quantità di carica generata da un campo elettrico ($\vec{E}$), che 
+attraversa una superficie ($\vec{S}$).\\
+Verranno ora riportate le formule per calcolare il flusso di una superficie.
+
+\begin{alignat*}{2}
+\Phi_i\left(\vec{E}\right) &= \vec{E}_i \cdot \vec{S_i} &\qquad 
+\Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\Phi_{S_i}\left(\vec{E}_i\right)\\
+\Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\vec{E}_\cdot\vec{S_i} & 
+\Phi_{S_{CH}}&\left(\vec{E}\right) = \frac{\sum\limits_{i=0}^{n}Q_i}{\varepsilon}\\
+\Phi_S\left(\vec{E}\right) &= E\cdot S\cos\theta & &\text{Se } S \text{ è piana e } E \text{ 
+uniforme} 
+\end{alignat*}
+
+\subsection{Teorema di Gauss}
+Il teorema di Gauss definisce il flusso di una superficie \emph{chiusa}.
+\begin{equation*}
+\Phi_{S_{CH}}\left(\vec{E}\right) = \frac{\sum\limits_{i=0}^{n}Q_i}{\varepsilon}
+\end{equation*}
+
+\subsection{Lavoro di un campo elettrico}
+Quanto lavoro deve fare un campo elettrico per spostare una carica? Questa sottsezione è dedicata 
+proprio a questo.
+
+\begin{alignat*}{2}
+L &= \Delta U &\qquad  &\text{Se riferito ad un campo elettrico}\\
+L &= -\Delta U & &\text{Se riferito ad una carica}\\
+L &= q\left[V_A - V_B\right] & &
+\end{alignat*}
+
+Al lavoro sono direttamente collegati \textbf{l'energia potenziale elettrica} ($U$) e 
+\textbf{il potenziale elettrico} ($V$). Molto similmente alle energie gravitazionali, queste due
+sono molto importanti. Vengono ora riportate le formule per calcolarle.
+
+\begin{alignat*}{2}
+U &= k_0\frac{Q_1Q_2}{r} &\qquad V &= k_0\frac{Q}{r}
+\end{alignat*}
+\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$
+
+\subsubsection{Lavoro di una carica in un condensatore}
+Il lavoro di una carica è equivalente all'energia interna.
+\begin{equation*}
+L = \frac{1}{2}qV = \frac{1}{2}CV^2 = \frac{1}{2}\frac{q^2}{C}
+\end{equation*}
+
+\subsection{Capacità elettrica}
+La capacità elettrica indica quanta carica può immagazzinare un conduttore isolato. Verranno ora 
+riportate le formule per calcolarla.
+
+\begin{alignat*}{2}
+C &= \frac{Q}{V} &\qquad &\text{Anche in un condensatore}\\
+C &= 4\pi\varepsilon & &\text{In una sfera isolata}\\
+C &= \frac{S\varepsilon}{d} & &\text{In un condensatore piano}
+\end{alignat*}
+Nell'ultima formula, $d$ indica la distanza tra le due armature di un condensatore.
+
+\subsection{Circuitazione}
+La circuitazione ($C$) indica quanta carica passa per una linea chiusa ($\Gamma$).
+
+\begin{equation*}
+C_\Gamma\left(\vec{E}\right) = \sum\limits_{i=0}^{n}\vec{E}_i\cdot\vec{l}_i = 
+\sum\limits_{i=0}^{n} E_i\cdot l_i\cos\theta
+\end{equation*}
+$l$: differenza di spostamento\\
+Si noti che $theta$ è rispetto alla tangente, non alla normale come nel 
+\hyperref[subsec:flusso]{Flusso}.
+
+\subsection{Dielettrico all'interno di un condensatore}
+Come cambia il campo elettrico all'interno di un condensatore se si inserisce un dielettrico?
+\begin{equation*}
+E_{RIS} = \frac{\sigma\cdot\sigma_p}{\varepsilon}
+\end{equation*}

@@ -1,0 +1,150 @@
+%!TEX ROOT=formularioFisica.tex
+
+\section{Magnetismo}
+Il magnetismo si occupa di come i magneti interagiscano fra di loro e con i corpi circostanti.Il 
+campo magnetico ($\vec{B}$) è quello che influenza i corpi al suo interno. La sua direzione è
+sempre dal polo NORD a quello SUD.\\ 
+La sua unità di misura è il \emph{Tesla} ($T = \frac{N}{Am}$)\\
+Può essere definito in due modi, prenderemo in considerazione quello più usato in ambito liceale.
+
+\subsection{Forza in un campo magnetico}
+\begin{equation*}	
+\vec{F} = i\cdot\vec{l}\times\vec{B}
+\end{equation*}
+Si ricordi che $\times$ indica il \hyperref[subsec:vettori:prodottoVettoriale]{prodotto vettoriale} 
+tra due vettori. $\vec{l}$ è un vettore che rappresenta un filo che attraversa il campo magnetico.
+$i$: corrente
+
+\subsection{Legge di Biot-Savant}
+La legge di Biot-Savant definisce un campo magnetico generato da un filo rettilineo percorso da
+una corrente.\\
+La direzione è la tangente alla linea di forza generata dal filo, il verso è antiorario se la
+corrente esce, orario altrimenti.
+\begin{equation*}
+B = \frac{\mu_0}{2\pi}\frac{i}{d}
+\end{equation*}
+\hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$\\
+$i$: corrente\\
+$d$: distanza dal filo\\
+
+\subsection{Legge di Ampére}
+La legge di Ampére descrive la forza che intercorre tra due fili paralleli attraversati da una
+corrente.
+\begin{equation*}
+F = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+\end{equation*}
+\hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$\\
+$i$: corrente\\
+$d$: distanza tra i due fili\\
+\\
+Molto spesso si vuole definire la forza su di una certa dimensione del filo, quindi si ottiene
+la formula in questa forma:
+\begin{equation*}
+\frac{F}{l} = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+\end{equation*}
+La formula calcola il modulo del vettore. La forza è attrattiva se i versi delle correnti sono 
+uguali, repulsiva altrimenti.
+
+\subsection{Forza di Lorenz}
+La forza di Lorenz è la forza che una carica risente all'interno di un campo magnetico.
+\begin{equation*}
+\vec{F} = q\vec{v}\times\vec{B}
+\end{equation*}
+
+Si presti attenzione al verso di questa forza. Se la carica è \emph{positiva} si usi la solita
+regola della mano, altrimenti si inverta semplicemente il verso.\\\\	
+Una particolarità è che una carica che entra in un campo magnetico viene deviata dal suo percorso.
+Il moto che ne deriva è \emph{elicoidale}. Ovviamente questo nel caso più generale, il disegno
+di seguito aiuterà a capire in che modo l'elettrone viene spostato
+
+\begin{center} % https://tex.stackexchange.com/questions/129860/helix-on-a-cylinder
+	\tdplotsetmaincoords{70}{15}
+	\begin{tikzpicture}[tdplot_main_coords]
+	
+		% --- Independent parameters ---
+		\def\h{3}                          % cylinder height
+		\pgfmathtruncatemacro\tA{350}      % A angle
+		\def\zA{1}                         % A applicate
+		\pgfmathtruncatemacro\tB{150}      % B angle
+		\def\zB{2}                         % B applicate
+		\pgfmathtruncatemacro\n{3}         % number of additional turns
+		\pgfmathtruncatemacro\NbPt{100}    % number of dots for drawing the helix portion
+		\def\rhelixdots{0.05}              % radius of dots forming helix
+		\def\rAB{0.05}                     % radius of A and B dots
+		
+		% lower circle
+		\draw[black,very thin] (1,0,0) 
+		\foreach \t in {2,3,...,360}
+		{
+			--({cos(\t)},{sin(\t)},0)
+		}
+		--cycle;
+		
+		% upper circle
+		\draw[black,very thin] (1,0,\h) 
+		\foreach \t in {2,4,...,360}
+		{
+			--({cos(\t)},{sin(\t)},\h)
+		}
+		--cycle;
+		
+		% --- Draw helix ---
+		\pgfmathsetmacro\tone{\tA}
+		\pgfmathsetmacro\tlast{\tB+\n*360}
+		\pgfmathsetmacro\ttwo{\tone+(\tlast-\tone)/(\NbPt-1)}
+		\pgfmathsetmacro\p{360*(\zB-\zA)/(\tB-\tA+360*\n)}
+		\foreach \t in {\tone,\ttwo,...,\tlast}{%
+			\fill[red!80] ({cos(\t)},{sin(\t)},{\p*(\t-\tA)/360+\zA}) circle[radius=\rhelixdots];
+		}
+		
+		% --- Draw A and B ---
+		\fill[blue] ({cos(\tA)},{sin(\tA)},\zA) circle [radius=\rAB]node[right]{$A$};
+		\fill[blue] ({cos(\tB)},{sin(\tB)},\zB) circle [radius=\rAB]node[left]{$B$};
+	\end{tikzpicture}
+\end{center}
+Questa è una rappresentazione del moto di una cairca all'interno del campo magnetico. Alcune formule
+permettono di trovare il \emph{raggio}, \emph{periodo} e il \emph{passo} dell'elica.
+\begin{alignat*}{2}
+r &= \frac{m\cdot v}{q\cdot B} &\qquad  T &= \frac{m\cdot v_x}{q\cdot B}\\
+\delta S &= v_y = T &\qquad F &= m\frac{v^2}{r}
+\end{alignat*}
+L'ultima formula di queste quattro trova la forza centripeta che mantiene la carica all'interno del
+moto. Questa è la forza di Lorenz (supposto che $\vec{B}\perp\vec{v}$).\\
+Sempre supposto che $\vec{B}\perp\vec{v}$, il periodo si può scrivere anche come
+\begin{equation*}
+T = \frac{2\pi\cdot m}{q\cdot B}
+\end{equation*}
+
+\subsection{Selettore di velocità}
+Il selettore di velocità è un particolare dispositivo che permette di "selezionare" alcune cariche che
+vanno solo ad una determinata velocità attraverso una fessura. Il loro utilizzo è molto ampio, 
+specialmente in dispositivi come televisioni a tubo catodico.\\
+Il loro funzionamento si basa su due campi $\vec{E}$ e $\vec{B}$ uniformi incrociati fra di loro.\\
+Sulla carica deve agire una forza $\vec{F}$ pari a
+\begin{equation*}
+\vec{F} = q\vec{E} + q\vec{v}\times\vec{B}
+\end{equation*}
+Una carica passa nel selettore se e solo se la sua velocità è pari a
+\begin{equation*}
+v = \frac{E}{B}
+\end{equation*}
+
+\subsection{Conduttori nei metalli}
+In questa sottosezione si trovano le formule per trovare la carica massima che può ottenere e la
+velocità di deriva degli elettroni.\\
+
+\subsubsection{Carica massima}
+\begin{equation*}
+i = n\cdot A\cdot v_d\cdot e
+\end{equation*}
+\hyperref[tab:e-]{$e$}\\
+$n$: numero di elettroni di conduzione77
+$A$: sezione del conduttore
+
+\subsubsection{Velocità di deriva}
+\begin{equation*}
+v_d = \frac{i}{n\cdot A\cdot e}
+\end{equation*}
+\hyperref[tab:e-]{$e$}\\
+$n$: numero di elettroni di conduzione77
+$A$: sezione del conduttore
