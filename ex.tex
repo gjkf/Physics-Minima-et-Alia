@@ -314,6 +314,72 @@ T_2-T_1 = m_2\cdot a \rightarrow T_2 = T_1 + m_2\cdot a \rightarrow\\
 T_2 = 30.4 + 90\cdot0.38 = \boxed{64.6\,\text{N}}
 \end{align*}
 
+\paragraph{Esercizio 4}
+Una scala uniforme è appoggiata al muro, formando un angolo $\theta$ con il pavimento. Il coefficiente
+di attrito tra la scala e il pavimento è $\mu$. \textbf{Trova in funzione di $\mu$ l'angolo minimo
+$\theta_m$ in cui la scala non scivola.}
+\divisor
+
+Disegnando la situazione con anche le forze in gioco risulta
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\coordinate (N1) at (0,1);
+		\coordinate (N2) at (1,0);
+		\coordinate (O) at (0,0);
+		\coordinate (M) at (0.5,0.5);
+		
+		\draw (O) -- (N1);
+		\draw (O) -- (N2);
+		\draw[thick] (N1) -- (N2);
+		
+		\markangle{N2}{O}{N1}{0.3}{1.3}{$\theta$}
+		\draw[-stealth] (N1) -- +(0.3,0)
+			node[pos=1, right]{$N_2$};
+		\draw[-stealth] (N2) -- +(0,0.3)
+			node[pos=1, above]{$N_1$};
+		\draw[-stealth] (M) -- ++(0,-0.3)
+			node[pos=1, below]{$mg$};
+		\draw[thick,-stealth] (N2) -- +(-0.3,0)
+			node[pos=1, below right]{$F$};
+	\end{tikzpicture}
+\end{center}
+Quindi siano $N_1$ e $N_2$ le forze di reazione contro la scala e $F$ la forza di attrito che tiene su
+la scala. Diciamo che la scala è lunga $L$ e ha massa $m$. Allora la condizione di equlibrio è data
+da
+\begin{equation*}
+\sum F_x = 0 \qquad \sum F_y = 0
+\end{equation*}
+quindi
+\begin{equation*}
+\begin{cases}
+N_2-F=0\\
+N_1-mg=0
+\end{cases}
+\end{equation*}
+Scegliamo ora un punto di riferimento: il punto di contatto tra la scala e il pavimento. Decidiamo
+poi che se una forza si allontana dal muro è negativa. Quindi le forze che agiuscono in quel punto
+devono essere zero (per la condizione di equilibrio). Quindi
+\begin{equation*}
+-LN_2\sin\theta + \overbrace{\frac{L}{2}}^{\mathclap{\text{Questo perché la massa si trova nel 
+baricentro (o centro di massa)}}}mg\cos\theta = 0
+\end{equation*}
+che semplificato diventa
+\begin{equation*}
+N_2\tan\theta = \frac{1}{2}mg
+\end{equation*}
+Utilizzando la prima equazione del sistema, possiamo quindi dire che
+\begin{equation*}
+\frac{1}{2}mg\tan\theta=F
+\end{equation*}
+L'equilibrio è possibile fintanto che $F\leq N_1\mu$. Usando la seconda equazione viene che
+\begin{equation*}
+N_1\mu = mg\mu
+\end{equation*}
+quindi l'equilibrio necessita che $\tan\theta\leq\frac{1}{2}\mu$ e quindi
+\begin{equation*}
+\boxed{\theta_m = \arctan\frac{1}{2}\mu}
+\end{equation*}
+
 \subsubsection*{\hyperref[subsec:dinamica:potenziale]{Lavoro, Energia e Potenza}}\label{ex:potenziale}
 \paragraph{Esercizio 1}
 Un ragazzo su uno skateboard parte nel punto A rappresentato in figura, e sale fino ad un'altezza

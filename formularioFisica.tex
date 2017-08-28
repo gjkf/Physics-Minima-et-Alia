@@ -81,7 +81,11 @@
 }
 
 % For better visual in tables
-\renewcommand*{\arraystretch}{1.5}
+\renewcommand*{\arraystretch}{2}
+% To center with m{}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
 
 \newcommand{\divisor}{\rule{7.8cm}{0.4pt}}
 
@@ -97,6 +101,17 @@
 \LetLtxMacro{\oldsqrt}{\sqrt}
 \renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
 \makeatother
+
+% Matrix spacing
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+	\edef\arraystretch{#1}%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{*\c@MaxMatrixCols c}}
+\makeatother
+
+\everymath{\displaystyle}
 
 \begin{document}
 \begin{center}
@@ -116,7 +131,7 @@ separare interi da decimali e $,$ per separare le migliaia se necessario.}
 \section{Costanti}
 Qui verranno riportate le costanti usate nelle formule con relativo simbolo e unità di misura.
 \begin{center}
-	\begin{tabular}{| c | m{1.8cm} | c | c |}
+	\begin{tabular}{| c | M{1.8cm} | c | M{1.5cm} |}
 		\hline
 		Simbolo & Nome & Valore & Unità di misura \\ \hline
 		\label{tab:g} $g$ & Accelerazione gravitazionale & $9.81$ & 
@@ -164,7 +179,7 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
 \newpage
 \section{Unità di misura}
 \begin{center}
-	\begin{tabular}{| m{1.8cm} | m{1.8cm} | c | c |}
+	\begin{tabular}{| M{1.8cm} | M{1.8cm} | c | c |}
 		\hline
 		Grandezza & Nome & Simbolo & Definizione \\ \hline
 		\textbf{Lunghezza} & Metro & m & / \\ \hline
@@ -196,6 +211,7 @@ Le unità in grassetto, sono le unità fondamentali.
 \input{idrostatica}
 \input{idrodinamica}
 \input{onde}
+\input{elettrostatica}
 \input{circuiti}
 \input{magnetismo}
 \input{ex}
