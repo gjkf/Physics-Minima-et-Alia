@@ -1839,4 +1839,126 @@ carica.
 \begin{equation*}
 C = \frac{Q}{V} \rightarrow Q = C\cdot V \rightarrow Q = 3.15\cdot200 = \boxed{630\,\mu\text{C}}
 \end{equation*}	
+
 \improvement{Aggiungere esercizi sul magnetismo}
+\subsection*{\hyperref[sec:magnetismo]{Magnetismo}}\label{ex:magnetismo}
+\paragraph{Esercizio 1}
+Tre fili rettilinei paralleli sono posti sui vertici di un triangolo equilatero di lato 
+$d=35\,\text{cm}$, come mostrato in figura e sono attraversati dalle correnti $i_1$, $i_2$, $i_3$. Le
+correnti hanno tutte intensità pari a $2\,\text{A}$. \textbf{Determina modulo, direzione e verso
+della forza per unità di lunghezza che agisce su un punto al centro del triangolo nel caso in cui
+tutte le correnti siano uscenti dal foglio. E se uno fosse entrante?}
+\divisor
+
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[dashed] (0,0) coordinate (A) --+(1,0) coordinate (B) --+(60:1) coordinate (C) -- cycle;
+		\filldraw (A) circle (0.03);
+		\filldraw (B) circle (0.03);
+		\filldraw (C) circle (0.03);
+		\draw (A) circle (0.1)
+			node[xshift=-0.5cm,yshift=-0.5cm,anchor=south west]{filo $1$};
+		\draw (B) circle (0.1)
+			node[xshift=0.5cm,yshift=-0.5cm,anchor=south east]{filo $2$};
+		\draw (C) circle (0.1)
+			node[yshift=0.5cm,anchor=north]{filo $3$};
+		\filldraw (0.5,0.35) circle (0.02);
+	\end{tikzpicture}
+\end{center}
+Questo è il nostro disegno e il punto al centro è quello su cui noi dobbiamo trovare la forza 
+risultante. Scriviamo la formula per la forza che intercorre tra due fili paralleli (legge di Ampére)
+\begin{equation*}
+F = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+\end{equation*}
+sappiamo però che tutte le correnti sono uguali quindi semplifichiamo in
+\begin{equation*}
+F = \frac{4l\mu_0}{2d\pi}
+\end{equation*}
+Abbiamo $d$ che rappresenta la distanza tra i due punti e $l$ che è un parametro variabile. Usando la
+\hyperref[subsec:vettori:prodottoVettoriale]{regola della mano} troviamo la direzione e il verso dei
+vettori.
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[dashed] (0,0) coordinate (A) --+(1,0) coordinate (B) --+(60:1) coordinate (C) -- cycle;
+		\filldraw (A) circle (0.03);
+		\filldraw (B) circle (0.03);
+		\filldraw (C) circle (0.03);
+		\draw (A) circle (0.1)
+			node[xshift=-0.5cm,yshift=-0.5cm,anchor=south west]{filo $1$};
+		\draw (B) circle (0.1)
+			node[xshift=0.5cm,yshift=-0.5cm,anchor=south east]{filo $2$};
+		\draw (C) circle (0.1)
+			node[yshift=0.5cm,anchor=north]{filo $3$};
+		\filldraw (0.5,0.28) coordinate (O) circle (0.02);
+		\draw[-stealth] (O) -- ($(A)!.5!(B)$);
+		\draw[-stealth] (O) -- ($(A)!.5!(C)$);
+		\draw[-stealth] (O) -- ($(C)!.5!(B)$);
+	\end{tikzpicture}
+\end{center}
+Quello che capiamo da questo disegno è decisivo: le tre forze si annullano se hanno lo stesso modulo.
+Come mai? Ipotiziamo di proiettare su $x$ e $y$ le componenti
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[dashed] (0,0) coordinate (A) --+(1,0) coordinate (B) --+(60:1) coordinate (C) -- cycle;
+		\filldraw (A) circle (0.03);
+		\filldraw (B) circle (0.03);
+		\filldraw (C) circle (0.03);
+		\draw (A) circle (0.1)
+			node[xshift=-0.5cm,yshift=-0.5cm,anchor=south west]{filo $1$};
+		\draw (B) circle (0.1)
+			node[xshift=0.5cm,yshift=-0.5cm,anchor=south east]{filo $2$};
+		\draw (C) circle (0.1)
+			node[yshift=0.5cm,anchor=north]{filo $3$};
+		\filldraw (0.5,0.28) coordinate (O) circle (0.02);
+		\draw[-stealth] (O) -- ($(A)!.5!(B)$);
+		\draw[-stealth] (O) -- ($(A)!.5!(C)$);
+		\draw[-stealth] (O) -- ($(C)!.5!(B)$);
+		\draw[densely dotted] (0,0.28) -- (1,0.28);
+		\coordinate (M1) at ($(A)!.5!(B)$);
+		\coordinate (M2) at ($(A)!.5!(C)$);
+		\coordinate (M3) at ($(C)!.5!(B)$);
+		\coordinate (R) at (0,0.28);
+		\draw[red, thick] (M2 |- R) -- (O);
+		\draw[red, thick] (M3 |- R) -- (O);
+		\draw[red, thick] (O |- M2) -- (O);
+	\end{tikzpicture}
+\end{center}
+Notiamo che la coponente $x$ si annulla e quella $y$ perché bisogna sommare le due componenti dei 
+vettori. Di conseguenza
+\begin{equation*}
+\vec{F} = \vec{0}
+\end{equation*}
+E se uno fosse entrante? Ipotiziamo che quello entrante sia il filo $1$. Il disegno dei vettori ora 
+diventa
+\begin{center}
+	\begin{tikzpicture}[scale=2]
+		\draw[dashed] (0,0) coordinate (A) --+(1,0) coordinate (B) --+(60:1) coordinate (C) -- cycle;
+		\filldraw (A) circle (0.03);
+		\filldraw (B) circle (0.03);
+		\filldraw (C) circle (0.03);
+		\draw (A) circle (0.1)
+			node[xshift=-0.5cm,yshift=-0.5cm,anchor=south west]{filo $1$};
+		\draw (B) circle (0.1)
+			node[xshift=0.5cm,yshift=-0.5cm,anchor=south east]{filo $2$};
+		\draw (C) circle (0.1)
+			node[yshift=0.5cm,anchor=north]{filo $3$};
+		\filldraw (0.5,0.28) coordinate (O) circle (0.02);
+		\draw[-stealth] (O) -- ($(A)!.5!(B)$);
+		\draw[-stealth] (O) -- ($(C)!.5!(B)$);
+		
+		\coordinate (M1) at ($(A)!.5!(B)$);
+		\coordinate (M2) at ($(A)!.5!(C)$);
+		\coordinate (M3) at ($(C)!.5!(B)$);
+		
+		\draw[-stealth] (O) -- (0.75,0.15);
+ 	\end{tikzpicture}
+\end{center}
+Sappiamo che i vettori che non si sono mossi, hanno un angolo pari a $\ang{120}$ fra di loro. Questo
+perché il triangolo è equilatero. Il vettore che invece si è spostato, ha semplicemente invertito
+verso. Se prima si trovava anch'esso a $\ang{120}$ gradi dagli altri, adesso ne è diventato la 
+bisettrice dividendo quindi ora in due angoli da $\ang{60}$. La risultante dei due vettori che non 
+sono stati modificati è pari al nuovo vettore in quanto precedentemente lo annullavano.
+Di conseguenza la forza che si applica non è altro che
+\begin{equation*}
+\boxed{\vec{F_e} = 2\vec{F}} \rightarrow \abs{\vec{F_u}} = \frac{4l\mu_0}{d\pi}
+\end{equation*}
