@@ -293,11 +293,21 @@ $v$: velocità tangenziale\\
 $\alpha$: angolo di rotazione\\
 $q$: quantità di moto\\
 \\
-Se l'\textbf{asse} su cui è applicata l'inerzia non coincide con quello di rotazione ma gli \textbf{è 
-parallelo},si usi questa formula
+Se un corpo ruota rispetto ad un asse parallelo a quello passante per il centro di massa e la distanza
+tra i due assi è $d$ e la massa totale $m$,
 \begin{equation*}
 I = I_{CM}+md^2
 \end{equation*}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[dashed] (0,1) -- (0,-1)
+			node[pos=0.1, left]{$CM$};
+		\draw (0.3,1.3) -- (0.3,-0.7);
+		\draw[|<->|] (0,0) -- (0.3,0.3)
+			node[pos=0.5,below]{$d$};
+		\draw[rotate around={15:(0,0)}] ellipse(1 and 0.5);
+	\end{tikzpicture}
+\end{center}
 In aggiunta al momento angolare e al momento di inerzia, c'è la \textbf{forza angolare} ($\vec{M}$).
 Molto semplicemente è definita
 \begin{equation*}

@@ -35,12 +35,18 @@ L'ultimo simbolo che verrà frequentemento usato è quello del condensatore
 	\end{circuitikz}
 \end{center}
 
+Ogni tanto si può anche trovare un interruttore che può interrompere il flusso di carica
+\begin{center}
+	\begin{circuitikz}
+		\draw (0,0) to[switch](2,0);
+	\end{circuitikz}
+\end{center}
+
 Per gli esercizi, si vada \hyperref[ex:circElettr]{qui}.
 
 \subsection{Corrente elettrica}
-La corrente elettrica ($i$) è equivalente alla ddp nei non-conduttori e alla quantità di cariche
-libere altrimenti.\\
-In pratica indica quante cariche si muovono all'interno di un corpo conduttore.
+Indica quante cariche (di solito elettroni) si muovono all'interno di un corpo conduttore durante un 
+tempo determinato.
 
 \subsection{Collegamenti}
 Ci sono 2 tipi di collegamenti: \textbf{in serie} ed \textbf{in parallelo}.\\
@@ -86,7 +92,7 @@ l'altro. Se sono in parallelo invece la corrente si divide.
 \subsection{Condensatori}
 Un condensatore è composto da due \emph{armature} che hanno cariche di segno opposto, una positiva e
 l'altra negativa. Il compito di un condensatore all'interno di un circuito è di immagazzinare carica
-e rilasciarla in un attimo. Viene usato ad esempio nei flash delle macchine fotografiche dove viene
+e rilasciarla. Viene usato ad esempio nei flash delle macchine fotografiche dove viene
 rilasciata in un attimo la carica immagazzinata in un certo tempo.\\
 La loro unità di misura è il Farad (F).
 
@@ -226,16 +232,18 @@ Due resistenze \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
 
 \subsection{Generatori}
 I generatori generano, abbastanza logicamente, corrente elettrica. Ce ne sono di due tipi:
-\emph{Ideali} e \emph{Reali}. L'unica differenza è che i generatori ideali non hanno resistenza
+\emph{Ideali} e \emph{Reali}. L'unica differenza è che i generatori reali hanno resistenza
 interna.
 
 \subsubsection{Forza elettromotrice}
 \begin{equation*}
-\mathcal{E} = \overbrace{iR}^{\Delta V} + \underbrace{ir}_{\text{caduta di tensione}}
+\mathcal{E} = \overbrace{iR}^{\Delta V} + \underbrace{ir}_{\mathclap{\text{caduta di tensione}}}
 \end{equation*}
 $R$: resistenza\\
 \\
-Si noti che la forza elettromotrice è anche equivalente alla d.d.p. che attraversa la batteria.
+Si noti che $\mathcal{E}-iR$ è l'effettiva d.d.p. che si può trovare ai capi di una batteria che sta
+alimentando un circuito con $R>0$.
+
 \subsubsection{Potenza elettrica}
 \begin{equation*}
 P = Vi

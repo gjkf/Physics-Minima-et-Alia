@@ -1,6 +1,6 @@
 %!TEX ROOT=formularioFisica.tex
 
-\section*{Esercizi}
+\section{Esercizi}
 Questa sezione è dedicata ad alcuni esercizi con relativa risoluzione e spiegazione. Il suo scopo
 è quello di chiarire i concetti teorici con esempi pratici.
 
@@ -1960,6 +1960,56 @@ bisettrice dividendo quindi ora in due angoli da $\ang{60}$. La risultante dei d
 sono stati modificati è pari al nuovo vettore in quanto precedentemente lo annullavano.
 Di conseguenza la forza che si applica non è altro che
 \begin{equation*}
-\boxed{\vec{F_e} = 2\vec{F}} \rightarrow \abs{\vec{F_u}} = \frac{4l\mu_0}{d\pi}
+\boxed{\vec{F_e} = 2\vec{F}} \rightarrow \norm{\vec{F_u}} = \frac{4l\mu_0}{d\pi}
 \end{equation*}
-\improvement{Sistemare la soluzione sostituendo $d$}
+$d$ quanto vale però? $d$ è la distanza tra il filo e il punto centrale. Esso si trova a $\frac{2}{3}$
+dell'altezza di distanza (questo perché baricentro e incentro in un triangolo equilatero coincidono
+e il baricentro divide il segmento in 2 parti, una il doppio dell'altra). Quindi mettendo assieme 
+queste informazioni
+\begin{equation*}
+d=\frac{2}{3}h = \frac{2}{3}\frac{\sqrt{3}}{2}l = \frac{\sqrt{3}}{3}l 
+\end{equation*}
+e sostituendo $l$ con il dato
+\begin{equation*}
+d = \frac{\sqrt{3}}{3}\cdot0.35 \approx \underline{0.2\,\text{m}}
+\end{equation*}
+Ora non resta che risolvere!
+\begin{equation*}
+\norm{\vec{F_u}} = \frac{4l\mu_0}{d\pi} \rightarrow F = \frac{4\cdot4\pi\cdot10^{-7}\cdot l}{0.2\pi}
+\approx \boxed{8\cdot10^{-6}l\,\text{N}}
+\end{equation*}
+dove $l$ è la nostra unità di lunghezza, il parametro.
+
+\paragraph{Esercizio 2}
+In uno spettrometro di massa entra un fascio di ioni di carica $q=e$, velocità $5000\,\text{m/s}$ e
+massa $m_1=20\,\text{u}$ per alcuni e $m_2=22\,\text{u}$ per altri (con $u$ come unità di massa 
+atomica). Il fascio viene ora deviato di $\ang{180}$ da un campo magnetico $B=0.09\,\text{T}$ (vedi
+figura). \textbf{Qual è la distanza $D$ tra i due punti?}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-stealth] (0,0) -- (1,0) arc(90:-90:0.75cm); % (1,-1.5)
+		\draw[-stealth] (0,0) -- (1,0) arc(90:-90:0.9cm);% (1,-1.8)
+		\draw[|<->|] (0.9,-1.5) -- ++(0,-0.3)
+			node[pos=0.5,left]{$D$};
+		\draw (1,0.2) -- ++(0,-2);
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Poiché le velocità sono perpendicolari al campo magnetico le traiettorie sono archi di circonferenza
+e la distanza $D$ non è altro che la differenza dei diametri. $D = 2(r_2-r_1)$.\\
+Sugli ioni agisce la forza di Lorenz in quanto sono cariche in un campo magnetico. Dalla seconda legge
+della dinamica possiamo dire che
+\begin{equation*}
+qvB = m\frac{v^2}{r}
+\end{equation*}
+Essendo la parte sinistra la forza di lorenz e quella destra nel caso in cui sia perpendicolare. Da
+questa si deriva che
+\begin{equation*}
+r = \frac{mv}{qB}
+\end{equation*}
+La distanza è quindi pari a
+\begin{equation*}
+D = \frac{2v}{eB}(m_2-m_1) \approx \boxed{2.3\cdot10^{-3}\,\text{m}}
+\end{equation*}
