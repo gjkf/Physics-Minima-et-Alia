@@ -1840,7 +1840,6 @@ carica.
 C = \frac{Q}{V} \rightarrow Q = C\cdot V \rightarrow Q = 3.15\cdot200 = \boxed{630\,\mu\text{C}}
 \end{equation*}	
 
-\improvement{Aggiungere esercizi sul magnetismo}
 \subsection*{\hyperref[sec:magnetismo]{Magnetismo}}\label{ex:magnetismo}
 \paragraph{Esercizio 1}
 Tre fili rettilinei paralleli sono posti sui vertici di un triangolo equilatero di lato 
@@ -2013,3 +2012,49 @@ La distanza è quindi pari a
 \begin{equation*}
 D = \frac{2v}{eB}(m_2-m_1) \approx \boxed{2.3\cdot10^{-3}\,\text{m}}
 \end{equation*}
+
+\paragraph{Esercizio 3}
+Una barra conduttrice orizzontale di lunghezza $L$ e massa $m$ può scivolare su una guida verticale
+(si guardi la figura) ed è in equilibrio ad un'altezza $L$ da un lungo cavo conduttore quando sia la
+barra che il cavo hanno una corrente $I$ ma in versi opposti. \textbf{Trova $I$ in funzione di $L$ e
+$m$. Qual è l'accelerazione iniziale della barra se la corrente del cavo venga improvvisamente
+raddopiata?}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- (3,0);
+		\draw[thick] (1,1) -- (2,1);
+		\draw[dashed] (1,0.5) -- ++(0,2);
+		\draw[dashed] (2,0.5) -- ++(0,2);
+		
+		\draw[|<->|] (0.8,1) -- ++(0,-1)
+			node[pos=0.5,left]{$L$};
+		\draw[|<->|] (1,0.8) -- ++(1,0)
+			node[pos=0.5,below]{$L$};
+		\node at (1.5,1.2){$\vec{i}$};
+		\node at (1.5,-0.2){$-\vec{i}$};
+	\end{tikzpicture}
+\end{center}
+\divisor
+
+Abbiamo due fili paralleli attraversati da una corrente. Questo ci porta ad usare la legge di Ampére.
+\begin{equation*}
+F = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+\end{equation*}
+Sostituendo i nostri dati otteniamo
+\begin{equation*}
+mg = \frac{\mu_0}{2\pi}\frac{-I^2}{\cancel{L}}\cancel{L}
+\end{equation*}
+Ora non resta che isolare $I$
+\begin{equation*}
+m=-I^2\frac{\mu_0}{2\pi} \rightarrow \frac{2\pi m}{\mu_0}=-I^2 \rightarrow 
+\boxed{I = -\sqrt{\frac{2\pi mg}{\mu_0}}}
+\end{equation*}
+Nel caso in cui la corrente si raddoppi, la forza raddoppia quindi diventa
+\begin{equation*}
+F=-I^2\frac{\mu_0}{\pi}=2mg
+\end{equation*}
+Usando la seconda legge di Newton ci dice
+\begin{equation*}
+F-mg=ma\rightarrow 2mg-mg = ma \rightarrow mg=ma
+\end{equation*}
+Questo ci dice che quindi $\boxed{a = g}$, verso l'alto.

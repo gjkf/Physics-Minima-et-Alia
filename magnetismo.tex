@@ -1,26 +1,29 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Magnetismo}\label{sec:magnetismo}
-Il magnetismo si occupa di come i magneti interagiscano fra di loro e con i corpi circostanti.Il 
-campo magnetico ($\vec{B}$) è quello che influenza i corpi al suo interno. La sua direzione è
-sempre dal polo NORD a quello SUD.\\ 
+Il magnetismo si occupa di come i magneti interagiscano fra di loro. Ogni magnete genera un
+campo magnetico ($\vec{B}$). La sua direzione è sempre dal polo NORD a quello SUD. Ogni magnete ha
+sempre due poli e anche se lo si divide si otterranno magneti bipolari.\\ 
 La sua unità di misura è il \emph{Tesla} ($T = \frac{N}{Am}$)\\
 Può essere definito in due modi, prenderemo in considerazione quello più usato in ambito liceale.\\
 Per gli esercizi si vada \hyperref[ex:magnetismo]{qui}.
 
 \subsection{Forza in un campo magnetico}
 \begin{equation*}	
-\vec{F} = i\cdot\vec{l}\times\vec{B}
+\vec{F} = l\cdot(\vec{i}\times\vec{B})
 \end{equation*}
-Si ricordi che $\times$ indica il \hyperref[subsec:vettori:prodottoVettoriale]{prodotto vettoriale} 
-tra due vettori. $\vec{l}$ è un vettore che rappresenta un filo che attraversa il campo magnetico.
-$i$: corrente
+Si ricordi che questo è un \hyperref[subsec:vettori:prodottoVettoriale]{prodotto vettoriale}.\\
+$l$ rappresenta la lunghezza del cavo che attraversa il campo magnetico\\
+$\vec{i}$: è la corrente che attraversa il cavo. IL verso determinerà se da considerarsi positiva o
+negativa nel sistema di riferimento scelto.
 
 \subsection{Legge di Biot-Savant}
 La legge di Biot-Savant definisce un campo magnetico generato da un filo rettilineo percorso da
 una corrente.\\
 La direzione è la tangente alla linea di forza generata dal filo, il verso è antiorario se la
-corrente esce, orario altrimenti.
+corrente esce, orario altrimenti. Un modo per ricordarselo più facilmente è il seguente: si prenda la
+mano destra e si usi il pollice per indicare il verso e la direzione della corrente. Si chiudano poi
+a pugno le altre dita. Il verso delle dita chiuse, è anche quello del campo magnetico.
 \begin{equation*}
 B = \frac{\mu_0}{2\pi}\frac{i}{d}
 \end{equation*}
@@ -46,8 +49,89 @@ la formula in questa forma:
 La formula calcola il modulo del vettore. La forza è attrattiva se i versi delle correnti sono 
 uguali, repulsiva altrimenti.
 
+\subsection{Motore elettrico}
+Nonostante il nome possa far credere che funziona solo attraverso l'elettricità, il motore elettrico 
+svolge la sua funzione grazie ad una coesione di elettricità e magnetismo. Il disegno seguente 
+cercherà di chiarire le idee.
+\begin{center}
+	\begin{tikzpicture}
+		% Magnets
+		\coordinate (N1) at (0,1);
+		\coordinate (N2) at (0,-1);
+		\coordinate (S1) at (3,1);
+		\coordinate (S2) at (3,-1);
+		% Plate
+		\coordinate (P1) at (1,0.5);
+		\coordinate (P2) at (2,-0.5);
+		
+		% Magnets
+		\draw[thick] (-0.5,1) -- (N1) -- (N2) -- (-0.5,-1);
+		\draw[thick] (3.5,1) -- (S1) -- (S2) -- (3.5,-1);
+		% Plate
+		\draw[thick] (P1) -- (P2);
+		
+		% Magnetic lines
+		\foreach \a in {0.8,0,-0.8}{
+			\draw[gray, very thin, -stealth] (0.2, \a) -- ++(2.6,0);
+		}
+		
+		\draw[-stealth] (P1) -- ++(0,0.7);
+		\draw[-stealth] (P2) -- ++(0,-0.7);
+		
+		% Annotations
+		\node at (-0.5,0){$N$};
+		\node at (3.5,0){$S$};
+		\node at (1.7,0.3){$P$};
+		\node at (0.5,-1.2){$\vec{B}$};
+		\node at ($(P1)+(0,0.9)$){$\vec{F}$};
+		\node at ($(P2)+(0,-0.9)$){$\vec{F}$};
+	\end{tikzpicture}
+\end{center}
+Come funziona? Innanzitutto abbiamo un campo magnetico $N-S$ e una spira rettangolare $P$ attraverso 
+la quale passa corrente (solitamente è caratterizzata da un vasto numero di strati). Si fa passare 
+corrente all'interno di questa spira in modo che una forza si generi. Questa forza metterà in 
+rotazione la spira. Quando si raggiunge la situazione in cui il momento è $0$ (ovvero quando è 
+perpendicolare al campo) la corrente viene invertita così che la piastra continui il giro. Questa 
+forza motrice è quella che si genera e verrà poi usata.\\
+Per capire meglio il movimento si guardi il disegno qua sotto
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (P1) at (0,0);
+		\coordinate (P2) at (1,0);
+		
+		\coordinate (P3) at (1.6,0.3);
+		\coordinate (P4) at (2.4,-0.3);
+		
+		\coordinate (P5) at (3.5,0.5);
+		\coordinate (P6) at (3.5,-0.5);
+		
+		\draw[thick] (P1) -- (P2);
+		\draw[thick] (P3) -- (P4);
+		\draw[thick] (P5) -- (P6);
+		
+		\draw[-stealth] (P1) -- ++(0,0.4)
+			node[pos=1,above]{$\vec{F}$};
+		\draw[-stealth] (P2) -- ++(0,-0.4)
+			node[pos=1,below]{$\vec{F}$};
+			
+		\draw[-stealth] (P3) -- ++(0,0.4)
+			node[pos=1,above]{$\vec{F}$};
+		\draw[-stealth] (P4) -- ++(0,-0.4)
+			node[pos=1,below]{$\vec{F}$};
+			
+		\draw[-stealth] (P5) -- ++(0,0.4)
+			node[pos=1,above]{$\vec{F}$};
+		\draw[-stealth] (P6) -- ++(0,-0.4)
+			node[pos=1,below]{$\vec{F}$};
+			
+		\node at (0.5,-1.5){$M =\text{ massimo} = Fb$};
+		\node at (2.5,-2){$M=Fb'=Fb\sin\theta$};
+		\node at (4,-1.5){$M=0$};
+	\end{tikzpicture}
+\end{center}
+
 \subsection{Forza di Lorenz}
-La forza di Lorenz è la forza che una carica risente all'interno di un campo magnetico.
+La forza di Lorenz è la forza che una carica in moto risente all'interno di un campo magnetico.
 \begin{equation*}
 \vec{F} = q\vec{v}\times\vec{B}
 \end{equation*}
@@ -103,14 +187,14 @@ di seguito aiuterà a capire in che modo l'elettrone viene spostato
 		\fill[blue] ({cos(\tB)},{sin(\tB)},\zB) circle [radius=\rAB]node[left]{$B$};
 	\end{tikzpicture}
 \end{center}
-Questa è una rappresentazione del moto di una cairca all'interno del campo magnetico. Alcune formule
+Questa è una rappresentazione del moto di una carica all'interno del campo magnetico. Queste formule
 permettono di trovare il \emph{raggio}, \emph{periodo} e il \emph{passo} dell'elica.
 \begin{alignat*}{2}
 r &= \frac{m\cdot v}{q\cdot B} &\qquad  T &= \frac{m\cdot v_x}{q\cdot B}\\
 \delta S &= v_y = T &\qquad F &= m\frac{v^2}{r}
 \end{alignat*}
-L'ultima formula di queste quattro trova la forza centripeta che mantiene la carica all'interno del
-moto. Questa è la forza di Lorenz (supposto che $\vec{B}\perp\vec{v}$).\\
+Queste formule sono state ottenute equivalendo la forza di Lorenz e quella centripeta in quanto abbiamo
+comunque un modo circolare.
 Sempre supposto che $\vec{B}\perp\vec{v}$, il periodo si può scrivere anche come
 \begin{equation*}
 T = \frac{2\pi\cdot m}{q\cdot B}
