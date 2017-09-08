@@ -1,13 +1,17 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Termodinamica}\label{sec:termodinamica}
-La termodinamica si occupa di studiare come un corpo si modifica alla variazione di 
-\emph{temperatura}, \emph{pressione} e \emph{volume}.\\
-Si tenga conto che $t$ rappresenta la temperatura in \textcelsius\ e $T$ in $K$.\\
+La termodinamica si occupa di studiare come un corpo si modifica e interagisce con gli altri
+alla variazione di \emph{temperatura}, \emph{pressione} e \emph{volume}.\\
+Si tenga conto che $t$ rappresenta la temperatura in \textcelsius\ e $T$ in $K$. Si ricordi che
+\begin{equation*}
+C = K + 273.15
+\end{equation*}
 Per gli esercizi si vada \hyperref[ex:termodinamica]{qui}.
 
 \subsection{Dilatazione}
-Ci sono 3 tipi di dilatazione dipendentemente da quante dimensioni coinvolge.
+Ci sono 3 tipi di dilatazione: lineare (che studia la dilatazione su una dimensione), superficiale 
+(due dimensioni) e volumetrica (tre dimensioni).
 
 \subsubsection{Lineare}
 \begin{equation*}
@@ -27,7 +31,7 @@ S = S_0\left(1+\beta\Delta t\right)
 \end{equation*}
 $\beta$: $2\lambda$, coefficiente di dilatazione superficiale
 
-\textbf{Volumetrica}
+\subsubsection{Volumetrica}
 \begin{equation*}
 V = V_0\left(1+\alpha\Delta t\right)
 \end{equation*}
@@ -65,7 +69,8 @@ Questa sottosezione si dedicherà agli studi effettuati sui gas.
 \begin{equation*}
 pV = nRT
 \end{equation*}
-\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+$8.31\,\text{J/K}\cdot\text{mol}$\\
 $n$: numero di moli\\
 
 \subsubsection{Proprietà dei Gas}
@@ -154,7 +159,8 @@ $E_c$: energia cinetica\\
 \begin{equation*}
 E_c = \frac{l}{2}\frac{R}{N}T = \frac{l}{2}k_BT
 \end{equation*}
-\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+$8.31\,\text{J/K}\cdot\text{mol}$\\
 \hyperref[tab:kB]{$k_B$}: $1.318\cdot10^{-23}\,\text{J/K}$\\
 $T$: temperatura in Kelvin
 
@@ -164,6 +170,7 @@ U = \sum\limits_{i=0}^{n} E_{c_i} + \sum\limits_{i=0}^{n} U_{g_i} = \frac{1}{2}n
 \end{equation*}
 $U_g$: potenziale gravitazionale, se è un gas perfetto vale $0$\\
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+$8.31\,\text{J/K}\cdot\text{mol}$\\
 
 \subsection{Termodinamica (Lavoro)}
 
@@ -184,6 +191,7 @@ Q = \frac{2+l}{2}nR\Delta T
 c_p = \frac{l+2}{2}R
 \end{equation*}
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+$8.31\,\text{J/K}\cdot\text{mol}$\\
 
 \subsubsection{Lavoro di un'isoterma}
 Un'isoterma è una trasformazione che mantiene costante la temperatura.
@@ -191,6 +199,7 @@ Un'isoterma è una trasformazione che mantiene costante la temperatura.
 L = Q = nRT\ln\frac{V_2}{V_1}
 \end{equation*}
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+$8.31\,\text{J/K}\cdot\text{mol}$\\
 
 \subsubsection{Lavoro di un'isocora}
 Un'isocora è una trasformazione che mantiene costante il volume.
@@ -203,7 +212,8 @@ Q = \Delta U = \frac{l}{2}nR\Delta T
 \begin{equation*}
 c_V = \frac{l}{2}R
 \end{equation*}
-\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$\\
+\hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
+$8.31\,\text{J/K}\cdot\text{mol}$\\
 
 \subsubsection{Lavoro di un ciclo}
 \begin{equation*}

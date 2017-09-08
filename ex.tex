@@ -956,6 +956,135 @@ reversibili. Sapendo che:
 \end{enumerate}
 \divisor\improvement{Aggiungere risultato e soluzione ad esercizio 3}
 
+Il piano su cui si disegnano le trasformazioni termodinamiche si descrivono sul piano $VOp$ con $V$
+sull'asse delle ascisse e $p$ su quello delle ordinate. Le trasformazioni isoterme seguono una 
+parabola tra i due punti. Quelle adiabatiche seguono un ramo di iperbole equilatera.
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (1,4);
+		\coordinate (B) at (4,2);
+		\coordinate (C) at (4,1);
+		\coordinate (D) at (3,1);
+	
+		\draw[-stealth] (-0.5,0) -- (5,0)
+			node[pos=1, below]{$V$};
+		\draw[-stealth] (0,-0.5) -- (0,5)
+			node[pos=1,left]{$p$};
+		%\draw[thick, -stealth] (A) to[out=-45,in=175] (B) -- (C) -- (D) to[out=160, in=-90] (A);
+		\draw[thick, -stealth] 
+		(A) edge[bend right=20] (B) 
+		(B) edge (C) 
+		(C) edge (D) 
+		(D) edge[bend left=15] (A);
+		
+		\node[above] at (A) {$A$};
+		\node[above right] at (B) {$B$};
+		\node[below right] at (C) {$C$};
+		\node[below] at (D) {$D$};
+	\end{tikzpicture}
+\end{center}
+Per risolvere questo tipo di esercizi dobbiamo andare con molta calma e prestare attenzione ai 
+dettagli.\\
+Cominciamo a trovare i parametri mancanti del punto $B$. Sappiamo che la trasformazione $AB$ è una
+isoterma quindi la temperatura sarà esattamente come $T_A$ quindi $T_B = 300\,\text{K}$. La pressione
+la possiamo trovare usando
+\begin{equation*}
+\frac{p_1V_1}{T_1} = \frac{p_2V_2}{T_2}
+\end{equation*}
+Questo ci porta a
+\begin{equation*}
+\frac{5\cdot20}{300}=\frac{x\cdot25}{300}\rightarrow x = \frac{100}{25}=\boxed{4\,\text{atm}}
+\end{equation*}
+
+Della trasformazione $BC$ ci manca la temperatura in $C$ in quanto il volume è uguale a $V_B$ perché
+la trasformazione è isocora. Potremmo usare anche qui una legge di Gay-Loussac (la seconda) ma
+continuiamo ad usare la formula generale
+\begin{equation*}
+\frac{4\cdot25}{300}=\frac{2\cdot25}{x}\rightarrow x = \boxed{150\,\text{K}}
+\end{equation*}
+
+Nella trasformazione seguente, non possiamo usare quella formula in quanto abbiamo due incognite
+sia il volume che la temperatura. Dato che conosciamo che il gas è perfetto e monoatomico ($\gamma =
+1.65$), possiamo usare le equazioni di Poisson. Specificamente
+\begin{equation*}
+p_1^{1-\gamma}T_1^\gamma = p_2^{1-\gamma}T_2^\gamma
+\end{equation*}
+Però se noi usassimo la trasformazione $CD$ non verrebbe un risultato sensato in quanto i due punti
+hanno la stessa pressione e la trasformazione non è adiabatica. La trasformazione $DA$ lo è però.
+Quindi
+\begin{equation*}
+p_1^{1-\gamma}T_1^\gamma = p_2^{1-\gamma}T_2^\gamma\rightarrow T_2 = 
+\sqrt[\gamma]{\frac{p_1^{1-\gamma}T_1^\gamma}{p_2^{1-\gamma}}}
+\end{equation*}
+Inserendo i dati
+\begin{equation*}
+T_2 = \sqrt[1.67]{\frac{20^{-0.67}\cdot300^1.67}{2^{-0.67}}} \approx \boxed{120\,\text{K}}
+\end{equation*}
+Per trovare il volume applichiamo lo stesso principio, questa volta però con una formula diversa
+\begin{equation*}
+V_1^{\gamma-1}T_1 = V_2^{\gamma-1}T_2\rightarrow V_2=\sqrt[\gamma-1]{\frac{V_1^{\gamma-1}T_1}{T_2}}
+\end{equation*}
+Inserendo i dati
+\begin{equation*}
+V_2 = \sqrt[0.67]{\frac{5^{0.67}\cdot300}{120}} \approx\boxed{19.6\,\text{l}}
+\end{equation*}
+Quindi ciò che abbiamo è
+\begin{align*}
+A&:\, V:\,5\,\text{l}\quad p:20\,\text{atm}\quad T:\,300\,\text{K}\\
+B&:\, V:\,25\,\text{l}\quad p:3\,\text{atm}\quad T:\,300\,\text{K}\\
+C&:\, V:\,25\,\text{l}\quad p:2\,\text{atm}\quad T:\,150\,\text{K}\\
+A&:\, V:\,19.6\,\text{l}\quad p:2\,\text{atm}\quad T:\,120\,\text{K}
+\end{align*}
+
+La quantità di calore scambiata nelle varie trasformazioni, si può calcolare con le apposite formule.
+Prima di andare a calcolare i lavori e le quantità di calore, ci serve il numero di moli di gas
+coinvolto. Dato che nelle traformazioni il gas non si perde, le moli rimangono costanti quindi basta
+calcolarle per una sola situazione
+\begin{equation*}
+pv=nRT \rightarrow n = \frac{pV}{RT}\rightarrow n =
+\frac{20\cdot5}{0.0821\cdot300}\approx\underline{4.06\,\text{mol}}
+\end{equation*}
+La trasformazione $AB$ è un'isoterma, il lavoro è pari a 
+\begin{equation*}
+L = nRT\ln\frac{V_2}{V_1} \rightarrow L = 4.06\cdot0.0821\ln\frac{25}{5}= \underline{0.536\,\text{J}}
+\end{equation*}
+La trasformazione $BC$ è un'isocora quindi
+\begin{equation*}
+Q = \frac{l}{2}nR\Delta T \rightarrow Q =
+\frac{3}{2}\cdot4.06\cdot0.0821\cdot150=\underline{74.99\,\text{J}}
+\end{equation*}
+La trasformazione $CD$ è un'isobara
+\begin{equation*}
+Q = \frac{2+l}{2}nR\Delta T\rightarrow Q =
+\frac{5}{2}\cdot4.06\cdot0.0821\cdot30=\underline{24.99\,\text{J}}
+\end{equation*}
+Infine la trasormazione $DA$ è un'adiabatica
+\begin{equation*}
+Q = 0
+\end{equation*}
+Sommando tutto viene
+\begin{equation*}
+Q_{Tot} = 0.536+74.99+24.99+0=\boxed{100.516\,\text{J}}
+\end{equation*}
+
+Il lavoro invece ha formule diverse.\\
+Per la trasformazione $AB$
+\begin{equation*}
+L=Q=\underline{0.536\,\text{J}}
+\end{equation*}
+Per la trasformazione $BC$
+\begin{equation*}
+L=0
+\end{equation*}
+Per la trasformazione $CD$
+\begin{equation*}
+L = p\Delta V\rightarrow L = 2\cdot(25-19.6) = \underline{10.8\,\text{J}}
+\end{equation*}
+Per la trasformazione $DA$
+\begin{equation*}
+L = 
+\end{equation*}
+
 \paragraph{Esercizio 4}
 Una macchina di Carnot lavora tra due sorgenti alle temperature $T_1 = 390\,\text{K}$ e 
 $T_2 = 273\,\text{K}$ compiendo ad ogni ciclo un lavoro $L = 10^5\,\text{J}$. La sorgente alla
