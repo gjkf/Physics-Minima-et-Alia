@@ -7,6 +7,27 @@ Per gli esercizi si vada \hyperref[ex:dinamica]{qui}.
 \begin{equation*}
 \vec{F} = m\vec{a}
 \end{equation*}
+Se due corpi interagiscono tra loro, si sviluppano due forze, dette comunemente azione e reazione:  
+sono uguali in modulo e direzione, ma opposte in verso.\\
+Un corpo è equilibrio quando la somma delle forze è 0, $F_y = 0\land F_x = 0$.\\
+Le forze si dividono in \emph{conservative} e \emph{dissipative}. Quando agisce una forza conservativa
+l'energia si mantiene, quando una dissipativa si perde energia. Si noti che
+\begin{align*}
+\text{Energia dissipata} =&\\
+\text{Energia meccanica finale } &- \text{ Energia meccanica iniziale}
+\end{align*}
+
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (2,0);
+		\draw (0.5,0) -- ++(0,0.5) -- ++(0.5,0) -- ++(0,-0.5) -- cycle;
+		\draw[-stealth] (0.75,0.25) -- +(0,0.75)
+			node[pos=1,below]{$F_n = -mg$};
+		\draw[-stealth] (0.75,0.25) -- +(0,-0.75)
+			node[pos=1,above]{$F_p = mg$};
+	\end{tikzpicture}
+\end{center}
+La forza normale ha verso opposto alla forza peso ma direzione e modulo uguale.
 
 \subsection{Attrito}
 Ci sono vari tipi di attrito: \emph{statico}, \emph{dinamico} e \emph{volvente} ma tutti si basano
@@ -130,6 +151,22 @@ Queste sono formule generali, che danno le definizioni. Negli esercizi verrà par
 $U_1 + E_1 = U_2 + E_2$ in quanto permette di trovare la velocità o la massa o l'altezza di un corpo
 in due diverse situazioni.\\
 Per gli esercizi si vada \hyperref[ex:potenziale]{qui}.\\[\baselineskip]
+
+\begin{center}
+	\begin{tikzpicture}
+	\draw (0,0) to[out=-90,in=-90] (4,0);
+	\draw[dashed] (0,0) -- (4,0)
+		node[pos=0, above]{$mgh$}
+		node[pos=1, above]{$mgh$};
+	\draw[dashed] (4,0) -- (4,-1)
+		node[pos=0.5, right]{$h$};
+	\node[above] at (2,-1) {$\frac{1}{2}mv^2$}; 
+	\end{tikzpicture}
+\end{center}
+Se agisce una forza dissipativa (come quella di attrito), il corpo non arriverà a $h$.\\
+Si usi $mgh$ solo per altezze relativamente piccole. Se si comincia ad usare una grande distanza, si
+usino le formule della gravitazione.
+
 Vediamo ora alcune formule particolari:
 \subsubsection{Legge di Hooke e energia elastica}
 \begin{equation*}
@@ -155,7 +192,40 @@ $\vec{v}$: velocità del corpo\\
 $\vec{F}$: forza applicata sul corpo\\
 $t$: tempo\\[\baselineskip]
 La quantità di moto indica la forza necessaria a fermare un oggetto in movimento in un dato lasso di
-tempo.\\
+tempo.\\[\baselineskip]
+Si ricordi che
+\begin{equation*}
+\sum \vec{q} = \text{ costante nel tempo}
+\end{equation*}
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (2.5,0);
+		\filldraw[orange, fill opacity = 0.3] (0.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+		\filldraw[blue, fill opacity = 0.3] (1.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+		
+		\draw[-stealth] (0.5,1) -- ++(0.5,0)
+			node[pos=0.5, below]{$\vec{v}_1$};
+		\draw[stealth-] (1.5,1) -- ++(0.5,0)
+			node[pos=0.5, below]{$\vec{v}_2$};
+		\node[orange] at (0.75,-0.25){$m_1$};
+		\node[blue] at (1.75,-0.25){$m_2$};
+		\node at (-2,0){$\mathcolor{orange}{m_1\vec{v_1}}-\mathcolor{blue}{m_2\vec{v_2}} = 0$};
+		\node at (-2,1){$t=0$};
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- (2.5,0);
+		\filldraw[orange, fill opacity=0.3] (0.75,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+		\filldraw[blue, fill opacity = 0.3] (1.25,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+			
+		\node[orange] at (1,-0.25){$m_1$};
+		\node[blue] at (1.5,-0.25){$m_2$};
+		
+		\node at (-2,0){$\sum\vec{q}=0$};
+		\node at (-2,1){$t=t_1\land\vec{v}=\vec{0}$};
+	\end{tikzpicture}
+\end{center}
 Per gli esercizi si vada \hyperref[ex:impulso]{qui}.
 
 \subsection{Urti}\label{subsec:dinamica:urti}
@@ -163,7 +233,7 @@ Si distinguono 2 tipi di urti: \emph{elastici} e \emph{anaelastici}.\\[\baseline
 Negli urti \emph{elastici} i due corpi collidono ma rimangono separati. Ad esempio due palle
 da biliardo.\\
 Negli urti \emph{anaelastici} i due corpi che collidono rimangono attaccati l'uno all'altro,
-come nel caso di un pesce che ne mangia un alro o di un proiettile che colpisce un sacco.\\
+come nel caso di un pesce che ne mangia un altro o di un proiettile che colpisce un sacco.\\
 
 Per gli esercizi si vada \hyperref[ex:urti]{qui}.
 
@@ -182,7 +252,8 @@ $_2$: relativo al secondo corpo
 m_1v_1 + m_2v_2 = v(m_1+m_2)
 \end{equation*}
 $_1$: relativo al primo corpo\\
-$_2$: relativo al secondo corpo
+$_2$: relativo al secondo corpo\\
+$v$: velocità finale
 
 \subsubsection{Proiettile contro un corpo}
 \begin{center}

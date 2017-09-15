@@ -80,6 +80,20 @@ $n$: numero di moli\\
 Questa proprietà è indispensabile in alcuni esercizi in quanto mette in relazione due situazioni e
 permette di trovare tutte le caratteristiche.
 
+\subsubsection{Numero di molecole}
+\begin{equation*}
+N = n \cdot N_A
+\end{equation*}
+$n$: numero di moli\\
+\hyperref[tab:Na]{$N_A$}: $6.02\,\cdot10^{23}$
+
+\subsubsection{Massa molare}
+\begin{equation*}
+M = \frac{m}{n}
+\end{equation*}
+$m$: massa\\
+$n$: numero di moli
+
 \subsection{Calorimetria}
 Questa sottosezione è dedicata a descrivere le formule relative alla quantità di calore e capacità
 termica.
@@ -190,27 +204,23 @@ il grado di libertà del corpo.\\
 		$5$ & Biatomico\\
 	\end{tabular}
 \end{center}
-
-\subsubsection{Forza in una mole}
+Queste formule mettono in relazione il macroscopico (forza e pressione) e microscopico (forza e 
+pressione di un dato numero di molecole) in un contenitore di gas perfetto.
+\subsubsection{Forza su una parete}
 \begin{equation*}
-F_{\text{mole}} = \frac{N}{3}\frac{m}{l}\left\langle v\right\rangle^2
+F_{\text{parete}} = \frac{N}{3}\frac{m}{l}\left\langle v\right\rangle^2
 \end{equation*}
 $N$: numero di molecole\\
 $\left\langle v\right\rangle$: velocità media
 
-\subsubsection{Pressione}
+\subsubsection{Pressione su una parete}
 \begin{equation*}
-p = \frac{N}{3}\frac{m}{V}\left\langle v\right\rangle^2 = \frac{2}{3}\frac{NE_c}{V}
+p_{\text{parete}} = \frac{N}{3}\frac{m}{V}\left\langle v\right\rangle^2 = \frac{2}{3}\frac{NE_c}{V}
 \end{equation*}
 $N$: numero di molecole\\
 $V$: volume\\
 $\left\langle v\right\rangle$: velocità media\\
 $E_c$: energia cinetica\\
-
-\subsubsection{Quantità di moto della parete}
-\begin{equation*}
-\Delta\vec{q} = 2m\left\langle \vec{v}\right\rangle
-\end{equation*}
 
 \subsubsection{Energia cinetica}
 \begin{equation*}
@@ -219,7 +229,10 @@ E_c = \frac{l}{2}\frac{R}{N}T = \frac{l}{2}k_BT
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
 $8.31\,\text{J/K}\cdot\text{mol}$\\
 \hyperref[tab:kB]{$k_B$}: $1.318\cdot10^{-23}\,\text{J/K}$\\
-$T$: temperatura in Kelvin
+$T$: temperatura in Kelvin\\[\baselineskip]
+
+Si può quindi capire che più un corpo è caldo, maggiore è la quantità di energia cinetica che possiede,
+ovvero possiede molecole ad una velocità media sempre più alta.
 
 \subsubsection{Energia interna}
 \begin{equation*}
@@ -279,27 +292,28 @@ $c_V$: è il calore specifico di un corpo sottoposto a una trasformazione isocora
 
 \subsubsection{Lavoro di un ciclo}
 \begin{center}
-	\begin{tikzpicture}[scale=0.5]
-		\coordinate (A) at (1,4);
-		\coordinate (B) at (4,2);
-		\coordinate (C) at (4,1);
-		\coordinate (D) at (3,1);
+	\begin{tikzpicture}[scale=0.75]
+		\coordinate (A) at (1,2);
+		\coordinate (B) at (2,2);
+		\coordinate (C) at (2,4);
+		\coordinate (D) at (3.5,2.5);
+		\coordinate (E) at (4.5,1);
 		
 		\draw[-stealth] (-0.5,0) -- (5,0)
 			node[pos=1, below]{$V$};
 		\draw[-stealth] (0,-0.5) -- (0,5)
 			node[pos=1,left]{$p$};
 		%\draw[thick, -stealth] (A) to[out=-45,in=175] (B) -- (C) -- (D) to[out=160, in=-90] (A);
-		\draw[thick, -stealth] 
-			(A) edge[bend right=20] (B) 
+		\path[thick, -stealth] 
+			(A) edge (B) 
 			(B) edge (C) 
-			(C) edge (D) 
-			(D) edge[bend left=15] (A);
+			(C) edge[bend right=20] (D) 
+			(D) edge[bend right=30] (E);
 		
-		\node[above] at (A) {$A$};
-		\node[above right] at (B) {$B$};
-		\node[below right] at (C) {$C$};
-		\node[below] at (D) {$D$};
+		\node[below] at ($(A)!0.5!(B)$){Isobara};
+		\node[below] at ($(B)!0.5!(C)$){Isocoroa};
+		\node[above right] at ($(C)!0.5!(D)$){Isoterma};
+		\node[right] at ($(D)!0.5!(E)$){Adiabatica};
 	\end{tikzpicture}
 \end{center}
 \begin{equation*}
