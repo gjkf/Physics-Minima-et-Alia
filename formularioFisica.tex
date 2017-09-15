@@ -17,6 +17,7 @@
 \usepackage{xargs} % Allows for multiple arguments commmands
 \usepackage{enumitem} % For more flexibility on lists
 \usepackage{xtab, booktabs, array}
+\usepackage[labelformat=empty]{caption}
 
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 % Some useful TODO commands
@@ -123,23 +124,41 @@
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt} % no line in header area
 \fancyfoot{} % clear all footer fields
-\fancyfoot[CE,CO]{\thepage}% page number in "outer" position of footer line
+\fancyfoot[C,CO]{\thepage}% page number in "outer" position of footer line
 \fancyfoot[RE,RO]{Copyright \copyright 2017--\the\year$\,$Cossu Davide
 } % other info in "inner" position of footer line
-\fancyfoot[LE,LO]{Version 1.0.1 \today
+\fancyfoot[L,LO]{Version 1.0.1 \today
 }
 
 \everymath{\displaystyle}
 \begin{document}
-	
-\begin{center}
-	{\Huge\textbf{Formulario di Fisica}}\\\vspace{0.2cm}
-	{\textbf{Davide Cossu} con l'aiuto di \textbf{Stefano D'Agaro}}
-\end{center}
 
-Questo è un formulario con le formule di fisica fatte durante tutti e cinque gli anni di un liceo
-scientifico con alcune spiegazioni teoriche ed esercizi.
+\onecolumn
+\begin{@twocolumnfalse}
+		\clearpage
+		\vspace*{\stretch{1.5}}
+		\begin{center}
+			\begin{figure*}[!h]
+				\centering
+				\includegraphics[scale=0.7]{colophon/deer}
+				\caption{ }
+				\label{fig:deer}
+			\end{figure*}
+			\begin{minipage}{.6\textwidth}				
+				\begin{center}
+					{\Huge\textbf{Formulario di Fisica}}\\\vspace{0.2cm}
+					{\textbf{Davide Cossu} con l'aiuto di \textbf{Stefano D'Agaro}}
+				\end{center}
+				\vspace{0.5cm}
+				Questo è un formulario con le formule di fisica fatte durante tutti e cinque gli anni 
+				di un liceo scientifico con alcune spiegazioni teoriche ed esercizi.
+			\end{minipage}
+		\end{center}
+		\vspace{\stretch{3}} % \vfill equivalent to \vspace{\fill}
+		\clearpage
+\end{@twocolumnfalse}
 
+\twocolumn
 {
 	\hypersetup{linkcolor=black}
 	\tableofcontents
