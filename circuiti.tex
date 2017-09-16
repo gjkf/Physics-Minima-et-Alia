@@ -253,3 +253,64 @@ Se per conduttori ohmici
 \begin{equation*}
 P = iR^2 = \frac{V^2}{R}
 \end{equation*}
+
+\subsection{Leggi di Kirchhoff}
+Per capire queste leggi, è necessario aver chiaro tre termini
+\begin{description}
+	\item[Nodo] Un punto in cui convergono almeno 3 conduttori
+	\item[Ramo] Una parte di circuito tra 2 nodi
+	\item[Maglia] Una parte di circuito attraversata solo una volta per tornare al nodo di origine
+\end{description}
+Per spiegarli, prendiamo il seguente circuito
+\begin{center}
+	\begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+		\draw (0,0) 
+		to[short] (1,0)
+		to[R,-o](2,0)
+		to[short] (3,0)
+		to[battery1] (3,-1)
+		to[short] (3,-2)
+		to[short,-o] (2,-2)
+		to[short](0,-2)
+		to[battery1](0,-1)
+		to[short](0,0);
+		\draw (2,0)
+		to[R] (2,-2);
+	\end{circuitikz}
+\end{center}
+Vediamo due nodi (già evidenziati dai cerchi). Sono presenti 3 rami (tutti i modi per arrivare
+da un nodo all'altro) e 3 maglie (la maglia sinistra con 2 resistenze e una batteria, quellad destra
+con una sola resistenza e una batteria e quella che comprende i rami esterni).\\
+Una caratteristica da ricordare è che \emph{ci sono tante correnti quanti rami}. Risolvere questi
+circuiti quindi significa trovare intensità e verso di queste correnti.
+
+\subsubsection{Legge di Kirchhoff dei nodi}
+La corrente entrante in un nodo è pari a quella uscente.
+\begin{equation*}
+\sum_k i_k = 0
+\end{equation*}
+Questo è anche definito come \textbf{Principio di conservazione di carica}.
+
+\subsubsection{Legge di Kirchhoff delle maglie}
+Per arrivare alla formula, prendiamo come esempio il seguente circuito
+\begin{center}
+	\begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+		\draw (0,0)
+		to[battery1 = $\mathcal{E}_1$] (0,-1)
+		to[R = $R_1$] (0,-2)
+		to[R = $R_2$] (4,-2)
+		to[R = $R_3$] (4,-1)
+		to[battery1 = $\mathcal{E}_2$] (4,0)
+		to[battery1 = $\mathcal{E}_3$] (2,0)
+		to[R = $R_4$] (1,0)
+		to (0,0);
+	\end{circuitikz}
+\end{center}
+Kirchhoff descrive che
+\begin{equation*}
+\sum_k \mathcal{E}_k = \sum_j R_ji_j
+\end{equation*}
+Ovvero scegliendo un verso (orario o antiorario) se la corrente ha stesso verso le si da il valore $+$,
+altrimenti $-$. Stessa cosa per la forza elettromotrice. Proseguendo da un nodo qualsiasi secondo il
+verso scelto e tornando sullo stesso nodo (attraversando una maglia), sommiamo algebricamente le
+forze o le resistenze che si incontrano. Si ottiene quindi la formula descritta.

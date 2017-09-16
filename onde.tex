@@ -472,7 +472,26 @@ Da quest'immagine possiamo capire due caratteristiche fondamentali:
 Questo ci porta alle formule fondamentali.\\
 Per gli esercizi si vada \hyperref[ex:lenti]{qui}.\\
 Gli specchi funzionano nello stesso modo delle lenti, quindi si possono accorpare in questa 
-sottosezione.\\[\baselineskip]
+sottosezione.
+\begin{center}
+	\begin{tikzpicture}
+		\coordinate (A) at (0,1);
+		\coordinate (B) at (0,-1);
+		\coordinate (C) at (1,1);
+		\coordinate (D) at (1.5,1);
+		\coordinate (E) at (1,-1);
+		\coordinate (F) at (1.5,-1);
+		
+		\path (A) edge[bend right] (B) (B) edge[bend right] (A);
+		\path 
+			(C) edge (D)
+			(D) edge[bend right] (F)
+			(F) edge (E)
+			(E) edge[bend right] (C);
+		
+		\node at (0,1.5){Convergente};
+	\end{tikzpicture}
+\end{center}
 Per lenti sottili, si considera la convenzione che la distanza focale $f > 0$ per lenti convergenti
 e $f<0$ per lenti divergenti. La distanza dell'oggetto $p$ è sempre positiva e la distanza dell'
 immagine è positiva quando $q$ è dall'altro lato della lente.\\
@@ -528,6 +547,25 @@ Per trovare la posizione di un nodo o di un ventre si usi
 \mathcolor{blue}{\text{Ventre: }} x = (k+1)\frac{\lambda}{2}
 \end{equation*}
 dove $k$ identifica il numero del ventre o nodo desiderato.
+
+\begin{center}
+	\begin{tikzpicture}
+		\node at (-1,0){$n=1$};
+		\node at (4,0){$L=1\cdot\frac{\lambda}{2}$};
+		\draw[samples=500, domain=-0:pi] plot (\x, {-sin(\x r)});
+		\draw[samples=500, domain=-0:pi] plot (\x, {sin(\x r)});
+		\draw[gray, dashed] (0,0) -- ++(3.14,0);
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}
+		\node at (-1,0){$n=2$};
+		\node at (4,0){$L=2\cdot\frac{\lambda}{2}$};
+		\draw[samples=500, domain=-0:pi] plot (\x, {-sin(2*\x r)});
+		\draw[samples=500, domain=-0:pi] plot (\x, {sin(2*\x r)});
+		\draw[gray, dashed] (0,0) -- ++(3.14,0);
+	\end{tikzpicture}
+\end{center}
 
 \subsubsection{Equazione dell'onda stazionaria}
 \begin{equation*}

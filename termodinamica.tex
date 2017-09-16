@@ -298,20 +298,22 @@ $c_V$: è il calore specifico di un corpo sottoposto a una trasformazione isocora
 		\coordinate (C) at (2,4);
 		\coordinate (D) at (3.5,2.5);
 		\coordinate (E) at (4.5,1);
+		\coordinate (F) at (1,1);
 		
 		\draw[-stealth] (-0.5,0) -- (5,0)
 			node[pos=1, below]{$V$};
 		\draw[-stealth] (0,-0.5) -- (0,5)
 			node[pos=1,left]{$p$};
-		%\draw[thick, -stealth] (A) to[out=-45,in=175] (B) -- (C) -- (D) to[out=160, in=-90] (A);
 		\path[thick, -stealth] 
 			(A) edge (B) 
 			(B) edge (C) 
 			(C) edge[bend right=20] (D) 
-			(D) edge[bend right=30] (E);
+			(D) edge[bend right=30] (E)
+			(E) edge (F)
+			(F) edge (A);
 		
-		\node[below] at ($(A)!0.5!(B)$){Isobara};
-		\node[below] at ($(B)!0.5!(C)$){Isocoroa};
+		\node[anchor=south, yshift=-0.6cm, xshift=0.5cm] at ($(A)!0.5!(B)$){Isobara};
+		\node[anchor=south, yshift=-0cm, xshift=-0.6cm] at ($(B)!0.5!(C)$){Isocora};
 		\node[above right] at ($(C)!0.5!(D)$){Isoterma};
 		\node[right] at ($(D)!0.5!(E)$){Adiabatica};
 	\end{tikzpicture}
@@ -325,8 +327,7 @@ Un'adiabatica è una trasformazione che non cede calore all'esterno.
 \begin{equation*}
 L = -\Delta U
 \end{equation*}
-
-\subsubsection{Equazioni di Poisson}
+Queste seguenti, sono definite \textbf{Equazioni di Poisson}
 \begin{equation*}
 pV^\gamma = \text{costante}
 \end{equation*}
