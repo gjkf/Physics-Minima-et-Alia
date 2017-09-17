@@ -828,7 +828,7 @@ Un pianeta che non ruota ha raggio $R$ ha un'orbita circolare di raggio $a$ atto
 $M$. Dimostra che sul pianeta l'effettiva attrazione gravitazionale $g_{eff}$ è minima ai punti più
 vicini e lontani dal sole e massima nei punti equidistanti da questi due.
 \divisor
-
+\improvement{Aggiungere soluzione esercizio gravitazione}
 
 \subsection*{\hyperref[sec:idrodinamica]{Idrodinamica}}\label{ex:idrodinamica}
 \paragraph{Esercizio 1}
@@ -1081,10 +1081,10 @@ Per la trasformazione $CD$
 L = p\Delta V\rightarrow L = 2\cdot(25-19.6) = \underline{10.8\,\text{J}}
 \end{equation*}
 Per la trasformazione $DA$
-\begin{equation*}
-L = -\Delta U = -\frac{1}{2}nR(T_2-T_1) \rightarrow L = -\frac{1}{2}4.06\cdot0.0821\cdot(300-120) =
-\boxed{-29.99\,\text{J}}
-\end{equation*}
+\begin{align*}
+L &= -\Delta U = -\frac{1}{2}nR(T_2-T_1) \rightarrow L = -\frac{1}{2}4.06\cdot0.0821\cdot(300-120) =\\
+&\boxed{-29.99\,\text{J}}
+\end{align*}
 Il lavoro totale quindi risulta
 \begin{equation*}
 L_{Tot} = 0.132 + 18.47+6.15-29.99 = \boxed{-5.238\,\text{J}}
@@ -1908,7 +1908,7 @@ E ora possiamo vedere che le due resistenze sono in parallelo fra di loro e quin
 semplificarle con facilità
 \begin{align*}
 R_{eq} = \left(\frac{1}{R_1} + \frac{1}{R_{2/3/4/5/6}}\right)^{-1} \rightarrow\\
-R_{eq} = \left(\frac{1}{0.2} + \frac{1}{0.56}\right)^-1 = \boxed{0.147\,\Omega}
+R_{eq} = \left(\frac{1}{0.2} + \frac{1}{0.56}\right)^{-1} = \boxed{0.147\,\Omega}
 \end{align*}
 Ed ecco il nostro risultato. Il modo migliore per risolvere questi esercizi è cercare di capire
 in che verso va la corrente e vedere i collegamenti. Andando con calma si riuscirà senza problemi a 
@@ -1972,7 +1972,41 @@ ciascuno dei due condensatori in quanto sono in serie e due condensatori in seri
 carica.
 \begin{equation*}
 C = \frac{Q}{V} \rightarrow Q = C\cdot V \rightarrow Q = 3.15\cdot200 = \boxed{630\,\mu\text{C}}
-\end{equation*}	
+\end{equation*}
+
+\paragraph{Esercizio 4}
+Nel circuito della figura una lampadina di resistenza $R_L$ pari a $50\,\Omega$ (alla temperatura di 
+funzionamento) è collegata in serie una resistenza $R_1$ di $10\,\Omega$ a una batteria che fornisce
+una differenza di potenziale di $105\,\text{V}$ e a un resistore variabile. Quest'ultimo è costituito
+da un conduttore di sezione $7\cdot10^{-9}\,\text{m}^2$, lunghezza $30\,\text{cm}$ e a resistività
+$1.4\,\cdot10^{-7}\,\Omega\cdot\text{m}$.
+\begin{center}
+	\begin{circuitikz}[scale=1.5]\ctikzset{bipoles/length=1cm}
+		\draw (0,0)
+		to[R,l=$R_1$] (1,0)
+		to[pR] (1,-2)
+		(1,-1) to[short, -*] (2,-1)
+		to[lamp, l=$R_L$] (2,-2.5)
+		to[short] (0,-2.5)
+		(0,0) to[battery1, l=$\mathcal{E}$] (0,-1)
+		to[short] (0,-2.5);
+	\end{circuitikz}
+\end{center}
+\begin{enumerate}
+	\item Determina la \textbf{potenza massima e minima} disspiata dalla lampadina al variare della
+	posizione del cursore del resistore variabile
+	\item Esprimi la \textbf{potenza dissipata dalla lampadina} in funzione della posizione del 
+	cursore del resistore variabile
+	\item Determina la \textbf{posizione del cursore} affinché la potenza dissipata dalla lampaidina 
+	sia pari a $9/10$ di quella massima
+\end{enumerate}
+\divisor
+\improvement{Aggiungere soluzione eserizio circuiti}
+
+Prima di cominciare, definiamo il resistore variabile. Tutti noi lo abbiamo usato. Quando regoliamo il
+volume o la potenza di una lampadina, modifichiamo la resistenza variabile (o potenziometro) 
+all'interno.\\ [\baselineskip]
+
 
 \subsection*{\hyperref[sec:magnetismo]{Magnetismo}}\label{ex:magnetismo}
 \paragraph{Esercizio 1}

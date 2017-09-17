@@ -478,9 +478,9 @@ sottosezione.
 		\coordinate (A) at (0,1);
 		\coordinate (B) at (0,-1);
 		\coordinate (C) at (1,1);
-		\coordinate (D) at (1.5,1);
+		\coordinate (D) at (1.75,1);
 		\coordinate (E) at (1,-1);
-		\coordinate (F) at (1.5,-1);
+		\coordinate (F) at (1.75,-1);
 		
 		\path (A) edge[bend right] (B) (B) edge[bend right] (A);
 		\path 
@@ -490,6 +490,7 @@ sottosezione.
 			(E) edge[bend right] (C);
 		
 		\node at (0,1.5){Convergente};
+		\node at (1.5,1.5){Divergente};
 	\end{tikzpicture}
 \end{center}
 Per lenti sottili, si considera la convenzione che la distanza focale $f > 0$ per lenti convergenti
@@ -563,6 +564,15 @@ dove $k$ identifica il numero del ventre o nodo desiderato.
 		\node at (4,0){$L=2\cdot\frac{\lambda}{2}$};
 		\draw[samples=500, domain=-0:pi] plot (\x, {-sin(2*\x r)});
 		\draw[samples=500, domain=-0:pi] plot (\x, {sin(2*\x r)});
+		\draw[gray, dashed] (0,0) -- ++(3.14,0);
+	\end{tikzpicture}
+\end{center}
+\begin{center}
+	\begin{tikzpicture}
+		\node at (-1,0){$n=3$};
+		\node at (4,0){$L=3\cdot\frac{\lambda}{2}$};
+		\draw[samples=500, domain=-0:pi] plot (\x, {-sin(3*\x r)});
+		\draw[samples=500, domain=-0:pi] plot (\x, {sin(3*\x r)});
 		\draw[gray, dashed] (0,0) -- ++(3.14,0);
 	\end{tikzpicture}
 \end{center}

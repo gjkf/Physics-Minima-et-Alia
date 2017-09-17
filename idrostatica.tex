@@ -18,7 +18,33 @@ p_2 = p_1 + \delta g\Delta h
 \end{equation*}
 $\delta$: densità del liquido\\
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
-$h$: profondità
+$h$: profondità\\ [\baselineskip]
+
+Si ricordi che $\text{Densità}=\frac{\text{Massa}}{\text{Volume}}$.
+
+\subsection{Torchio idraulico}
+\begin{center}
+	\begin{tikzpicture}
+		\filldraw[cyan, fill opacity = 0.3]
+		(0,0) -- ++(0.5,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(0.25,0) --
+		++(0,-1.5) -- ++(-1.75,0) -- ++(0,1.5);
+		\draw 
+		(0,0) -- ++(0.5,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(0.25,0) --
+		++(0,-1.5) -- ++(-1.75,0) -- ++(0,1.5);
+		\draw[dashed] (0.5,0) -- +(1,0);
+		\node at (0.25,0.25){$A_1$};
+		\node at (1.7,0.25){$A_2$};
+	\end{tikzpicture}
+\end{center}
+Il torchio idraulico permette partendo da una forza applicata su un pistone (di area $A_1$) di ottenere
+una forza più grande su un altro pistone (di area $A_2$).
+\begin{equation*}
+p = \frac{F}{A}\qquad \frac{F_1}{A_1}=\frac{F_2}{A_2}
+\end{equation*}
+
+\subsection{Principio di Pascal}
+Il principio di Pascal afferma che in un liquido  una pressione che venga esercitata in un punto  
+viene trasmessa a ogni suo altro punto e in ogni sua direzione.
 
 \subsection{Legge dei vasi comunicanti}
 \begin{equation*}
