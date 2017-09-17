@@ -420,7 +420,8 @@ In un sistema isolato l'entropia ha una variazione pari a \textbf{zero} solo se 
 \textit{reversibile}, \textbf{maggiore di zero} altrimenti.
 
 \subsubsection{Entropia dell'universo}
-L'entropia dell'universo è sempre in crescita in quanto non c'è un "ambiente esterno".
+L'entropia dell'universo è sempre in crescita in quanto avvengono trasformazioni irreversibili senza
+fine (come ad esempio un'esplosione).
 
 \subsubsection{Entropia di un sistema non isolato}
 Se una trasformazione reale provoca in un un sistema una diminuzione di entropia pari a 
@@ -439,6 +440,30 @@ Si noti anche che più un macrostato è disordinato, più è probabile che si realiz
 Sia $A$ un macrostato. Si definisce $W(A)$ come \textbf{molteplicità}, ovvero il numero di microstati 
 distinti che corrispondono ad $A$.
 
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\draw (1,0) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\draw (2,0) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\fill (0.25,-0.25) circle(0.05);
+		
+		\draw (-0.5,1.25) -- ++(3.5,0);
+		
+		\draw (0,1) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\draw (1,1) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\draw (2,1) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\fill (1.25,0.75) circle(0.05);
+		
+		\draw (-0.5,0.25) -- ++(3.5,0);
+		
+		\draw (0,2) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\draw (1,2) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\draw (2,2) -- ++(0.5,0) -- ++(0,-0.5) -- ++(-0.5,0) -- cycle;
+		\fill (2.25,1.75) circle(0.05);
+		
+		\node at (-1,0.75){\rotatebox{90}{{Molteplicità $=3$}}};
+	\end{tikzpicture}
+\end{center}
 
 \subsubsection{Equazione di Boltzman}
 \begin{equation*}
