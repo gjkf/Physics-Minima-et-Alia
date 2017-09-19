@@ -29,21 +29,64 @@ campo elettrico.
 \begin{alignat*}{2}
 E &= k_0\frac{Q}{r^2} & &\text{Solo se puntiforme}\\
 \vec{E} &= \frac{\vec{F}}{q} &\qquad \vec{E} &= \sum\limits_{i=0}^{n} \vec{E}_n\\
-E &= \frac{\sigma}{2\varepsilon_0} & &\text{Se in un condensatore, si divida solo per } \varepsilon\\
-E &= -\frac{\Delta V}{\Delta x} & & \\
-E &= \frac{\left\lvert\sigma\right\rvert}{\epsilon_0} & &\text{Se è una superficie piana}
+E &= -\frac{\Delta V}{\Delta x} & &
 \end{alignat*}
+%E &= \frac{\sigma}{2\varepsilon_0} & &\text{Se in un condensatore, si divida solo per } \varepsilon\\
+%E &= -\frac{\Delta V}{\Delta x} & & \\
 \hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$\\
-$\sigma$: densità di carica $\left(\frac{Q}{A}\right)$\\
 $\Delta V$: d.d.p\\
 $\Delta x$: distanza tra le superfici
 
+\subsubsection{Campo di una superficie piana infinita}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[dashed] (0,0) -- ++(1,0);
+		\draw (1,0) -- ++(2,0);
+		\draw[dashed] (3,0) -- ++(1,0);
+		\draw[-stealth] (2,0.5) -- ++(0,-0.45)
+			node[pos=0.5, left]{$\vec{E}$};
+		\draw[-stealth] (2,-0.5) -- ++(0,0.45)
+			node[pos=0.5, left]{$\vec{E}$};
+		\node at (1,0.5){$q < 0$};
+		
+		\draw[dashed] (0,-2) -- ++(1,0);
+		\draw (1,-2) -- ++(2,0);
+		\draw[dashed] (3,-2) -- ++(1,0);
+		\draw[stealth-] (2,-1.5) -- ++(0,-0.45)
+			node[pos=0.5, left]{$\vec{E}$};
+		\draw[stealth-] (2,-2.5) -- ++(0,0.45)
+			node[pos=0.5, left]{$\vec{E}$};
+		\node at (1,-1.5){$q > 0$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+E = \frac{\left\lvert\sigma\right\rvert}{2\epsilon_0}
+\end{equation*}
+$\sigma$: densità di carica $\left(\frac{Q}{A}\right)$
+
+\subsubsection{Campo elettrico all'interno di un condensatore}
+\begin{center}
+	\begin{tikzpicture}
+		\draw[thick] (0,0) -- ++(4,0);
+		\foreach \ca in {0,0.5,1,...,4}{
+			\node at (\ca,0.5){$+$};
+			\node at (\ca,-2.5){$-$};
+			\draw[-stealth] (\ca,-0.25) -- ++(0,-1.5);
+		}
+		\draw[thick] (0,-2) -- ++(4,0);
+		\node at (-0.5,-1){$\vec{E}$};
+	\end{tikzpicture}
+\end{center}
+\begin{equation*}
+E = \frac{\sigma}{\varepsilon}
+\end{equation*}
+$\sigma$: densità di carica $\left(\frac{Q}{A}\right)$
+
 \subsection{Teorema di Coulomb}
-Il teorema di Coulomb definisce il campo elettrico per una qualsiasi superficie \emph{piana}.
+Il teorema di Coulomb definisce il campo elettrico per una qualsiasi superficie.
 \begin{equation*}
 E = \frac{\sigma}{\epsilon_0}
 \end{equation*}
-
 
 \subsection{Flusso} \label{subsec:flusso}
 Il flusso ($\Phi$) è la quantità di campo elettrico ($\vec{E}$), che 
