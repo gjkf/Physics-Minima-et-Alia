@@ -820,15 +820,96 @@ E non ci resta che isolare la $x$
 \begin{equation*}
 x = \frac{54600\cdot8.823\cdot10^{10}}{3.152\cdot10^{12}} \approx \boxed{783\,\text{m/s}}
 \end{equation*}
-$783\,\text{m/s}$ è sicuramente minore di $54.6\,Km/s$. Si noti che nella prima formula, abbiamo 
-convertito i $Km/s$ in $m/s$ per convenzione.
+$783\,\text{m/s}$ è sicuramente minore di $54.6\,\text{km/s}$. Si noti che nella prima formula, 
+abbiamo convertito i $Km/s$ in $m/s$ per convenzione.
 
 \paragraph{Esercizio 3}
-Un pianeta che non ruota ha raggio $R$ ha un'orbita circolare di raggio $a$ attorno al sole di massa 
-$M$. Dimostra che sul pianeta l'effettiva attrazione gravitazionale $g_{eff}$ è minima ai punti più
-vicini e lontani dal sole e massima nei punti equidistanti da questi due.
+Un pianeta che non ruota ha raggio $R$ e ha un'orbita circolare di raggio $a$ attorno al sole di 
+massa $M$. Dimostra che sul pianeta l'effettiva attrazione gravitazionale $g_{eff}$ è minima ai punti 
+più vicini e lontani dal sole e massima nei punti equidistanti da questi due.
 \divisor
-\improvement{Aggiungere soluzione esercizio gravitazione}
+
+Per chiarire l'esercizio, disegnamo la situazione mettendo in luce le forze in gioco
+\begin{center}
+	\begin{tikzpicture}
+		\draw (0,0) circle (1);
+		\draw[cyan,-stealth] (1.1,0) -- ++(1,0);
+		\draw[-stealth] (-1.1,0) -- ++(-1,0);
+		\draw[red,stealth-] (0,1.1) -- ++(0,0.8);
+		\draw[red,-stealth] (1.2,0.5) -- ++(-0.9,0);
+		\draw[-stealth] (1.2,-0.5) -- ++(-0.9,0);
+		\draw[red,-stealth] (-1.2,0.5) -- ++(0.9,0);
+		\draw[cyan,-stealth] (-1.2,-0.5) -- ++(0.9,0);
+	\end{tikzpicture}
+\end{center}
+Le forze rosse sono dell'attrazione tra un corpo sul pianeta e il pianeta stesso. Quelle di color 
+ciano sono dell'attrazione tra il corpo e il sole e le restanti sono della forza centrifuga che si
+genera dal movimento orbitale.\\ [\baselineskip]
+
+Distinguiamo 3 situazioni:
+\begin{enumerate}
+	\item Punto più vicino
+	\item Punto più lontano
+	\item Punto intermedio
+\end{enumerate}
+Scriviamo quindi le forze che il corpo più vicino subisce
+\begin{equation*}
+\cancel{m}\cdot a = 
+\overbrace{-G\frac{\cancel{m}\cdot M}{(a-R)^2}}^{\mathclap{\text{Attrazione corpo-sole}}}+
+\underbrace{G\frac{\cancel{m}\cdot M_C}{R^2}}_{\mathclap{\text{Attrazione corpo-pianeta}}}+
+\overbrace{\cancel{m}\omega^2(a-R)}^{\mathclap{\text{Forza centrifuga}}}
+\end{equation*}
+Quelle del corpo più lontano
+\begin{equation*}
+\cancel{m}\cdot a = 
+\overbrace{G\frac{\cancel{m}\cdot M}{(a+R)^2}}^{\mathclap{\text{Attrazione corpo-sole}}}+
+\underbrace{G\frac{\cancel{m}\cdot M_C}{R^2}}_{\mathclap{\text{Attrazione corpo-pianeta}}}-
+\overbrace{\cancel{m}\omega^2(a+R)}^{\mathclap{\text{Forza centrifuga}}}
+\end{equation*}
+Quelle del corpo intermedio
+\begin{equation*}
+\cancel{m}\cdot a =
+\overbrace{G\frac{\cancel{m}\cdot M_C}{R^2}}^{\mathclap{\text{Attrazione corpo-pianeta}}}
+\end{equation*}
+Notiamo che in tutte e tre c'è una costante, ovvero quella dell'attrazione corpo-pianeta. C'era da
+aspettarselo visto che la forza gravitazionale non cambia se non con la distanza.\\
+Noi dobbiamo dimostrare che
+\begin{equation*}
+\cancel{m}\omega^2(a-R)<G\frac{M}{(a-R)^2}\quad\text{e}\quad\cancel{m}\omega^2(a+R)>G\frac{M}{(a+R)^2}
+\end{equation*}
+perché la $a$ che risulta, è minore nei punti vicini e lontani rispetto a quello intermedio.\\
+Semplifichiamo la prima
+\begin{equation*}
+\omega^2(a-R)<G\frac{M}{(a-R)^2} \rightarrow \omega^2(a-R)^3<GM
+\end{equation*}
+E la seconda, per analogia
+\begin{equation*}
+\omega^2(a+R)>G\frac{M}{(a+R)^2} \rightarrow GM<\omega^2(a-R)^3
+\end{equation*}
+Ora potremmo essere a posto così però abbiamo una variabile in più, $\omega$. Per eliminarla ed
+esprimere tutto quanto in base ai dati che abbiamo, possiamo usare la definizione di $\omega$
+\begin{equation*}
+\omega=\frac{2\pi}{T}
+\end{equation*}
+Come trovare $T^2$? Usando la seconda legge di Keplero possiamo ricavarlo in termini di $M$
+\begin{equation*}
+\frac{a^3}{T^2} = \frac{GM}{4\pi^2} \rightarrow T^2 = \frac{4\pi^2a^3}{GM}
+\end{equation*}
+e ora lo inseriamo nella definizione
+\begin{equation*}
+\omega^2=\frac{4\pi^2}{T^2} \rightarrow \omega=\frac{\cancel{4\pi^2}GM}{\cancel{4\pi^2}a^3}
+\end{equation*}
+Tornando ora a sostituire nelle nostre disequazioni originali abbiamo
+\begin{equation*}
+\frac{GM}{a^3}(a-R)^3<GM\quad\text{e}\quad GM<\frac{GM}{a^3}(a+R)^3
+\end{equation*}
+Che messe assieme formano
+\begin{align*}
+\frac{GM}{a^3}(a-R)^3<&GM<\frac{GM}{a^3}(a+R)^3\rightarrow\\
+\frac{(a-R)^3}{a^3}<&1<\frac{(a+R)^3}{a^3}\\
+\end{align*}
+Questa disequazione è sempre vera, quindi è stato dimostrato che per qualunque valore si inserisca di
+$a$ o $R$, i punti esterni hanno attrazione gravitazionale minore dei punti intermedi.
 
 \subsection*{\hyperref[sec:idrodinamica]{Idrodinamica}}\label{ex:idrodinamica}
 \paragraph{Esercizio 1}
@@ -2214,8 +2295,8 @@ mg = \frac{\mu_0}{2\pi}\frac{-I^2}{\cancel{L}}\cancel{L}
 \end{equation*}
 Ora non resta che isolare $I$
 \begin{equation*}
-m=-I^2\frac{\mu_0}{2\pi} \rightarrow \frac{2\pi m}{\mu_0}=-I^2 \rightarrow 
-\boxed{I = -\sqrt{\frac{2\pi mg}{\mu_0}}}
+m=I^2\frac{\mu_0}{2\pi} \rightarrow \frac{2\pi m}{\mu_0}=I^2 \rightarrow 
+\boxed{I = \sqrt{\frac{2\pi mg}{\mu_0}}}
 \end{equation*}
 Nel caso in cui la corrente si raddoppi, la forza raddoppia quindi diventa
 \begin{equation*}

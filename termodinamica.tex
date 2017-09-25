@@ -206,6 +206,24 @@ il grado di libertà del corpo.\\
 \end{center}
 Queste formule mettono in relazione il macroscopico (forza e pressione) e microscopico (forza e 
 pressione di un dato numero di molecole) in un contenitore di gas perfetto.
+
+\begin{center}
+	\begin{tikzpicture}		
+		\draw[red, -stealth] (0.4,0.2) -- ++(-0.1,0.1);
+		\draw[red, -stealth] (0.1,0.8) -- ++(0.1,-0.2);
+		\draw[red, -stealth] (1.1,0.5) -- ++(0.3,0.1);
+		\draw[red, -stealth] (0.7,0.7) -- ++(0.2,0.3);
+		\draw[red, -stealth] (1.2,0.3) -- ++(-0.3,0.1);
+		
+		\draw (0,0) -- ++(1,0) -- ++(0,1) -- ++(-1,0) -- cycle;
+		\draw[dashed] (0,0) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
+		\draw (0,1) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
+		\draw[dashed] (0.5,1.4) -- ++(0,-1);
+		\draw (1.5,1.4) -- ++(0,-1);
+		\draw (1,0) -- ++(0.5,0.4);
+	\end{tikzpicture}
+\end{center}
+
 \subsubsection{Forza su una parete}
 \begin{equation*}
 F_{\text{parete}} = \frac{N}{3}\frac{m}{l}\left\langle v\right\rangle^2
