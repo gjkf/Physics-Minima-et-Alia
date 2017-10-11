@@ -10,7 +10,7 @@ Ecco alcuni consigli che saranno utili nello svolgimento degli esercizi:
 	\item \textbf{Leggere più volte il problema};
 	\item \textbf{Partire dalle formule generali.} Questo aiuterà a imparare le formule e ad 
 	applicarle. Leformule particolari sono generalmente derivate e alcune volte anche in casi 
-	particolari (alcune	variabili pari a zero, masse uguali, ...);
+        particolari (alcune variabili pari a zero, masse uguali, \ldots);
 	\item \textbf{Guardare corpo per corpo le forze che interagiscono.} Andare per ordine e con calma 
 	è una garanzia per evitare di fare errori di calcolo o di teoria. Personalmente, una volta presa
 	questa abitudine, ho di gran lunga ridotto il numero di errori di distrazione;
@@ -1436,7 +1436,7 @@ schermo di distanza $l = 1\,\text{m}$ una figura il cui secondo massimo di inten
 
 Abbiamo come sempre varie strade per risolvere questo problema. La più facile è quella di invertire
 la formula per trovare l'altezza di una frangia costruttiva. È costruttiva perché ci dice che è
-\emph{il [...] secondo massimo di intensità} che stiamo cercando. Quindi, invertiamo la formula
+\emph{il [\ldots] secondo massimo di intensità} che stiamo cercando. Quindi, invertiamo la formula
 \begin{equation*}
 y_n = \frac{l\cdot n\cdot\lambda}{d} \rightarrow \lambda = \frac{y_n\cdot d}{l\cdot n}
 \end{equation*}
@@ -2057,38 +2057,38 @@ C = \frac{Q}{V} \rightarrow Q = C\cdot V \rightarrow Q = 3.15\cdot200 = \boxed{6
 \end{equation*}
 
 \paragraph{Esercizio 4}
-Nel circuito della figura una lampadina di resistenza $R_L$ pari a $50\,\Omega$ (alla temperatura di 
-funzionamento) è collegata in serie una resistenza $R_1$ di $10\,\Omega$ a una batteria che fornisce
-una differenza di potenziale di $105\,\text{V}$ e a un resistore variabile. Quest'ultimo è costituito
-da un conduttore di sezione $7\cdot10^{-9}\,\text{m}^2$, lunghezza $30\,\text{cm}$ e a resistività
-$1.4\,\cdot10^{-7}\,\Omega\cdot\text{m}$.
-\begin{center}
-	\begin{circuitikz}[scale=1.5]\ctikzset{bipoles/length=1cm}
-		\draw (0,0)
-		to[R,l=$R_1$] (1,0)
-		to[pR] (1,-2)
-		(1,-1) to[short, -*] (2,-1)
-		to[lamp, l=$R_L$] (2,-2.5)
-		to[short] (0,-2.5)
-		(0,0) to[battery1, l=$\mathcal{E}$] (0,-1)
-		to[short] (0,-2.5);
-	\end{circuitikz}
-\end{center}
-\begin{enumerate}
-	\item Determina la \textbf{potenza massima e minima} disspiata dalla lampadina al variare della
-	posizione del cursore del resistore variabile
-	\item Esprimi la \textbf{potenza dissipata dalla lampadina} in funzione della posizione del 
-	cursore del resistore variabile
-	\item Determina la \textbf{posizione del cursore} affinché la potenza dissipata dalla lampaidina 
-	sia pari a $9/10$ di quella massima
-\end{enumerate}
+Un sottile filo conduttore di resistenza $R = 50\Omega$, collegato ad un generatore di tensione
+ideale che mantiene una differenza di potenziale $\Delta V_0$, viene utilizzato per portare
+$10$L di acqua dalla temperatura di $10$\textdegree a quella di $50$\textdegree. La corrente
+erogata dal generatore è pari a $5$A. Considera il calore specifico dell'acqua pari a 
+$4186$ J/kg$\cdot$K e il rendimento del sistema pari a $\mu=0.8$
 \divisor
-\improvement{Aggiungere soluzione eserizio circuiti}
 
-Prima di cominciare, definiamo il resistore variabile. Tutti noi lo abbiamo usato. Quando regoliamo il
-volume o la potenza di una lampadina, modifichiamo la resistenza variabile (o potenziometro) 
-all'interno.\\ [\baselineskip]
-
+In questo esercizio combiniamo le nostre conoscenze di Calorimetria e di elettrostatica. Abbiamo
+una resistenza che è attraversata da una corrente. Questo ci dice, secondo l'effetto Joule che 
+si scalderà. Scaldandosi emetterà calore anche ai corpi adiacenti, in questo caso l'acqua.\\
+Sapendo che per Joule
+\begin{equation*}
+  Q = Ri^2t
+\end{equation*}
+e che la quantità di calore è pari a
+\begin{equation*}
+  Q = C\Delta t = mc\Delta T
+\end{equation*}
+unendole otteniamo
+\begin{equation*}
+  Ri^2t\cdot = C= mc\Delta T\mu
+\end{equation*}
+Abbiamo aggiunto $\mu$ in quanto la macchina termica non è perfetta e ha un rendimento diverso da 
+1. Dato che a noi interessa solo il tempo, lo isoliamo per ottenere
+\begin{equation*}
+  t = \frac{mc\Delta T}{Ri^2} 
+\end{equation*}
+Ora non resta che sostituire
+\begin{equation*}
+t = \frac{mc\Delta T\mu}{Ri^2} \rightarrow t =  \frac{10\cdot4186\cdot(50-10)\cdot0.8}{50\cdot5^2}
+= \boxed{1.7\cdot10^3\,\text{s}}
+\end{equation*}
 
 \subsection*{\hyperref[sec:magnetismo]{Magnetismo}}\label{ex:magnetismo}
 \paragraph{Esercizio 1}

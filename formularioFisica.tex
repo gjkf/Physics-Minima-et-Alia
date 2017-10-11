@@ -5,7 +5,6 @@
 \usepackage{amsmath,amsfonts,amssymb,mathtools,calrsfs}
 \usepackage{bm} % Bold math
 \usepackage[latin1]{inputenc} % Accented letters
-\usepackage{fullpage}
 \usepackage[medium]{titlesec} % Smaller section's font
 \usepackage[pdftex,dvipsnames]{xcolor} % Colors for text
 \usepackage{array} % For better tables
@@ -90,7 +89,7 @@
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
-\newcommand{\divisor}{\rule{7.8cm}{0.4pt}}
+\newcommand{\divisor}{\rule{8.7cm}{0.4pt}}
 
 % For an older but clearer root. Still \oldsqrt is valid
 \usepackage{letltxmacro}
@@ -127,14 +126,14 @@
 \renewcommand{\headrulewidth}{0pt} % no line in header area
 \fancyfoot{} % clear all footer fields
 \fancyfoot[C,CO]{\thepage}% page number in "outer" position of footer line
-\fancyfoot[RE,RO]{Copyright \copyright 2017--\the\year$\,$Cossu Davide
+\fancyfoot[R,RO]{Copyright \copyright 2017--\the\year$\,$Cossu Davide
 } % other info in "inner" position of footer line
-\fancyfoot[L,LO]{Version 1.0.1 \today
+\fancyfoot[L,LO]{Version 1.0.2 \today
 }
 
 \everymath{\displaystyle}
-\begin{document}
 
+\begin{document}
 \onecolumn
 \begin{@twocolumnfalse}
 		\clearpage
@@ -143,7 +142,7 @@
 			\begin{figure*}[!h]
 				\centering
 				\includegraphics[scale=3]{colophon/daVinci}
-				\caption{\textit{`La fisica è, tra tutte le scienze, la più fondamentale e completa, 
+				\caption{\textit{`La fisica è, tra tutte le scienze, la più fondamentale e completa,
 						e ha avuto una profonda influenza. Studenti delle discipline più diverse si 
 						ritrovano a doverla studiare a causa dell'importanza che riveste in tutti i 
 						fenomeni'}\\- Richard Feynman\\ [\baselineskip]
@@ -155,7 +154,7 @@
 			\begin{minipage}{.6\textwidth}				
 				\begin{center}
 					{\Huge\textbf{Formulario di Fisica}}\\\vspace{0.2cm}
-					{\textbf{Davide Cossu} con l'aiuto di \textbf{Stefano D'Agaro}}
+					{\textbf{Davide Cossu, Stefano D'Agaro}}
 				\end{center}
 				\vspace{0.5cm}
 				Questo è un formulario con le formule di fisica fatte durante tutti e cinque gli anni 
@@ -281,7 +280,7 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
 \end{center}
 Le unità in grassetto, sono le unità fondamentali.
 
-\input{vettori}
+%\input{vettori}
 \input{cinematica}
 \input{dinamica}
 \input{gravitazione}
@@ -293,6 +292,7 @@ Le unità in grassetto, sono le unità fondamentali.
 \input{circuiti}
 \input{magnetismo}
 \input{ex}
+\include{appendix}
 
 % List of TODOs
 \newpage

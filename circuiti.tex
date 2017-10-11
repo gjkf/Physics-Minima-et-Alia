@@ -254,6 +254,48 @@ Se per conduttori ohmici
 P = iR^2 = \frac{V^2}{R}
 \end{equation*}
 
+\subsection{Circuiti RC}
+I circuiti RC sono così denominati perché contengono una resistenza e un condensatore.
+\begin{center}
+	\begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+		\draw (1,0)
+		to[battery1] (0,0)
+		to[short] (0,1)
+		to[C] (2,1)
+		to[R] (2,0)
+		to[switch] (1,0);
+	\end{circuitikz}
+\end{center}
+Questo circuito non ha alcuna funzione se non quella di caricare il condensatore fino a capacità 
+massima (anche se, come vedremo, non accadrà mai). Dato che il processo di carica non è istantaneo,
+dipende dal tempo. Infatti si vuole studiare il variare della carica ($q(t)$), corrente ($i(t)$) e
+della differenza di potenziale ($V(t)$) del condensatore.\\
+Rispettivamente sono
+\begin{align*}
+q(t)&=C\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)\\
+i(t)&=\frac{\mathcal{E}}{R}e^{-\frac{t}{\tau}}\\
+V(t)&=\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)
+\end{align*}
+Dove $\tau=RC$ è la \emph{costante di tempo} che varia da circuito a circuito.\\ [\baselineskip]
+
+Perché ho detto che il condensatore non si caricherà mai? Tutte le equazioni sono equazioni 
+differenziali (ovvero non abbiamo solo variabili ma abbiamo funzioni come incognite). Se ora andiamo
+a disegnare il grafico della carica otteniamo
+\begin{center}
+	\begin{tikzpicture}
+		\draw[-stealth] (-0.5,0) -- (3,0);
+		\draw[-stealth] (0,-0.5) -- (0,2);
+		\draw[domain=0:3] plot({\x},{(1-e^(-\x))});
+		\draw[dashed] (0,1) -- (3,1)
+			node[pos=0.5,above]{$y=\mathcal{E}$};
+	\end{tikzpicture}
+\end{center}
+Come notiamo, il grafico tende sempre a raggiungere il valore massimo però senza mai raggiungerlo,
+infatti
+\begin{equation*}
+\lim\limits_{t\to+\infty}q(t) = \mathcal{E}
+\end{equation*}
+
 \subsection{Effetto Joule}
 L'effetto Joule è uno dei tre effetti causati da una corrente che attraversa un conduttore. In questo
 caso determina il fatto che ogni conduttore attraversato da una corrente genera calore.
