@@ -69,6 +69,51 @@ dice:
 \begin{enumerate}
 	\item Usare il pollice della mano destra in direzione e verso del \textbf{primo} vettore
 	\item Usare l'indice o le altre dite in direzione e verso del \textbf{secondo} vettore
-	\item Il nuovo vettore avrà la direzione che attraversa il palmo perpendicolarmente e il verso 
-	uscente dalla mano.
+	\item Il nuovo vettore avrà la direzione che attraversa il palmo perpendicolarmente e il vers
+          o uscente dalla mano.
 \end{enumerate}
+
+\subsubsection{Angolo tra vettori}
+\begin{center}
+  \begin{tikzpicture}
+      \coordinate (O) at (0.5,1);
+      \coordinate (B) at (2.5,1);
+      \draw[step=1, very thin] (0,0) grid (4,4);
+      \draw[-latex, thick] (0,0) -- (4,0)
+          node[pos=1, below]{$X$};
+      \draw[-latex, thick] (0,0) -- (0,4)
+          node[pos=1, left]{$Y$};
+      \draw[thick, cyan, -latex] (O) -- ++(0,2);
+      \draw[thick, red, -latex] (O) -- ++(2,-0.5);
+      \draw[thick, -latex] (O) -- coordinate(A) (2.5,2.5)
+          node[pos=0.5,above left]{$\vec{v}$};
+      \draw[thick, dashed] (O) -- (B);
+      \markangle[orange]{O}{A}{B}{0.5}{1.5}{$\mathcolor{orange}{\alpha}$}
+  \end{tikzpicture}
+\end{center}
+Sono qui rappresentati due vettori: uno in ciano e uno in rosso. La loro somma è il vettore
+risultante, in nero.\\
+Per trovare l'angolo di un vettore ottenuto da una somma, vanno sommate tra loro le componenti 
+orizzontali ($x$) dei due vettori e tra loro le componenti verticali ($y$) dei due vettori.
+\begin{center}
+  \begin{tikzpicture}
+      \coordinate (O) at (0.5,1);
+      \coordinate (B) at (2.5,1);
+      \draw[step=1, very thin] (0,0) grid (4,4);
+      \draw[-latex, thick] (0,0) -- (4,0)
+          node[pos=1, below]{$X$};
+      \draw[-latex, thick] (0,0) -- (0,4)
+          node[pos=1, left]{$Y$};
+      \draw[thick, cyan, -latex] (O) -- ++(0,2);
+      \draw[thick, red, -latex] (O) -- ++(2,-0.5);
+      \draw[thick, -latex] (O) -- coordinate(A) (2.5,2.5)
+          node[pos=0.5,above left]{$\vec{v}$};
+      \draw[dashed, thick, cyan, -latex] (2.5,0.5) -- ++(0,2);
+      \draw[thick, dashed] (O) -- (B);
+      \markangle[orange]{O}{A}{B}{0.5}{1.5}{$\mathcolor{orange}{\alpha}$}
+  \end{tikzpicture}
+\end{center}
+Otteniamo quindi che l'angolo è pari a
+\begin{equation*}
+\alpha=\arctan{\frac{y_1+y_2}{x_1+x_2}}
+\end{equation*}

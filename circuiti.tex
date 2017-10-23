@@ -254,6 +254,17 @@ Se per conduttori ohmici
 P = iR^2 = \frac{V^2}{R}
 \end{equation*}
 
+\subsection{Effetto Joule}
+L'effetto Joule è uno dei tre effetti causati da una corrente che attraversa un conduttore. 
+In questo caso determina il fatto che ogni conduttore attraversato da una corrente genera calore.
+\begin{equation*}
+Q = Ri^2t
+\end{equation*}
+$Q$: quantità di calore in Joule\\
+$t$: tempo\\ [\baselineskip]
+
+Spesso viene usato il \emph{kilowattora} che equivale a $3.6\cdot10^6\,\text{J}$.
+
 \subsection{Circuiti RC}
 I circuiti RC sono così denominati perché contengono una resistenza e un condensatore.
 \begin{center}
@@ -277,9 +288,7 @@ i(t)&=\frac{\mathcal{E}}{R}e^{-\frac{t}{\tau}}\\
 V(t)&=\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)
 \end{align*}
 Dove $\tau=RC$ è la \emph{costante di tempo} che varia da circuito a circuito.\\ [\baselineskip]
-
-Perché ho detto che il condensatore non si caricherà mai? Tutte le equazioni sono equazioni 
-differenziali (ovvero non abbiamo solo variabili ma abbiamo funzioni come incognite). Se ora andiamo
+Perché il condensatore non si caricherà mai? Ora andiamo
 a disegnare il grafico della carica otteniamo
 \begin{center}
 	\begin{tikzpicture}
@@ -295,17 +304,7 @@ infatti
 \begin{equation*}
 \lim\limits_{t\to+\infty}q(t) = \mathcal{E}
 \end{equation*}
-
-\subsection{Effetto Joule}
-L'effetto Joule è uno dei tre effetti causati da una corrente che attraversa un conduttore. 
-In questo caso determina il fatto che ogni conduttore attraversato da una corrente genera calore.
-\begin{equation*}
-Q = Ri^2t
-\end{equation*}
-$Q$: quantità di calore in Joule\\
-$t$: tempo\\ [\baselineskip]
-
-Spesso viene usato il \emph{kilowattora} che equivale a $3.6\cdot10^6\,\text{J}$.
+In ogni caso il condensatore raggiunge una carica quasi totale dopo $4\tau$ o $5\tau$.
 
 \subsection{Leggi di Kirchhoff}
 Per capire queste leggi, è necessario aver chiaro tre termini
