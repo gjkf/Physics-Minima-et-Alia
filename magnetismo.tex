@@ -249,8 +249,8 @@ Questa è una rappresentazione del moto di una carica all'interno del campo magne
 permettono di trovare il \emph{raggio}, \emph{periodo} e il \emph{passo} dell'elica. Nelle
 seguenti formule, si utilizzeranno le due componenti distinte della velocità.
 \begin{alignat*}{2}
-r &= \frac{m\cdot v}{q\cdot B} &\qquad  T &= \frac{m\cdot v_x}{q\cdot B}\\
-\Delta S &= v_y = T &\qquad F &= m\frac{v^2}{r}
+  \frac{mv^2}{r}&= qvB  &\qquad  T &= \frac{m\cdot v_x}{q\cdot B}\\
+\Delta S &= v_y = T & r&=\frac{mv}{qB}
 \end{alignat*}
 Queste formule sono state ottenute equivalendo la forza di Lorenz e quella centripeta in quanto abbiamo
 comunque un modo circolare.
@@ -273,6 +273,23 @@ Una carica passa nel selettore se e solo se la sua velocità è pari a
 v = \frac{E}{B}
 \end{equation*}
 
+\subsection{Flusso}
+Il flusso ($\Phi$) di un campo magnetico $\vec{B}$ è molto simile al flusso di un campo elettrico
+\begin{equation*}
+  \Phi_S(\vec{B}) =  \sum^n_{i=1} \vec{B}\cdot\Delta\vec{S}_i
+\end{equation*}
+Si noti però che il flusso di qualsiasi superficie che insista sulla stessa linea chiusa, avrà
+sempre lo stesso valore.\\
+Il flusso di un solenoide, si trova moltiplicando il numero di spire per il flusso generato da una
+spira.
+
+\subsection{Circuitazione}
+La circuitazione ($C$) di un campo magnetico $\vec{B}$ è molto simile alla circuitazione
+di un campo elettrico
+\begin{equation*}
+  C_\Gamma(\vec{B}) = \sum^{n}_{i=1}i_{\text{concatenate}}\cdot\Delta\vec{l}_i 
+\end{equation*}
+
 \subsection{Conduttori nei metalli}
 In questa sottosezione si trovano le formule per trovare la carica massima che può ottenere e la
 velocità di deriva degli elettroni.\\
@@ -293,19 +310,3 @@ v_d = \frac{i}{n\cdot A\cdot e}
 $n$: numero di elettroni di conduzione\\
 $A$: sezione del conduttore
 
-\subsection{Flusso}
-Il flusso ($\Phi$) di un campo magnetico $\vec{B}$ è molto simile al flusso di un campo elettrico
-\begin{equation*}
-  \Phi_S(\vec{B}) =  \sum^n_{i=1} \vec{B}\cdot\Delta\vec{S}_i
-\end{equation*}
-Si noti però che il flusso di qualsiasi superficie che insista sulla stessa linea chiusa, avrà
-sempre lo stesso valore.\\
-Il flusso di un solenoide, si trova moltiplicando il numero di spire per il flusso generato da una
-spira.
-
-\subsection{Circuitazione}
-La circuitazione ($C$) di un campo magnetico $\vec{B}$ è molto simile alla circuitazione
-di un campo elettrico
-\begin{equation*}
-  C_\Gamma(\vec{B}) = \sum^{n}_{i=1}i_{\text{concatenate}}\cdot\Delta\vec{l}_i 
-\end{equation*}

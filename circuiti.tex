@@ -266,6 +266,7 @@ $t$: tempo\\ [\baselineskip]
 Spesso viene usato il \emph{kilowattora} che equivale a $3.6\cdot10^6\,\text{J}$.
 
 \subsection{Circuiti RC}
+\subsubsection{Carica}
 I circuiti RC sono così denominati perché contengono una resistenza e un condensatore.
 \begin{center}
 	\begin{circuitikz}\ctikzset{bipoles/length=.8cm}
@@ -305,6 +306,19 @@ infatti
 \lim\limits_{t\to+\infty}q(t) = \mathcal{E}
 \end{equation*}
 In ogni caso il condensatore raggiunge una carica quasi totale dopo $4\tau$ o $5\tau$.
+
+\subsubsection{Scarica}
+La scarica di un condensatore avviene in maniera molto simile alla carica. Il disegno è lo stesso
+e le formule sono estremamente simili
+\begin{equation*}
+  q(t) = C\mathcal{E}e^{-\frac{t}{\tau}}
+\end{equation*}
+\begin{equation*}
+  i(t) = -\frac{\mathcal{E}}{R}e^{-\frac{t}{\tau}}
+\end{equation*}
+\begin{equation*}
+  V(t) = \mathcal{E}e^{-\frac{t}{\tau}}
+\end{equation*}
 
 \subsection{Leggi di Kirchhoff}
 Per capire queste leggi, è necessario aver chiaro tre termini
