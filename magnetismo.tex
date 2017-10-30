@@ -249,8 +249,8 @@ Questa è una rappresentazione del moto di una carica all'interno del campo magne
 permettono di trovare il \emph{raggio}, \emph{periodo} e il \emph{passo} dell'elica. Nelle
 seguenti formule, si utilizzeranno le due componenti distinte della velocità.
 \begin{alignat*}{2}
-  \frac{mv^2}{r}&= qvB  &\qquad  T &= \frac{2\pi\cdot m}{q\cdot B}\\
-  \Delta S &= v_y\cdot T & r&=\frac{mv}{qB}
+  \frac{mv^2_x}{r}&= qvB  &\qquad  T &= \frac{2\pi\cdot m}{q\cdot B}\\
+  \Delta S &= v_y\cdot T & r&=\frac{mv_x}{qB}
 \end{alignat*}
 
 \subsection{Selettore di velocità}
@@ -281,20 +281,21 @@ spira.
 La circuitazione ($C$) di un campo magnetico $\vec{B}$ è molto simile alla circuitazione
 di un campo elettrico
 \begin{equation*}
-  C_\Gamma(\vec{B}) = \sum^{n}_{i=1}i_{\text{concatenate}}\cdot\Delta\vec{l}_i 
+  C_\Gamma(\vec{B}) = \sum^{n}_{i=1}\vec{B}_i\cdot\Delta l_i
 \end{equation*}
+$\Delta l$: spostamento
+
+\subsubsection{Teorema di Ampére}
+Il teorema di Ampére dice che
+\begin{equation*}
+  C_\Gamma(\vec{B}) = \mu_0 \sum\limits^{n}_{i=1} i_c
+\end{equation*}
+dove $i_c$ è una corrente concatenata. Una corrente $i$ si definisce concatenata con una linea
+chiusa $\Gamma$ se attraversa una superficie che ha come linea chiusa $\Gamma$.
 
 \subsection{Conduttori nei metalli}
 In questa sottosezione si trovano le formule per trovare la carica massima che può ottenere e la
 velocità di deriva degli elettroni.\\
-
-\subsubsection{Carica massima}
-\begin{equation*}
-i = n\cdot A\cdot v_d\cdot e
-\end{equation*}
-\hyperref[tab:e-]{$e$}\\
-$n$: numero di elettroni di conduzione\\
-$A$: sezione del conduttore
 
 \subsubsection{Velocità di deriva}
 È la velocità media degli elettroni nel conduttore metallico.
@@ -305,3 +306,10 @@ v_d = \frac{i}{n\cdot A\cdot e}
 $n$: numero di elettroni di conduzione\\
 $A$: sezione del conduttore
 
+\subsubsection{Carica massima}
+\begin{equation*}
+i = n\cdot A\cdot v_d\cdot e
+\end{equation*}
+\hyperref[tab:e-]{$e$}\\
+$n$: numero di elettroni di conduzione\\
+$A$: sezione del conduttore

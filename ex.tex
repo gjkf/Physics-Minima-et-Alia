@@ -2090,6 +2090,45 @@ t = \frac{mc\Delta T\mu}{Ri^2} \rightarrow t =  \frac{10\cdot4186\cdot(50-10)\cd
 = \boxed{1.7\cdot10^3\,\text{s}}
 \end{equation*}
 
+\paragraph{Esercizio 5}
+Un generatore di forza elettromotrice pari a $\mathcal{E} = 30\,\text{V}$ è connesso in serie ad
+una resistenza $R=5\,\text{k}\Omega$ e ad un condensatore di capacità pari a $8\,\mu\text{F}$.
+Un interruttore chiude il circuito all'istante $t=0\,\text{s}$. Calcola quante \textbf{costanti di
+tempo siano necessarie perché l'energia immagazzinata sia $\frac{1}{3}$ dell'energia finale.}\\ 
+L'energia immagazzinata in un condensatore in funzione del tempo è
+\begin{equation*}
+  L_c(t) = \frac{q(t)^2}{2C}
+\end{equation*}
+\divisor
+
+Partiamo dal disegno del circuito
+\begin{center}
+  \ctikzset{bipoles/length=1cm}
+  \begin{circuitikz}
+    \draw (0,0) 
+      to[battery1] (0,1)
+      to[R] (3,1)
+      to[C] (3,0)
+      to[switch] (0,0);
+  \end{circuitikz}
+\end{center}
+
+Ora, osservando la formula che ci viene data, possiamo riscriverla
+\begin{equation*}
+  L_c(t) = \frac{q(t^2)}{2C} = \frac{1}{2}q(t)V(t)
+\end{equation*}
+che ulteriormente espansa e semplificata viene
+\begin{equation*}
+  L_c(t) = \underbrace{\frac{1}{2}C\mathcal{E}^2}_{\text{max}} \left( 1-e^{-\frac{t}{\tau}} \right)^2 
+\end{equation*}
+Dato che noi dobbiamo ottenere $\frac{1}{3}$ della capacità massima, possiamo scrivere la
+seguente equazione
+\begin{align*}
+  \frac{1}{2}\frac{1}{3}C\mathcal{E}^2 &= \frac{1}{2}C\mathcal{E}^2 \left( 1-e^{-\frac{t}{\tau}} \right)^2 \rightarrow \\
+  \sqrt{\frac{1}{3}} &= \sqrt{\left( 1-e^{-\frac{t}{\tau}} \right)^2} \rightarrow \\
+  0.42 &= e^{-\frac{t}{\tau}} \rightarrow \ln0.42 = -\frac{t}{\tau} \rightarrow \\
+  t &\approx\boxed{0.86\tau}
+\end{align*}
 \subsection*{\hyperref[sec:magnetismo]{Magnetismo}}\label{ex:magnetismo}
 \paragraph{Esercizio 1}
 Tre fili rettilinei paralleli sono posti sui vertici di un triangolo equilatero di lato 
@@ -2308,4 +2347,106 @@ Usando la seconda legge di Newton ci dice
 F-mg=ma\rightarrow 2mg-mg = ma \rightarrow mg=ma
 \end{equation*}
 Questo ci dice che quindi $\boxed{a = g}$, verso l'alto.
+
+\paragraph{Esercizio 4}
+Un fascio di protoni con varie velocità è diretto nel verso positivo dell'asse $x$. Il fascio
+entra in una regione in cui è presente un capo magnetico uniforme d'intensità $0.52\,\text{T}$;
+il campo è diretto nel verso negativo dell'asse $z$, come indicato in figura.\\
+Si vuole utilizzare un campo elettrico uniforme (in aggiunta al campo magnetico) per selezionare
+solo quei protoni che hanno velocità pari a $1.42\cdot10^5\,\text{m/s}$; in altre parole si
+vuole che questi protoni siano gli unici a non essere deflessi dai due campi.
+\begin{enumerate}
+  \item Determinare \textbf{l'intensità},  \textbf{la direzione} e \textbf{il verso} del campo
+    elettrico che permette di selezionare le particelle
+  \item Supponendo che il campo elettrico sia generato da un condensatore le cui amature distano
+    $2.5\,\text{cm}$, calcolare la d.d.p. necessaria da essere applicata agli estremi di esso
+  \item Quale delle due armature deve essere caricata positivamente?
+\end{enumerate}
+
+\begin{center}
+  \begin{tikzpicture}
+    \tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), 
+      inner sep=0pt, outer sep=0pt},
+      %default radius will be 1pt. 
+      cross/.default={1pt}}
+    \filldraw[gray] (0,0) -- ++(3,0) -- ++(0,-0.3) -- ++(-3,0) -- ++(0,0.3);
+    \filldraw[gray] (0,-1.4) -- ++(3,0) -- ++(0,-0.3) -- ++(-3,0) -- ++(0,0.3);
+
+    \foreach \y in {0.2, -0.5, -1.2, -1.9}{
+      \foreach \x in {0,0.5,...,3}{
+        \draw[thin] (\x,\y) circle (0.1);
+        \draw[thin] (\x,\y) node[cross=2pt]{};
+      }
+    }
+
+    \filldraw (-0.5,-0.8) circle (0.05);
+    \draw[-stealth] (-0.5,-0.8) -- ++(0.3,0)
+        node[pos=0.5,below]{$\vec{v}$};
+  \end{tikzpicture}
+\end{center}
+\divisor
+
+Abbiamo un campo magnetico e uno elettrico incrociati, questo è il tipico selettore di velocità.
+La formula ci dice
+\begin{equation*}
+  v = \frac{E}{B}
+\end{equation*}
+e noi abbiamo $v$ e $B$. Il nostro compito quindi è ottenere $E$.
+\begin{equation*}
+  v = \frac{E}{B} \rightarrow E = vB = 1.42\cdot10^5\cdot0.52 = 
+  \boxed{7.3\cdot10^4\,\text{C/m}^2}
+\end{equation*}
+In che direzione deve andare? Se osserviamo il campo magnetico generato, notiamo che tende a 
+spingere i protoni verso il basso (usando la regola della mano questo risulta evidente). Di
+conseguenza, se si vuole mantenere stabile il protone, il campo elettrico deve andare verso
+l'alto, perpendicolarmente al condensatore.\\ [\baselineskip]
+Un campo elettrico generato da un condensatore è pari a 
+\begin{equation*}
+  E = \frac{\Delta V}{\Delta x}
+\end{equation*}
+Noi abbiamo la distanza e il campo con la richieta della differenza di potenziale. Isoliamo
+e calcoliamo
+\begin{equation*}
+  E = \frac{\Delta V}{\Delta x} \rightarrow \Delta V = E\Delta x = 7.3\cdot10^4\cdot0.025 = 
+  \boxed{1846\,\text{V}}
+\end{equation*}
+Quale piastra deve essere caricata positivamente? Sapendo che il campo va da + a - e sapendo che
+deve essere orientato verso l'alto, la piastra positiva deve essere quella inferiore.
+
+\paragraph{Esercizio 5}
+Un solenoide è lungo $20\,\text{cm}$ e ha un diametro di $50\,\text{mm}$. Il filo di rame 
+utilizzato per formare le spire dell'avvolgimento ha una sezione di diametro $0.5\,\text{mm}$.
+Le spire sono affiancate. Ai capi del solenoide è applicata una differenza di potenziale in
+modo che il campo magnetico generato all'interno abbia un'intensità pari a $1.26\cdot10^{-3}\,
+\text{T}$. La resistività del rame vale $1.7\cdot10^{-8}\,\Omega\cdot\text{m}$. \textbf{Calcola
+il valore della differenza di potenziale.} 
+\divisor
+
+Scriviamo la formula che ci trova il campo magnetico in un solenoide
+\begin{equation*}
+  B = \mu_0 \frac{n}{l}i
+\end{equation*}
+La corrente è definita come
+\begin{equation*}
+  i = \frac{V}{R}
+\end{equation*}
+A noi manca anche la resistenza che però possiamo trovare facilmente usando la seconda legge di
+Ohm
+\begin{equation*}
+  R = \rho \frac{L}{S} \rightarrow R = 1.7\cdot10^{-8} \frac{L}{\pi\cdot (2.5\cdot10^{-4})^2} =
+  \underline{0.085L} 
+\end{equation*}
+Quindi ora, scrivendo tutto quanto in un'unica equazione
+\begin{equation*}
+  1.26\cdot10^{-3} = 4\cdot\pi \frac{n}{0.2}\frac{V}{0.085L}
+\end{equation*}
+dato che $L = 2n\cdot r\cdot\pi$ dato che il filo è arrotolato $n$ volte
+\begin{equation*}
+  1.26\cdot10^{-3} = 4\cdot\pi \frac{n}{0.2}\frac{V}{0.085\cdot n\cdot 0.15}
+\end{equation*}
+risolvendo per $V$ otteniamo
+\begin{equation*}
+  V = \boxed{2.67\,\text{V}}
+\end{equation*}
+
 \improvement[inline]{Aggiungere esercizio magnetismo della scheda}
