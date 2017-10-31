@@ -1742,6 +1742,109 @@ v_f^2 - v_i^2 = 2aS \rightarrow v_i = \sqrt{2aS + v_f^2} \rightarrow \\
 v_i = \sqrt{2\cdot6.1\cdot10^4\cdot5} \approx \boxed{784\,\text{m/s}}
 \end{align*}
 
+\paragraph{Esercizio 3}
+Un elettrone di massa $m$ e carica $e$ viene lanciato ad una velocità $v_0=2\cdot10^8\,\text{m/s}$
+lungo l'asse delle pareti di un condensatore a facce piane e parallele di lunghezza $l=1\,\text{m}
+$, andando a colpire uno schermo fluorescente posto ad una distanza $d=2\,\text{m}$ dagli etremi 
+delle pareti del condensatore. Supponendo che l'eltrrone appena uscito dal condensatore non
+risenta più dell'effetto del campo elettrico e che il campo elettrico $\vec{E}$, di modulo
+$10^4\,\text{N/C}$, sia diretto verso il basso, \textbf{calcola a quale distanza dall'asse del
+condensatore, l'elettrone colpisce lo schermo.} Si tenga presente che 
+$\frac{e}{m}=1.76\cdot10^{11}\,\text{C/kg}$
+\divisor
+
+Quest'esercizio è piuttosto complicato ed è molto articolato. Andrà a toccare elementi di 
+cinematica nonché di elettrostatica. Per avere un'idea più chiara della situazione, andiamo a 
+vedere il disegno
+
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (C1) at (0,0);
+    \coordinate (C2) at (2,0);
+    \coordinate (C3) at (0,1);
+    \coordinate (C4) at (2,1);
+
+    \coordinate (Start) at (0,0.5);
+    \coordinate (End1) at (2,0.9);
+    \coordinate (End2) at (6,2.5);
+
+    \coordinate (H) at (6,0.5);
+    \coordinate (L) at (6,0.9);
+
+    \draw (C1) -- (C2);
+    \draw (C3) -- (C4);
+
+    \draw[thick, red, -stealth] (Start) to[out=2, in=200] (End1);
+    \draw[dashed] (Start) -- ++(6,0);
+    \draw[dashed] (End1) -- ++(4,0);
+    \draw[thick, red, -stealth] (End1) -- (End2);
+
+    \draw (6,3) -- ++(0,-3);
+
+    \foreach \x in {0.5, 1, 1.5}{
+      \draw[lightgray, -stealth] (\x, 1) -- (\x, 0);
+    }
+
+    \draw[|-|] ($(End2) + (0.1,0)$) -- ($(H) + (0.1,0)$)
+      node[pos=0.5,right]{$d$};
+    \draw[|-|] ($(L) + (0.4,0)$) -- ($(H) + (0.4,0)$)
+      node[pos=0.5,right]{$y_{usc}$};
+    \markangle{End1}{End2}{L}{0.8}{1.2}{$\alpha$}
+  \end{tikzpicture}
+\end{center}
+
+In rosso vediamo il moto dell'elettrone. Perché tende verso l'alto? L'elettrone ha carica
+negativa, il campo elettrico va da + a -, quindi l'elettrone si muove in verso opposto a
+quello del campo. Sono stati evidenziati anche i due diversi moti, con due diverse frecce.
+Il primo è moto parabolico in quanto abbiamo una certa forza che agisce sull'elettrone, il secondo
+è moto rettilineo uniforme in quanto non ci sono più forze in gioco.\\ [\baselineskip]
+Per risolvere questo genere di esercizi molto articolati, bisogna procedere con calma e metodo.
+Noi dobbiamo trovare $d$. $d$ è composta da $y_{usc}$ e dalla $y$ del moto rettilineo. Troviamo
+intanto $y_{usc}$. Secondo la legge oraria del moto parabolico
+\begin{equation*}
+  y_{usc} = \frac{1}{2}at^2 \rightarrow y_{usc} = \frac{1}{2}a \left( \frac{x}{v_0} \right)^2
+\end{equation*}
+Abbiamo tutto quello che ci serve tranne $a$. A che accelerazione è sottoposto l'elettrone?
+A quella generata dalla forza di un campo magnetico su una carica. Utilizzando quindi la 
+definizione di campo elettrico e la seconda legge della dinamica scriviamo
+\begin{equation*}
+  eE = ma \rightarrow a = \frac{e}{m}E
+\end{equation*}
+Quindi sostituendo con i dati già forniti e risolvendo otteniamo
+\begin{equation*}
+  a \approx \underline{1.76\cdot10^{15}\,\text{m/s}^2} 
+\end{equation*}
+Inserendo ora tutti i dati nella prima formula
+\begin{equation*}
+  y_{usc} = \frac{1}{2}\cdot1.76\cdot10^5\cdot \left( \frac{1}{2\cdot10^8} \right)^2
+  \approx \underline{2.2\cdot10^{-2}\,\text{m}} 
+\end{equation*}
+E questa era la parte facile. Ora se osserviamo meglio il disegno, vediamo che $y=2\tan\alpha$
+questo perché $2$ è il cateto maggiore e $\alpha$ l'angolo opposto al cateto che ci interessa.
+Quindi dobbiamo in qualche modo trovare $\alpha$. Possiamo vedere quell'angolo come angolo 
+compreso tra due vettori, specificamente la componente $x$ e $y$ della velocità d'uscita.
+Abbiamo già la componente $x$ in quanto nel moto parabolico si mantiene costante. Quella
+$y$ è facilmente trovabile con le nostre conoscenze di cinematica dove
+\begin{equation*}
+  v=v_0+at
+\end{equation*}
+dove $v_0=0$ in quanto l'elettrone parte da fermo sull'asse $y$. L'accelerazione e il tempo li
+abbiamo già individuati! Quindi scriviamo
+\begin{equation*}
+  v=at \rightarrow v=1.76\cdot10^{15}\cdot\frac{1}{2\cdot10^8}\approx
+  \underline{8.8\cdot10^6\,\text{m/s}} 
+\end{equation*}
+L'angolo compreso tra due vettori è pari all'arcotangente del quoziente tra le componenti $y$ e
+$x$. Quindi
+\begin{equation*}
+  \alpha=\arctan \frac{y}{x} \rightarrow \alpha=\arctan \frac{8.8\cdot10^6}{2\cdot10^8}\approx 
+  \underline{0.044} 
+\end{equation*}
+Ora risolviamo e concludiamo
+\begin{align*}
+  d &= y+y_{usc} = 2\tan\alpha+y_{usc} = 2\tan0.044+0.022 =\\
+    &2\cdot0.044+0.022 = \boxed{0.11\,\text{m}}
+\end{align*}
 
 \subsection*{\hyperref[sec:circElettr]{Circuiti Elettrici}}\label{ex:circElettr}
 \paragraph{Esercizio 1}
@@ -2448,5 +2551,3 @@ risolvendo per $V$ otteniamo
 \begin{equation*}
   V = \boxed{2.67\,\text{V}}
 \end{equation*}
-
-\improvement[inline]{Aggiungere esercizio magnetismo della scheda}
