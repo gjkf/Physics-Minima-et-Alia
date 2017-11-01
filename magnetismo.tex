@@ -241,8 +241,12 @@ di seguito aiuterà a capire in che modo l'elettrone viene spostato
 		}
 		
 		% --- Draw A and B ---
-		\fill[blue] ({cos(\tA)},{sin(\tA)},\zA) circle [radius=\rAB]node[right]{$A$};
+		\fill[blue] ({cos(\tA)},{sin(\tA)},\zA) circle [radius=\rAB]node[left]{$A$};
 		\fill[blue] ({cos(\tB)},{sin(\tB)},\zB) circle [radius=\rAB]node[left]{$B$};
+                \draw[thick,-stealth] ({cos(\tA)},{sin(\tA)},\zA) -- ++(0.3,0,0.2)
+                  node[pos=0.5,below right]{$v_x$};
+                \draw[thick,-stealth] ({cos(\tA)},{sin(\tA)},\zA) -- ++(0,0,0.4)
+                  node[pos=0.5,above right]{$v_y$};
 	\end{tikzpicture}
 \end{center}
 Questa è una rappresentazione del moto di una carica all'interno del campo magnetico. Queste formule
