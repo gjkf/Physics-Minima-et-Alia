@@ -1015,7 +1015,30 @@ Una massa $m_2$ di idrogeno ($H_2$) occupa, alla temperatura di $27\,\text{\text
 recipiente di volume pari a $50\,\text{dm}^3$, alla pressione di $1\,\text{atm}$. Calcola la 
 \textbf{pressione} che eserciterebbe il miscuglio dei due gas in un recipiente di volume pari a 
 $70\,\text{l}$ alla temperatura di $0\,\text{\textcelsius}$.
-\divisor\improvement{Aggiungere risultato e soluzione ad esercizio 2}
+\divisor
+
+Utilizzando l'equazione universale dei gas, possiamo ricavare il numero di moli di ciascun
+elemento
+\begin{equation*}
+  pV=nRT \rightarrow n = \frac{pV}{RT}
+\end{equation*}
+Quindi
+\begin{equation*}
+  n_{O_2} = \frac{pV}{RT} \rightarrow n_{O_2} = \frac{2\cdot10^5\cdot5\cdot10^{-2}}{8.31\cdot
+  280.15} = 1.718\,\text{mol}
+\end{equation*}
+\begin{equation*}
+  n_{H_2} = \frac{pV}{RT} \rightarrow n_{H_2} = \frac{101325\cdot5\cdot10^{-2}}{8.31\cdot
+  300.15} = 2.031\,\text{mol}
+\end{equation*}
+Conoscendo la quantità di moli che ci sono, possiamo calcolare la pressione di ciascun elemento
+all'interno del nuovo recipiente. Considerato che è un miscuglio, dobbiamo poi sommare le due
+pressioni per ottenere quella totale
+\begin{align*}
+  p &= \frac{nRT}{V} \rightarrow p = \frac{1.718\cdot8.31\cdot263.15}{7\cdot10^{-2}}+
+  \frac{2.031\cdot8.31\cdot273.15}{7\cdot10^{-2}}=\\&55790+65858=\boxed{121567\,\text{Pa}}
+\end{align*}
+
 
 \paragraph{Esercizio 3}
 Un gas perfetto caratterizzato da $\gamma = 1.67$ esegue un ciclo formato dall'isoterma AB, 
@@ -1614,10 +1637,6 @@ q = \boxed{-10\,\text{cm}}
 \end{align*}
 Il risultato è negativo in quanto si trova dietro la prima lente, nostro punto di riferimento per
 questo esercizio.
-
-\paragraph{Esercizio 2}
-
-
 
 \subsection*{\hyperref[sec:elettrostatica]{Elettrostatica}}\label{ex:elettrostatica}
 \paragraph{Esercizio 1}

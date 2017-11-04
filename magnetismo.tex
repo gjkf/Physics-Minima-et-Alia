@@ -5,7 +5,6 @@ Il magnetismo si occupa di come i magneti interagiscano fra di loro. Ogni magnet
 campo magnetico ($\vec{B}$). La sua direzione è sempre dal polo NORD a quello SUD. Ogni magnete ha
 sempre due poli e anche se lo si divide si otterranno magneti bipolari.\\ 
 La sua unità di misura è il \emph{Tesla} ($T = \frac{N}{Am}$)\\
-Può essere definito in due modi, prenderemo in considerazione quello più usato in ambito liceale.\\
 Per gli esercizi si vada \hyperref[ex:magnetismo]{qui}.
 
 \subsection{Forza in un campo magnetico}
@@ -17,20 +16,39 @@ $l$ rappresenta la lunghezza del cavo che attraversa il campo magnetico\\
 $\vec{i}$: è la corrente che attraversa il cavo. IL verso determinerà se da considerarsi positiva o
 negativa nel sistema di riferimento scelto.
 
-\subsection{Legge di Biot-Savant}
+\subsection{Legge di Biot-Savart}
 La legge di Biot-Savant definisce un campo magnetico generato da un filo rettilineo percorso da
 una corrente.\\
 La direzione è la tangente alla linea di forza generata dal filo, il verso è antiorario se la
 corrente esce, orario altrimenti. Un modo per ricordarselo più facilmente è il seguente: si prenda la
 mano destra e si usi il pollice per indicare il verso e la direzione della corrente. Si chiudano poi
-a pugno le altre dita. Il verso delle dita chiuse, è anche quello del campo magnetico.
+a pugno le altre dita. Il verso delle dita chiuse, è quello del campo magnetico.
 \begin{equation*}
 B = \frac{\mu_0}{2\pi}\frac{i}{d}
 \end{equation*}
 \hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$\\
 \hyperref[tab:pi]{$\pi$}: $3.14$\\
 $i$: corrente\\
-$d$: distanza dal filo\\
+$d$: distanza dal filo\\ [\baselineskip]
+
+In genere negli esercizi si trova disegnato o un cerchio con un punto o uno con una croce che
+vengono usati per indicare il verso del filo o del campo, come i seguenti
+
+\begin{center}
+  \begin{tikzpicture}
+    \tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth),
+      inner sep=0pt, outer sep=0pt},
+      %default radius will be 1pt. 
+      cross/.default={1pt}
+    }
+    \draw (-1,0) circle (0.3);
+    \filldraw (-1,0) circle (0.01);
+    \draw (1,0) circle (0.3);
+    \draw (1,0) node[cross=2pt]{};
+    \node[text width=1.5cm] at (-1,-0.7){Entrante nel foglio};
+    \node[text width=1.5cm] at (1,-0.7){Uscente dal foglio};
+  \end{tikzpicture}
+\end{center}
 
 \subsection{Legge di Ampére}
 La legge di Ampére descrive la forza che intercorre tra due fili paralleli attraversati da una
@@ -253,7 +271,7 @@ Questa è una rappresentazione del moto di una carica all'interno del campo magne
 permettono di trovare il \emph{raggio}, \emph{periodo} e il \emph{passo} dell'elica. Nelle
 seguenti formule, si utilizzeranno le due componenti distinte della velocità.
 \begin{alignat*}{2}
-  \frac{mv^2_x}{r}&= qvB  &\qquad  T &= \frac{2\pi\cdot m}{q\cdot B}\\
+  \frac{mv^2_x}{r}&= qv_xB  &\qquad  T &= \frac{2\pi\cdot m}{q\cdot B}\\
   \Delta S &= v_y\cdot T & r&=\frac{mv_x}{qB}
 \end{alignat*}
 
@@ -297,23 +315,22 @@ Il teorema di Ampére dice che
 dove $i_c$ è una corrente concatenata. Una corrente $i$ si definisce concatenata con una linea
 chiusa $\Gamma$ se attraversa una superficie che ha come linea chiusa $\Gamma$.
 
-\subsection{Conduttori nei metalli}
-In questa sottosezione si trovano le formule per trovare la carica massima che può ottenere e la
-velocità di deriva degli elettroni.\\
+\begin{center}
+  \begin{tikzpicture}
+    [
+      decoration={
+      markings,
+      mark=at position 0.5 with {\arrow{stealth}}}
+    ]
+    \draw (0,0) ellipse (2 and 0.5);
+    \draw[postaction={decorate}] (-0.5,1) -- ++(0,-2)
+      node[pos=0.5,left]{$5$A};
+    \draw[postaction={decorate}] (0.5,-1) -- ++(0,2)
+      node[pos=0.5,right]{$3$A};
+  \end{tikzpicture}
+\end{center}
 
-\subsubsection{Velocità di deriva}
-È la velocità media degli elettroni nel conduttore metallico.
+Preso per esempio il disegno qui sopra, la circuitazione sarebbe
 \begin{equation*}
-v_d = \frac{i}{n\cdot A\cdot e}
+  C_\Gamma(\vec{B}) = \mu_0(5-3) = 2\mu_0
 \end{equation*}
-\hyperref[tab:e-]{$e$}\\
-$n$: numero di elettroni di conduzione\\
-$A$: sezione del conduttore
-
-\subsubsection{Carica massima}
-\begin{equation*}
-i = n\cdot A\cdot v_d\cdot e
-\end{equation*}
-\hyperref[tab:e-]{$e$}\\
-$n$: numero di elettroni di conduzione\\
-$A$: sezione del conduttore
