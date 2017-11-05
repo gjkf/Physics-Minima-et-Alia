@@ -1200,7 +1200,43 @@ $T_2 = 273\,\text{K}$ compiendo ad ogni ciclo un lavoro $L = 10^5\,\text{J}$. La
 temperatura più bassa è costituita da una massa di ghiaccio $M = 10^4\,\text{kg}$ (calore latente
 di fusione $80\,\text{cal/g}$). Si chiede di determinare dopo \textbf{quanti cicli} il ghiaccio è 
 totalmente sciolto.
-\divisor\improvement{Aggiungere risultato e soluzione ad esercizio 4}
+\divisor
+
+Innanzitutto calcoliamo la quantità di calore necesaria totale
+\begin{equation*}
+  Q = \lambda_f\cdot m \rightarrow Q = 3.3\cdot10^5\cdot10^4 = \underline{330\cdot10^7\,\text{J}} 
+\end{equation*}
+Viene scritto $3.3\cdot10^5$ perché il testo dà $80\,\text{cal/g}$ che quindi trasformati in Joule
+vengono $80\cdot4186 = 3.3\cdot10^5$.\\
+Ora troviamo il rendimento della macchina termica
+\begin{equation*}
+  \mu = 1-\frac{T_1}{T_2} \rightarrow \mu = 1-\frac{273}{390}=\underline{0.3} 
+\end{equation*}
+Sfruttando la formula
+\begin{equation*}
+  1-\frac{Q_1}{Q_2} = \mu
+\end{equation*}
+possiamo recuperare $Q_1$ che in definitiva è la nostra incognita se abbiamo $Q_2$.\\
+Sfruttando questo, possiamo ricavare la quantità di calore che viene sprigionata invertendo
+la seguente formula
+\begin{equation*}
+  \mu = \frac{L}{Q_2} \rightarrow 0.3 = \frac{10^5}{Q_2} \rightarrow 
+  Q_2 = \underline{3.3\cdot10^5\,\text{J}} 
+\end{equation*}
+Ora possiamo scrivere
+\begin{equation*}
+  1-\frac{Q_1}{Q_2} = \mu \rightarrow 1-\frac{Q_1}{3.3\cdot10^5}=0.3 \rightarrow Q_1 =
+  \underline{231000\,\text{J}} 
+\end{equation*}
+Quindi avendo noi calcolato la quantità di calore totale necessaria perché il ghiaccio si sciolga
+e quanta ne viene sprigionata da un ciclo della macchina, possiamo scrivere
+\begin{equation*}
+  Q_{tot} = nQ_1
+\end{equation*}
+dove $n$ è il numero di cicli necessari ad ottenere tutto il calore necessario. Quindi
+\begin{equation*}
+  n = \frac{Q_{tot}}{Q_1} \rightarrow n = \frac{331\cdot10^7}{231000} = \boxed{14285}
+\end{equation*}
 
 \subsubsection*{\hyperref[subsec:termodinamica:entropia]{Entropia}}\label{ex:entropia}
 Un blocco d ghiaccio che ha una massa $m = 450\,\text{g}$ e che si trova alla temperatura di 
@@ -2519,9 +2555,9 @@ e noi abbiamo $v$ e $B$. Il nostro compito quindi è ottenere $E$.
   \boxed{7.3\cdot10^4\,\text{C/m}^2}
 \end{equation*}
 In che direzione deve andare? Se osserviamo il campo magnetico generato, notiamo che tende a 
-spingere i protoni verso il basso (usando la regola della mano questo risulta evidente). Di
+spingere i protoni verso l'alto (usando la regola della mano questo risulta evidente). Di
 conseguenza, se si vuole mantenere stabile il protone, il campo elettrico deve andare verso
-l'alto, perpendicolarmente al condensatore.\\ [\baselineskip]
+il basso, perpendicolarmente al condensatore.\\ [\baselineskip]
 Un campo elettrico generato da un condensatore è pari a 
 \begin{equation*}
   E = \frac{\Delta V}{\Delta x}
@@ -2533,7 +2569,7 @@ e calcoliamo
   \boxed{1846\,\text{V}}
 \end{equation*}
 Quale piastra deve essere caricata positivamente? Sapendo che il campo va da + a - e sapendo che
-deve essere orientato verso l'alto, la piastra positiva deve essere quella inferiore.
+deve essere orientato verso il basso, la piastra positiva deve essere quella superiore.
 
 \paragraph{Esercizio 5}
 Un solenoide è lungo $20\,\text{cm}$ e ha un diametro di $50\,\text{mm}$. Il filo di rame 
