@@ -5,7 +5,7 @@ Il magnetismo si occupa di come i magneti interagiscano fra di loro. Ogni magnet
 campo magnetico ($\vec{B}$). La sua direzione è sempre dal polo NORD a quello SUD. Ogni magnete ha
 sempre due poli e anche se lo si divide si otterranno magneti bipolari.\\ 
 La sua unità di misura è il \emph{Tesla} ($T = \frac{N}{Am}$)\\
-Per gli esercizi si vada \hyperref[ex:magnetismo]{qui}.
+Per gli esercizi si vada a pagina~\pageref{ex:magnetismo}.
 
 \subsection{Forza in un campo magnetico}
 \begin{equation*}	
@@ -45,8 +45,8 @@ vengono usati per indicare il verso del filo o del campo, come i seguenti
     \filldraw (-1,0) circle (0.01);
     \draw (1,0) circle (0.3);
     \draw (1,0) node[cross=2pt]{};
-    \node[text width=1.5cm] at (-1,-0.7){Entrante nel foglio};
-    \node[text width=1.5cm] at (1,-0.7){Uscente dal foglio};
+    \node[text width=1.5cm] at (-1,-0.7){Uscente dal foglio};
+    \node[text width=1.5cm] at (1,-0.7){Entrante nel foglio};
   \end{tikzpicture}
 \end{center}
 
@@ -334,3 +334,48 @@ Preso per esempio il disegno qui sopra, la circuitazione sarebbe
 \begin{equation*}
   C_\Gamma(\vec{B}) = \mu_0(5-3) = 2\mu_0
 \end{equation*}
+
+\subsection{Legge di Faraday-Neuman-Lenz}\label{subsec:mag:fnl}
+La legge descrive un fenomeno scoperto da Faraday per caso. Un circuito, immerso in un campo
+magnetico, al variare di questo genera una corrente indotta. Più precisamente, al variare
+del flusso del campo magnetico, viene generata una corrente indotta.\\
+Faraday, Neuman e Lenz assieme arrivarono alla formulazione della seguente formula
+\begin{equation*}
+  \mathcal{E} = -\frac{\Delta\Phi(\vec{B})}{\Delta t}
+\end{equation*}
+se considerata una media
+\begin{equation*}
+  \mathcal{E} = -\frac{\dif\Phi(\vec{B})}{\dif t}
+\end{equation*}
+se considerata istantanea.\\
+In queste formule $\mathcal{E}$ è la forza elettromotrice indotta (dato che con una corrente
+generata, possiamo immaginare ci sia una forza elettromotrice che la genera), $\Phi$ è il flusso
+e $t$ il tempo.\\
+Si noti anche che modificando la formula della forza elettromotrice possiamo dire che
+\begin{equation*}
+  \mathcal{E} = vBl
+\end{equation*}
+dove $v$ è la velocità di spostamento del conduttore/circuito in questione, $B$ il campo magnetico
+e $l$ la lunghezza del conduttore.
+\begin{center}
+  \begin{tikzpicture}
+    \tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth),
+      inner sep=0pt, outer sep=0pt},
+      %default radius will be 1pt. 
+      cross/.default={1pt}
+    }
+    \foreach \x in {0,0.5,1,...,3}{
+      \foreach \y in {0.5,0,-0.5}{
+        \draw[thin,lightgray] (\x,\y) circle (0.1);
+        \draw (\x,\y) node[thin, lightgray, cross=2pt]{};
+      }
+    }
+    \filldraw[gray] (0.15,0.3) -- ++(0.2,0) -- ++(0,-0.6) -- ++(-0.2,0) -- cycle;
+    \draw[-stealth] (0.2,0) -- ++(1,0)
+      node[pos=0.5, below]{$\vec{v}$}; 
+    \draw[|<->|] (-0.3,0.3) -- ++(0,-0.6)
+      node[pos=0.5,left]{$l$};
+    \draw[draw=black!60,draw opacity=0.5,line width=2mm] (-1,0.4) -- ++(4,0) -- ++(0,-0.8) -- ++(-4,0);
+    \end{tikzpicture}
+\end{center}
+

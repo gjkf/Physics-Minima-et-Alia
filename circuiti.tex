@@ -6,13 +6,13 @@ I circuiti elettrici sono usati ovunque nel mondo d'oggi e hanno una simbologia 
 seguito viene riportato un circuito elementare.
 
 \begin{center}
-	    \begin{circuitikz}
-			\draw (0,0)
-			to[battery1, l=9<\volt>] (0,2)
-			to[short] (2,2)
-			to[R=$R_1$, l=10<\kilo\ohm>] (2,0)
-			to[short] (0,0);
-		\end{circuitikz}
+  \begin{circuitikz}
+          \draw (0,0)
+          to[battery1, l=9<\volt>] (0,2)
+          to[short] (2,2)
+          to[R=$R_1$, l=10<\kilo\ohm>] (2,0)
+          to[short] (0,0);
+  \end{circuitikz}
 \end{center}
 
 Questo circuito non ha una funzione in quanto è composto solo da una batteria
@@ -42,7 +42,7 @@ Ogni tanto si può anche trovare un interruttore che può interrompere il flusso d
 	\end{circuitikz}
 \end{center}
 
-Per gli esercizi, si vada \hyperref[ex:circElettr]{qui}.
+Per gli esercizi, si vada a pagina~\pageref{ex:circElettr}.
 
 \subsection{Corrente elettrica}
 Indica quante cariche (di solito elettroni) si muovono all'interno di un corpo conduttore durante un 
@@ -165,7 +165,7 @@ La prima mette in relazione la ddp e la corrente con la resistenza.\\
 La seconda mette in relazione la resistività ($\rho$), la lunghezza del corpo ($l$) e la sezione 
 ($S$) con la resistenza.
 
-\subsubsection{Capacità equivalente di resistenze in \emph{serie}}
+\subsubsection{Resistenza quivalente di resistenze in \emph{serie}}
 \begin{center}
 	\begin{circuitikz}
 		\draw
@@ -183,7 +183,7 @@ Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità dev
 R_e = R_1 + R_2
 \end{equation*}
 
-\subsubsection{Capacità equivalente di resistenze in \emph{parallelo}}
+\subsubsection{Resistenza quivalente di resistenze in \emph{parallelo}}
 \begin{center}
 	\begin{circuitikz}
 		\draw 
@@ -241,8 +241,13 @@ interna.
 \begin{equation*}
 \mathcal{E} = \overbrace{iR}^{\Delta V} + \underbrace{ir}_{\mathclap{\text{caduta di tensione}}}
 \end{equation*}
-$R$: resistenza\\[\baselineskip]
-Si noti che $\mathcal{E}-iR$ è l'effettiva d.d.p. che si può trovare ai capi di una batteria che sta
+\begin{equation*}
+  \mathcal{E} = \frac{L}{q}
+\end{equation*}
+$R$: resistenza\\
+$L$: lavoro del generatore per portare la carica da un polo all'altro\\
+$q$: carica\\ [\baselineskip]
+Si noti che $\mathcal{E}-iR$ è l'effettiva d.d.p.~che si può trovare ai capi di una batteria che sta
 alimentando un circuito con $R>0$.
 
 \subsubsection{Potenza elettrica}
@@ -390,3 +395,20 @@ Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di
 	\item Come seconda e terza equazione, descrivere le maglie seguendo il verso scelto
 	\item Risolvere il sistema lineare
 \end{enumerate}
+
+\subsection{Induttanza}
+L'induttanza è strettamente collegata al fenomeno dell'auto induzione, che è strettamente legato
+alla \hyperref[subsec:mag:fnl]{Legge di Faraday-Neuman-Lenz}. Per capirla, prendiamo come
+esempio il seguente circuito
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+    \draw 
+    (0,0) 
+    to[battery1] (1,0)
+    to[switch] (2,0)
+    to[R] (2,1)
+    to[short] (0,1)
+    to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+
