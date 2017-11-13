@@ -411,4 +411,71 @@ esempio il seguente circuito
     to[short] (0,0);
   \end{circuitikz}
 \end{center}
+Per la legge di Biot-Savart, si genererà un campo magnetico quando si chiude il circuito e scorrerà
+della corrente. Per la Legge di Faraday-Neuman-Lenz (pag.~\pageref{subsec:mag:fnl}) 
+la variazione di campo magnetico produrrà una corrente indotta all'interno di questo circuito che 
+si oppone alla corrente nel momento della carica e la favorisce nella scarica. Questo ci porta all'
+introduzione di un nuovo elemento circuitale: l'induttanza
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[L] (1,0);
+  \end{circuitikz}
+\end{center}
+Il flusso del cicuito è proporzionale alla corrente per la legge di Faraday-Neuman-Lenz. Quindi
+possiamo scrivere
+\begin{equation*}
+  \Phi(\vec{B}) = L\cdot i
+\end{equation*}
+dove $L$ è la nostra induttanza che dipenda da circuito a circuito.\\
+Se ora usiamo la nuova definizione di flusso possiamo scrivere
+\begin{equation*}
+  \mathcal{E} = -\frac{\dif\Phi(\vec{B})}{\dif t} = -\frac{\dif(Li)}{\dif t} = 
+  -L \frac{\dif i}{\dif t}
+\end{equation*}
+Cosa ci dice questo? Che se $\frac{\dif i}{\dif t}\neq0$ allora $\mathcal{E}_{ind}\neq0$, se invece
+$\frac{\dif i}{\dif t}=0$, allora $i(t)=\text{costante}$.\\
+Essendo l'elemento dell'induttanza un solenoide, possiamo isolare $L$ e scrivere
+\begin{equation*}
+  L = \frac{\Phi(\vec{B})}{i} = \frac{N\mu\frac{Ni}{l}S}{i} = \mu\frac{N^2S}{l}
+\end{equation*}
+dove $\mu$ è la permeabilità magnetica che può essere assoluta (\hyperref[tab:mu0]{$\mu_0$}) o
+relativa ($\mu_r\mu_0$), $N$ il numero di spire, $S$ la superficie e $l$ la lunghezza del 
+solenoide. L'unità di misura è l'\textit{Henry} (H).
 
+\subsection{Circuiti RL}
+I circuiti RL sono circuiti composti da una resistenza e un induttore
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+    \draw (0,0) 
+    to[battery1] (1,0)
+    to[switch] (2,0)
+    to[R] (2,1)
+    to[L] (1,1)
+    to[short] (0,1)
+    to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+In una situazione come questa abbiamo come unica incognita variabile è $i(t)$. Per ricavarla 
+possiamo risolvere l'equazione differenziale
+\begin{equation*}
+  \mathcal{E} = L \frac{\dif i}{\dif t}+Ri
+\end{equation*}
+e risolvendo per $i$, o andare per induzione. Se nel circuito RC l'incognita caratteristica è
+$q(t)$, in questo è $i(t)$. Se la carica aveva come massimo $C\mathcal{E}$, la corrente ha
+come massimo, secondo la legge di Ohm, $\frac{\mathcal{E}}{R}$. Quindi
+\begin{equation*}
+  i(t) = \frac{\mathcal{E}}{R} \left( 1-e^{\frac{t}{\tau}} \right)
+\end{equation*}
+dove $\tau = \frac{L}{R}$ e rappresenta la costante di tempo del circuito.\\
+Anche in questo caso il grafico della carica è
+\begin{center}
+  \begin{tikzpicture}
+    \draw[-stealth] (-0.5,0) -- (3,0);
+    \draw[-stealth] (0,-0.5) -- (0,2);
+    \draw[domain=0:3] plot({\x},{(1-e^(-\x*3))});
+    \draw[dashed] (0,1) -- (3,1)
+      node[pos=0.5,above]{$y=i$};
+  \end{tikzpicture}
+\end{center}
+e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, però generalmente
+dopo $4\tau$ o $5\tau$ la variazione è talmente minima che gli strumenti non la misurano più.
