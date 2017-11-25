@@ -442,6 +442,19 @@ dove $\mu$ è la permeabilità magnetica che può essere assoluta (\hyperref[tab:mu
 relativa ($\mu_r\mu_0$), $N$ il numero di spire, $S$ la superficie e $l$ la lunghezza del 
 solenoide. L'unità di misura è l'\textit{Henry} (H).
 
+\subsubsection{Mutua induzione}
+La mutua induzione è il fenomeno dell'induzione che avviente tra due o più circuiti diversi. Ad
+esempio se un circuito $1$ agisce su di un circuito $2$,
+\begin{equation*}
+  \Phi_2(\vec{B}) = Mi_2
+\end{equation*}
+dove $M$ è un valore che varia da circuito a circuito.\\
+Si noti che di conseguenza, per la legge di Faraday-Neuman-Lenz, si genererà una forza 
+elettromotrice da un circuito all'altro. Quindi possiamo scrivere
+\begin{equation*}
+  \mathcal{E}^{1\to2}= - M \frac{\dif i}{\dif t}
+\end{equation*}
+
 \subsection{Circuiti RL}
 I circuiti RL sono circuiti composti da una resistenza e un induttore
 \begin{center}
@@ -479,3 +492,73 @@ Anche in questo caso il grafico della carica è
 \end{center}
 e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, però generalmente
 dopo $4\tau$ o $5\tau$ la variazione è talmente minima che gli strumenti non la misurano più.
+
+\subsection{Corrente Alternata}
+Se fin'ora si è lavorato con corrente continua fornita da una forza elettromotrice, quasi tutta
+la corrente che si utilizza quotidianamente è alternata. Per generare corrente alternata, si
+pongano due magneti con polarità opposte uno di fronte all'altro. Tra i due si ponga una serie
+di spire che ruotano. Questa rotazione genererà una corrente. Il disegno dunque è molto simile
+a quello del motore elettrico
+\begin{center}
+     \begin{tikzpicture}
+         % Magnets
+         \coordinate (N1) at (0,1);
+         \coordinate (N2) at (0,-1);
+         \coordinate (S1) at (3,1);
+         \coordinate (S2) at (3,-1);
+         % Plate
+         \coordinate (P1) at (1,0.5);
+         \coordinate (P2) at (2,-0.5);
+
+         % Magnets
+         \draw[thick] (-0.5,1) -- (N1) -- (N2) -- (-0.5,-1);
+         \draw[thick] (3.5,1) -- (S1) -- (S2) -- (3.5,-1);
+         % Plate
+         \draw[thick] (P1) -- (P2);
+
+         % Magnetic lines
+         \foreach \a in {0.8,0,-0.8}{
+                 \draw[gray, very thin, -stealth] (0.2, \a) -- ++(2.6,0);
+         }
+
+         \draw[-stealth] (P1) -- ++(0,0.7);
+         \draw[-stealth] (P2) -- ++(0,-0.7);
+
+         % Annotations
+         \node at (-0.5,0){$N$};
+         \node at (3.5,0){$S$};
+         \node at (1.7,0.3){$P$};
+         \node at (0.5,-1.2){$\vec{B}$};
+     \end{tikzpicture}
+\end{center}
+Facendo girare le spire, il flusso varierà. Infatti si avrà
+\begin{equation*}
+  \Phi(\vec{B})=BS\cos\theta = BS\cos\omega t
+\end{equation*}
+quindi applicando la legge di Faraday-Neuman-Lenz
+\begin{align*}
+  &\mathcal{E} = -\frac{\dif\Phi(\vec{B})}{\dif t} = -\frac{\dif}{\dif t}[BS\cos\omega t] =\\
+  &-BA \frac{\dif}{\dif t}[\cos\omega t]=\omega BS\sin\omega t= \mathcal{E_0}\sin\omega t 
+\end{align*}
+Notiamo quindi che la forza elettromotrice che viene scaturita ha intensità sinusoidale, quindi
+lo è anche la corrente. Infatti si definisce una funzione $i(t)$ che varia a seconda del tempo
+\begin{equation*}
+  i(t) = \frac{\mathcal{E}}{R}\sin\omega t = i_0\sin\omega t
+\end{equation*}
+dove $i_0$ è il valore di picco. Si definisce anche una corrente efficace $i_{eff}$ che è la
+corrente che dissipa la stessa potenza in corrente continua. Il suo valore è
+\begin{equation*}
+  i_{eff} = \frac{i_0}{\sqrt{2}}
+\end{equation*}
+Quindi in generale
+\begin{equation*}
+  \mathcal{E} = R\cdot i(t)\quad\mathcal{E}_0=R\cdot i_0\quad\mathcal{E}_{eff}=R\cdot i_{eff}=
+  \frac{\mathcal{E}_0}{\sqrt{2}}
+\end{equation*}
+Si introduce anche un nuovo elemento circuitale il generatore di corrente alternata
+\begin{center}
+  \begin{circuitikz}
+    \draw (0,0) to[short] (1,0) to[sV] (2,0) to[short] (3,0);
+  \end{circuitikz}
+\end{center}
+
