@@ -562,3 +562,34 @@ Si introduce anche un nuovo elemento circuitale il generatore di corrente altern
   \end{circuitikz}
 \end{center}
 
+\subsection{Trasformatore}
+Il trasformatore è uno dei dispositivi più usati al mondo. Il suo scopo è quello di 
+\emph{trasformare} un voltaggio in uno maggiore o minore, quasi senza perdita di energia. Di 
+seguito verrà schematizzato il trasformatore
+\begin{center}
+  \begin{tikzpicture}
+    \fill[fill=gray!50] (-0.1,1.1) -- ++(2.2,0) -- ++(0,-0.3) -- ++(-2.2,0) -- cycle;
+    \fill[fill=gray!50] (-0.1,-0.8) -- ++(2.2,0) -- ++(0,-0.3) -- ++(-2.2,0) -- cycle;
+    \fill[fill=gray!50] (-0.1,0.8) -- ++(0.3,0) -- ++(0,-1.6) -- ++(-0.3,0) -- cycle;
+    \fill[fill=gray!50] (1.8,0.8) -- ++(0.3,0) -- ++(0,-1.6) -- ++(-0.3,0) -- cycle;
+    \draw[decoration={aspect=0.3, amplitude=3mm,coil}, decorate] (0,1) -- (0,-1);
+    \draw (-1,1) -- (0,1);
+    \draw (-1,-1) -- (0,-1);
+    \draw[
+      rotate around={180:(2,0)},decoration={
+        aspect=0.3, amplitude=3mm, segment length=1.5mm,coil
+      }, decorate]
+      (2,1) -- (2,-1);
+    \draw (3,1) -- (2,1);
+    \draw (3,-1) -- (2,-1);
+  \end{tikzpicture}
+\end{center}
+Sia la spira di sinistra quella \textbf{primaria} e sia quella di destra la \textbf{secondaria}.
+Perché un trasformatore abbia senso di esistere deve avere un numero diverso di spire a destra
+e a sinistra. Il blocco di ferro-metallo al centro serve ad incanalare tutte le linee di forza, 
+così che non si sprechino. Si trovano le seguenti formule
+\begin{equation*}
+  \frac{\mathcal{E}_s}{\mathcal{E}_p} = \frac{n_s}{n_p} = \frac{i_s}{i_p}
+\end{equation*}
+Si presti attenzione alla sequenza di scrittura in quanto la corrente invere primario e secondario.
+Si noti anche che $\frac{n_s}{n_p}$ è definito \emph{rapporto di trasformazione}.
