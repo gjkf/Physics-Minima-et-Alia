@@ -3,98 +3,142 @@
 \section{Circuiti elettrici}\label{sec:circElettr}
 Questa sezione è strettamente legata alla precedente ma, vista l'importanza ne merita una sua.\\
 I circuiti elettrici sono usati ovunque nel mondo d'oggi e hanno una simbologia tutta loro. Di 
-seguito viene riportato un circuito elementare.
+seguito verranno riportati i principali elementi circuitali e il loro funzionamento con le relative
+formule.
 
+\subsection{Elementi circuitali}
+
+\subsubsection{Generatori}
+Ci sono due tipi di correnti e di conseguenza due tipi di generatori. Nelle successive parti, si
+divideranno i circuiti principali in base al tipo di corrente presente.\\
+I generatori producono tutti una certa \textbf{Differenza di potenziale} o d.d.p.\ nel circuito.
+Questa d.d.p. è regolata dalla legge di Ohm (vedi pagina~\pageref{par:circElettr:elem:res:ohm}). 
+In genere la
+lettera che denota un generatore di differenza di potenziale è o $V$ (dall'unità di misura, Volt),
+o $\mathcal{E}$. La vera differenza si ha soltanto quando ci sono generatori \textbf{reali} in cui
+è presente una resistenza interna, quindi si ha che
+\begin{equation*}
+  \mathcal{E} = \overbrace{Ri}^{V} + ri
+\end{equation*}
+Generalmente la $\mathcal{E}$ viene anche definita \textbf{forza elettromotrice}.\\
+Il suo valore può anche essere definito in funzione del lavoro ($L$) che il generatore deve
+fare per spostare una carica ($q$) da un polo all'altro
+\begin{equation*}
+  \mathcal{E} = \frac{L}{q}
+\end{equation*}
+
+\paragraph{Continua}
+La corrente generata da questi generatori è corrente \textbf{continua}, ovvero che mantiene il
+verso nel tempo. Il simbolo utilizzato piu frequentemente è
 \begin{center}
   \begin{circuitikz}
-          \draw (0,0)
-          to[battery1, l=9<\volt>] (0,2)
-          to[short] (2,2)
-          to[R=$R_1$, l=10<\kilo\ohm>] (2,0)
-          to[short] (0,0);
+    \draw(0,0) to[battery1,v>=9<\volt>] (2,0);
+  \end{circuitikz}
+\end{center}
+Il polo positivo è quello più grande e la corrente va da $+$ a $-$.
+
+\paragraph{Alternata}
+La corrente generata da questi generatori è corrente \textbf{alternata}, ovvero non ha un verso
+e cambia intensità istante per istante in modo sinusoidale. Il simbolo più usato è
+\begin{center}
+  \begin{circuitikz}
+    \draw(0,0) to[sV, l=9<\volt>] (2,0);
   \end{circuitikz}
 \end{center}
 
-Questo circuito non ha una funzione in quanto è composto solo da una batteria
+\subsubsection{Resistenze}
+Le resistenze sono uno degli elementi fondamentali dei circuiti elettrici. Esse oppongono 
+resistenza alla corrente che le attraversa, permettendo quindi una tensione minore per un specifico
+elemento. La loro unità di misura è l'Ohm ($\Omega$).\\
+Il loro simbolo è
 \begin{center}
-	\begin{circuitikz}
-		\draw (0,0) to[battery1, l=9<\volt>] (2,0);
-	\end{circuitikz}
-\end{center}
-ed una resistenza
-\begin{center}
-	\begin{circuitikz}
-		\draw (0,0) to[R=$R_1$, l=10<\kilo\ohm>](2,0);
-	\end{circuitikz}
+  \begin{circuitikz}
+    \draw(0,0) to[R, l=10<\kilo\ohm>] (2,0);
+  \end{circuitikz}
 \end{center}
 
-L'ultimo simbolo che verrà frequentemento usato è quello del condensatore
-\begin{center}
-	\begin{circuitikz}
-		\draw (0,0) to[C=$C_1$, l=10<\pico\farad>](2,0);
-	\end{circuitikz}
-\end{center}
+\paragraph{Leggi di Ohm}\label{par:circElettr:elem:res:ohm}
+Le leggi di Ohm mettono in relazione ddp e resistenza, e le caratteristiche fisiche di una 
+resistenza.
 
-Ogni tanto si può anche trovare un interruttore che può interrompere il flusso di carica
-\begin{center}
-	\begin{circuitikz}
-		\draw (0,0) to[switch](2,0);
-	\end{circuitikz}
-\end{center}
+\begin{alignat*}{2}
+R &= \frac{\Delta V}{i} &\qquad R &= \rho\frac{l}{S}
+\end{alignat*}
+La prima mette in relazione la ddp e la corrente con la resistenza.\\
+La seconda mette in relazione la resistività ($\rho$), la lunghezza del corpo ($l$) e la sezione 
+($S$) con la resistenza.
 
-Per gli esercizi, si vada a pagina~\pageref{ex:circElettr}.
+\subsubsection{Condensatori}
+Un condensatore è composto da due \emph{armature} che hanno cariche di segno opposto, una positiva
+e l'altra negativa. Il compito di un condensatore all'interno di un circuito è di immagazzinare 
+carica e rilasciarla. Viene usato ad esempio nei flash delle macchine fotografiche dove viene
+rilasciata in un attimo la carica immagazzinata in un certo tempo.\\
+La loro unità di misura è il Farad (F).\\
+Il loro simbolo è
+\begin{center}
+  \begin{circuitikz}
+    \draw(0,0) to[C=1<\micro\farad>] (2,0);
+  \end{circuitikz}
+\end{center}
+La capacità di un condensatore è regolata dalle formule descritte a 
+pagina~\pageref{sub:elettrostatica:capacita}.
+
+\subsubsection{Induttanza}
+L'induttanza è strettamente collegata al fenomeno dell'auto induzione, che è strettamente legato
+alla \hyperref[subsec:mag:fnl]{Legge di Faraday-Neuman-Lenz}. Per capirla, prendiamo come
+esempio il seguente circuito
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+    \draw 
+    (0,0) 
+    to[battery1] (1,0)
+    to[switch] (2,0)
+    to[R] (2,1)
+    to[short] (0,1)
+    to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+Per la legge di Biot-Savart, si genererà un campo magnetico quando si chiude il circuito e scorrerà
+della corrente. Per la Legge di Faraday-Neuman-Lenz (pag.~\pageref{subsec:mag:fnl}) 
+la variazione di campo magnetico produrrà una corrente indotta all'interno di questo circuito che 
+si oppone alla corrente nel momento della carica e la favorisce nella scarica. Questo ci porta all'
+introduzione di un nuovo elemento circuitale: l'induttanza
+\begin{center}
+  \begin{circuitikz}
+    \draw(0,0) to[L] (2,0);
+  \end{circuitikz}
+\end{center}
+Il flusso del cicuito è proporzionale alla corrente per la legge di Faraday-Neuman-Lenz. Quindi
+possiamo scrivere
+\begin{equation*}
+  \Phi(\vec{B}) = L\cdot i
+\end{equation*}
+dove $L$ è la nostra induttanza che dipenda da circuito a circuito.\\
+Se ora usiamo la nuova definizione di flusso possiamo scrivere
+\begin{equation*}
+  \mathcal{E} = -\der{\Phi(\vec{B})}{t} = -\der{(Li)}{t} = 
+  -L\der{i}{t} 
+\end{equation*}
+Cosa ci dice questo? Che se $\der{i}{t}\neq0$ allora $\mathcal{E}_{ind}\neq0$, se invece
+$\der{i}{t}=0$, allora $i(t)=\text{costante}$.\\
+Essendo l'elemento dell'induttanza un solenoide, possiamo isolare $L$ e scrivere
+\begin{equation*}
+  L = \frac{\Phi(\vec{B})}{i} = \frac{N\mu\frac{Ni}{l}S}{i} = \mu\frac{N^2S}{l}
+\end{equation*}
+dove $\mu$ è la permeabilità magnetica che può essere assoluta (\hyperref[tab:mu0]{$\mu_0$}) o
+relativa ($\mu_r\mu_0$), $N$ il numero di spire, $S$ la superficie e $l$ la lunghezza del 
+solenoide. L'unità di misura è l'\textit{Henry} (H).
 
 \subsection{Corrente elettrica}
-Indica quante cariche (di solito elettroni) si muovono all'interno di un corpo conduttore durante un 
-tempo determinato.
+La corrente elettrica è frutto di una d.d.p.\ applicata in un circuito. Essa, per definizione è
+\begin{equation*}
+  i = \frac{\Delta q}{\Delta t} = \der{q(t)}{t}
+\end{equation*}
 
 \subsection{Collegamenti}
 Ci sono 2 tipi di collegamenti: \textbf{in serie} ed \textbf{in parallelo}.\\
 Se due componenti sono in serie, la stessa corrente $i$ li attraversa e sono posti uno dietro 
-l'altro. Se sono in parallelo invece la corrente si divide.
-
-\subsubsection{In serie}
-\begin{center}
-	\begin{circuitikz}
-		\draw (-1, 0)
-		to [short] (0, 0)
-		to [R] (1,0)
-		to [short] (2,0)
-		to [R] (3,0)
-		to [short] (4,0);
-	\end{circuitikz}
-\end{center}
-
-\subsubsection{In parallelo}
-\begin{center}
-	\begin{circuitikz}
-		\draw 
-		(-1,0)
-		to [short, o-] (0,0)
-		to [short, *-] (0,1)
-		to [short] (1,1)
-		to [R] (2,1)
-		to [short] (3,1)
-		to [short] (3,0)
-		
-		(0,0) 
-		to [short, *-] (0,-1)
-		to [short] (1,-1)
-		to [R] (2,-1)
-		to [short] (3,-1)
-		to [short] (3,0)
-		
-		(3,0)
-		to [short, *-o] (4,0);
-	\end{circuitikz}
-\end{center}
-
-\subsection{Condensatori}
-Un condensatore è composto da due \emph{armature} che hanno cariche di segno opposto, una positiva e
-l'altra negativa. Il compito di un condensatore all'interno di un circuito è di immagazzinare carica
-e rilasciarla. Viene usato ad esempio nei flash delle macchine fotografiche dove viene
-rilasciata in un attimo la carica immagazzinata in un certo tempo.\\
-La loro unità di misura è il Farad (F).
+l'altro. Se sono in parallelo invece la corrente si divide, mantenendo costante la d.d.p.
 
 \subsubsection{Capacità equivalente di condensatori in \emph{serie}}
 \begin{center}
@@ -108,8 +152,7 @@ La loro unità di misura è il Farad (F).
 		to [short] (5,0);
 	\end{circuitikz}
 \end{center}
-
-Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità deve essere
+Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
 \begin{equation*}
 \frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}
 \end{equation*}
@@ -137,8 +180,7 @@ Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità dev
 		to [short, *-o] (4,0);
 	\end{circuitikz}
 \end{center}
-
-Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità deve essere
+Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
 \begin{equation*}
 C_e = C_1 + C_2
 \end{equation*}
@@ -148,22 +190,6 @@ Una caratteristca di questi due collegamenti è quello che rimane costante tra i
 condensatori.\\[\baselineskip]
 Due condensatori \textbf{in serie} mantengono la stessa $Q$.\\
 Due condensatori \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
-
-\subsection{Resistenze}
-Le resistenze servono appunto a opporre resistenza alla corrente elettrica. Permettono di collegare
-componenti con una tensione di rendimento bassa a circuiti che ne forniscono una alta.\\
-La loro unità di misura è l'Ohm ($\Omega$).
-
-\subsubsection{Leggi di Ohm}
-Le leggi di Ohm mettono in relazione ddp e resistenza, e le caratteristiche fisiche di una 
-resistenza.
-
-\begin{alignat*}{2}
-R &= \frac{\Delta V}{i} &\qquad R &= \rho\frac{l}{S}
-\end{alignat*}
-La prima mette in relazione la ddp e la corrente con la resistenza.\\
-La seconda mette in relazione la resistività ($\rho$), la lunghezza del corpo ($l$) e la sezione 
-($S$) con la resistenza.
 
 \subsubsection{Resistenza quivalente di resistenze in \emph{serie}}
 \begin{center}
@@ -177,8 +203,7 @@ La seconda mette in relazione la resistività ($\rho$), la lunghezza del corpo ($
 		to [short] (5,0);
 	\end{circuitikz}
 \end{center}
-
-Questo "circuito" può essere ridotto ad un solo condensatore la cui capacità deve essere
+Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
 \begin{equation*}
 R_e = R_1 + R_2
 \end{equation*}
@@ -206,8 +231,7 @@ R_e = R_1 + R_2
 		to [short, *-o] (4,0);
 	\end{circuitikz}
 \end{center}
-
-Questo "circuito" può essere ridotto ad una sola resistenza la cui capacità deve essere
+Questo ``circuito'' può essere ridotto ad una sola resistenza la cui capacità deve essere
 \begin{equation*}
 \frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}
 \end{equation*}
@@ -222,35 +246,17 @@ resistenze.\\[\baselineskip]
 Due resistenze \textbf{in serie} mantengono la stessa $i$.\\
 Due resistenze \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
 
-\subsection{Tabella riassuntiva delle formule}
+\subsubsection{Tabella riassuntiva delle formule}
 
 \begin{center}
-	\begin{tabular}{c | c | c}
-		& Serie & Parallelo \\ \hline
-		Condensatori & $\frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}$ & $C_e = C_1 + C_2$\\ \hline
-		Resistenze & $R_e = R_1 + R_2$ & $\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}$\\
-	\end{tabular}
+      \begin{tabular}{c | c | c}
+        & Serie & Parallelo \\ \midrule
+        Condensatori & $\frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}$ & $C_e = C_1 + C_2$\\
+        Resistenze & $R_e = R_1 + R_2$ & $\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}$\\
+    \end{tabular}
 \end{center}
 
-\subsection{Generatori}
-I generatori generano, abbastanza logicamente, corrente elettrica. Ce ne sono di due tipi:
-\emph{Ideali} e \emph{Reali}. L'unica differenza è che i generatori reali hanno resistenza
-interna.
-
-\subsubsection{Forza elettromotrice}
-\begin{equation*}
-\mathcal{E} = \overbrace{iR}^{\Delta V} + \underbrace{ir}_{\mathclap{\text{caduta di tensione}}}
-\end{equation*}
-\begin{equation*}
-  \mathcal{E} = \frac{L}{q}
-\end{equation*}
-$R$: resistenza\\
-$L$: lavoro del generatore per portare la carica da un polo all'altro\\
-$q$: carica\\ [\baselineskip]
-Si noti che $\mathcal{E}-iR$ è l'effettiva d.d.p.~che si può trovare ai capi di una batteria che sta
-alimentando un circuito con $R>0$.
-
-\subsubsection{Potenza elettrica}
+\subsection{Potenza elettrica}
 \begin{equation*}
 P = Vi
 \end{equation*}
@@ -395,52 +401,6 @@ Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di
 	\item Come seconda e terza equazione, descrivere le maglie seguendo il verso scelto
 	\item Risolvere il sistema lineare
 \end{enumerate}
-
-\subsection{Induttanza}
-L'induttanza è strettamente collegata al fenomeno dell'auto induzione, che è strettamente legato
-alla \hyperref[subsec:mag:fnl]{Legge di Faraday-Neuman-Lenz}. Per capirla, prendiamo come
-esempio il seguente circuito
-\begin{center}
-  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
-    \draw 
-    (0,0) 
-    to[battery1] (1,0)
-    to[switch] (2,0)
-    to[R] (2,1)
-    to[short] (0,1)
-    to[short] (0,0);
-  \end{circuitikz}
-\end{center}
-Per la legge di Biot-Savart, si genererà un campo magnetico quando si chiude il circuito e scorrerà
-della corrente. Per la Legge di Faraday-Neuman-Lenz (pag.~\pageref{subsec:mag:fnl}) 
-la variazione di campo magnetico produrrà una corrente indotta all'interno di questo circuito che 
-si oppone alla corrente nel momento della carica e la favorisce nella scarica. Questo ci porta all'
-introduzione di un nuovo elemento circuitale: l'induttanza
-\begin{center}
-  \begin{circuitikz}
-    \draw (0,0) to[L] (1,0);
-  \end{circuitikz}
-\end{center}
-Il flusso del cicuito è proporzionale alla corrente per la legge di Faraday-Neuman-Lenz. Quindi
-possiamo scrivere
-\begin{equation*}
-  \Phi(\vec{B}) = L\cdot i
-\end{equation*}
-dove $L$ è la nostra induttanza che dipenda da circuito a circuito.\\
-Se ora usiamo la nuova definizione di flusso possiamo scrivere
-\begin{equation*}
-  \mathcal{E} = -\frac{\dif\Phi(\vec{B})}{\dif t} = -\frac{\dif(Li)}{\dif t} = 
-  -L \frac{\dif i}{\dif t}
-\end{equation*}
-Cosa ci dice questo? Che se $\frac{\dif i}{\dif t}\neq0$ allora $\mathcal{E}_{ind}\neq0$, se invece
-$\frac{\dif i}{\dif t}=0$, allora $i(t)=\text{costante}$.\\
-Essendo l'elemento dell'induttanza un solenoide, possiamo isolare $L$ e scrivere
-\begin{equation*}
-  L = \frac{\Phi(\vec{B})}{i} = \frac{N\mu\frac{Ni}{l}S}{i} = \mu\frac{N^2S}{l}
-\end{equation*}
-dove $\mu$ è la permeabilità magnetica che può essere assoluta (\hyperref[tab:mu0]{$\mu_0$}) o
-relativa ($\mu_r\mu_0$), $N$ il numero di spire, $S$ la superficie e $l$ la lunghezza del 
-solenoide. L'unità di misura è l'\textit{Henry} (H).
 
 \subsubsection{Mutua induzione}
 La mutua induzione è il fenomeno dell'induzione che avviente tra due o più circuiti diversi. Ad
