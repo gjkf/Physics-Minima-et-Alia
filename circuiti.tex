@@ -477,7 +477,7 @@ e risolvendo per $i$, o andare per induzione. Se nel circuito RC l'incognita car
 $q(t)$, in questo è $i(t)$. Se la carica aveva come massimo $C\mathcal{E}$, la corrente ha
 come massimo, secondo la legge di Ohm, $\frac{\mathcal{E}}{R}$. Quindi
 \begin{equation*}
-  i(t) = \frac{\mathcal{E}}{R} \left( 1-e^{\frac{t}{\tau}} \right)
+  i(t) = \frac{\mathcal{E}}{R} \left( 1-e^{-\frac{t}{\tau}} \right)
 \end{equation*}
 dove $\tau = \frac{L}{R}$ e rappresenta la costante di tempo del circuito.\\
 Anche in questo caso il grafico della carica è
@@ -491,7 +491,11 @@ Anche in questo caso il grafico della carica è
   \end{tikzpicture}
 \end{center}
 e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, però generalmente
-dopo $4\tau$ o $5\tau$ la variazione è talmente minima che gli strumenti non la misurano più.
+dopo $4\tau$ o $5\tau$ la variazione è talmente minima che gli strumenti non la misurano più.\\
+La formula per la scarica invece è la seguente
+\begin{equation*}
+  i(t) = i_0e^{-\frac{t}{\tau}}
+\end{equation*}
 
 \subsection{Corrente Alternata}
 Se fin'ora si è lavorato con corrente continua fornita da una forza elettromotrice, quasi tutta
@@ -538,7 +542,7 @@ Facendo girare le spire, il flusso varierà. Infatti si avrà
 quindi applicando la legge di Faraday-Neuman-Lenz
 \begin{align*}
   &\mathcal{E} = -\frac{\dif\Phi(\vec{B})}{\dif t} = -\frac{\dif}{\dif t}[BS\cos\omega t] =\\
-  &-BA \frac{\dif}{\dif t}[\cos\omega t]=\omega BS\sin\omega t= \mathcal{E_0}\sin\omega t 
+  &-BA \frac{\dif}{\dif t}[\cos\omega t]=\omega BS\sin\omega t= \mathcal{E}_0\sin\omega t 
 \end{align*}
 Notiamo quindi che la forza elettromotrice che viene scaturita ha intensità sinusoidale, quindi
 lo è anche la corrente. Infatti si definisce una funzione $i(t)$ che varia a seconda del tempo
@@ -589,7 +593,7 @@ Perché un trasformatore abbia senso di esistere deve avere un numero diverso di 
 e a sinistra. Il blocco di ferro-metallo al centro serve ad incanalare tutte le linee di forza, 
 così che non si sprechino. Si trovano le seguenti formule
 \begin{equation*}
-  \frac{\mathcal{E}_s}{\mathcal{E}_p} = \frac{n_s}{n_p} = \frac{i_s}{i_p}
+  \frac{\mathcal{E}_p}{\mathcal{E}_s} = \frac{n_p}{n_s} = \frac{i_s}{i_p}
 \end{equation*}
 Si presti attenzione alla sequenza di scrittura in quanto la corrente invere primario e secondario.
 Si noti anche che $\frac{n_s}{n_p}$ è definito \emph{rapporto di trasformazione}.

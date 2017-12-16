@@ -34,17 +34,18 @@ La forza normale ha verso opposto alla forza peso ma direzione e modulo uguale.
 Ci sono vari tipi di attrito: \emph{statico}, \emph{dinamico} e \emph{volvente} ma tutti si basano
 sullo stessa idea: moltiplicare il coefficiente di attrito tra le superfici per la forza premente.
 \begin{equation*}
-F_d = \mu_dF_p
+  F_s = \mu_sF_p\quad (\text{corpo fermo})
 \end{equation*}
 \begin{equation*}
-F_s = \mu_sF_p
+  F_d = \mu_dF_p\quad (\text{corpo in movimento})
 \end{equation*}
 \begin{equation*}
-F_v = \mu_vF_p
+  F_v = \mu_vF_p\quad (\text{corpo rotante})
 \end{equation*}
 $F_p$: forza premente
 
 \subsection{Piano Inclinato}
+In un piano inclinato la forza peso fa andare in basso il copo se $P_\| > \mu_s\cdot P_\perp$.
 \begin{center}
 	\begin{tikzpicture}
 		\coordinate (A) at (0,0);
@@ -195,8 +196,8 @@ $m$: massa del corpo\\
 $\vec{v}$: velocità del corpo\\
 $\vec{F}$: forza applicata sul corpo\\
 $t$: tempo\\[\baselineskip]
-La quantità di moto indica la forza necessaria a fermare un oggetto in movimento in un dato lasso di
-tempo.\\[\baselineskip]
+La quantità di moto indica la forza necessaria a fermare un oggetto in movimento in un secondo.\\
+[\baselineskip]
 Si ricordi che
 \begin{equation*}
 \sum \vec{q} = \text{ costante nel tempo}
@@ -294,7 +295,9 @@ $v$: velocità finale
 \frac{\mathcolor{teal}{v_p}^2\mathcolor{teal}{m}^2}{2g\left(\mathcolor{red}{M} +
 \mathcolor{teal}{m}\right)^2}
 \end{equation*}
-\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
+$v_p$: velocità del proiettile\\
+$h$: altezza finale del sacco
 
 \subsubsection{Urti obliqui}
 Un urto obliquo è come nel seguente caso, ovvero quando due corpi collidono e partono in direzioni
@@ -353,7 +356,7 @@ L'inerzia ($I$) indica quanto un corpo si oppone alla rotazione.\\
 \end{equation*}
 Da qui si nota la relazione stretta con la \nameref{subsec:qtaMoto}.
 \begin{equation*}
-L = rq\sin\alpha = r\cdot v\cdot m\cdot q\sin\alpha = mr^2\omega\sin\alpha = I\omega\sin\alpha
+L = mr^2\omega\sin\alpha = I\omega\sin\alpha
 \end{equation*}
 \begin{equation*}
 I = mr^2 = \sum\limits_{i=0}^{n}m_ir_i^2
@@ -364,7 +367,7 @@ $v$: velocità tangenziale\\
 $\alpha$: angolo di rotazione\\
 $q$: quantità di moto\\[\baselineskip]
 Se un corpo ruota rispetto ad un asse parallelo a quello passante per il centro di massa e la distanza
-tra i due assi è $d$ e la massa totale $m$,
+tra i due assi è $d$ e la massa totale $m$, è
 \begin{equation*}
 I = I_{CM}+md^2
 \end{equation*}
@@ -386,8 +389,7 @@ Molto semplicemente è definita
 \begin{equation*}
 \Delta L = Mat
 \end{equation*}
-che è una forma molto simile a $\vec{F} = m\vec{a}$. Infatti $\alpha$ identifica 
-\hyperref[subsec:mrua]{l'accelerazione angolare}.\\
+$\alpha$ identifica \hyperref[subsec:mrua]{l'accelerazione angolare}.\\
 Studiando la statica di un corpo rigido, si dimostra che
 \begin{equation*}
 \vec{M} = \vec{r} \times \vec{F}
@@ -410,7 +412,7 @@ Per gli esercizi si vada a pagina~\pageref{ex:inerzia}.
     \textbf{Traslatorio} & \textbf{Rotatorio}\\\hline
     $x=v_0t+\frac{1}{2}gt^2$ & $\theta=\omega t+\frac{1}{2}\alpha t^2$\\\hline
     $a=\frac{\Delta v}{\Delta t}$ & $\alpha=\frac{\Delta\omega}{\Delta t}$\\\hline
-    $F=ma$ & $I\alpha$\\\hline
+    $F=ma$ & $M=I\alpha$\\\hline
     $q=mv$ & $L=I\omega$\\\hline
     $\Delta q=F\Delta t$ & $L = M\Delta t$\\\hline
     $E_c=\frac{1}{2}mv^2$ & $E_c=\frac{1}{2}I\omega^2$
