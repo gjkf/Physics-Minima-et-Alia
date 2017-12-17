@@ -276,19 +276,117 @@ $t$: tempo\\ [\baselineskip]
 
 Spesso viene usato il \emph{kilowattora} che equivale a $3.6\cdot10^6\,\text{J}$.
 
-\subsection{Circuiti RC}
-\subsubsection{Carica}
+\subsection{Circuiti principali}
+Verranno ora riportati i pincipali circuiti che si incontrerano, sia in corrente continua che in
+alternata.
+
+\subsubsection{Puramente resistivi}
+I circuiti puramente resistivi sono composti solo da un generatore e una resistenza. Sono i più
+semplici circuiti che possano esistere
+
+\paragraph{Continua}
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
+    \draw(0,0) to[battery1, v=12<\volt>]   
+    (2,0) to[R=1<\kilo\ohm>]
+    (2,2) to[short] (0,2) to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+Qui le leggi di Ohm si mantengono valide e quindi il cicruito può essere risolto molto 
+semplicemente applicando
+\begin{equation*}
+  \mathcal{E} = Ri
+\end{equation*}
+
+\paragraph{Alternata}
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
+    \draw(0,0) to[sV, l=12<\volt>]   
+    (2,0) to[R=1<\kilo\ohm>]
+    (2,2) to[short] (0,2) to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+Essendo in corrente alternata, l'unica incognita possibile è la corrente
+\begin{equation*}
+  i(t) = \frac{\mathcal{E}_0}{R}\sin\omega t
+\end{equation*}
+Corrente e forza elettromotrice sono \textbf{in fase}, ovvero che assumono i loro valori massimi
+nello stesso istante.
+
+\subsubsection{Puramente capacitivi}
+I circuiti puramente capacitivi sono costituiti da un generatore e un condensatore. Il condensatore
+ha diversi comportamenti a seconda del tipo di corrente che lo attraversa.
+
+\paragraph{Continua}
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
+    \draw(0,0) to[battery1, v=12<\volt>]   
+    (2,0) to[C=1<\micro\farad>]
+    (2,2) to[short] (0,2) to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+L'incognita caratteristica di questo circuito è la carica sulle armature del condensatore. Essendo
+in continua, la formula che la regola è quella della capacità elettrica
+(pagina~\pageref{sub:elettrostatica:capacita}).
+\begin{equation*}
+  C = \frac{q}{V}
+\end{equation*}
+
+\paragraph{Alternata}
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
+    \draw(0,0) to[sV, l=12<\volt>]   
+    (2,0) to[C=1<\micro\farad>]
+    (2,2) to[short] (0,2) to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+In questa situazione, il condensatore non ha più lo scopo di immagazzinare carica e poi rilasciarla
+ma è come una specie di resistenza che sfasa la corrente.
+\begin{equation*}
+  i(t) = C \mathcal{E}\omega\sin \left( \omega t+\frac{\pi}{2} \right)
+\end{equation*}
+Questo significa che la corrente è in \textbf{anticipo} rispetto alla forza elettromotrice.\\
+Dato che il condensatore oppone una specie di resistenza, questa prende il nome di 
+\textbf{reattanza capacitiva} il cui valore è
+\begin{equation*}
+  x_C = \frac{1}{\omega C}
+\end{equation*}
+
+\subsubsection{Puramente induttivi}
+I circuiti puramente induttivi non hanno ragion d'essere in corrente continua in quanto lo scopo
+dell'induttanza è quello di fare variare il flusso magnetico che si genera. Se la corrente non
+cambia, non è possibile ottenere questo effetto.
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
+    \draw(0,0) to[sV, l=12<\volt>]   
+    (2,0) to[L=1<\henry>]
+    (2,2) to[short] (0,2) to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+L'induttanza quindi oppone resistenza creando una corrente contraria per la legge di 
+Faraday-Neuman-Lenz. Quindi
+\begin{equation*}
+  i(t) = \frac{\mathcal{E}_0}{\omega L}\sin \left( \omega t-\frac{\pi}{2} \right)
+\end{equation*}
+Anche l'induttanza crea resistenza, essa prende il nome di \textbf{reattanza induttiva} e ha come
+valore
+\begin{equation*}
+  x_L = \omega L
+\end{equation*}
+
+\subsubsection{Circuiti RC}
 I circuiti RC sono così denominati perché contengono una resistenza e un condensatore.
 \begin{center}
-	\begin{circuitikz}\ctikzset{bipoles/length=.8cm}
-		\draw (1,0)
-		to[battery1] (0,0)
-		to[short] (0,1)
-		to[C] (2,1)
-		to[R] (2,0)
-		to[switch] (1,0);
-	\end{circuitikz}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
+    \draw(1,0)
+    to[battery1] (0,0)
+    to[short] (0,1)
+    to[C] (2,1)
+    to[R] (2,0)
+    to[switch] (1,0);
+  \end{circuitikz}
 \end{center}
+\paragraph{Carica}
 Questo circuito non ha alcuna funzione se non quella di caricare il condensatore fino a capacità 
 massima (anche se, come vedremo, non accadrà mai). Dato che il processo di carica non è istantaneo,
 dipende dal tempo. Infatti si vuole studiare il variare della carica ($q(t)$), corrente ($i(t)$) e
@@ -303,13 +401,13 @@ Dove $\tau=RC$ è la \emph{costante di tempo} che varia da circuito a circuito.\\
 Perché il condensatore non si caricherà mai? Ora andiamo
 a disegnare il grafico della carica otteniamo
 \begin{center}
-	\begin{tikzpicture}
-		\draw[-stealth] (-0.5,0) -- (3,0);
-		\draw[-stealth] (0,-0.5) -- (0,2);
-		\draw[domain=0:3] plot({\x},{(1-e^(-\x))});
-		\draw[dashed] (0,1) -- (3,1)
-			node[pos=0.5,above]{$y=\mathcal{E}$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[-stealth] (-0.5,0) -- (3,0);
+    \draw[-stealth] (0,-0.5) -- (0,2);
+    \draw[domain=0:3] plot({\x},{(1-e^(-\x))});
+    \draw[dashed] (0,1) -- (3,1)
+            node[pos=0.5,above]{$y=\mathcal{E}$};
+  \end{tikzpicture}
 \end{center}
 Come notiamo, il grafico tende sempre a raggiungere il valore massimo però senza mai raggiungerlo,
 infatti
@@ -318,7 +416,7 @@ infatti
 \end{equation*}
 In ogni caso il condensatore raggiunge una carica quasi totale dopo $4\tau$ o $5\tau$.
 
-\subsubsection{Scarica}
+\paragraph{Scarica}
 La scarica di un condensatore avviene in maniera molto simile alla carica.
 \begin{equation*}
   q(t) = C\mathcal{E}e^{-\frac{t}{\tau}}
@@ -330,12 +428,217 @@ La scarica di un condensatore avviene in maniera molto simile alla carica.
   V(t) = \mathcal{E}e^{-\frac{t}{\tau}}
 \end{equation*}
 
+\subsubsection{Circuiti RL}
+I circuiti RL sono circuiti composti da una resistenza e un induttore
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
+    \draw(0,0) 
+    to[battery1] (1,0)
+    to[switch] (2,0)
+    to[R] (2,1)
+    to[L] (1,1)
+    to[short] (0,1)
+    to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+In una situazione come questa abbiamo come unica incognita variabile è $i(t)$. Per ricavarla 
+possiamo risolvere l'equazione differenziale
+\begin{equation*}
+  \mathcal{E} = L \frac{\dif i}{\dif t}+Ri
+\end{equation*}
+e risolvendo per $i$, o andare per induzione. Se nel circuito RC l'incognita caratteristica è
+$q(t)$, in questo è $i(t)$. Se la carica aveva come massimo $C\mathcal{E}$, la corrente ha
+come massimo, secondo la legge di Ohm, $\frac{\mathcal{E}}{R}$. Quindi
+\begin{equation*}
+  i(t) = \frac{\mathcal{E}}{R} \left( 1-e^{-\frac{t}{\tau}} \right)
+\end{equation*}
+dove $\tau = \frac{L}{R}$ e rappresenta la costante di tempo del circuito.\\
+Anche in questo caso il grafico della corrente è
+\begin{center}
+  \begin{tikzpicture}
+    \draw[-stealth] (-0.5,0) -- (3,0);
+    \draw[-stealth] (0,-0.5) -- (0,2);
+    \draw[domain=0:3] plot({\x},{(1-e^(-\x*3))});
+    \draw[dashed] (0,1) -- (3,1)
+      node[pos=0.5,above]{$y=i$};
+  \end{tikzpicture}
+\end{center}
+e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, però generalmente
+dopo $4\tau$ o $5\tau$ la variazione è talmente minima che gli strumenti non la misurano più.\\
+La formula per la scarica invece è la seguente
+\begin{equation*}
+  i(t) = i_0e^{-\frac{t}{\tau}}
+\end{equation*}
+
+\subsubsection{Circuit RLC in serie}
+I circuiti RLC sono i più semplici circuiti che si studiano in corrente alternata. Essi infatti
+sono come il seguente
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
+    \draw(0,0) to[sV] (2,0) 
+    to[R] (2,2)
+    to[L] (1,2)
+    to[C] (0,2)
+    to[short] (0,0);
+  \end{circuitikz}
+\end{center}
+Per trovare le formule, dobbiamo introdurre un nuovo concetto, il \textbf{fasore}.
+\paragraph{Fasori}
+Permettono la trasformazione da funzione sinusoidale a vettore, così da visualizzare lo sfasamento
+e i moduli di tutti. La formula generale
+\begin{equation*}
+  y = A\sin(\omega t+\phi)
+\end{equation*}
+può essere visualizzata come il seguente vettore
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+    \draw coordinate (O) (0,0) circle (1);
+    \coordinate (A) at (1,0);
+    \coordinate (V1) at (0.86,0.5);
+    \coordinate (V2) at (0.5,0.86);
+
+    \draw[thin] (-1,0) -- ++(2,0);
+    \draw[thin] (0,-1) -- ++(0,2);
+    \draw[thick, red, -stealth] (0,0) -- (V1);
+    \draw[thick, orange, -stealth] (0,0) -- (V2);
+    \draw[thin, dashed] (V2) -- ++(-0.5,0);
+    \draw[|<->|] (-0.1,0) -- ++(0,0.86)
+      node[orange, pos=0.5, left]{$A\sin(\omega t+\phi)$};
+    \draw[|<->|] (1.1,0) -- ++(0,0.5)
+      node[red, pos=0.5, right]{$A\sin\omega t$};
+
+    \markangle{O}{A}{V1}{0.5}{1.5}{$\omega t$}
+    \markangle[orange]{O}{V1}{V2}{0.7}{1.3}{$\phi$}
+  \end{tikzpicture}
+\end{center}
+Possiamo quindi, per chiarire meglio, rappresentare i circuiti elementari in alternata. Così è
+più chiaro vedere i vettori che rappresentano corrente e la forza elettromotrice.
+\begin{center}
+  \begin{tikzpicture}
+    \draw coordinate (O) (0,0) circle (1);
+    \coordinate (A) at (1,0);
+    \coordinate (V1) at (0.71,0.71);
+    \coordinate (V2) at (1.2,1.2);
+
+    \draw[thin] (-1,0) -- ++(2,0);
+    \draw[thin] (0,-1) -- ++(0,2);
+    \draw[thick, red, -stealth] (0,0) -- (V1)
+      node[pos=0.3, right]{$\vec{i(t)}$};
+    \draw[thick, orange, -stealth] (0,0) -- (V2)
+      node[pos=0.8, below right]{$\vec{\mathcal{E}(t)}$};
+    \node at (1.5,0){R};
+
+
+    \coordinate (O) at (3,0);
+    \draw (O) circle (1);
+    \coordinate (A) at (4,0);
+    \coordinate (V1) at (3.71,0.71);
+    \coordinate (V2) at (2.1,1.2);
+
+    \draw[thin] (2,0) -- ++(2,0);
+    \draw[thin] (3,-1) -- ++(0,2);
+    \draw[thick, red, -stealth] (O) -- (V1)
+      node[pos=0.3, right]{$\vec{i(t)}$};
+    \draw[thick, orange, -stealth] (O) -- (V2)
+      node[pos=0.8, left]{$\vec{\mathcal{E}(t)}$};
+    \markangle{O}{V1}{V2}{0.5}{1.4}{$\ang{90}$}
+    \node at (4.5,0){L};
+
+    \coordinate (O) at (1.5,-2);
+    \draw (O) circle (1);
+    \coordinate (A) at (2.5,-2);
+    \coordinate (V1) at (2.21,-1.31);
+    \coordinate (V2) at (2.6,-2.9);
+
+    \draw[thin] (0.5,-2) -- ++(2,0);
+    \draw[thin] (1.5,-3) -- ++(0,2);
+    \draw[thick, red, -stealth] (O) -- (V1)
+      node[pos=0.3, above right]{$\vec{i(t)}$};
+    \draw[thick, orange, -stealth] (O) -- (V2)
+      node[pos=0.8, left]{$\vec{\mathcal{E}(t)}$};
+    \markangle{O}{V1}{V2}{0.5}{1.6}{$\ang{90}$}
+    \node at (3,-2){C};
+  \end{tikzpicture}
+\end{center}
+Possiamo vedere quindi il rapporto tra corrente e forza elettromotrice.\\ [\baselineskip]
+Possiamo usare quindi questa tecnica per vedere come definire la corrente in un circuito LRC. Per
+comodità, poniamo la corrente sull'asse delle $x$ così che venga più facile il disegno.
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (O) at (0,0);
+    \draw[thin] (-2,0) -- ++(8,0);
+    \draw[thin] (0,-2) -- ++(0,5);
+
+    \coordinate (i) at (2,0);
+    \coordinate (El) at (0,3);
+    \coordinate (Ec) at (0,-1);
+    \coordinate (Er) at (4,0);
+    \coordinate (E) at (4,2);
+
+    \filldraw[purple, fill opacity = 0.2] (O) -- (E) -- (Er) -- cycle;
+
+    \draw[-stealth, thick, red] (O) -- (i)
+      node[pos=0.5, below]{$\vec{i}$};
+    \draw[-stealth, thick, cyan] (O) -- (El)
+      node[pos=0.5, left]{$\vec{\mathcal{E}_L}$};
+    \draw[-stealth, thick, olive] (O) -- (Ec)
+      node[pos=0.5, left]{$\vec{\mathcal{E}_C}$};
+    \draw[-stealth, thick, orange] (O) -- (Er)
+      node[pos=0.6, below]{$\vec{\mathcal{E}_R}$};
+    \draw[-stealth, very thick, blue] (O) -- (E)
+      node[pos=0.5, above]{$\vec{\mathcal{E}}$};
+
+    \markangle{O}{Er}{E}{1}{1.5}{$\phi$}
+  \end{tikzpicture}
+\end{center}
+
+Per andare a spiegare questo disegno, andiamo a definire alcune delle lettere usate. Essendo in
+alternata, sia il condensatore, sia l'induttanza creeranno delle reattanze. Quindi la d.d.p.\ ai
+capi dei componenti viene
+\begin{equation*}
+  \mathcal{E}_L = x_L\cdot i_0 \quad \mathcal{E}_C = x_C\cdot i_0 \quad \mathcal{E}_R = R\cdot i_0
+\end{equation*}
+L'unica incognita che possiamo avere è la corrente $i_0$, quindi dobbiamo trovare il modo per
+ricavarla.\\
+Secondo la legge di Kirchohoff delle maglie, possiamo dire che
+\begin{equation*}
+  \vec{\mathcal{E}} = \vec{\mathcal{E}_R} + \vec{\mathcal{E}_L} + \vec{\mathcal{E_C}}
+\end{equation*}
+Se osserviamo il disegno però, essendo questi dei vettori, possiamo semplicemente fare la somma
+vettoriale e quindi andare a calcolare l'ipotenusa del triangolo evidenziato.
+\begin{align*}
+  \mathcal{E}^2 &= R^2i_0^2+(x_L-x_C)^2i_0^2\\
+  \mathcal{E}^2 &= i_0^2[R^2+(x_L-x_C)^2]\\
+  i_0 &= \frac{\mathcal{E}_0}{\sqrt{R^2+(x_L-x_C)^2}}
+\end{align*}
+Osserviamo anche che la forma della corrente ricorda molto la legge di Ohm. Infatti viene definita
+\textbf{impedenza}
+\begin{equation*}
+  Z = \sqrt{R^2+(x_L-x_C)^2} 
+\end{equation*}
+Questo porta alla definizione della legge per la corrente
+\begin{equation*}
+  i(t) = \frac{\mathcal{E}_0}{Z}\sin \left( \omega t+\phi \right)
+\end{equation*}
+L'unica cosa che manca da trovare è $\phi$, lo sfasamento. Nel disegno è già evidenziato ed è
+evidente che non è altro se non un angolo tra due vettori, quindi si deduce che
+\begin{equation*}
+  \phi = \arctan \left( \frac{x_L-x_C}{R} \right)
+\end{equation*}
+Ora possiamo un'ultima cosa: quale deve essere la frequenza del generatore perché la reattanza 
+capacitiva e quella induttiva si equivalgano? In altri termini, come possiamo semplificare
+il circuito in modo che abbia, di fatto, solo la resistenza? Viene così definita \textbf{condizione
+di risonanza} se la frequenza è pari a
+\begin{equation*}
+  f = \frac{1}{2\pi\sqrt{LC}}
+\end{equation*}
+
 \subsection{Leggi di Kirchhoff}
 Per capire queste leggi, è necessario aver chiaro tre termini
 \begin{description}
-	\item[Nodo] Un punto in cui convergono almeno 3 conduttori
-	\item[Ramo] Una parte di circuito tra 2 nodi
-	\item[Maglia] Una parte di circuito attraversata solo una volta per tornare al nodo di origine
+  \item[Nodo] Un punto in cui convergono almeno 3 conduttori
+  \item[Ramo] Una parte di circuito tra 2 nodi
+  \item[Maglia] Una parte di circuito attraversata solo una volta per tornare al nodo di origine
 \end{description}
 Per spiegarli, prendiamo il seguente circuito
 \begin{center}
@@ -394,15 +697,15 @@ forze o le resistenze che si incontrano. Si ottiene quindi la formula descritta.
 \subsubsection{Utilizzo delle leggi di Kirchhoff}
 Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di approcciarsi è
 \begin{enumerate}
-	\item Individuare le incognite (le correnti) e scegliere un verso di percorrenza in modo arbitrario
-	\item Creare un sistema a $n$-equazioni dove $n$ è il numero di incognite (in generale 3)
-	\item Come prima equazione, usare la LKN (Legge di Kirchhoff dei Nodi) scegliendo arbitrariamente
-	i versi delle correnti nel nodo
-	\item Come seconda e terza equazione, descrivere le maglie seguendo il verso scelto
-	\item Risolvere il sistema lineare
+  \item Individuare le incognite (le correnti) e scegliere un verso di percorrenza in modo arbitrario
+  \item Creare un sistema a $n$-equazioni dove $n$ è il numero di incognite (in generale 3)
+  \item Come prima equazione, usare la LKN (Legge di Kirchhoff dei Nodi) scegliendo arbitrariamente
+  i versi delle correnti nel nodo
+  \item Come seconda e terza equazione, descrivere le maglie seguendo il verso scelto
+  \item Risolvere il sistema lineare
 \end{enumerate}
 
-\subsubsection{Mutua induzione}
+\subsection{Mutua induzione}
 La mutua induzione è il fenomeno dell'induzione che avviente tra due o più circuiti diversi. Ad
 esempio se un circuito $1$ agisce su di un circuito $2$,
 \begin{equation*}
@@ -415,47 +718,6 @@ elettromotrice da un circuito all'altro. Quindi possiamo scrivere
   \mathcal{E}^{1\to2}= - M \frac{\dif i}{\dif t}
 \end{equation*}
 
-\subsection{Circuiti RL}
-I circuiti RL sono circuiti composti da una resistenza e un induttore
-\begin{center}
-  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
-    \draw (0,0) 
-    to[battery1] (1,0)
-    to[switch] (2,0)
-    to[R] (2,1)
-    to[L] (1,1)
-    to[short] (0,1)
-    to[short] (0,0);
-  \end{circuitikz}
-\end{center}
-In una situazione come questa abbiamo come unica incognita variabile è $i(t)$. Per ricavarla 
-possiamo risolvere l'equazione differenziale
-\begin{equation*}
-  \mathcal{E} = L \frac{\dif i}{\dif t}+Ri
-\end{equation*}
-e risolvendo per $i$, o andare per induzione. Se nel circuito RC l'incognita caratteristica è
-$q(t)$, in questo è $i(t)$. Se la carica aveva come massimo $C\mathcal{E}$, la corrente ha
-come massimo, secondo la legge di Ohm, $\frac{\mathcal{E}}{R}$. Quindi
-\begin{equation*}
-  i(t) = \frac{\mathcal{E}}{R} \left( 1-e^{-\frac{t}{\tau}} \right)
-\end{equation*}
-dove $\tau = \frac{L}{R}$ e rappresenta la costante di tempo del circuito.\\
-Anche in questo caso il grafico della carica è
-\begin{center}
-  \begin{tikzpicture}
-    \draw[-stealth] (-0.5,0) -- (3,0);
-    \draw[-stealth] (0,-0.5) -- (0,2);
-    \draw[domain=0:3] plot({\x},{(1-e^(-\x*3))});
-    \draw[dashed] (0,1) -- (3,1)
-      node[pos=0.5,above]{$y=i$};
-  \end{tikzpicture}
-\end{center}
-e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, però generalmente
-dopo $4\tau$ o $5\tau$ la variazione è talmente minima che gli strumenti non la misurano più.\\
-La formula per la scarica invece è la seguente
-\begin{equation*}
-  i(t) = i_0e^{-\frac{t}{\tau}}
-\end{equation*}
 
 \subsection{Corrente Alternata}
 Se fin'ora si è lavorato con corrente continua fornita da una forza elettromotrice, quasi tutta
