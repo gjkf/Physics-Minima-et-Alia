@@ -1,7 +1,7 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Termodinamica}\label{sec:termodinamica}
-La termodinamica si occupa di studiare come un corpo si modifica e interagisce con gli altri
+La termodinamica si occupa di studiare come un sistema si modifica e interagisce con gli altri
 alla variazione di \emph{temperatura}, \emph{pressione} e \emph{volume}.\\
 Si tenga conto che $t$ rappresenta la temperatura in \textcelsius\ e $T$ in $K$. Si ricordi che
 \begin{equation*}
@@ -74,6 +74,7 @@ $8.31\,\text{J/K}\cdot\text{mol}$\\
 $n$: numero di moli\\
 
 \subsubsection{Proprietà dei Gas}
+Vi è equilibrio termodinamico se queste tre quantità rimangono costanti.
 \begin{equation*}
 \frac{p_1V_1}{T_1} = \frac{p_2V_2}{T_2}
 \end{equation*}
@@ -101,7 +102,7 @@ termica.
 \subsubsection{Capacità termica}
 Indica quanto velocemente un corpo assorbe calore.
 \begin{equation*}
-C = \frac{Q}{\Delta T}
+  C = \frac{Q}{\Delta T}
 \end{equation*}
 $Q$: quantità di calore assorbito dal corpo\\
 $\Delta T$: variazione di temperatura\\
@@ -111,9 +112,11 @@ Un corpo con un calore specifico alto ha bisogno di una grande quantità di calo
 cambiamento di temperatura. Si pensi all'acqua ($c=4180\,\text{J/Kg}\cdot\text{K}$) e l'aria
 ($c=1000\,\text{J/Kg}\cdot\text{K}$).
 \begin{equation*}
-c = \frac{C}{m} = \frac{Q}{m\Delta T}
+  c = \frac{C}{m} = \frac{Q}{m\Delta T}
 \end{equation*}
+$c$: calore specifico\\
 $C$: capacità termica
+$m$: masa del corpo
 
 \subsubsection{Quantità di calore}
 \begin{equation*}
@@ -122,9 +125,10 @@ Q = C\Delta t = mc\Delta T
 $C$: capacità termica
 
 \subsubsection{Temperatura di equilibrio}
-La temperatura di equilibrio è la temperatura che raggiungono due corpi a contatto fra di loro.
+Due sistemi sono in equilibrio termico quando hanno la stessa temperatura\\
+La temperatura di equilibrio è la temperatura che raggiungono due sistemi a contatto fra di loro.
 \begin{equation*}
-t_e = \frac{m_1c_1t_1 + m_2c_2t_2}{m_1c_2 + m_2c_2}
+  t_e = \frac{m_1c_1t_1 + m_2c_2t_2}{m_1c_2 + m_2c_2}
 \end{equation*}
 $_1$: relativo al primo corpo\\
 $_2$: relativo al secondo corpo
@@ -198,42 +202,42 @@ La teoria cinetico-molecolare descrive i movimenti delle molecole all'interno di
 Una lettera che si trova molto spesso in questa sottosezione e nelle successive è la $l$, ovvero
 il grado di libertà del corpo.\\
 \begin{center}
-	\begin{tabular}{c c}
-		$\boldsymbol{l}$ & \textbf{Tipo di Gas}\\ \hline
-		$3$ & Monoatomico \\ \hline
-		$5$ & Biatomico\\
-	\end{tabular}
+  \begin{tabular}{c c}
+    $\boldsymbol{l}$ & \textbf{Tipo di Gas}\\ \hline
+    $3$ & Monoatomico \\ \hline
+    $5$ & Biatomico\\
+  \end{tabular}
 \end{center}
 Queste formule mettono in relazione il macroscopico (forza e pressione) e microscopico (forza e 
 pressione di un dato numero di molecole) in un contenitore di gas perfetto.
 
 \begin{center}
-	\begin{tikzpicture}		
-		\draw[red, -stealth] (0.4,0.2) -- ++(-0.1,0.1);
-		\draw[red, -stealth] (0.1,0.8) -- ++(0.1,-0.2);
-		\draw[red, -stealth] (1.1,0.5) -- ++(0.3,0.1);
-		\draw[red, -stealth] (0.7,0.7) -- ++(0.2,0.3);
-		\draw[red, -stealth] (1.2,0.3) -- ++(-0.3,0.1);
-		
-		\draw (0,0) -- ++(1,0) -- ++(0,1) -- ++(-1,0) -- cycle;
-		\draw[dashed] (0,0) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
-		\draw (0,1) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
-		\draw[dashed] (0.5,1.4) -- ++(0,-1);
-		\draw (1.5,1.4) -- ++(0,-1);
-		\draw (1,0) -- ++(0.5,0.4);
-	\end{tikzpicture}
+  \begin{tikzpicture}		
+    \draw[red, -stealth] (0.4,0.2) -- ++(-0.1,0.1);
+    \draw[red, -stealth] (0.1,0.8) -- ++(0.1,-0.2);
+    \draw[red, -stealth] (1.1,0.5) -- ++(0.3,0.1);
+    \draw[red, -stealth] (0.7,0.7) -- ++(0.2,0.3);
+    \draw[red, -stealth] (1.2,0.3) -- ++(-0.3,0.1);
+    
+    \draw (0,0) -- ++(1,0) -- ++(0,1) -- ++(-1,0) -- cycle;
+    \draw[dashed] (0,0) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
+    \draw (0,1) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
+    \draw[dashed] (0.5,1.4) -- ++(0,-1);
+    \draw (1.5,1.4) -- ++(0,-1);
+    \draw (1,0) -- ++(0.5,0.4);
+  \end{tikzpicture}
 \end{center}
 
 \subsubsection{Forza su una parete}
 \begin{equation*}
-F_{\text{parete}} = \frac{N}{3}\frac{m}{l}\left\langle v\right\rangle^2
+  F_{\text{parete}} = \frac{N}{3}\frac{m}{l}\left\langle v\right\rangle^2
 \end{equation*}
 $N$: numero di molecole\\
 $\left\langle v\right\rangle$: velocità media
 
 \subsubsection{Pressione su una parete}
 \begin{equation*}
-p_{\text{parete}} = \frac{N}{3}\frac{m}{V}\left\langle v\right\rangle^2 = \frac{2}{3}\frac{NE_c}{V}
+  p_{\text{parete}}=\frac{N}{3}\frac{m}{V}\left\langle v\right\rangle^2 = \frac{2}{3}\frac{NE_c}{V}
 \end{equation*}
 $N$: numero di molecole\\
 $V$: volume\\
@@ -242,7 +246,7 @@ $E_c$: energia cinetica\\
 
 \subsubsection{Energia cinetica}
 \begin{equation*}
-E_c = \frac{l}{2}\frac{R}{N}T = \frac{l}{2}k_BT
+  E_c = \frac{l}{2}\frac{R}{N}T = \frac{l}{2}k_BT
 \end{equation*}
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
 $8.31\,\text{J/K}\cdot\text{mol}$\\
@@ -254,7 +258,7 @@ ovvero possiede molecole ad una velocità media sempre più alta.
 
 \subsubsection{Energia interna}
 \begin{equation*}
-U = \sum\limits_{i=0}^{n} E_{c_i} + \sum\limits_{i=0}^{n} U_{g_i} = \frac{l}{2}nRT
+  U = \sum\limits_{i=0}^{n} E_{c_i} + \sum\limits_{i=0}^{n} U_{g_i} = \frac{l}{2}nRT
 \end{equation*}
 $U_g$: potenziale gravitazionale, se è un gas perfetto vale $0$\\
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
@@ -265,7 +269,7 @@ $n$: nummero di moli
 
 \subsubsection{Primo principio della termodinamica}
 \begin{equation*}
-Q = L+\Delta U
+  Q = L+\Delta U
 \end{equation*}
 $Q$: quantità di calore\\
 $L$: lavoro\\
@@ -281,20 +285,19 @@ La seguente tabella riassume in breve i segni che la quantità di calore e il la
     Positivo & Il sistema acquista energia dall'esterno mediante uno scambio di calore &
     Il sistema compie un lavoro positivo (durante un'espansione) e cede energia\\ \midrule
     Negativo & Il sistema cede energia all'esterno mediante uno scambio di calore &
-    Il sistema compie un lavoro negativo (durante una compressione) e acquista energia\\ \midrule
+    Il sistema compie un lavoro negativo (durante una compressione) e acquista energia\\
   \end{xtabular}
 \end{center}
-
 \subsubsection{Lavoro di un'isobara}
 Un'isobara è una trasforamazione che mantiene costante la pressione.
 \begin{equation*}
-L = p\Delta V
+  L = p\Delta V
 \end{equation*}
 \begin{equation*}
-Q = \frac{2+l}{2}nR\Delta T
+  Q = \frac{2+l}{2}nR\Delta T
 \end{equation*}
 \begin{equation*}
-c_p = \frac{l+2}{2}R
+  c_p = \frac{l+2}{2}R
 \end{equation*}
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$
 $8.31\,\text{J/K}\cdot\text{mol}$\\
@@ -326,31 +329,31 @@ $c_V$: è il calore specifico di un corpo sottoposto a una trasformazione isocor
 
 \subsubsection{Lavoro di un ciclo}
 \begin{center}
-	\begin{tikzpicture}[scale=0.75]
-		\coordinate (A) at (1,2);
-		\coordinate (B) at (2,2);
-		\coordinate (C) at (2,4);
-		\coordinate (D) at (3.5,2.5);
-		\coordinate (E) at (4.5,1);
-		\coordinate (F) at (1,1);
-		
-		\draw[-stealth] (-0.5,0) -- (5,0)
-			node[pos=1, below]{$V$};
-		\draw[-stealth] (0,-0.5) -- (0,5)
-			node[pos=1,left]{$p$};
-		\path[thick, -stealth] 
-			(A) edge (B) 
-			(B) edge (C) 
-			(C) edge[bend right=20] (D) 
-			(D) edge[bend right=30] (E)
-			(E) edge (F)
-			(F) edge (A);
-		
-		\node[anchor=south, yshift=-0.6cm, xshift=0.5cm] at ($(A)!0.5!(B)$){Isobara};
-		\node[anchor=south, yshift=-0cm, xshift=-0.6cm] at ($(B)!0.5!(C)$){Isocora};
-		\node[above right] at ($(C)!0.5!(D)$){Isoterma};
-		\node[right] at ($(D)!0.5!(E)$){Adiabatica};
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=0.75]
+    \coordinate (A) at (1,2);
+    \coordinate (B) at (2,2);
+    \coordinate (C) at (2,4);
+    \coordinate (D) at (3.5,2.5);
+    \coordinate (E) at (4.5,1);
+    \coordinate (F) at (1,1);
+    
+    \draw[-stealth] (-0.5,0) -- (5,0)
+            node[pos=1, below]{$V$};
+    \draw[-stealth] (0,-0.5) -- (0,5)
+            node[pos=1,left]{$p$};
+    \path[thick, -stealth] 
+            (A) edge (B) 
+            (B) edge (C) 
+            (C) edge[bend right=20] (D) 
+            (D) edge[bend right=30] (E)
+            (E) edge (F)
+            (F) edge (A);
+    
+    \node[anchor=south, yshift=-0.6cm, xshift=0.5cm] at ($(A)!0.5!(B)$){Isobara};
+    \node[anchor=south, yshift=-0cm, xshift=-0.6cm] at ($(B)!0.5!(C)$){Isocora};
+    \node[above right] at ($(C)!0.5!(D)$){Isoterma};
+    \node[right] at ($(D)!0.5!(E)$){Adiabatica};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 L = \sum\limits_{i=0}^{n} Q_i
@@ -373,14 +376,14 @@ V_1^{\gamma-1}T_1 = V_2^{\gamma-1}T_2
 \begin{equation*}
 p_1^{1-\gamma}T_1^\gamma = p_2^{1-\gamma}T_2^\gamma
 \end{equation*}
-$\gamma$: rapporto tra $c_p$ e $c_V$, si veda la seguente tabella:
-
+$\gamma$: rapporto tra $c_p$ e $c_V$, si veda la seguente tabella (calore specifico a pressione e
+volume costante):
 \begin{center}
-	\begin{tabular}{c | c | c | c}
-		Tipo di gas & $c_p$ & $c_V$ & $\gamma=\frac{c_p}{c_V}$\\ \hline
-		Monoatomico & $\frac{5}{2}R$ & $\frac{3}{2}R$ & $1.\bar{6}$\\ \hline
-		Biatomico & $\frac{7}{2}R$ & $\frac{5}{2}R$ & $1.4$\\
-	\end{tabular}
+  \begin{tabular}{c | c | c | c}
+    Tipo di gas & $c_p$ & $c_V$ & $\gamma=\frac{c_p}{c_V}$\\ \hline
+    Monoatomico & $\frac{5}{2}R$ & $\frac{3}{2}R$ & $1.\bar{6}$\\ \hline
+    Biatomico & $\frac{7}{2}R$ & $\frac{5}{2}R$ & $1.4$\\
+  \end{tabular}
 \end{center}
 
 \subsubsection{Equazione di Meyer}
@@ -391,19 +394,19 @@ $c$: calore specifico molare
 
 \subsubsection{Macchina di Carnot}
 \begin{center}
-	\begin{tikzpicture}
-		\filldraw[orange, fill opacity=0.3] (0,0) -- (0,0.5) -- (2,0.5) -- (2,0);
-		\filldraw[cyan, fill opacity=0.3] (0,2.5) -- (0,2) -- (2,2) -- (2,2.5);
-		
-		\filldraw[gray, fill opacity=0.3] (1,1.25) circle (0.5);
-		
-		\draw[line width=0.5mm,-implies,double, double distance=1mm] (1,0.4) -- (1,1.15)
-			node[pos=0.4, anchor=east, xshift=-.2cm]{$Q_2$};
-		\draw[line width=0.5mm,-implies,double, double distance=1mm] (1,1.5) -- (1,2.15)
-			node[pos=0.4, anchor=east, xshift=-.2cm]{$Q_1$};
-		\draw[line width=0.5mm,-implies,double, double distance=1mm] (1.5,1.25) -- (2,1.25)
-			node[pos=0.4, anchor=east, xshift=1.5cm]{$L < Q_2$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \filldraw[orange, fill opacity=0.3] (0,0) -- (0,0.5) -- (2,0.5) -- (2,0);
+    \filldraw[cyan, fill opacity=0.3] (0,2.5) -- (0,2) -- (2,2) -- (2,2.5);
+    
+    \filldraw[gray, fill opacity=0.3] (1,1.25) circle (0.5);
+    
+    \draw[line width=0.5mm,-implies,double, double distance=1mm] (1,0.4) -- (1,1.15)
+            node[pos=0.4, anchor=east, xshift=-.2cm]{$Q_2$};
+    \draw[line width=0.5mm,-implies,double, double distance=1mm] (1,1.5) -- (1,2.15)
+            node[pos=0.4, anchor=east, xshift=-.2cm]{$Q_1$};
+    \draw[line width=0.5mm,-implies,double, double distance=1mm] (1.5,1.25) -- (2,1.25)
+            node[pos=0.4, anchor=east, xshift=1.5cm]{$L < Q_2$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 \mu = 1-\frac{Q_1}{Q_2} = \frac{L}{Q_2}
@@ -411,12 +414,14 @@ $c$: calore specifico molare
 \begin{equation*}
 \mu_c = 1 - \frac{T_1}{T_2}
 \end{equation*}
+$T_1$: sorgente fredda\\
+$T_2$: sorgente calda\\ [\baselineskip]
 La prima formula definisce il rendimento ($\mu$) di una qualsiasi macchina termica, la seconda solo
 per una macchina di Carnot. $Q_1$ è il calore ceduto dalla sorgente fredda, $Q_2$ è quello fornito 
 dalla sorgente calda\\
-Si noti che una macchina reale $\mu<1$, in una macchina di Carnot $\mu=1$.
+Si noti che una macchina reale $\mu<1$. La potenza in una macchina di Carnot è
 \begin{equation*}
-P = Q_2\mu t
+  P = Q_2\mu t
 \end{equation*}
 $P$: potenza\\
 $\mu$: rendimento

@@ -7,33 +7,31 @@ natura. Le onde si propagano nello spazio e permettono di trasportare anche enor
 energia, ma non massa.
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.75]
-		\draw[samples=500, domain=-0:pi*3] plot (\x, {-cos(2*\x r)});
-		
-		\draw[|<->|, blue, dashed] (0,-1.2) -- (9.42,-1.2)
-			node[pos=0.5, below]{$L$};
-		\draw[|<->|, red, dashed] (-0.2, -1) -- (-0.2, 1)
-			node[pos=0.5, left]{$A$};
-		\draw[|<->|, teal] (1.5, 1.2) -- (4.7, 1.2)
-			node[pos=0.5, above]{$\lambda$}
-			node[pos=0.5, anchor=north, yshift=-5]{$T = \frac{\lambda}{t}$};
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=0.75]
+    \draw[samples=500, domain=-0:pi*3] plot (\x, {-cos(2*\x r)});
+    
+    \draw[|<->|, blue, dashed] (0,-1.2) -- (9.42,-1.2)
+            node[pos=0.5, below]{$L$};
+    \draw[|<->|, red, dashed] (-0.2, -1) -- (-0.2, 1)
+            node[pos=0.5, left]{$A$};
+    \draw[|<->|, teal] (1.5, 1.2) -- (4.7, 1.2)
+            node[pos=0.5, above]{$\lambda$}
+            node[pos=0.5, anchor=north, yshift=-5]{$T = \frac{\lambda}{t}$};
+  \end{tikzpicture}
 \end{center}
-
 Il grafico qua sopra è il grafico della funzione $\cos x$ che rappresenta un possibile moto di un'
 onda. Sono anche rappresentate le 3 caratteristiche principali: l'\emph{ampiezza}
 ($\mathcolor{red}{A}$), la \emph{lunghezza} ($\mathcolor{blue}{L}$) e la \emph{lunghezza d'onda}
 ($\mathcolor{teal}{\lambda}$).\\[\baselineskip]
 Per gli esercizi, si vada a pagina~\pageref{ex:onde}.
 
-\subsection{Formule sperimentali} \label{subsec:onde:sper}
+\subsection{Velocità di propagazione} \label{subsec:onde:sper}
 Di seguito vengono riportate formule sperimentali che quindi dipendono da caretteristiche fisiche.
-
 \begin{equation*}
-v = \sqrt{\frac{T}{\mu}}
+  v = \sqrt{\frac{T}{\mu}}
 \end{equation*}
 \begin{equation*}
-\mu = \frac{m}{\mathcolor{blue}{L}}
+  \mu = \frac{m}{\mathcolor{blue}{L}}
 \end{equation*}
 $T$: tensione della corda\\
 $\mu$: densità lineare della corda\\
@@ -77,13 +75,13 @@ L'equazione di Huygens definisce il rapporto tra il raggio di propagazione di un
 La seguente figura farà capire meglio.
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.5]
-		\draw (0,0) circle (1);
-		\draw[dashed] (0,0) circle (2);
-		
-		\draw[|<->|, red] (1,0) -- (2,0)
-			node[pos=0.5, above]{$r$};
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=0.5]
+    \draw (0,0) circle (1);
+    \draw[dashed] (0,0) circle (2);
+    
+    \draw[|<->|, red] (1,0) -- (2,0)
+            node[pos=0.5, above]{$r$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 \mathcolor{red}{r} = \Delta t\cdot v
@@ -92,10 +90,9 @@ La seguente figura farà capire meglio.
 \subsection{Rifrazione}\label{subsec:onde:rifrazione}
 Questa sezione si occuperà della luce che attraversa due mezzi e si rifratte/riflette.\\
 Per gli esercizi si vada a pagina~\pageref{ex:rifrazione}.\\ [\baselineskip]
-Un concetto unico a questa sezione è quello dell'\emph{indice di rifrazione}. Ce ne sono di 2 tipi:
-\emph{assoluto} relativo solo alle onde elettromagnetiche e \emph{relativo}.\\
+Un concetto unico a questa sezione è quello dell'\emph{indice di rifrazione}.\\
 Per calcolare quello relativo si usi:
-\begin{equation*}
+  \begin{equation*}
 n_{2,1} = \frac{\sin\hat{i}}{\sin\hat{r}} = \frac{n_2}{n_1}
 \end{equation*}
 Qui introduciamo anche due simboli: $\hat{i}$ e $\hat{r}$. Il primo ($\hat{i}$) indica l'angolo di
@@ -103,34 +100,34 @@ Qui introduciamo anche due simboli: $\hat{i}$ e $\hat{r}$. Il primo ($\hat{i}$) 
 faccia riferimento alla seguente figura:
 
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
-		\coordinate (A) at (-2,1);
-		\coordinate (B) at (2,1);
-		\coordinate (C) at (2,-1);
-		\coordinate (D) at (-2,-1);
-		
-		\coordinate (In) at (-1,-1);
-		\coordinate (Out) at (1, 1);
-		
-		% Rectangle
-		\draw (A) -- (B) -- (C) -- (D) -- cycle;
-		% Angles
-		\filldraw[orange, fill=orange!30] (In) -- ($(In) + (0, -0.6)$) arc(-90:-105:1) -- cycle;
-		\draw[orange] (In) +(-97:1) node{$\hat{i}$};
-		\filldraw[cyan, fill=cyan!30] (In) -- ($(In) + (0, 0.6)$) arc(90:61:1) -- cycle;
-		\draw[cyan] (In) +(80:1) node{$\hat{r}$};
-		% Construction lines
-		\draw[densely dotted] ($(In) + (0, -0.5)$) -- ++(0,2.5);
-		\draw[densely dotted]($(Out) + (0, 0.5)$) -- ++(0,-2.5);
-		\draw[dashed, -latex] (In) -- (Out);
-		% In line
-		\draw[-latex] (-1.5,-2) -- (In);
-		\draw[-latex] (Out) -- (1.5, 2);
-		%\draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
-		%	node[pos=0.5, above]{$\delta$};
-		%\draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
-		%	node[pos=0.5, left]{$d$};
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (A) at (-2,1);
+    \coordinate (B) at (2,1);
+    \coordinate (C) at (2,-1);
+    \coordinate (D) at (-2,-1);
+    
+    \coordinate (In) at (-1,-1);
+    \coordinate (Out) at (1, 1);
+    
+    % Rectangle
+    \draw (A) -- (B) -- (C) -- (D) -- cycle;
+    % Angles
+    \filldraw[orange, fill=orange!30] (In) -- ($(In) + (0, -0.6)$) arc(-90:-105:1) -- cycle;
+    \draw[orange] (In) +(-97:1) node{$\hat{i}$};
+    \filldraw[cyan, fill=cyan!30] (In) -- ($(In) + (0, 0.6)$) arc(90:61:1) -- cycle;
+    \draw[cyan] (In) +(80:1) node{$\hat{r}$};
+    % Construction lines
+    \draw[densely dotted] ($(In) + (0, -0.5)$) -- ++(0,2.5);
+    \draw[densely dotted]($(Out) + (0, 0.5)$) -- ++(0,-2.5);
+    \draw[dashed, -latex] (In) -- (Out);
+    % In line
+    \draw[-latex] (-1.5,-2) -- (In);
+    \draw[-latex] (Out) -- (1.5, 2);
+    %\draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
+    %	node[pos=0.5, above]{$\delta$};
+    %\draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
+    %	node[pos=0.5, left]{$d$};
+  \end{tikzpicture}
 \end{center}
 
 Si tenga cont che questa immagine si riferisce al fenomeno della \emph{rifrazione} che ha queste
@@ -139,26 +136,7 @@ caratteristiche:
 \frac{\sin\mathcolor{orange}{\hat{i}}}{\sin\mathcolor{cyan}{\hat{r}}} = \frac{v_1}{v_2} = 
 \frac{\lambda_1}{\lambda_2} = \frac{c}{v_2}
 \end{equation*}
-Da notare che $\dfrac{c}{v_2}$ vale solo se la luce arriva dal vuoto.\\
-Se invece ci troviamo in un caso di \emph{riflessione} ha questa proprietà:
-\begin{equation*}
-\mathcolor{orange}{\hat{i}} =\mathcolor{cyan}{\hat{r}}
-\end{equation*}
-\begin{center}
-	\begin{tikzpicture}
-		\coordinate (O) at (0,0);
-		\coordinate (A) at (-1,1);
-		\coordinate (B) at (1,1);
-		\coordinate (M1) at (-1,0);
-		\coordinate (M2) at (1,0);
-		
-		\draw (-1,0) -- ++(2,0);
-		\draw[-stealth] (A) -- (O);
-		\draw[-stealth] (O) -- (B);
-		\markangle[orange]{O}{A}{M1}{0.5}{1.5}{$\hat{i}$}
-		\markangle[cyan]{O}{B}{M2}{0.5}{1.5}{$\hat{r}$}
-	\end{tikzpicture}
-\end{center}
+Da notare che $\dfrac{c}{v_2}$ vale solo se la luce dal vuoto passa in un altro mezzo.\\
 
 \subsubsection{Relazione di Snell}
 La relazione di Snell mette appunto in relazione gli indici di rifrazione con gli angoli $\hat{i}$ 
@@ -167,41 +145,40 @@ e $\hat{r}$.
 \frac{n_2}{n_1} = \frac{\sin\mathcolor{orange}{\hat{i}}}{\sin\mathcolor{cyan}{\hat{r}}}
 \end{equation*}
 
-\subsubsection{Distanza di Rifrazione}
-
+\subsubsection{Scostamento del raggio}
 \begin{center}
-	\begin{tikzpicture}[scale=0.6]
-	\coordinate (A) at (-2,1);
-	\coordinate (B) at (2,1);
-	\coordinate (C) at (2,-1);
-	\coordinate (D) at (-2,-1);
-	
-	\coordinate (In) at (-1,-1);
-	\coordinate (Out) at (1, 1);
-	
-	% Rectangle
-	\draw (A) -- (B) -- (C) -- (D) -- cycle;
-	% Angles
-	\filldraw[orange, fill=orange!30] (In) -- ($(In) + (0, -0.6)$) arc(-90:-105:1) -- cycle;
-	\draw[orange] (In) +(-97:1) node{$\hat{i}$};
-	\filldraw[cyan, fill=cyan!30] (In) -- ($(In) + (0, 0.6)$) arc(90:61:1) -- cycle;
-	\draw[cyan] (In) +(80:1) node{$\hat{r}$};
-	% Construction lines
-	\draw[densely dotted] ($(In) + (0, -0.5)$) -- ++(0,2.5);
-	\draw[densely dotted]($(Out) + (0, 0.5)$) -- ++(0,-2.5);
-	\draw[dashed, -latex] (In) -- (Out);
-	% In line
-	\draw[-latex] (-1.5,-2) -- (In);
-	\draw[-latex] (Out) -- (1.5, 2);
-	\draw[dashed] (In) -- (0,1);
-	\draw[|<->|, olive] (0,1) -- (0.6,0.65)
-		node[pos=0.5, below left]{$\gamma$};
-	
-	\draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
-		node[pos=0.5, above]{$\delta$};
-	\draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
-			node[pos=0.5, left]{$d$};
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=0.6]
+    \coordinate (A) at (-2,1);
+    \coordinate (B) at (2,1);
+    \coordinate (C) at (2,-1);
+    \coordinate (D) at (-2,-1);
+    
+    \coordinate (In) at (-1,-1);
+    \coordinate (Out) at (1, 1);
+    
+    % Rectangle
+    \draw (A) -- (B) -- (C) -- (D) -- cycle;
+    % Angles
+    \filldraw[orange, fill=orange!30] (In) -- ($(In) + (0, -0.6)$) arc(-90:-105:1) -- cycle;
+    \draw[orange] (In) +(-97:1) node{$\hat{i}$};
+    \filldraw[cyan, fill=cyan!30] (In) -- ($(In) + (0, 0.6)$) arc(90:61:1) -- cycle;
+    \draw[cyan] (In) +(80:1) node{$\hat{r}$};
+    % Construction lines
+    \draw[densely dotted] ($(In) + (0, -0.5)$) -- ++(0,2.5);
+    \draw[densely dotted]($(Out) + (0, 0.5)$) -- ++(0,-2.5);
+    \draw[dashed, -latex] (In) -- (Out);
+    % In line
+    \draw[-latex] (-1.5,-2) -- (In);
+    \draw[-latex] (Out) -- (1.5, 2);
+    \draw[dashed] (In) -- (0,1);
+    \draw[|<->|, olive] (0,1) -- (0.6,0.65)
+            node[pos=0.5, below left]{$\gamma$};
+    
+    \draw[|<->|, blue] ($(In) + (0, 2.2)$) -- ($(Out) + (0, 0.2)$)
+            node[pos=0.5, above]{$\delta$};
+    \draw[|<->|, red] ($(A) + (-0.2,0)$) -- ($(D) + (-0.2,0)$)
+                    node[pos=0.5, left]{$d$};
+  \end{tikzpicture}
 \end{center}
 
 \begin{equation*}
@@ -212,61 +189,82 @@ e $\hat{r}$.
 \begin{equation*}
 \mathcolor{olive}{\gamma} = \mathcolor{red}{d}\tan\mathcolor{cyan}{\hat{r}}
 \end{equation*}
+Se invece ci troviamo in un caso di \emph{riflessione} ha questa proprietà:
+\begin{equation*}
+  \mathcolor{orange}{\hat{i}} =\mathcolor{cyan}{\hat{r}}
+\end{equation*}
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (O) at (0,0);
+    \coordinate (A) at (-1,1);
+    \coordinate (B) at (1,1);
+    \coordinate (M1) at (-1,0);
+    \coordinate (M2) at (1,0);
+    
+    \draw (-1,0) -- ++(2,0);
+    \draw[-stealth] (A) -- (O);
+    \draw[-stealth] (O) -- (B);
+    \markangle[orange]{O}{A}{M1}{0.5}{1.5}{$\hat{i}$}
+    \markangle[cyan]{O}{B}{M2}{0.5}{1.5}{$\hat{r}$}
+  \end{tikzpicture}
+\end{center}
 
 \subsubsection{Angolo limite}
-L'angolo limite è quell'angolo che segna se si tratta di un fenomeno di rifrazione o di riflessione.
+L'angolo limite è quell'angolo che segna il passaggio da un fenomeno di rifrazione a uno di 
+riflessione o viceversa.
 \begin{equation*}
-\hat{a}_l = \arcsin\frac{n_2}{n_1}
+  \hat{a}_l = \arcsin\frac{n_2}{n_1}
 \end{equation*}
-Se viene superato l'angolo limite avviene il fenomeno di rifrazoine assoluta.
+Se viene superato l'angolo limite avviene il fenomeno di rifrazione assoluta.
 
 \subsubsection{Immagine riassuntiva}
 \begin{center}
-	\begin{tikzpicture}[scale=0.5]
-		\coordinate (L) at (-5,0);
-		\coordinate (R) at (5,0);
-		\coordinate (A) at (-3,0);
-		\coordinate (B) at (-2,0);
-		\coordinate (C) at (1,0);
-		\coordinate (D) at (3,0);
-		\coordinate (S) at (-3,-3);
-		
-		\coordinate (A1) at (-3,2);
-		\coordinate (B1) at (-0.5,1.5);
-		\coordinate (C1) at (2,0);
-		\coordinate (D1) at (4,-1);
-		\coordinate (B2) at (-2,-1);
-		\coordinate (C2) at (1,-1);
-		\coordinate (D2) at (3,-1);
-		
-		\draw (L) -- (R);
-		\draw[thick, red, -stealth] (S) -- (A) -- (A1);
-		\draw[thick, red, -stealth] (S) -- (B) -- (B1);
-		\draw[thick, red, -stealth] (S) -- (C) -- (C1);
-		\draw[thick, red, -stealth] (S) -- (D) -- (D1);
-		
-		\draw[dashed] (B) -- (B2);
-		\draw[dashed] (C) -- (C2);
-		\draw[dashed] (D) -- (D2);
-		
-		\markangle{B}{S}{B2}{0.5}{1.5}{$\hat{i}$}
-		\markangle{C}{S}{C2}{0.5}{2}{$\hat{i}$}
-		\markangle{D}{S}{D2}{0.5}{2}{$\hat{i}$}
-		
-		\draw[xshift=-2, yshift=1] node[anchor=south, text width=3cm] at (A1)
-		{
-			$\hat{i}=0$, il raggio è perpendicolare alla superficie
-		};
-		\draw[] node[text width=3cm] at (4,2)
-		{
-			Il raggio rifratto è parallelo alla superficie rifrangente
-		};
-		\draw[xshift=-1, yshift=-2] node[anchor=north west, text width=3cm] at (C2)
-		{
-			$\hat{i} = \hat{i_L}$, la luce è totalmente riflessa
-		};
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=0.5]
+    \coordinate (L) at (-5,0);
+    \coordinate (R) at (5,0);
+    \coordinate (A) at (-3,0);
+    \coordinate (B) at (-2,0);
+    \coordinate (C) at (1,0);
+    \coordinate (D) at (3,0);
+    \coordinate (S) at (-3,-3);
+    
+    \coordinate (A1) at (-3,2);
+    \coordinate (B1) at (-0.5,1.5);
+    \coordinate (C1) at (2,0);
+    \coordinate (D1) at (4,-1);
+    \coordinate (B2) at (-2,-1);
+    \coordinate (C2) at (1,-1);
+    \coordinate (D2) at (3,-1);
+    
+    \draw (L) -- (R);
+    \draw[thick, red, -stealth] (S) -- (A) -- (A1);
+    \draw[thick, red, -stealth] (S) -- (B) -- (B1);
+    \draw[thick, red, -stealth] (S) -- (C) -- (C1);
+    \draw[thick, red, -stealth] (S) -- (D) -- (D1);
+    
+    \draw[dashed] (B) -- (B2);
+    \draw[dashed] (C) -- (C2);
+    \draw[dashed] (D) -- (D2);
+    
+    \markangle{B}{S}{B2}{0.5}{1.5}{$\hat{i}$}
+    \markangle{C}{S}{C2}{0.5}{2}{$\hat{i}$}
+    \markangle{D}{S}{D2}{0.5}{2}{$\hat{i}$}
+    
+    \draw[xshift=-2, yshift=1] node[anchor=south, text width=3cm] at (A1)
+    {
+            $\hat{i}=0$, il raggio è perpendicolare alla superficie
+    };
+    \draw[] node[text width=3cm] at (4,2)
+    {
+            Il raggio rifratto è parallelo alla superficie rifrangente
+    };
+    \draw[xshift=-1, yshift=-2] node[anchor=north west, text width=3cm] at (C2)
+    {
+            $\hat{i} = \hat{i_L}$, la luce è totalmente riflessa
+    };
+  \end{tikzpicture}
 \end{center}
+Questa rappresentazione non è valida per gli specchi, in cui i raggi sono completamente riflessi.
 
 \subsection{Interferenza}\label{subsec:onde:interferenza}
 Il fenomeno dell'interferenza avviene quando due fonti distinte emettono onde e queste impattano
@@ -274,28 +272,28 @@ fra loro. Il seguente disegno aiuterà a spiegare il fenomeno.\\
 Per gli esercizi si vada a pagina~\pageref{ex:interferenza}.
 
 \begin{center}
-	\begin{tikzpicture}[scale=1.5]
-		\coordinate (A) at (-0.3,0);
-		\coordinate (B) at (0.3,0);
-		
-		\draw[gray, dashed] (A) circle (0.25);
-		\draw[gray] (A) circle (0.5);
-		\draw[gray, dashed] (A) circle (0.75);
-		
-		\draw[gray, dashed] (B) circle (0.25);
-		\draw[gray] (B) circle (0.5);
-		\draw[gray, dashed] (B) circle (0.75);
-		
-		\filldraw[red] (0, 0.7) circle (0.05)
-			node[above]{A};
-		\filldraw[orange] (0, 0.4) circle (0.05)
-			node[right]{B};
-		\filldraw[blue] (-0.25, 0.5) circle (0.05)
-			node[left]{C};
-		
-		\draw[|<->|, thick, cyan] (-0.2, 0) -- (-0.55, 0)
-			node[pos=0.5, above]{$\lambda$};
-	\end{tikzpicture}
+  \begin{tikzpicture}[scale=1.5]
+    \coordinate (A) at (-0.3,0);
+    \coordinate (B) at (0.3,0);
+    
+    \draw[gray, dashed] (A) circle (0.25);
+    \draw[gray] (A) circle (0.5);
+    \draw[gray, dashed] (A) circle (0.75);
+    
+    \draw[gray, dashed] (B) circle (0.25);
+    \draw[gray] (B) circle (0.5);
+    \draw[gray, dashed] (B) circle (0.75);
+    
+    \filldraw[red] (0, 0.7) circle (0.05)
+            node[above]{A};
+    \filldraw[orange] (0, 0.4) circle (0.05)
+            node[right]{B};
+    \filldraw[blue] (-0.25, 0.5) circle (0.05)
+            node[left]{C};
+    
+    \draw[|<->|, thick, cyan] (-0.2, 0) -- (-0.55, 0)
+            node[pos=0.5, above]{$\lambda$};
+  \end{tikzpicture}
 \end{center}
 
 In questa immagine sono stati segnati 3 punti. Nel punto \textcolor{red}{A} e nel punto 
@@ -339,7 +337,7 @@ $k$: $k\in\mathbb{Z}$ indica il numero dell'interferenza che interessa, ovvero i
 \subsubsection{Interferenza Distruttiva}
 \begin{equation*}
 \left\lvert \overline{PS}_1-\overline{PS}_2 \right\rvert = 
-(2k + 1)\frac{\mathcolor{cyan}{\lambda}}{2}
+\left( k+\frac{1}{2} \right)\mathcolor{cyan}{\lambda}
 \end{equation*}
 $\overline{PS}$: distanza tra l'origine dell'onda e il punto $P$\\
 $k$: $k\in\mathbb{Z}$ indica il numero dell'interferenza che interessa, ovvero il numero dell'onda\\
@@ -353,71 +351,71 @@ Young studiava la luce. Il suo esperimento dimostra la natura ondulatoria della 
 viene riportato un diagramma che rappresenta semplicemente la sua struttura.
 
 \begin{center}
-	\begin{tikzpicture}[xscale=0.8]
-		\coordinate (MidL) at (-3.2, 0);
-		\coordinate (MidR) at (3, 0);
-		
-		\coordinate (BlockTop) at (-2.8, 0.5);
-		\coordinate (BlockBot) at (-2.8, -0.5);
-		\coordinate (BlockMid) at (-2.8, 0);
-		
-		\coordinate (P) at (3, 1.5);
-		
-		\coordinate (MidBar) at (4.3, 0);
+  \begin{tikzpicture}[xscale=0.8]
+    \coordinate (MidL) at (-3.2, 0);
+    \coordinate (MidR) at (3, 0);
+    
+    \coordinate (BlockTop) at (-2.8, 0.5);
+    \coordinate (BlockBot) at (-2.8, -0.5);
+    \coordinate (BlockMid) at (-2.8, 0);
+    
+    \coordinate (P) at (3, 1.5);
+    
+    \coordinate (MidBar) at (4.3, 0);
 
-		\draw[dashed] (MidL) -- (MidR);
-		\draw ($(P) + (0, 0.5)$) -- ++(0, -3.5);
-		
-		% Two holes
-		\filldraw[lightgray, draw=black] 
-			($(BlockTop) + (0,0.5)$) -- (BlockTop) -- ++(-0.4, 0) -- ++(0, 0.5);
-		\filldraw[lightgray, draw=black] 
-			($(BlockBot) + (0,-0.5)$) -- (BlockBot) -- ++(-0.4, 0) -- ++(0, -0.5);
-		\filldraw[lightgray, draw=black] 
-			($(BlockMid) + (0,0.25)$) -- ($(BlockMid) + (0,-0.25)$) -- 
-			++(-0.4, 0) -- ++(0, 0.5) -- cycle;		
-			
-		% Lines to P
-		\filldraw[black] (P) circle (0.05)
-			node[right]{P};
-		\draw[very thin] (BlockTop) -- (P);
-		\draw (BlockMid) -- (P);
-		\draw[very thin] (BlockBot) -- (P);
-		
-		% Delta x
-		\draw[densely dotted] (BlockTop) -- ++(0.5, -0.84);
-		\draw[|<->|] ($(BlockBot) + (0.2, -0.25)$) -- ($(BlockTop) + (0.6, -1.1)$)
-			node[pos=0.5, below right]{$\Delta x =
-				\mathcolor{red}{d}\sin\mathcolor{orange}{\theta_n}$};
-		
-		% Captions
-		\filldraw[orange, fill=orange!50] (BlockMid) -- ++(1,0) arc(0:15:1) -- cycle;
-		\draw[orange] (BlockMid) +(7:1.5) node{$\theta_n$};
-		\draw[|<->|, blue] (-2.8, -1.5) -- ++(5.8, 0)
-			node[pos=0.5, above]{$l$};
-		\draw[|<->|] ($(P) + (0.5, 0)$) -- ++(0, -1.5)
-			node[pos=0.5, right]{$y_n$};
-		\draw[|<->|, red] ($(BlockTop) + (-0.9, 0)$) -- ++(0, -1)
-			node[pos=0.5, right]{$d$};
-			
-		% Bar on right
-		\coordinate (M) at ($(MidBar) + (0, 1.5)$);
-		\foreach \y/\c in {0, 0.4, 0.8, ..., 3}{
-			\filldraw[Violet] 
-				($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
-		}
-		\foreach \y/\c in {0.2, 0.6, 1, ..., 2.6}{
-			\filldraw[Goldenrod!50] 
-				($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
-		}
-		\draw ($(MidBar) + (0,1.5)$) -- ++(0.5, 0) -- ++(0, -3) -- ++(-0.5, 0) -- cycle;
-		
-		\draw[|<->|, teal] ($(M) + (0.9, -0.2)$) -- ++(0, -0.2)
-			node[pos=0.5, right]{$\frac{\mathcolor{blue}{l}\lambda}{\mathcolor{red}{d}}$};
-		
-		\node[Violet](C) at (1.5, -2) {Distruttiva};
-		\node[Goldenrod] (C) at (1.5, -2.5) {Costruttiva};
-	\end{tikzpicture}
+    \draw[dashed] (MidL) -- (MidR);
+    \draw ($(P) + (0, 0.5)$) -- ++(0, -3.5);
+    
+    % Two holes
+    \filldraw[lightgray, draw=black] 
+            ($(BlockTop) + (0,0.5)$) -- (BlockTop) -- ++(-0.4, 0) -- ++(0, 0.5);
+    \filldraw[lightgray, draw=black] 
+            ($(BlockBot) + (0,-0.5)$) -- (BlockBot) -- ++(-0.4, 0) -- ++(0, -0.5);
+    \filldraw[lightgray, draw=black] 
+            ($(BlockMid) + (0,0.25)$) -- ($(BlockMid) + (0,-0.25)$) -- 
+            ++(-0.4, 0) -- ++(0, 0.5) -- cycle;		
+            
+    % Lines to P
+    \filldraw[black] (P) circle (0.05)
+            node[right]{P};
+    \draw[very thin] (BlockTop) -- (P);
+    \draw (BlockMid) -- (P);
+    \draw[very thin] (BlockBot) -- (P);
+    
+    % Delta x
+    \draw[densely dotted] (BlockTop) -- ++(0.5, -0.84);
+    \draw[|<->|] ($(BlockBot) + (0.2, -0.25)$) -- ($(BlockTop) + (0.6, -1.1)$)
+            node[pos=0.5, below right]{$\Delta x =
+                    \mathcolor{red}{d}\sin\mathcolor{orange}{\theta_n}$};
+    
+    % Captions
+    \filldraw[orange, fill=orange!50] (BlockMid) -- ++(1,0) arc(0:15:1) -- cycle;
+    \draw[orange] (BlockMid) +(7:1.5) node{$\theta_n$};
+    \draw[|<->|, blue] (-2.8, -1.5) -- ++(5.8, 0)
+            node[pos=0.5, above]{$l$};
+    \draw[|<->|] ($(P) + (0.5, 0)$) -- ++(0, -1.5)
+            node[pos=0.5, right]{$y_n$};
+    \draw[|<->|, red] ($(BlockTop) + (-0.9, 0)$) -- ++(0, -1)
+            node[pos=0.5, right]{$d$};
+            
+    % Bar on right
+    \coordinate (M) at ($(MidBar) + (0, 1.5)$);
+    \foreach \y/\c in {0, 0.4, 0.8, ..., 3}{
+            \filldraw[Violet] 
+                    ($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
+    }
+    \foreach \y/\c in {0.2, 0.6, 1, ..., 2.6}{
+            \filldraw[Goldenrod!50] 
+                    ($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
+    }
+    \draw ($(MidBar) + (0,1.5)$) -- ++(0.5, 0) -- ++(0, -3) -- ++(-0.5, 0) -- cycle;
+    
+    \draw[|<->|, teal] ($(M) + (0.9, -0.2)$) -- ++(0, -0.2)
+            node[pos=0.5, right]{$\frac{\mathcolor{blue}{l}\lambda}{\mathcolor{red}{d}}$};
+    
+    \node[Violet](C) at (1.5, -2) {Distruttiva};
+    \node[Goldenrod] (C) at (1.5, -2.5) {Costruttiva};
+  \end{tikzpicture}
 \end{center}
 
 La barra a destra fa vedere l'alternarsi di zone chiare e scure. Ciascuna di quelle zone è definita
@@ -429,15 +427,16 @@ dai fori, si sprigiona un'onda perfettamente circolare.
 \subsubsection{Altezza dell'$n$-esima frangia}
 La seguente formula trova l'altezza di una qualsiasi frangia.
 \begin{equation*}
-y_n = \mathcolor{blue}{l}\tan\mathcolor{orange}{\theta_n}
+  y_n = \mathcolor{blue}{l}\tan\mathcolor{orange}{\theta_n}
 \end{equation*}
 
 Le prossime due invece trovano l'$n$-esima frangia costruttiva ($_C$) o distruttiva ($_D$).
 \begin{equation*}
-y_{n_C} = \frac{\mathcolor{blue}{l}\cdot n\cdot\mathcolor{cyan}{\lambda}}{\mathcolor{red}{d}}
+  y_{n_C} = \frac{\mathcolor{blue}{l}\cdot n\cdot\mathcolor{teal}{\lambda}}{\mathcolor{red}{d}}
 \end{equation*}
 \begin{equation*}
-y_{n_D} = \frac{\mathcolor{blue}{l}\cdot (2n+1)\cdot\mathcolor{cyan}{\lambda}}{2\mathcolor{red}{d}}
+  y_{n_D} =
+  \left(n+\frac{1}{2}\right)\frac{\mathcolor{blue}{l}\mathcolor{teal}{\lambda}}{\mathcolor{red}{d}}
 \end{equation*}
 
 \subsubsection{Angolo dell'$n$-esima frangia}
@@ -448,7 +447,7 @@ Se la frangia è costruttiva
 Se è distruttiva
 \begin{equation*}
 \sin\mathcolor{orange}{\theta_n} =
-\left(n-\frac{1}{2}\right)\frac{\mathcolor{teal}{\lambda}}{\mathcolor{red}{d}}
+\left(n+\frac{1}{2}\right)\frac{\mathcolor{teal}{\lambda}}{\mathcolor{red}{d}}
 \end{equation*}
 
 \subsubsection{Differenza di percorso tra i due fori}
@@ -462,7 +461,7 @@ Se l'angolo è riferito ad una frangia costruttiva è anche
 \end{equation*}
 Se l'angolo è riferito ad una frangia distruttiva è anche
 \begin{equation*}
-\Delta x = (2n+1)\mathcolor{teal}{\lambda}
+\Delta x = \left(n+\frac{1}{2}\right)\mathcolor{teal}{\lambda}
 \end{equation*}
 
 \subsection{Lenti e Specchi}\label{subsec:onde:lenti}
@@ -470,37 +469,34 @@ L'obiettivo fondamentale dell'ottica è mettere a fuoco degli oggetti. Generalme
 due problemi di vista: \emph{miopia} (difficoltà a mettere a fuoco lunghe distanze) e 
 \emph{ipermetropia} (o presbiopia che è la difficoltà ad identificare oggetti vicini).\\
 [\baselineskip]
-Nonostante le lenti abbiano in definitiva 3 formule totali, meritano una sottosezione a sè in 
-quanto può non essere sempre immediato identificare oggetti ed immagini. Il disegno sotto aiuterà
-a capire.
-
+Il disegno sotto aiuterà a capire i fondamenti dell'ottica
 \begin{center}
-	\begin{tikzpicture}
-		\coordinate (p) at (-3, 0);
-		\coordinate (hO) at (-3, 0.75);
-		\coordinate (f) at (1.2, 0);
-		\coordinate (L) at (0, 0);
-		\coordinate (q) at (2, 0);
-		\coordinate (hI) at (2, -0.5);
-		
-		% Construction
-		\draw[very thin] (p) -- (q);
-		\draw[red, thick] (p) -- (hO)
-			node[pos=0.5, left]{$h_O$}
-			node[pos=0, below]{$p$};
-		\draw[blue, thick] (q) -- (hI)
-			node[pos=0.5, right]{$h_I$}
-			node[pos=0, above]{$q$};
-		\draw[<->] ($(L) + (0, 1)$) -- ($(L) + (0, -1)$);
-		
-		% Connection lines
-		\draw[dashed] (hO) -- (hI);
-		\draw[densely dotted] (hO) -- ($(L) + (0, 0.75)$) -- (hI);
-		
-		% Sign for F
-		\draw[orange, thick] ($(f) + (0, -0.2)$) -- ++(0, 0.4)
-			node[pos=1, above]{$f$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \coordinate (p) at (-3, 0);
+    \coordinate (hO) at (-3, 0.75);
+    \coordinate (f) at (1.2, 0);
+    \coordinate (L) at (0, 0);
+    \coordinate (q) at (2, 0);
+    \coordinate (hI) at (2, -0.5);
+    
+    % Construction
+    \draw[very thin] (p) -- (q);
+    \draw[red, thick] (p) -- (hO)
+            node[pos=0.5, left]{$h_O$}
+            node[pos=0, below]{$p$};
+    \draw[blue, thick] (q) -- (hI)
+            node[pos=0.5, right]{$h_I$}
+            node[pos=0, above]{$q$};
+    \draw[<->] ($(L) + (0, 1)$) -- ($(L) + (0, -1)$);
+    
+    % Connection lines
+    \draw[dashed] (hO) -- (hI);
+    \draw[densely dotted] (hO) -- ($(L) + (0, 0.75)$) -- (hI);
+    
+    % Sign for F
+    \draw[orange, thick] ($(f) + (0, -0.2)$) -- ++(0, 0.4)
+            node[pos=1, above]{$f$};
+  \end{tikzpicture}
 \end{center}
 
 Da quest'immagine possiamo capire due caratteristiche fondamentali:
@@ -560,10 +556,9 @@ Nell'ottica, per trovare la distanza focale della lente da usare negli occhiali,
 \end{equation*}
 dove $d$ è la distanza da ottenere. Altrimenti si usi
 \begin{align*}
-  \text{Miopia:}\,&-\frac{1}{d_{min}}\\
-  \text{Ipermetropia:}\,&-\frac{1}{d_{max}} 
+  \text{Miopia:}\,&-\frac{1}{d_{max}}\\
+  \text{Ipermetropia:}\,&-\frac{1}{d_{min}} 
 \end{align*}
-
 
 \subsubsection{Lenti attaccate}
 \begin{equation*}
@@ -575,38 +570,37 @@ Si possono riscontrare onde stazionarie quando due onde siano sincrone ma con ve
 risultato è il seguente
 
 \begin{center}
-	\begin{tikzpicture}
-		\draw[samples=500, domain=-0:pi] plot (\x, {-sin(2*\x r)});
-		\draw[samples=500, domain=-0:pi] plot (\x, {sin(2*\x r)});
-		
-		\filldraw[red] (0,0) circle(0.05)
-			node[left]{Nodo};
-		\filldraw[blue] (pi/4, 1) circle(0.05)
-			node[above]{Ventre};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[samples=500, domain=-0:pi] plot (\x, {-sin(2*\x r)});
+    \draw[samples=500, domain=-0:pi] plot (\x, {sin(2*\x r)});
+    
+    \filldraw[red] (0,0) circle(0.05)
+            node[left]{Nodo};
+    \filldraw[blue] (pi/4, 1) circle(0.05)
+            node[above]{Ventre};
+  \end{tikzpicture}
 \end{center}
 
 Per le onde stazionarie, vengono definiti \emph{nodi} i punti in cui l'ampiezza è  $0$,
 \emph{ventri} quelli in cui l'ampiezza è massima. Si definisce $n$ il numero di ventri che 
 esistono nell'onda.\\
-
 Per trovare la posizione di un nodo o di un ventre si usi
 \begin{equation*}
-\mathcolor{red}{\text{Nodo: }} x = \frac{\lambda}{4}+(k+1)\frac{\lambda}{2}
+  \mathcolor{red}{\text{Nodo: }} x = \frac{\lambda}{4}+(k+1)\frac{\lambda}{2}
 \end{equation*}
 \begin{equation*}
-\mathcolor{blue}{\text{Ventre: }} x = (k+1)\frac{\lambda}{2}
+  \mathcolor{blue}{\text{Ventre: }} x = (k+1)\frac{\lambda}{2}
 \end{equation*}
 dove $k$ identifica il numero del ventre o nodo desiderato.
 
 \begin{center}
-	\begin{tikzpicture}
-		\node at (-1,0){$n=1$};
-		\node at (4,0){$L=1\cdot\frac{\lambda}{2}$};
-		\draw[samples=500, domain=-0:pi] plot (\x, {-sin(\x r)});
-		\draw[samples=500, domain=-0:pi] plot (\x, {sin(\x r)});
-		\draw[gray, dashed] (0,0) -- ++(3.14,0);
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \node at (-1,0){$n=1$};
+    \node at (4,0){$L=1\cdot\frac{\lambda}{2}$};
+    \draw[samples=500, domain=-0:pi] plot (\x, {-sin(\x r)});
+    \draw[samples=500, domain=-0:pi] plot (\x, {sin(\x r)});
+    \draw[gray, dashed] (0,0) -- ++(3.14,0);
+  \end{tikzpicture}
 \end{center}
 \begin{center}
 	\begin{tikzpicture}
@@ -662,11 +656,21 @@ I = \frac{E}{St} = \frac{P}{S}
 \end{equation*}
 $E$: energia\\
 $P$: potenza, solitamente espressa in $W$\\[\baselineskip]
-
-Il prodotto dell'intensità per il raggio al quadrato rimane costante nel tempo:
+Se ne deriva che
 \begin{equation*}
 I_1r_1^2 = I_2r_2^2
 \end{equation*}
+\begin{center}
+  \begin{tikzpicture}[scale=0.5]
+    \draw (0,0) circle (1);
+    \draw (0,0) circle (2);
+    \draw[|<->|] (0,0) -- ++(1,0)
+      node[pos=0.5,below]{$r_1$};
+    \draw[|<->|] (0,0) -- ++(-2,0)
+      node[pos=0.5,below]{$r_2$};
+  \end{tikzpicture}
+\end{center}
+
 
 \subsubsection{Livello sonoro}
 Il livello sonoro indica quanto forte un suono appare all'udito umano. La sua unità di misura è il
@@ -676,6 +680,25 @@ Il livello sonoro indica quanto forte un suono appare all'udito umano. La sua un
 	L = 10\log_{10}\frac{I}{I_0}
 \end{equation*}
 \hyperref[tab:I0]{$I_0$}: $10^{-12}\,\text{W/m}^2$
+
+\subsubsection{Eco}
+Il suono, essendo un onda, si riflette se incontra un ostacolo. Il tempo necessario tra due picchi
+perché si senta l'eco è
+\begin{equation*}
+  t = \frac{2d}{v}
+\end{equation*}
+\begin{center}
+  \begin{tikzpicture}
+    \filldraw[gray!60] (3,0) -- ++(0.5,0) -- ++(0,2) -- ++(-0.5,0) -- cycle;
+    \draw (0,1.5) arc (45:-45:1);
+    \draw[-stealth] (0.1,1.5) -- ++(0.5,0);
+    \filldraw (0,0.75) circle (0.1);
+    \draw[|<->|] (0,0.75) -- ++(3,0)
+      node[pos=0.5,below]{$d$};
+  \end{tikzpicture}
+\end{center}
+$d$: distanza dalla superficie\\
+\hyperref[tab:vs]{$v$}: $343$ m/s
 
 \subsubsection{Effetto Doppler}
 L'effetto Doppler è un effetto che tutti quanti conoscono (un'ambulanza che emette un 

@@ -7,7 +7,7 @@ dalla somma di tutte le cariche degli elettroni all'interno di ogni corpo. La su
 \emph{Coulomb} ($C$).\\[\baselineskip]
 Si noti che nelle seguenti formule, $\varepsilon$ è definito come 
 $\varepsilon = \varepsilon_0\varepsilon_r$ dove $\varepsilon_0$ è \hyperref[tab:e0]{la costante
-dielettrica nel vuoto} e $\varepsilon_r$ è la costante dielettrica nel mezzo (nel vuoto è $0$).\\
+dielettrica nel vuoto} e $\varepsilon_r$ è la costante dielettrica nel mezzo.\\
 Per gli esercizi si vada a pagina~\pageref{ex:elettrostatica}.
 
 \subsection{Legge di Coulomb}
@@ -22,14 +22,13 @@ F = k_0\frac{Q_1Q_2}{r^2} = \frac{1}{4\pi\varepsilon}\frac{Q_1Q_2}{r^2}
 \subsection{Campo elettrico}
 Il campo elettrico è generato da una carica. Esso è un campo vettoriale, ciò significa che ad ogni
 suo punto si associa un vettore.\\ 
-Il campo elettrico può essere uniforme, ovvero a tutti i punti si associa un vettore uguale.\\
 Verranno ora riportate tutte le formule che permettono di trovare o il modulo o il vettore di un
 campo elettrico.
 
 \begin{alignat*}{2}
-E &= k_0\frac{Q}{r^2} & &\text{Solo se puntiforme}\\
-\vec{E} &= \frac{\vec{F}}{q} &\qquad \vec{E} &= \sum\limits_{i=0}^{n} \vec{E}_n\\
-E &= -\frac{\Delta V}{\Delta x} & &
+  E &= k_0\frac{Q}{r^2} & &\text{Solo se puntiforme}\\
+  \vec{E} &= \frac{\vec{F}}{q} &\qquad \vec{E} &= \sum\limits_{i=0}^{n} \vec{E}_n\\
+  E &= -\frac{\Delta V}{\Delta x} & &
 \end{alignat*}
 %E &= \frac{\sigma}{2\varepsilon_0} & &\text{Se in un condensatore, si divida solo per } \varepsilon\\
 %E &= -\frac{\Delta V}{\Delta x} & & \\
@@ -38,26 +37,27 @@ $\Delta V$: d.d.p\\
 $\Delta x$: distanza tra le superfici
 
 \subsubsection{Campo di una superficie piana infinita}
+Il campo elettrico può essere uniforme, ovvero a tutti i punti si associa un vettore uguale.
 \begin{center}
-	\begin{tikzpicture}
-		\draw[dashed] (0,0) -- ++(1,0);
-		\draw (1,0) -- ++(2,0);
-		\draw[dashed] (3,0) -- ++(1,0);
-		\draw[-stealth] (2,0.5) -- ++(0,-0.45)
-			node[pos=0.5, left]{$\vec{E}$};
-		\draw[-stealth] (2,-0.5) -- ++(0,0.45)
-			node[pos=0.5, left]{$\vec{E}$};
-		\node at (1,0.5){$q < 0$};
-		
-		\draw[dashed] (0,-2) -- ++(1,0);
-		\draw (1,-2) -- ++(2,0);
-		\draw[dashed] (3,-2) -- ++(1,0);
-		\draw[stealth-] (2,-1.5) -- ++(0,-0.45)
-			node[pos=0.5, left]{$\vec{E}$};
-		\draw[stealth-] (2,-2.5) -- ++(0,0.45)
-			node[pos=0.5, left]{$\vec{E}$};
-		\node at (1,-1.5){$q > 0$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[dashed] (0,0) -- ++(1,0);
+    \draw (1,0) -- ++(2,0);
+    \draw[dashed] (3,0) -- ++(1,0);
+    \draw[-stealth] (2,0.5) -- ++(0,-0.45)
+            node[pos=0.5, left]{$\vec{E}$};
+    \draw[-stealth] (2,-0.5) -- ++(0,0.45)
+            node[pos=0.5, left]{$\vec{E}$};
+    \node at (1,0.5){$\sigma < 0$};
+    
+    \draw[dashed] (0,-2) -- ++(1,0);
+    \draw (1,-2) -- ++(2,0);
+    \draw[dashed] (3,-2) -- ++(1,0);
+    \draw[stealth-] (2,-1.5) -- ++(0,-0.45)
+            node[pos=0.5, left]{$\vec{E}$};
+    \draw[stealth-] (2,-2.5) -- ++(0,0.45)
+            node[pos=0.5, left]{$\vec{E}$};
+    \node at (1,-1.5){$\sigma > 0$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 E = \frac{\left\lvert\sigma\right\rvert}{2\epsilon_0}
@@ -65,17 +65,18 @@ E = \frac{\left\lvert\sigma\right\rvert}{2\epsilon_0}
 $\sigma$: densità di carica $\left(\frac{Q}{A}\right)$
 
 \subsubsection{Campo elettrico all'interno di un condensatore}
+Il campo elettrico è costante in ogni punto all'interno del condensatore. All'esterno è $0$.
 \begin{center}
-	\begin{tikzpicture}
-		\draw[thick] (0,0) -- ++(4,0);
-		\foreach \ca in {0,0.5,1,...,4}{
-			\node at (\ca,0.5){$+$};
-			\node at (\ca,-2.5){$-$};
-			\draw[-stealth] (\ca,-0.25) -- ++(0,-1.5);
-		}
-		\draw[thick] (0,-2) -- ++(4,0);
-		\node at (-0.5,-1){$\vec{E}$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[thick] (0,0) -- ++(4,0);
+    \foreach \ca in {0,0.5,1,...,4}{
+      \node at (\ca,0.5){$+$};
+      \node at (\ca,-2.5){$-$};
+      \draw[-stealth] (\ca,-0.25) -- ++(0,-1.5);
+    }
+    \draw[thick] (0,-2) -- ++(4,0);
+    \node at (-0.5,-1){$\vec{E}$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 E = \frac{\sigma}{\varepsilon}
@@ -94,11 +95,22 @@ attraversa una superficie ($\vec{S}$).\\
 Verranno ora riportate le formule per calcolare il flusso di una superficie.
 
 \begin{alignat*}{2}
-\Phi_i\left(\vec{E}\right) &= \vec{E}_i \cdot \vec{S_i} &\qquad &\\
-\Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\vec{E}_\cdot\vec{S_i} & &\\
-\Phi_S\left(\vec{E}\right) &= E\cdot S\cos\theta & &\text{Se } S \text{ è piana e } E \text{ 
-uniforme} 
+  \Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\vec{E}_\cdot\vec{S_i} &\quad &\\
+  \Phi_S\left(\vec{E}\right) &= E\cdot S\cos\theta & &\text{Se } S \text{ è piana e } E \text{ 
+  uniforme} 
 \end{alignat*}
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (O) at (1,0);
+    \coordinate (A) at (1,2);
+    \coordinate (B) at (1.5,1);
+    \draw (0,0) -- ++(2,0);
+    \draw (O) -- (A);
+    \draw[-stealth] (O) -- (B)
+      node[pos=0.6,right]{$\vec{E}$};
+    \markangle{O}{A}{B}{0.5}{1.4}{$\theta$}
+  \end{tikzpicture}
+\end{center}
 
 \subsection{Teorema di Gauss}
 Il teorema di Gauss definisce il flusso di una superficie \emph{chiusa}.
@@ -109,12 +121,11 @@ Il teorema di Gauss definisce il flusso di una superficie \emph{chiusa}.
 \subsection{Lavoro di un campo elettrico}
 Quanto lavoro deve fare un campo elettrico per spostare una carica? Questa sottsezione è dedicata 
 proprio a questo.
-
-\begin{alignat*}{2}
-L &= \Delta U &\qquad  &\text{Se riferito ad un campo elettrico}\\
-L &= -\Delta U & &\text{Se riferito ad una carica}\\
-L &= q\left[V_A - V_B\right] & &
-\end{alignat*}
+\begin{equation*}
+  L = q\left[V_f - V_i\right]
+\end{equation*}
+$V_i$: potenziale iniziale\\
+$V_f$: potenziale finale\\ [\baselineskip]
 
 Al lavoro sono direttamente collegati \textbf{l'energia potenziale elettrica} ($U$) e 
 \textbf{il potenziale elettrico} ($V$). Vengono ora riportate le formule per calcolarle.
@@ -127,8 +138,11 @@ U &= k_0\frac{Q_1Q_2}{r} &\qquad V &= k_0\frac{Q}{r}
 \subsubsection{Lavoro di una carica in un condensatore}
 Il lavoro di una carica è equivalente all'energia interna.
 \begin{equation*}
-L = \frac{1}{2}qV = \frac{1}{2}CV^2 = \frac{1}{2}\frac{q^2}{C}
+L = \frac{1}{2}QV = \frac{1}{2}QV^2 = \frac{1}{2}\frac{Q^2}{C}
 \end{equation*}
+$Q$: carica delle pareti\\
+$V$: differenza di potenziale\\
+$C$: capacità del condensatore
 
 \subsection{Capacità elettrica}\label{sub:elettrostatica:capacita}
 La capacità elettrica indica quanta carica può immagazzinare un conduttore isolato. Verranno ora 
@@ -139,7 +153,8 @@ C &= \frac{Q}{V} &\qquad &\\
 C &= 4\pi\varepsilon & &\text{Specificamente in una sfera isolata}\\
 C &= \frac{S\varepsilon}{d} & &\text{Specificamente in un condensatore piano}
 \end{alignat*}
-Nell'ultima formula, $d$ indica la distanza tra le due armature di un condensatore.
+Nell'ultima formula, $d$ indica la distanza tra le due armature di un condensatore e $S$ l'area 
+delle superfici del condensatore.
 
 \subsection{Circuitazione}
 La circuitazione ($C$) indica quanta carica passa per una linea chiusa ($\Gamma$).
@@ -151,11 +166,22 @@ C_\Gamma\left(\vec{E}\right) = \sum\limits_{i=0}^{n}\vec{E}_i\cdot\vec{l}_i =
 $l$: differenza di spostamento\\
 Si noti che $theta$ è rispetto alla tangente, non alla normale come nel 
 \hyperref[subsec:flusso]{Flusso}.
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (O) at (1,0);
+    \coordinate (A) at (2,0);
+    \coordinate (B) at (1.5,1);
+    \draw (0,0) -- ++(2,0);
+    \draw[-stealth] (O) -- (B)
+      node[pos=0.6,left]{$\vec{E}$};
+    \markangle{O}{A}{B}{0.5}{1.4}{$\theta$}
+  \end{tikzpicture}
+\end{center}
 
 \subsection{Dielettrico all'interno di un condensatore}
 Come cambia il campo elettrico all'interno di un condensatore se si inserisce un dielettrico?
 \begin{equation*}
-E_{RIS} = \frac{\sigma\cdot\sigma_p}{\varepsilon}
+E_{RIS} = \frac{\sigma-\sigma_p}{\varepsilon}
 \end{equation*}
 
 \subsection{Velocità di deriva in un conduttore metallico}
