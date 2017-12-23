@@ -4,7 +4,7 @@
 \usepackage[italian]{babel} % Italian support
 \usepackage{amsmath,amsfonts,amssymb,mathtools,calrsfs}
 \usepackage{bm} % Bold math
-\usepackage[latin1]{inputenc} % Accented letters
+\usepackage[utf8]{inputenc} % Accented letters
 \usepackage[medium]{titlesec} % Smaller section's font
 \usepackage[pdftex,dvipsnames]{xcolor} % Colors for text
 \usepackage{array} % For better tables
@@ -156,8 +156,8 @@
 				\centering
                                 \captionsetup{justification=centering}
 				\includegraphics[scale=3]{colophon/daVinci}
-				\caption{\textit{`La fisica Ë, tra tutte le scienze, la pi˘ fondamentale e completa,
-						e ha avuto una profonda influenza. Studenti delle discipline pi˘ diverse si 
+				\caption{\textit{`La fisica √®, tra tutte le scienze, la pi√π fondamentale e completa,
+						e ha avuto una profonda influenza. Studenti delle discipline pi√π diverse si 
 						ritrovano a doverla studiare a causa dell'importanza che riveste in tutti i 
 						fenomeni'}\\- Richard Feynman\\ [\baselineskip]
 					\textit{`Causas rerum naturalium non plures admittiri debere, quam quo et vera 
@@ -171,7 +171,7 @@
 					{\textbf{Davide Cossu, Stefano D'Agaro}}
 				\end{center}
 				\vspace{0.5cm}
-				Questo Ë un formulario con le formule di fisica fatte durante tutti e cinque gli anni 
+				Questo √® un formulario con le formule di fisica fatte durante tutti e cinque gli anni 
 				di un liceo scientifico con alcune spiegazioni teoriche ed esercizi.
 			\end{minipage}
 		\end{center}
@@ -186,13 +186,13 @@
 }
 
 \newpage
-\textbf{Durante tutto il formulario, si user‡ il sistema internazionale di notazione, ovvero $.$ per 
+\textbf{Durante tutto il formulario, si user√† il sistema internazionale di notazione, ovvero $.$ per 
 separare interi da decimali e $,$ per separare le migliaia se necessario.}
 \section{Costanti}
-Qui verranno riportate le costanti usate nelle formule con relativo simbolo e unit‡ di misura.
+Qui verranno riportate le costanti usate nelle formule con relativo simbolo e unit√† di misura.
 
-\tablefirsthead{\toprule Simbolo& Nome & Valore & Unit‡ di misura \\ \midrule}
-\tablehead{Simbolo& Nome & Valore & Unit‡ di misura \\ \midrule}
+\tablefirsthead{\toprule Simbolo& Nome & Valore & Unit√† di misura \\ \midrule}
+\tablehead{Simbolo& Nome & Valore & Unit√† di misura \\ \midrule}
 \tablelasttail{\bottomrule}
 
 \begin{center}
@@ -237,14 +237,14 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
 		$k_B$ & Costante di Boltzman & $1.381\cdot10^{-23}$ & 
 		$\frac{\text{J}}{\text{K}}$\\ \midrule
 		\label{tab:c} 
-		$c$ & Velocit‡ della luce & $3\cdot10^8$ & $\frac{\text{m}}{\text{s}}$\\\midrule
+		$c$ & Velocit√† della luce & $3\cdot10^8$ & $\frac{\text{m}}{\text{s}}$\\\midrule
 		\label{tab:I0} 
-		$I_0$ & Soglia di udibilit‡ & $10\cdot10^{-12}$ & 
+		$I_0$ & Soglia di udibilit√† & $10\cdot10^{-12}$ & 
 		$\frac{\text{W}}{\text{m}^2}$\\ \midrule
 		\label{tab:Im} 
 		$I_m$ & Soglia del dolore & $1$ & $\frac{\text{W}}{\text{m}^2}$\\ \midrule
 		\label{tab:vs} 
-		$v$ & Velocit‡ del suono & $343$ & $\frac{\text{m}}{\text{s}}$\\ \midrule
+		$v$ & Velocit√† del suono & $343$ & $\frac{\text{m}}{\text{s}}$\\ \midrule
 		\label{tab:e0} 
 		$\varepsilon_0$& Costante dielettrica nel vuoto&$8.9\cdot10^{-12}$&
 		$\dfrac{\text{C}^2}{\text{N}\cdot\text{m}^2}$\\ \midrule
@@ -256,45 +256,45 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
 		\label{tab:me-} 
 		$m_{e^{-}}$ & Massa di un elettrone & $9.11\cdot10^{-28}$ & $\text{kg}$\\\midrule
 		\label{tab:u} 
-		$u$ & Unit‡ di massa atomica & $1.7\cdot10^{-7}$ & $\text{kg}$\\\midrule
+		$u$ & Unit√† di massa atomica & $1.7\cdot10^{-7}$ & $\text{kg}$\\\midrule
 		\label{tab:mu0} 
-		$\mu_0$ & Permeabilit‡ magnetica nel vuoto & $4\pi\cdot10^{-7}$ & 
+		$\mu_0$ & Permeabilit√† magnetica nel vuoto & $4\pi\cdot10^{-7}$ & 
 		$\frac{\text{N}}{\text{A}^2}$\\
 		\midrule
 	\end{xtabular}
 \end{center}
 
 \newpage
-\section{Unit‡ di misura}
+\section{Unit√† di misura}
 \tablefirsthead{\toprule Grandezza & Nome & Simbolo & Definizione \\ \midrule}
 \tablehead{Grandezza & Nome & Simbolo & Definizione \\ \midrule}
 \tablelasttail{\bottomrule}
 \begin{center}
-	\begin{xtabular}{ M{1.8cm}  M{1.8cm}  c  c }
-		\textbf{Lunghezza} & Metro & m & / \\ \midrule
-		\textbf{Massa} & Kilogrammo & kg & / \\ \midrule
-		\textbf{Tempo} & Secondo & s & / \\ \midrule
-		\textbf{Corrente elettrica} & AmpÈre & A & / \\ \midrule
-		\textbf{Temperatura} & Kelvin & K & / \\ \midrule
-		\textbf{Quantit‡ di sostanza} & Mole & mol & / \\ \midrule
-		Area & Metro quadrato & m$^2$ & / \\ \midrule
-		Volume & Metro cubo & m$^3$ & / \\ \midrule
-		Velocit‡ & Metro al secondo & m/s & / \\ \midrule
-		Accelerazione & Metro al secondo quadrato & m/s$^2$ & / \\ \midrule
-		Frequenza & Hertz & Hz & s$^{-1}$ \\ \midrule
-		Angolo & Radiante & rad & / \\ \midrule
-		Forza & Newton & N & m$\cdot$kg$\cdot$s$^{-2}$ \\ \midrule
-		Pressione & Pascal & Pa & N/m$^2$ \\ \midrule
-		Energia, Lavoro, Quantit‡ di calore & Joule & J & N$\cdot$m \\ \midrule
-		Carica Elettrica & Coulomb & C & s$\cdot$A \\ \midrule
-		Potenziale Elettrico & Volt & V & W/A \\ \midrule
-		Capacit‡ & Farad & F & C/V \\ \midrule
-		Campo Magnetico & Tesla & T & N(A$\cdot$m)$^{-1}$ \\ \midrule
-                Flusso & Weber & Wb & T$\cdot$m$^2$\\ \midrule
-                Induttanza & Henry & H &Wb/A\\ \midrule
-	\end{xtabular}
+  \begin{xtabular}{ M{1.8cm}  M{1.8cm}  c  c }
+    \textbf{Lunghezza} & Metro & m & / \\ \midrule
+    \textbf{Massa} & Kilogrammo & kg & / \\ \midrule
+    \textbf{Tempo} & Secondo & s & / \\ \midrule
+    \textbf{Corrente elettrica} & Amp√©re & A & / \\ \midrule
+    \textbf{Temperatura} & Kelvin & K & / \\ \midrule
+    \textbf{Quantit√† di sostanza} & Mole & mol & / \\ \midrule
+    Area & Metro quadrato & m$^2$ & / \\ \midrule
+    Volume & Metro cubo & m$^3$ & / \\ \midrule
+    Velocit√† & Metro al secondo & m/s & / \\ \midrule
+    Accelerazione & Metro al secondo quadrato & m/s$^2$ & / \\ \midrule
+    Frequenza & Hertz & Hz & s$^{-1}$ \\ \midrule
+    Angolo & Radiante & rad & / \\ \midrule
+    Forza & Newton & N & m$\cdot$kg$\cdot$s$^{-2}$ \\ \midrule
+    Pressione & Pascal & Pa & N/m$^2$ \\ \midrule
+    Energia, Lavoro, Quantit√† di calore & Joule & J & N$\cdot$m \\ \midrule
+    Carica Elettrica & Coulomb & C & s$\cdot$A \\ \midrule
+    Potenziale Elettrico & Volt & V & W/A \\ \midrule
+    Capacit√† & Farad & F & C/V \\ \midrule
+    Campo Magnetico & Tesla & T & N(A$\cdot$m)$^{-1}$ \\ \midrule
+    Flusso & Weber & Wb & T$\cdot$m$^2$\\ \midrule
+    Induttanza & Henry & H &Wb/A\\ \midrule
+  \end{xtabular}
 \end{center}
-Le unit‡ in grassetto, sono le unit‡ fondamentali.
+Le unit√† in grassetto, sono le unit√† fondamentali.
 
 %\input{vettori}
 \input{cinematica}

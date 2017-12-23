@@ -1,7 +1,7 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Dinamica}\label{sec:dinamica}
-La dinamica Ë la branca della fisica che studia il moto dei corpi servendosi delle forze che ne
+La dinamica √® la branca della fisica che studia il moto dei corpi servendosi delle forze che ne
 sono responsabili\\
 Per gli esercizi si vada a pagina~\pageref{ex:dinamica}.
 \subsection{Secondo Principio della Dinamica}
@@ -10,23 +10,23 @@ Per gli esercizi si vada a pagina~\pageref{ex:dinamica}.
 \end{equation*}
 Se due corpi interagiscono tra loro, si sviluppano due forze, dette comunemente azione e reazione: 
 sono uguali in modulo e direzione, ma opposte in verso.\\
-Un corpo Ë in equilibrio quando la somma delle forze Ë 0, $F_y = 0\land F_x = 0$.\\
+Un corpo √® in equilibrio quando la somma delle forze √® 0, $F_y = 0\land F_x = 0$.\\
 Le forze si dividono in \emph{conservative} e \emph{dissipative}. Quando agisce una forza conservativa
 l'energia si mantiene, quando una dissipativa si perde energia. Si noti che
 \begin{align*}
-\text{Energia dissipata} =&\\
-\text{Energia meccanica finale } &- \text{ Energia meccanica iniziale}
+  \text{Energia dissipata} =&\\
+  \text{Energia meccanica finale } &- \text{ Energia meccanica iniziale}
 \end{align*}
 
 \begin{center}
-	\begin{tikzpicture}
-		\draw (0,0) -- (2,0);
-		\draw (0.5,0) -- ++(0,0.5) -- ++(0.5,0) -- ++(0,-0.5) -- cycle;
-		\draw[-stealth] (0.75,0.25) -- +(0,0.75)
-			node[pos=1,below]{$F_n = -mg$};
-		\draw[-stealth] (0.75,0.25) -- +(0,-0.75)
-			node[pos=1,above]{$F_p = mg$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,0) -- (2,0);
+    \draw (0.5,0) -- ++(0,0.5) -- ++(0.5,0) -- ++(0,-0.5) -- cycle;
+    \draw[-stealth] (0.75,0.25) -- +(0,0.75)
+            node[pos=1,below]{$F_n = -mg$};
+    \draw[-stealth] (0.75,0.25) -- +(0,-0.75)
+            node[pos=1,above]{$F_p = mg$};
+  \end{tikzpicture}
 \end{center}
 La forza normale ha verso opposto alla forza peso ma direzione e modulo uguale.
 
@@ -47,24 +47,24 @@ $F_p$: forza premente
 \subsection{Piano Inclinato}
 In un piano inclinato la forza peso fa andare in basso il copo se $P_\| > \mu_s\cdot P_\perp$.
 \begin{center}
-	\begin{tikzpicture}
-		\coordinate (A) at (0,0);
-		\coordinate (B) at (5,0);
-		\coordinate (C) at (0,2);
-		\coordinate (P) at (1, 1.8); % Block center
-		
-		\draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
-		\draw[thin] ($(P) + (-0.2,0.3)$) -- ($(P) + (-0.4,-0.01)$) -- 
-		($(P) + (0.2,-0.25)$) -- ($(P) + (0.3,0.1)$) -- cycle; % Block
-		\draw[-latex, very thick, red] (P) -- ($(P) + (0, -0.5)$)
-			node[pos=0.5, below right]{$\vec{P}$}; % P
-		\draw[-latex, thick, blue] (P) -- ($(P) + (-0.2, -0.45)$)
-			node[pos=0.5, left]{$P_\perp$}; % P_perp
-		\draw[-latex, thick, cyan] (P) -- ($(P) + (0.3, -0.15)$)
-			node[pos=0.5, above right]{$P_\Vert$}; % P_par
-		\filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
-		\draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (5,0);
+    \coordinate (C) at (0,2);
+    \coordinate (P) at (1, 1.8); % Block center
+    
+    \draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
+    \draw[thin] ($(P) + (-0.2,0.3)$) -- ($(P) + (-0.4,-0.01)$) -- 
+    ($(P) + (0.2,-0.25)$) -- ($(P) + (0.3,0.1)$) -- cycle; % Block
+    \draw[-latex, very thick, red] (P) -- ($(P) + (0, -0.5)$)
+            node[pos=0.5, below right]{$\vec{P}$}; % P
+    \draw[-latex, thick, blue] (P) -- ($(P) + (-0.2, -0.45)$)
+            node[pos=0.5, left]{$P_\perp$}; % P_perp
+    \draw[-latex, thick, cyan] (P) -- ($(P) + (0.3, -0.15)$)
+            node[pos=0.5, above right]{$P_\Vert$}; % P_par
+    \filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
+    \draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 \mathcolor{blue}{P_\perp} = \mathcolor{red}{P}\cos\mathcolor{orange}{\alpha}
@@ -78,49 +78,118 @@ a_x = g\sin\mathcolor{orange}{\alpha}
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
 $m$: massa del corpo\\
 $a_x$: accelerazione sul piano inclinato\\
-$\mathcolor{red}{\vec{P}}$: vettore della forza peso. Si noti che $\mathcolor{red}{P}$ Ë il suo 
+$\mathcolor{red}{\vec{P}}$: vettore della forza peso. Si noti che $\mathcolor{red}{P}$ √® il suo 
 modulo\\
 $\mathcolor{orange}{\alpha}$: alzo del piano
 
 \subsection{Funi e carrucole}
 \begin{center}
-	\begin{tikzpicture}
-		\coordinate (A) at (0,0);
-		\coordinate (B) at (5,0);
-		\coordinate (C) at (0,2);
-		\coordinate (D) at ($(C) + (-0.2, 0.2)$); % Circle center
-		\coordinate (M1) at ($(D) + (-0.2, -0.5)$);
-		\coordinate (M2) at ($(D) + (1, -0.25)$);
-		
-		\draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
-		\filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
-		\draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
-		\filldraw[fill=teal!20, very thin] (D) circle (0.2)
-			node[teal]{$m$}; % Circle
-		\draw[very thin] (D) -- (C); % Line from C to circle
-		\draw[very thin] ($(D) + (-0.2, 0)$) -- (M1);
-		\draw[red] ($(M1) + (-0.2, 0)$) -- ($(M1) + (-0.2, -0.3)$) -- ($(M1) + (0.2, -0.3)$) --
-		($(M1) + (0.2, 0)$) -- cycle
-			node[pos=0.5, below]{$m_1$}; % Box 1
-		\draw[very thin] ($(D) + (0.15, 0.15)$) -- (M2);
-		\draw[blue] ($(M2) + (0.1, 0.2)$) -- ($(M2) + (0.5, 0.01)$) -- ($(M2) + (0.35, -0.4)$) --
-		($(M2) + (-0.1, -0.2)$) -- cycle
-			node[pos=0, right]{$m_2$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (5,0);
+    \coordinate (C) at (0,2);
+    \coordinate (D) at ($(C) + (-0.2, 0.2)$); % Circle center
+    \coordinate (M1) at ($(D) + (-0.2, -0.5)$);
+    \coordinate (M2) at ($(D) + (1, -0.25)$);
+    
+    \draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
+    \filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
+    \draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
+    \filldraw[fill=teal!20, very thin] (D) circle (0.2)
+            node[teal]{$m$}; % Circle
+    \draw[very thin] (D) -- (C); % Line from C to circle
+    \draw[very thin] ($(D) + (-0.2, 0)$) -- (M1);
+    \draw[red] ($(M1) + (-0.2, 0)$) -- ($(M1) + (-0.2, -0.3)$) -- ($(M1) + (0.2, -0.3)$) --
+    ($(M1) + (0.2, 0)$) -- cycle
+            node[pos=0.5, below]{$m_1$}; % Box 1
+    \draw[very thin] ($(D) + (0.15, 0.15)$) -- (M2);
+    \draw[blue] ($(M2) + (0.1, 0.2)$) -- ($(M2) + (0.5, 0.01)$) -- ($(M2) + (0.35, -0.4)$) --
+    ($(M2) + (-0.1, -0.2)$) -- cycle
+            node[pos=0, right]{$m_2$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
 a = \frac{\mathcolor{red}{m_1}g - \mathcolor{blue}{m_2}g\sin\mathcolor{orange}{\alpha}}
 {\mathcolor{red}{m_1}+\mathcolor{blue}{m_2} + \frac{\mathcolor{teal}{m}}{2}}
 \end{equation*}
-Si noti che questa formula Ë particolare per questo caso. Si noti anche che 
-$\dfrac{\mathcolor{teal}{m}}{2}$ Ë
-da aggiungere solo se si ha la massa della carrucola e quindi il suo peso non Ë trascurabile.\\
-Per una formula pi˘ generale si usi
+Si noti che questa formula √® particolare per questo caso. Si noti anche che 
+$\dfrac{\mathcolor{teal}{m}}{2}$ √®
+da aggiungere solo se si ha la massa della carrucola e quindi il suo peso non √® trascurabile.\\
+Per una formula pi√π generale si usi
 \begin{equation*}
 a= \frac{\sum \vec{F}}{\sum m}
 \end{equation*}
 Per gli esercizi relativi a queste tre sottosezioni, si vada a pagina~\pageref{ex:dinamica:piano}.
 \label{subsec:dinamica:piano}
+
+\subsection{Momento}
+Un corpo rigido √® in equilibrio se $\sum M_o=0$.\\ Il momento($M_0$) √® l'efficacia di una forza 
+nel far ruotare un corpo intorno ad un punto ed √® definito come   
+\begin{equation*}
+  M=Fd\cos (\alpha)
+\end{equation*}
+$F$: forza \\
+$d$: distanza dal punto fulcro O \\ [\baselineskip]
+Una forza √® definita negativa se fa ruotare in senso orario il corpo, positiva se lo fa ruotare in
+senso antiorario.\\
+Prendiamo per esempio una leva
+\begin{center}
+  \begin{tikzpicture}[scale=2]
+    \draw[black,thick](-1.5,-5)--(1.3,-5);
+    \draw[red,->](-1.5,-5)--(-1.7,-4);
+    \draw[red,dashed](-1.5,-5)--(-1.5,-4);
+    \node[red] at (-1.56,-4.4) {$\alpha$};
+    \draw[olive,->](1.3,-5)--(1,-4.1);
+    \draw[olive,dashed](1.3,-5)--(1.3,-4.1);
+    \node[olive] at (1.24,-4.57) {$\beta$};
+    \draw [blue,->](-0.1,-5)--(-0.1,-5.5);
+    \node [blue] at (0.1,-5.25){mg};
+    \node at (-0.5,-5) {x};
+    \node at (-0.5,-5.2) {O};
+    \node at (-1.5,-5.1) {A};
+    \node at (-0.1,-4.9) {M};
+    \node at (1.3,-5.1) {C};
+  \end{tikzpicture}
+\end{center}
+in cui per esserci equilibrio $\sum M_o=0$ dunque
+\begin{equation*}
+  -F_A AO\cos \alpha -mg MO+F_C CO\cos \beta=0
+\end{equation*}
+Va notato che spesso il peso della leva viene trascurato e la formula di conseguenza per 
+l'equilibrio √®
+\begin{equation*}
+   \vec{F_A} AO = \vec{F_C} CO
+\end{equation*}
+La risultante di due forze su un corpo ha intensit√† pari alla somma delle due forze  e il verso 
+della forza con intensit√† maggiore  
+\begin{center}
+  \begin{tikzpicture}
+    \draw[purple] (0,0)--(0,2.4)--(1.7,2.4)--(1.7,0)--(0,0);
+    \draw[blue,->,dashed] (.8,1.9)--(2.3,1.9);
+    \draw[green,->,dashed] (.8,0.3)--(2,0.3);
+    \draw[red,->,thick] (.8,1.2)--(4.2,1.2);
+    \draw [<->] (.8,1.9)--(.8,1.21);
+    \draw [<->] (.8,1.19)--(.8,0.3);
+    \node at (.6,1.9) {A};
+    \node at (.6,1.2) {C};
+    \node at (.6,0.3) {B};
+    \node at (2.5,1)[red] {Risultante};
+    \draw[purple] (5,0)--(5,2.4)--(6.7,2.4)--(6.7,0)--(5,0);
+    \draw[blue,->,dashed] (5.8,1.2)--(9.3,1.2);
+    \draw[green,->,dashed] (5.8,0.3)--(4.7,0.3);
+    \draw[red,->,thick] (5.8,1.9)--(8.2,1.9);
+    \draw [<->] (5.8,1.9)--(5.8,1.21);
+    \draw [<->] (5.8,1.19)--(5.8,0.3);
+    \node at (5.6,2) {C};
+    \node at (5.6,1.2) {A};
+    \node at (6,0.3) {B};
+    \node at (6.9,2.1)[red] {Risultante};  
+  \end{tikzpicture}
+\end{center}
+e si dimostra che 
+\begin{equation*}
+  AC:CB=F_B:F_A
+\end{equation*}
 
 \subsection{Lavoro, Energia e Potenza}\label{subsec:dinamica:potenziale}
 \begin{equation*}
@@ -146,29 +215,29 @@ $E_c$: energia cinetica\\
 $P$: potenza\\
 $U$: energia potenziale\\
 $m$: massa del corpo\\
-$v$: velocit‡ del corpo\\[\baselineskip]
-Il \emph{Lavoro} Ë un vettore che si compone della forza applicata sul corpo e del suo spostamento.\\
-L'\emph{Enegia cinetica} Ë l'energia di un corpo in movimento.\\
-La \emph{Potenza} indica la quantit‡ di energia scambiata nel tempo.\\
-L'\emph{Energia potenziale} Ë quanto energia potrebbe generare quel corpo. Dipende dall'altezza.\\
+$v$: velocit√† del corpo\\[\baselineskip]
+Il \emph{Lavoro} √® un vettore che si compone della forza applicata sul corpo e del suo spostamento.\\
+L'\emph{Enegia cinetica} √® l'energia di un corpo in movimento.\\
+La \emph{Potenza} indica la quantit√† di energia scambiata nel tempo.\\
+L'\emph{Energia potenziale} √® quanto energia potrebbe generare quel corpo. Dipende dall'altezza.\\
 
-Queste sono formule generali, che danno le definizioni. Negli esercizi verr‡ particolarmente utile
-$U_1 + E_1 = U_2 + E_2$ in quanto permette di trovare la velocit‡ o la massa o l'altezza di un corpo
+Queste sono formule generali, che danno le definizioni. Negli esercizi verr√† particolarmente utile
+$U_1 + E_1 = U_2 + E_2$ in quanto permette di trovare la velocit√† o la massa o l'altezza di un corpo
 in due diverse situazioni.\\
 Per gli esercizi si vada a pagina~\pageref{ex:potenziale}.\\[\baselineskip]
 
 \begin{center}
-	\begin{tikzpicture}
-	\draw (0,0) to[out=-90,in=-90] (4,0);
-	\draw[dashed] (0,0) -- (4,0)
-		node[pos=0, above]{$mgh$}
-		node[pos=1, above]{$mgh$};
-	\draw[dashed] (4,0) -- (4,-1)
-		node[pos=0.5, right]{$h$};
-	\node[above] at (2,-1) {$\frac{1}{2}mv^2$}; 
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,0) to[out=-90,in=-90] (4,0);
+    \draw[dashed] (0,0) -- (4,0)
+            node[pos=0, above]{$mgh$}
+            node[pos=1, above]{$mgh$};
+    \draw[dashed] (4,0) -- (4,-1)
+            node[pos=0.5, right]{$h$};
+    \node[above] at (2,-1) {$\frac{1}{2}mv^2$}; 
+  \end{tikzpicture}
 \end{center}
-Se agisce una forza dissipativa (come quella di attrito), il corpo non arriver‡ a $h$.\\
+Se agisce una forza dissipativa (come quella di attrito), il corpo non arriver√† a $h$.\\
 Si usi $mgh$ solo per altezze relativamente piccole. Se si comincia ad usare una grande distanza, si
 usino le formule della gravitazione.
 
@@ -184,7 +253,7 @@ $k$: costante elastica della molla\\
 $\vec{x} \approx \Delta x$: variazione di posizione\\[\baselineskip]
 Queste formule sono relative a molle.\\
 
-\subsection{Quantit‡ di moto e teorema dell'impulso}\label{subsec:dinamica:impulso}
+\subsection{Quantit√† di moto e teorema dell'impulso}\label{subsec:dinamica:impulso}
 \label{subsec:qtaMoto}
 \begin{equation*}
 \vec{q} = m\vec{v}
@@ -193,43 +262,43 @@ Queste formule sono relative a molle.\\
 \vec{I} = \Delta \vec{q} = \vec{F}\Delta t
 \end{equation*}
 $m$: massa del corpo\\
-$\vec{v}$: velocit‡ del corpo\\
+$\vec{v}$: velocit√† del corpo\\
 $\vec{F}$: forza applicata sul corpo\\
 $t$: tempo\\[\baselineskip]
-La quantit‡ di moto indica la forza necessaria a fermare un oggetto in movimento in un secondo.\\
+La quantit√† di moto indica la forza necessaria a fermare un oggetto in movimento in un secondo.\\
 [\baselineskip]
 Si ricordi che
 \begin{equation*}
 \sum \vec{q} = \text{ costante nel tempo}
 \end{equation*}
 \begin{center}
-	\begin{tikzpicture}
-		\draw (0,0) -- (2.5,0);
-		\filldraw[orange, fill opacity = 0.3] (0.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
-		\filldraw[blue, fill opacity = 0.3] (1.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
-		
-		\draw[-stealth] (0.5,1) -- ++(0.5,0)
-			node[pos=0.5, below]{$\vec{v}_1$};
-		\draw[stealth-] (1.5,1) -- ++(0.5,0)
-			node[pos=0.5, below]{$\vec{v}_2$};
-		\node[orange] at (0.75,-0.25){$m_1$};
-		\node[blue] at (1.75,-0.25){$m_2$};
-		\node at (-2,0){$\mathcolor{orange}{m_1\vec{v_1}}-\mathcolor{blue}{m_2\vec{v_2}} = 0$};
-		\node at (-2,1){$t=0$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,0) -- (2.5,0);
+    \filldraw[orange, fill opacity = 0.3] (0.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+    \filldraw[blue, fill opacity = 0.3] (1.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+    
+    \draw[-stealth] (0.5,1) -- ++(0.5,0)
+            node[pos=0.5, below]{$\vec{v}_1$};
+    \draw[stealth-] (1.5,1) -- ++(0.5,0)
+            node[pos=0.5, below]{$\vec{v}_2$};
+    \node[orange] at (0.75,-0.25){$m_1$};
+    \node[blue] at (1.75,-0.25){$m_2$};
+    \node at (-2,0){$\mathcolor{orange}{m_1\vec{v_1}}-\mathcolor{blue}{m_2\vec{v_2}} = 0$};
+    \node at (-2,1){$t=0$};
+  \end{tikzpicture}
 \end{center}
 \begin{center}
-	\begin{tikzpicture}
-		\draw (0,0) -- (2.5,0);
-		\filldraw[orange, fill opacity=0.3] (0.75,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
-		\filldraw[blue, fill opacity = 0.3] (1.25,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
-			
-		\node[orange] at (1,-0.25){$m_1$};
-		\node[blue] at (1.5,-0.25){$m_2$};
-		
-		\node at (-2,0){$\sum\vec{q}=0$};
-		\node at (-2,1){$t=t_1\land\vec{v}=\vec{0}$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw (0,0) -- (2.5,0);
+    \filldraw[orange, fill opacity=0.3] (0.75,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+    \filldraw[blue, fill opacity = 0.3] (1.25,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
+            
+    \node[orange] at (1,-0.25){$m_1$};
+    \node[blue] at (1.5,-0.25){$m_2$};
+    
+    \node at (-2,0){$\sum\vec{q}=0$};
+    \node at (-2,1){$t=t_1\land\vec{v}=\vec{0}$};
+  \end{tikzpicture}
 \end{center}
 Per gli esercizi si vada a pagina~\pageref{ex:impulso}.
 
@@ -258,152 +327,152 @@ m_1v_1 + m_2v_2 = v(m_1+m_2)
 \end{equation*}
 $_1$: relativo al primo corpo\\
 $_2$: relativo al secondo corpo\\
-$v$: velocit‡ finale
+$v$: velocit√† finale
 
 \subsubsection{Proiettile contro un corpo}
 \begin{center}
-	\begin{tikzpicture}
-		\coordinate (ROT) at (1, 2);
-		\coordinate (CenterB1) at ($(ROT) + (0, -1.5)$);
-		\coordinate (CenterB2) at ($(ROT) + (2, -1.3)$);
-		\coordinate (CenterP) at (0,0.5);
-		
-		\draw (ROT) -- ($(CenterB1) + (0, 0.5)$);
-		\draw (ROT) -- ($(CenterB2) + (-0.5, 0.5)$);
-		
-		\draw[very thin] ($(CenterB1) + (-0.5, -0.5)$) -- ($(CenterB1) + (-0.5, +0.5)$) --
-		($(CenterB1) + (0.5, 0.5)$) -- ($(CenterB1) + (0.5, -0.5)$) -- cycle % Box1
-			node[pos=0.5, above, red]{$M$};
-		\draw[very thin,
-		densely dashed] ($(CenterB2) + (-0.5, -0.5)$) -- ($(CenterB2) + (-0.5, +0.5)$) --
-		($(CenterB2) + (0.5, 0.5)$) -- ($(CenterB2) + (0.5, -0.5)$) -- cycle;
-		\draw[densely dotted] (CenterB1) -- ($(CenterB1) + (2.5, 0)$);
-		\draw[blue, thick] ($(CenterB1) + (2, 0)$) -- (CenterB2)
-			node[pos=0.5, right]{$h$};
-		\draw ($(CenterP) + (-0.2, -0.1)$) -- ($(CenterP) + (0.2, -0.1)$) --
-		($(CenterP) + (0.2, 0.1)$) -- ($(CenterP) + (-0.2, 0.1)$) -- cycle
-			node[teal, below]{$\vec{v_p}$}
-			node[teal, above left]{$m$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \coordinate (ROT) at (1, 2);
+    \coordinate (CenterB1) at ($(ROT) + (0, -1.5)$);
+    \coordinate (CenterB2) at ($(ROT) + (2, -1.3)$);
+    \coordinate (CenterP) at (0,0.5);
+    
+    \draw (ROT) -- ($(CenterB1) + (0, 0.5)$);
+    \draw (ROT) -- ($(CenterB2) + (-0.5, 0.5)$);
+    
+    \draw[very thin] ($(CenterB1) + (-0.5, -0.5)$) -- ($(CenterB1) + (-0.5, +0.5)$) --
+    ($(CenterB1) + (0.5, 0.5)$) -- ($(CenterB1) + (0.5, -0.5)$) -- cycle % Box1
+            node[pos=0.5, above, red]{$M$};
+    \draw[very thin,
+    densely dashed] ($(CenterB2) + (-0.5, -0.5)$) -- ($(CenterB2) + (-0.5, +0.5)$) --
+    ($(CenterB2) + (0.5, 0.5)$) -- ($(CenterB2) + (0.5, -0.5)$) -- cycle;
+    \draw[densely dotted] (CenterB1) -- ($(CenterB1) + (2.5, 0)$);
+    \draw[blue, thick] ($(CenterB1) + (2, 0)$) -- (CenterB2)
+            node[pos=0.5, right]{$h$};
+    \draw ($(CenterP) + (-0.2, -0.1)$) -- ($(CenterP) + (0.2, -0.1)$) --
+    ($(CenterP) + (0.2, 0.1)$) -- ($(CenterP) + (-0.2, 0.1)$) -- cycle
+            node[teal, below]{$\vec{v_p}$}
+            node[teal, above left]{$m$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
-\mathcolor{teal}{v_p} = 
-\frac{\mathcolor{red}{M} + \mathcolor{teal}{m}}{\mathcolor{teal}{m}}\sqrt{2g\mathcolor{blue}{h}}
+  \mathcolor{teal}{v_p} = 
+  \frac{\mathcolor{red}{M} + \mathcolor{teal}{m}}{\mathcolor{teal}{m}}\sqrt{2g\mathcolor{blue}{h}}
 \end{equation*}
-\begin{equation*}
-\mathcolor{blue}{h} = 
-\frac{\mathcolor{teal}{v_p}^2\mathcolor{teal}{m}^2}{2g\left(\mathcolor{red}{M} +
-\mathcolor{teal}{m}\right)^2}
+  \begin{equation*}
+  \mathcolor{blue}{h} = 
+  \frac{\mathcolor{teal}{v_p}^2\mathcolor{teal}{m}^2}{2g\left(\mathcolor{red}{M} +
+  \mathcolor{teal}{m}\right)^2}
 \end{equation*}
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
-$v_p$: velocit‡ del proiettile\\
+$v_p$: velocit√† del proiettile\\
 $h$: altezza finale del sacco
 
 \subsubsection{Urti obliqui}
-Un urto obliquo Ë come nel seguente caso, ovvero quando due corpi collidono e partono in direzioni
+Un urto obliquo √® come nel seguente caso, ovvero quando due corpi collidono e partono in direzioni
 diverse.\\
 \begin{center}
-	\begin{tikzpicture}
-		\coordinate (C1) at (-1,0);
-		\coordinate (C2) at (1,0);
-		\coordinate (D) at (1.3,0);
-		\coordinate (E1) at (2.5, 0.5);
-		\coordinate (E2) at (2.5, -0.7);
-		
-		\draw[orange] (C1) circle (0.25)
-			node[]{A};
-		\draw[teal] (C2) circle (0.25)
-			node[]{B};
-		\draw[-latex] ($(C1) + (0.35,0)$) -- ($(C2) + (-0.35,0)$);
-		\draw[-latex, dashed] (D) -- ($(D) + (1.5, 0)$);
-		\draw[-latex] (D) -- (E1);
-		\draw[-latex] (D) -- (E2);
-		\filldraw[blue, fill=blue!30] (D) -- ($(D) + (0.4,0)$) arc(0:9:1) -- cycle;
-		\draw[blue] (D) +(10:0.5) node{$\alpha$};
-		\filldraw[red, fill=red!30] (D) -- ($(D) + (0.4,0)$) arc(0:-13:1) -- cycle;
-		\draw[red] (D) +(-13:0.7) node{$\beta$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \coordinate (C1) at (-1,0);
+    \coordinate (C2) at (1,0);
+    \coordinate (D) at (1.3,0);
+    \coordinate (E1) at (2.5, 0.5);
+    \coordinate (E2) at (2.5, -0.7);
+    
+    \draw[orange] (C1) circle (0.25)
+            node[]{A};
+    \draw[teal] (C2) circle (0.25)
+            node[]{B};
+    \draw[-latex] ($(C1) + (0.35,0)$) -- ($(C2) + (-0.35,0)$);
+    \draw[-latex, dashed] (D) -- ($(D) + (1.5, 0)$);
+    \draw[-latex] (D) -- (E1);
+    \draw[-latex] (D) -- (E2);
+    \filldraw[blue, fill=blue!30] (D) -- ($(D) + (0.4,0)$) arc(0:9:1) -- cycle;
+    \draw[blue] (D) +(10:0.5) node{$\alpha$};
+    \filldraw[red, fill=red!30] (D) -- ($(D) + (0.4,0)$) arc(0:-13:1) -- cycle;
+    \draw[red] (D) +(-13:0.7) node{$\beta$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
-\vec{q}
-\begin{cases*}
-\mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\sin\mathcolor{red}{\alpha}-
-\mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\sin\mathcolor{blue}{\beta} = v_0m\\
-\mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\cos-\mathcolor{red}{\alpha}-
-\mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\cos-\mathcolor{blue}{\beta} = 0
-\end{cases*}
+  \vec{q}
+  \begin{cases*}
+    \mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\sin\mathcolor{red}{\alpha}-
+    \mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\sin\mathcolor{blue}{\beta} = v_0m\\
+    \mathcolor{orange}{m_A}\mathcolor{orange}{v_a}\cos-\mathcolor{red}{\alpha}-
+    \mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\cos-\mathcolor{blue}{\beta} = 0
+  \end{cases*}
 \end{equation*}
 
 \subsection{Centro di Massa}\label{subsec:dinamica:cm}
-Il centro di massa Ë un punto in un corpo. In quel punto si potrebbe concentrare tutta la massa del 
+Il centro di massa √® un punto in un corpo. In quel punto si potrebbe concentrare tutta la massa de 
 corpo per renderlo puntiforme.\\
-Le formule riportate possono valere per tutte le dimensioni, qui perÚ
-verr‡ presa in considerazione solo una per semplicit‡.
+Le formule riportate possono valere per tutte le dimensioni, qui per√≤
+verr√† presa in considerazione solo una per semplicit√†.
 
 \begin{alignat*}{3}
-x &= \frac{\sum\limits_{i=0}^{n} m_ix_i}{\sum\limits_{i=0}^{n} m_i} &\quad
-\vec{v}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{v_i}}{\sum\limits_{i=0}^{n} m_i} &\quad
-\vec{a}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{a_i}}{\sum\limits_{i=0}^{n} m_i}
+  x &= \frac{\sum\limits_{i=0}^{n} m_ix_i}{\sum\limits_{i=0}^{n} m_i} &\quad
+  \vec{v}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{v_i}}{\sum\limits_{i=0}^{n} m_i} &\quad
+  \vec{a}_{CM} &= \frac{\sum\limits_{i=0}^{n} m_i\vec{a_i}}{\sum\limits_{i=0}^{n} m_i}
 \end{alignat*}
 Per gli esercizi si vada a pagina~\pageref{ex:cm}.
 
 \subsection{Momento Angolare e Inerzia}\label{subsec:dinamica:inerzia}
-Il momento angolare ($\vec{L}$) Ë la quantit‡ di moto per le rotazioni.\\
+Il momento angolare ($\vec{L}$) √® la quantit√† di moto per le rotazioni.\\
 Al concetto di \emph{momento angolare} si accompagna anche quello di \textbf{momento di inerzia}. 
 L'inerzia ($I$) indica quanto un corpo si oppone alla rotazione.\\
 \begin{equation*}
-\vec{L} = \vec{r} \times \vec{q}
+  \vec{L} = \vec{r} \times \vec{q}
 \end{equation*}
 Da qui si nota la relazione stretta con la \nameref{subsec:qtaMoto}.
 \begin{equation*}
-L = mr^2\omega\sin\alpha = I\omega\sin\alpha
+  L = mr^2\omega\sin\alpha = I\omega\sin\alpha
 \end{equation*}
 \begin{equation*}
-I = mr^2 = \sum\limits_{i=0}^{n}m_ir_i^2
+  I = mr^2 = \sum\limits_{i=0}^{n}m_ir_i^2
 \end{equation*}
 $m$: massa del corpo\\
-$\omega$: velocit‡ angolare\\
-$v$: velocit‡ tangenziale\\
+$\omega$: velocit√† angolare\\
+$v$: velocit√† tangenziale\\
 $\alpha$: angolo di rotazione\\
-$q$: quantit‡ di moto\\[\baselineskip]
+$q$: quantit√† di moto\\[\baselineskip]
 Se un corpo ruota rispetto ad un asse parallelo a quello passante per il centro di massa e la distanza
-tra i due assi Ë $d$ e la massa totale $m$, Ë
+tra i due assi √® $d$ e la massa totale $m$, √®
 \begin{equation*}
-I = I_{CM}+md^2
+  I = I_{CM}+md^2
 \end{equation*}
 \begin{center}
-	\begin{tikzpicture}
-		\draw[dashed] (0,1) -- (0,-1)
-			node[pos=0.1, left]{$CM$};
-		\draw (0.3,1.3) -- (0.3,-0.7);
-		\draw[|<->|] (0,0) -- (0.3,0.3)
-			node[pos=0.5,below]{$d$};
-		\draw[rotate around={15:(0,0)}] ellipse(1 and 0.5);
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[dashed] (0,1) -- (0,-1)
+            node[pos=0.1, left]{$CM$};
+    \draw (0.3,1.3) -- (0.3,-0.7);
+    \draw[|<->|] (0,0) -- (0.3,0.3)
+            node[pos=0.5,below]{$d$};
+    \draw[rotate around={15:(0,0)}] ellipse(1 and 0.5);
+  \end{tikzpicture}
 \end{center}
-In aggiunta al momento angolare e al momento di inerzia, c'Ë la \textbf{forza angolare} ($\vec{M}$).
-Molto semplicemente Ë definita
+In aggiunta al momento angolare e al momento di inerzia, c'√® la \textbf{forza angolare} ($\vec{M}$).
+Molto semplicemente √® definita
 \begin{equation*}
-\vec{M} = I\vec{\alpha}
+  \vec{M} = I\vec{\alpha}
 \end{equation*}
 \begin{equation*}
-\Delta L = Mat
+  \Delta L = Mat
 \end{equation*}
 $\alpha$ identifica \hyperref[subsec:mrua]{l'accelerazione angolare}.\\
 Studiando la statica di un corpo rigido, si dimostra che
 \begin{equation*}
-\vec{M} = \vec{r} \times \vec{F}
+  \vec{M} = \vec{r} \times \vec{F}
 \end{equation*}
 
-\subsubsection{Teorema di Kˆnig}
-Il teorema di Kˆnig descrive un moto roto-traslato. Ad esempio una ruota che si muove sull'asfalto
+\subsubsection{Teorema di K√∂nig}
+Il teorema di K√∂nig descrive un moto roto-traslato. Ad esempio una ruota che si muove sull'asfalto
 (ruota sul suo asse e trasla sull'asfalto).
 \begin{equation*}
-E_c = \frac{1}{2} I\omega^2 + \frac{1}{2}mv_{CM}^2
+  E_c = \frac{1}{2} I\omega^2 + \frac{1}{2}mv_{CM}^2
 \end{equation*}
 $I$: inerzia\\
-$\omega$: velocit‡ angolare\\
-$v_{CM}$: velocit‡ del centro di massa\\[\baselineskip]
+$\omega$: velocit√† angolare\\
+$v_{CM}$: velocit√† del centro di massa\\[\baselineskip]
 Per gli esercizi si vada a pagina~\pageref{ex:inerzia}.
 
 \subsubsection{Tabella riassuntiva e di confronto}

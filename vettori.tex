@@ -1,6 +1,6 @@
 \subsection{Vettori}
-Questa sezione è dedicata ad uno dei concetti più comuni in fisica: il \emph{vettore}.\\
-Un vettore può essere rappresentato in molti modi, tra cui:
+Questa sezione Ã¨ dedicata ad uno dei concetti piÃ¹ comuni in fisica: il \emph{vettore}.\\
+Un vettore puÃ² essere rappresentato in molti modi, tra cui:
 \begin{equation*}
 \vec{v} = 
 \begin{bmatrix}[1]
@@ -8,8 +8,8 @@ a\\b\\\vdots
 \end{bmatrix} = 
 (a, b, \dots)
 \end{equation*}
-Un vettore è composto di un numero definito di \emph{componenti}, solitamente una per ciascuna
-dimensione in cui si lavora. Quindi è decisamente più comune trovare vettori \emph{bidimensionali}
+Un vettore Ã¨ composto di un numero definito di \emph{componenti}, solitamente una per ciascuna
+dimensione in cui si lavora. Quindi Ã¨ decisamente piÃ¹ comune trovare vettori \emph{bidimensionali}
 che non con un numero maggiore di componenti.\\
 \begin{center}
 	\begin{tikzpicture}
@@ -26,9 +26,9 @@ che non con un numero maggiore di componenti.\\
 			node[pos=0.5, left]{$j$};
 	\end{tikzpicture}
 \end{center}
-In questa immagine è possibile vedere un vettore $\mathcolor{cyan}{\vec{v}}(\mathcolor{blue}{i},
+In questa immagine Ã¨ possibile vedere un vettore $\mathcolor{cyan}{\vec{v}}(\mathcolor{blue}{i},
 \mathcolor{red}{j})$ e le sue componenti.\\[\baselineskip]
-D'ora in poi sarà dato per scontato che i vettori siano bi-dimensionali.
+D'ora in poi sarÃ  dato per scontato che i vettori siano bi-dimensionali.
 
 \subsubsection{Operazioni tra vettori}
 Le operazioni come addizione e sottrazione funzionano molto semplicemente sommando algebricamente
@@ -40,20 +40,20 @@ le componenti tra di loro:
 \mathcolor{red}{b_1}\pm \mathcolor{blue}{b_2}\right)
 \end{equation*}
 
-La moltiplicazione tra vettori può avere come risultato o un \emph{vettore} o uno \emph{scalare}.
+La moltiplicazione tra vettori puÃ² avere come risultato o un \emph{vettore} o uno \emph{scalare}.
 
 \subsubsection{Prodotto scalare}
 \begin{equation*}
 \mathcolor{red}{\vec{v_1}} \cdot \mathcolor{blue}{\vec{v_2}} = 
 \mathcolor{red}{a_1}\mathcolor{blue}{a_2} + \mathcolor{red}{b_1}\mathcolor{blue}{b_2}
 \end{equation*}
-Come si può notare il prodotto scalare tra due vettori torna uno scalare (ovvero un numero).
-In fisica però è molto più comune trovare questa definizione di prodotto scalare:
+Come si puÃ² notare il prodotto scalare tra due vettori torna uno scalare (ovvero un numero).
+In fisica perÃ² Ã¨ molto piÃ¹ comune trovare questa definizione di prodotto scalare:
 \begin{equation*}
 \mathcolor{red}{\vec{v_1}} \cdot \mathcolor{blue}{\vec{v_2}} =
 \norm{\mathcolor{red}{\vec{v_1}}}\cdot\norm{\mathcolor{blue}{\vec{v_2}}}\cos\theta
 \end{equation*}
-$\norm{\vec{v}}$ è il modulo del vettore $\vec{v}$, ovvero la sua lunghezza. $\theta$ è l'angolo
+$\norm{\vec{v}}$ Ã¨ il modulo del vettore $\vec{v}$, ovvero la sua lunghezza. $\theta$ Ã¨ l'angolo
 formato dai due vettori.
 
 \subsubsection{Prodotto vettoriale}\label{subsec:vettori:prodottoVettoriale}
@@ -61,15 +61,15 @@ formato dai due vettori.
 \mathcolor{red}{\vec{v_1}} \times \mathcolor{blue}{\vec{v_2}} =
 n\norm{\mathcolor{red}{\vec{v_1}}}\cdot\norm{\mathcolor{blue}{\vec{v_2}}}\sin\theta
 \end{equation*}
-$\norm{\vec{v}}$ è il modulo del vettore $\vec{v}$, ovvero la sua lunghezza. $\theta$ è l'angolo
-formato dai due vettori. $n$ è la \emph{normale} del piano su cui stanno i vettori. Una \emph{normale}
-è un vettore perpendicolare ad un oggetto dato.\\
-Per scoprire la direzione del nuovo vettore si può usare la così detta ``regola della mano''. Essa 
+$\norm{\vec{v}}$ Ã¨ il modulo del vettore $\vec{v}$, ovvero la sua lunghezza. $\theta$ Ã¨ l'angolo
+formato dai due vettori. $n$ Ã¨ la \emph{normale} del piano su cui stanno i vettori. Una \emph{normale}
+Ã¨ un vettore perpendicolare ad un oggetto dato.\\
+Per scoprire la direzione del nuovo vettore si puÃ² usare la cosÃ¬ detta ``regola della mano''. Essa 
 dice:
 \begin{enumerate}
 	\item Usare il pollice della mano destra in direzione e verso del \textbf{primo} vettore
 	\item Usare l'indice o le altre dite in direzione e verso del \textbf{secondo} vettore
-	\item Il nuovo vettore avrà la direzione che attraversa il palmo perpendicolarmente e il vers
+	\item Il nuovo vettore avrÃ  la direzione che attraversa il palmo perpendicolarmente e il vers
           o uscente dalla mano.
 \end{enumerate}
 
@@ -91,7 +91,7 @@ dice:
       \markangle[orange]{O}{A}{B}{0.5}{1.5}{$\mathcolor{orange}{\alpha}$}
   \end{tikzpicture}
 \end{center}
-Sono qui rappresentati due vettori: uno in ciano e uno in rosso. La loro somma è il vettore
+Sono qui rappresentati due vettori: uno in ciano e uno in rosso. La loro somma Ã¨ il vettore
 risultante, in nero.\\
 Per trovare l'angolo di un vettore ottenuto da una somma, vanno sommate tra loro le componenti 
 orizzontali ($x$) dei due vettori e tra loro le componenti verticali ($y$) dei due vettori.
@@ -113,7 +113,7 @@ orizzontali ($x$) dei due vettori e tra loro le componenti verticali ($y$) dei d
       \markangle[orange]{O}{A}{B}{0.5}{1.5}{$\mathcolor{orange}{\alpha}$}
   \end{tikzpicture}
 \end{center}
-Otteniamo quindi che l'angolo è pari a
+Otteniamo quindi che l'angolo Ã¨ pari a
 \begin{equation*}
 \alpha=\arctan{\frac{y_1+y_2}{x_1+x_2}}
 \end{equation*}

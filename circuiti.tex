@@ -1,7 +1,7 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Circuiti elettrici}\label{sec:circElettr}
-Questa sezione Ë strettamente legata alla precedente ma, vista l'importanza ne merita una sua.\\
+Questa sezione √® strettamente legata alla precedente ma, vista l'importanza ne merita una sua.\\
 I circuiti elettrici sono usati ovunque nel mondo d'oggi e hanno una simbologia tutta loro. Di 
 seguito verranno riportati i principali elementi circuitali e il loro funzionamento con le relative
 formule.
@@ -12,34 +12,34 @@ formule.
 Ci sono due tipi di correnti e di conseguenza due tipi di generatori. Nelle successive parti, si
 divideranno i circuiti principali in base al tipo di corrente presente.\\
 I generatori producono tutti una certa \textbf{Differenza di potenziale} o d.d.p.\ nel circuito.
-Questa d.d.p. Ë regolata dalla legge di Ohm (vedi pagina~\pageref{par:circElettr:elem:res:ohm}). 
+Questa d.d.p. √® regolata dalla legge di Ohm (vedi pagina~\pageref{par:circElettr:elem:res:ohm}). 
 In genere la
-lettera che denota un generatore di differenza di potenziale Ë o $V$ (dall'unit‡ di misura, Volt),
+lettera che denota un generatore di differenza di potenziale √® o $V$ (dall'unit√† di misura, Volt),
 o $\mathcal{E}$. La vera differenza si ha soltanto quando ci sono generatori \textbf{reali} in cui
-Ë presente una resistenza interna, quindi si ha che
+√® presente una resistenza interna, quindi si ha che
 \begin{equation*}
   \mathcal{E} = \overbrace{Ri}^{V} + ri
 \end{equation*}
 Generalmente la $\mathcal{E}$ viene anche definita \textbf{forza elettromotrice}.\\
-Il suo valore puÚ anche essere definito in funzione del lavoro ($L$) che il generatore deve
+Il suo valore pu√≤ anche essere definito in funzione del lavoro ($L$) che il generatore deve
 fare per spostare una carica ($q$) da un polo all'altro
 \begin{equation*}
   \mathcal{E} = \frac{L}{q}
 \end{equation*}
 
 \paragraph{Continua}
-La corrente generata da questi generatori Ë corrente \textbf{continua}, ovvero che mantiene il
-verso nel tempo. Il simbolo utilizzato piu frequentemente Ë
+La corrente generata da questi generatori √® corrente \textbf{continua}, ovvero che mantiene il
+verso nel tempo. Il simbolo utilizzato piu frequentemente √®
 \begin{center}
   \begin{circuitikz}
     \draw(0,0) to[battery1,v>=9<\volt>] (2,0);
   \end{circuitikz}
 \end{center}
-Il polo positivo Ë quello pi˘ grande e la corrente va da $+$ a $-$.
+Il polo positivo √® quello pi√π grande e la corrente va da $+$ a $-$.
 
 \paragraph{Alternata}
-La corrente generata da questi generatori Ë corrente \textbf{alternata}, ovvero non ha un verso
-e cambia intensit‡ istante per istante in modo sinusoidale. Il simbolo pi˘ usato Ë
+La corrente generata da questi generatori √® corrente \textbf{alternata}, ovvero non ha un verso
+e cambia intensit√† istante per istante in modo sinusoidale. Il simbolo pi√π usato √®
 \begin{center}
   \begin{circuitikz}
     \draw(0,0) to[sV, l=9<\volt>] (2,0);
@@ -49,8 +49,8 @@ e cambia intensit‡ istante per istante in modo sinusoidale. Il simbolo pi˘ usato
 \subsubsection{Resistenze}
 Le resistenze sono uno degli elementi fondamentali dei circuiti elettrici. Esse oppongono 
 resistenza alla corrente che le attraversa, permettendo quindi una tensione minore per un specifico
-elemento. La loro unit‡ di misura Ë l'Ohm ($\Omega$).\\
-Il loro simbolo Ë
+elemento. La loro unit√† di misura √® l'Ohm ($\Omega$).\\
+Il loro simbolo √®
 \begin{center}
   \begin{circuitikz}
     \draw(0,0) to[R, l=10<\kilo\ohm>] (2,0);
@@ -65,26 +65,26 @@ resistenza.
 R &= \frac{\Delta V}{i} &\qquad R &= \rho\frac{l}{S}
 \end{alignat*}
 La prima mette in relazione la ddp e la corrente con la resistenza.\\
-La seconda mette in relazione la resistivit‡ ($\rho$), la lunghezza del corpo ($l$) e la sezione 
+La seconda mette in relazione la resistivit√† ($\rho$), la lunghezza del corpo ($l$) e la sezione 
 ($S$) con la resistenza.
 
 \subsubsection{Condensatori}
-Un condensatore Ë composto da due \emph{armature} che hanno cariche di segno opposto, una positiva
-e l'altra negativa. Il compito di un condensatore all'interno di un circuito Ë di immagazzinare 
+Un condensatore √® composto da due \emph{armature} che hanno cariche di segno opposto, una positiva
+e l'altra negativa. Il compito di un condensatore all'interno di un circuito √® di immagazzinare 
 carica e rilasciarla. Viene usato ad esempio nei flash delle macchine fotografiche dove viene
 rilasciata in un attimo la carica immagazzinata in un certo tempo.\\
-La loro unit‡ di misura Ë il Farad (F).\\
-Il loro simbolo Ë
+La loro unit√† di misura √® il Farad (F).\\
+Il loro simbolo √®
 \begin{center}
   \begin{circuitikz}
     \draw(0,0) to[C=1<\micro\farad>] (2,0);
   \end{circuitikz}
 \end{center}
-La capacit‡ di un condensatore Ë regolata dalle formule descritte a 
+La capacit√† di un condensatore √® regolata dalle formule descritte a 
 pagina~\pageref{sub:elettrostatica:capacita}.
 
 \subsubsection{Induttanza}
-L'induttanza Ë strettamente collegata al fenomeno dell'auto induzione, che Ë strettamente legato
+L'induttanza √® strettamente collegata al fenomeno dell'auto induzione, che √® strettamente legato
 alla \hyperref[subsec:mag:fnl]{Legge di Faraday-Neuman-Lenz}. Per capirla, prendiamo come
 esempio il seguente circuito
 \begin{center}
@@ -98,9 +98,9 @@ esempio il seguente circuito
     to[short] (0,0);
   \end{circuitikz}
 \end{center}
-Per la legge di Biot-Savart, si generer‡ un campo magnetico quando si chiude il circuito e scorrer‡
+Per la legge di Biot-Savart, si generer√† un campo magnetico quando si chiude il circuito e scorrer√†
 della corrente. Per la Legge di Faraday-Neuman-Lenz (pag.~\pageref{subsec:mag:fnl}) 
-la variazione di campo magnetico produrr‡ una corrente indotta all'interno di questo circuito che 
+la variazione di campo magnetico produrr√† una corrente indotta all'interno di questo circuito che 
 si oppone alla corrente nel momento della carica e la favorisce nella scarica. Questo ci porta all'
 introduzione di un nuovo elemento circuitale: l'induttanza
 \begin{center}
@@ -108,12 +108,12 @@ introduzione di un nuovo elemento circuitale: l'induttanza
     \draw(0,0) to[L] (2,0);
   \end{circuitikz}
 \end{center}
-Il flusso del cicuito Ë proporzionale alla corrente per la legge di Faraday-Neuman-Lenz. Quindi
+Il flusso del cicuito √® proporzionale alla corrente per la legge di Faraday-Neuman-Lenz. Quindi
 possiamo scrivere
 \begin{equation*}
   \Phi(\vec{B}) = L\cdot i
 \end{equation*}
-dove $L$ Ë la nostra induttanza che dipenda da circuito a circuito.\\
+dove $L$ √® la nostra induttanza che dipenda da circuito a circuito.\\
 Se ora usiamo la nuova definizione di flusso possiamo scrivere
 \begin{equation*}
   \mathcal{E} = -\der{\Phi(\vec{B})}{t} = -\der{(Li)}{t} = 
@@ -125,12 +125,12 @@ Essendo l'elemento dell'induttanza un solenoide, possiamo isolare $L$ e scrivere
 \begin{equation*}
   L = \frac{\Phi(\vec{B})}{i} = \frac{N\mu\frac{Ni}{l}S}{i} = \mu\frac{N^2S}{l}
 \end{equation*}
-dove $\mu$ Ë la permeabilit‡ magnetica che puÚ essere assoluta (\hyperref[tab:mu0]{$\mu_0$}) o
+dove $\mu$ √® la permeabilit√† magnetica che pu√≤ essere assoluta (\hyperref[tab:mu0]{$\mu_0$}) o
 relativa ($\mu_r\mu_0$), $N$ il numero di spire, $S$ la superficie e $l$ la lunghezza del 
-solenoide. L'unit‡ di misura Ë l'\textit{Henry} (H).
+solenoide. L'unit√† di misura √® l'\textit{Henry} (H).
 
 \subsection{Corrente elettrica}
-La corrente elettrica Ë frutto di una d.d.p.\ applicata in un circuito. Essa, per definizione Ë
+La corrente elettrica √® frutto di una d.d.p.\ applicata in un circuito. Essa, per definizione √®
 \begin{equation*}
   i = \frac{\Delta q}{\Delta t} = \der{q(t)}{t}
 \end{equation*}
@@ -140,7 +140,7 @@ Ci sono 2 tipi di collegamenti: \textbf{in serie} ed \textbf{in parallelo}.\\
 Se due componenti sono in serie, la stessa corrente $i$ li attraversa e sono posti uno dietro 
 l'altro. Se sono in parallelo invece la corrente si divide, mantenendo costante la d.d.p.
 
-\subsubsection{Capacit‡ equivalente di condensatori in \emph{serie}}
+\subsubsection{Capacit√† equivalente di condensatori in \emph{serie}}
 \begin{center}
 	\begin{circuitikz}
 		\draw
@@ -152,12 +152,12 @@ l'altro. Se sono in parallelo invece la corrente si divide, mantenendo costante 
 		to [short] (5,0);
 	\end{circuitikz}
 \end{center}
-Questo ``circuito'' puÚ essere ridotto ad un solo condensatore la cui capacit‡ deve essere
+Questo ``circuito'' pu√≤ essere ridotto ad un solo condensatore la cui capacit√† deve essere
 \begin{equation*}
 \frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}
 \end{equation*}
 
-\subsubsection{Capacit‡ equivalente di condensatori in \emph{parallelo}}
+\subsubsection{Capacit√† equivalente di condensatori in \emph{parallelo}}
 \begin{center}
 	\begin{circuitikz}
 		\draw 
@@ -180,13 +180,13 @@ Questo ``circuito'' puÚ essere ridotto ad un solo condensatore la cui capacit‡ d
 		to [short, *-o] (4,0);
 	\end{circuitikz}
 \end{center}
-Questo ``circuito'' puÚ essere ridotto ad un solo condensatore la cui capacit‡ deve essere
+Questo ``circuito'' pu√≤ essere ridotto ad un solo condensatore la cui capacit√† deve essere
 \begin{equation*}
 C_e = C_1 + C_2
 \end{equation*}
 
-\subsubsection{Propriet‡ di condensatori in serie ed in parallelo}
-Una caratteristca di questi due collegamenti Ë quello che rimane costante tra i
+\subsubsection{Propriet√† di condensatori in serie ed in parallelo}
+Una caratteristca di questi due collegamenti √® quello che rimane costante tra i
 condensatori.\\[\baselineskip]
 Due condensatori \textbf{in serie} mantengono la stessa $Q$.\\
 Due condensatori \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
@@ -203,7 +203,7 @@ Due condensatori \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
 		to [short] (5,0);
 	\end{circuitikz}
 \end{center}
-Questo ``circuito'' puÚ essere ridotto ad un solo condensatore la cui capacit‡ deve essere
+Questo ``circuito'' pu√≤ essere ridotto ad un solo condensatore la cui capacit√† deve essere
 \begin{equation*}
 R_e = R_1 + R_2
 \end{equation*}
@@ -231,17 +231,17 @@ R_e = R_1 + R_2
 		to [short, *-o] (4,0);
 	\end{circuitikz}
 \end{center}
-Questo ``circuito'' puÚ essere ridotto ad una sola resistenza la cui capacit‡ deve essere
+Questo ``circuito'' pu√≤ essere ridotto ad una sola resistenza la cui capacit√† deve essere
 \begin{equation*}
 \frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}
 \end{equation*}
-Vige anche questa propriet‡:
+Vige anche questa propriet√†:
 \begin{equation*}
 R_1i_1 = R_2i_2
 \end{equation*}
 
-\subsubsection{Propriet‡ di condensatori in serie ed in parallelo}
-Una caratteristca di questi due collegamenti Ë quello che rimane costante tra le 
+\subsubsection{Propriet√† di condensatori in serie ed in parallelo}
+Una caratteristca di questi due collegamenti √® quello che rimane costante tra le 
 resistenze.\\[\baselineskip]
 Due resistenze \textbf{in serie} mantengono la stessa $i$.\\
 Due resistenze \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
@@ -266,12 +266,12 @@ P = iR^2 = \frac{V^2}{R}
 \end{equation*}
 
 \subsection{Effetto Joule}
-L'effetto Joule Ë uno dei tre effetti causati da una corrente che attraversa un conduttore. 
+L'effetto Joule √® uno dei tre effetti causati da una corrente che attraversa un conduttore. 
 In questo caso determina il fatto che ogni conduttore attraversato da una corrente genera calore.
 \begin{equation*}
 Q = Ri^2t
 \end{equation*}
-$Q$: quantit‡ di calore in Joule\\
+$Q$: quantit√† di calore in Joule\\
 $t$: tempo\\ [\baselineskip]
 
 Spesso viene usato il \emph{kilowattora} che equivale a $3.6\cdot10^6\,\text{J}$.
@@ -281,7 +281,7 @@ Verranno ora riportati i pincipali circuiti che si incontrerano, sia in corrente
 alternata.
 
 \subsubsection{Puramente resistivi}
-I circuiti puramente resistivi sono composti solo da un generatore e una resistenza. Sono i pi˘
+I circuiti puramente resistivi sono composti solo da un generatore e una resistenza. Sono i pi√π
 semplici circuiti che possano esistere
 
 \paragraph{Continua}
@@ -292,7 +292,7 @@ semplici circuiti che possano esistere
     (2,2) to[short] (0,2) to[short] (0,0);
   \end{circuitikz}
 \end{center}
-Qui le leggi di Ohm si mantengono valide e quindi il cicruito puÚ essere risolto molto 
+Qui le leggi di Ohm si mantengono valide e quindi il cicruito pu√≤ essere risolto molto 
 semplicemente applicando
 \begin{equation*}
   \mathcal{E} = Ri
@@ -306,7 +306,7 @@ semplicemente applicando
     (2,2) to[short] (0,2) to[short] (0,0);
   \end{circuitikz}
 \end{center}
-Essendo in corrente alternata, l'unica incognita possibile Ë la corrente
+Essendo in corrente alternata, l'unica incognita possibile √® la corrente
 \begin{equation*}
   i(t) = \frac{\mathcal{E}_0}{R}\sin\omega t
 \end{equation*}
@@ -325,8 +325,8 @@ ha diversi comportamenti a seconda del tipo di corrente che lo attraversa.
     (2,2) to[short] (0,2) to[short] (0,0);
   \end{circuitikz}
 \end{center}
-L'incognita caratteristica di questo circuito Ë la carica sulle armature del condensatore. Essendo
-in continua, la formula che la regola Ë quella della capacit‡ elettrica
+L'incognita caratteristica di questo circuito √® la carica sulle armature del condensatore. Essendo
+in continua, la formula che la regola √® quella della capacit√† elettrica
 (pagina~\pageref{sub:elettrostatica:capacita}).
 \begin{equation*}
   C = \frac{q}{V}
@@ -340,22 +340,22 @@ in continua, la formula che la regola Ë quella della capacit‡ elettrica
     (2,2) to[short] (0,2) to[short] (0,0);
   \end{circuitikz}
 \end{center}
-In questa situazione, il condensatore non ha pi˘ lo scopo di immagazzinare carica e poi rilasciarla
-ma Ë come una specie di resistenza che sfasa la corrente.
+In questa situazione, il condensatore non ha pi√π lo scopo di immagazzinare carica e poi rilasciarla
+ma √® come una specie di resistenza che sfasa la corrente.
 \begin{equation*}
   i(t) = C \mathcal{E}\omega\sin \left( \omega t+\frac{\pi}{2} \right)
 \end{equation*}
-Questo significa che la corrente Ë in \textbf{anticipo} rispetto alla forza elettromotrice.\\
+Questo significa che la corrente √® in \textbf{anticipo} rispetto alla forza elettromotrice.\\
 Dato che il condensatore oppone una specie di resistenza, questa prende il nome di 
-\textbf{reattanza capacitiva} il cui valore Ë
+\textbf{reattanza capacitiva} il cui valore √®
 \begin{equation*}
   x_C = \frac{1}{\omega C}
 \end{equation*}
 
 \subsubsection{Puramente induttivi}
 I circuiti puramente induttivi non hanno ragion d'essere in corrente continua in quanto lo scopo
-dell'induttanza Ë quello di fare variare il flusso magnetico che si genera. Se la corrente non
-cambia, non Ë possibile ottenere questo effetto.
+dell'induttanza √® quello di fare variare il flusso magnetico che si genera. Se la corrente non
+cambia, non √® possibile ottenere questo effetto.
 \begin{center}
   \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
     \draw(0,0) to[sV, l=12<\volt>]   
@@ -375,7 +375,7 @@ valore
 \end{equation*}
 
 \subsubsection{Circuiti RC}
-I circuiti RC sono cosÏ denominati perchÈ contengono una resistenza e un condensatore.
+I circuiti RC sono cos√¨ denominati perch√© contengono una resistenza e un condensatore.
 \begin{center}
   \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
     \draw(1,0)
@@ -387,8 +387,8 @@ I circuiti RC sono cosÏ denominati perchÈ contengono una resistenza e un condens
   \end{circuitikz}
 \end{center}
 \paragraph{Carica}
-Questo circuito non ha alcuna funzione se non quella di caricare il condensatore fino a capacit‡ 
-massima (anche se, come vedremo, non accadr‡ mai). Dato che il processo di carica non Ë istantaneo,
+Questo circuito non ha alcuna funzione se non quella di caricare il condensatore fino a capacit√† 
+massima (anche se, come vedremo, non accadr√† mai). Dato che il processo di carica non √® istantaneo,
 dipende dal tempo. Infatti si vuole studiare il variare della carica ($q(t)$), corrente ($i(t)$) e
 della differenza di potenziale ($V(t)$) del condensatore.\\
 Rispettivamente sono
@@ -397,8 +397,8 @@ q(t)&=C\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)\\
 i(t)&=\frac{\mathcal{E}}{R}e^{-\frac{t}{\tau}}\\
 V(t)&=\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)
 \end{align*}
-Dove $\tau=RC$ Ë la \emph{costante di tempo} che varia da circuito a circuito.\\ [\baselineskip]
-PerchÈ il condensatore non si caricher‡ mai? Ora andiamo
+Dove $\tau=RC$ √® la \emph{costante di tempo} che varia da circuito a circuito.\\ [\baselineskip]
+Perch√© il condensatore non si caricher√† mai? Ora andiamo
 a disegnare il grafico della carica otteniamo
 \begin{center}
   \begin{tikzpicture}
@@ -409,7 +409,7 @@ a disegnare il grafico della carica otteniamo
             node[pos=0.5,above]{$y=\mathcal{E}$};
   \end{tikzpicture}
 \end{center}
-Come notiamo, il grafico tende sempre a raggiungere il valore massimo perÚ senza mai raggiungerlo,
+Come notiamo, il grafico tende sempre a raggiungere il valore massimo per√≤ senza mai raggiungerlo,
 infatti
 \begin{equation*}
 \lim\limits_{t\to+\infty}q(t) = \mathcal{E}
@@ -441,19 +441,19 @@ I circuiti RL sono circuiti composti da una resistenza e un induttore
     to[short] (0,0);
   \end{circuitikz}
 \end{center}
-In una situazione come questa abbiamo come unica incognita variabile Ë $i(t)$. Per ricavarla 
+In una situazione come questa abbiamo come unica incognita variabile √® $i(t)$. Per ricavarla 
 possiamo risolvere l'equazione differenziale
 \begin{equation*}
   \mathcal{E} = L \frac{\dif i}{\dif t}+Ri
 \end{equation*}
-e risolvendo per $i$, o andare per induzione. Se nel circuito RC l'incognita caratteristica Ë
-$q(t)$, in questo Ë $i(t)$. Se la carica aveva come massimo $C\mathcal{E}$, la corrente ha
+e risolvendo per $i$, o andare per induzione. Se nel circuito RC l'incognita caratteristica √®
+$q(t)$, in questo √® $i(t)$. Se la carica aveva come massimo $C\mathcal{E}$, la corrente ha
 come massimo, secondo la legge di Ohm, $\frac{\mathcal{E}}{R}$. Quindi
 \begin{equation*}
   i(t) = \frac{\mathcal{E}}{R} \left( 1-e^{-\frac{t}{\tau}} \right)
 \end{equation*}
 dove $\tau = \frac{L}{R}$ e rappresenta la costante di tempo del circuito.\\
-Anche in questo caso il grafico della corrente Ë
+Anche in questo caso il grafico della corrente √®
 \begin{center}
   \begin{tikzpicture}
     \draw[-stealth] (-0.5,0) -- (3,0);
@@ -463,15 +463,15 @@ Anche in questo caso il grafico della corrente Ë
       node[pos=0.5,above]{$y=i$};
   \end{tikzpicture}
 \end{center}
-e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, perÚ generalmente
-dopo $4\tau$ o $5\tau$ la variazione Ë talmente minima che gli strumenti non la misurano pi˘.\\
-La formula per la scarica invece Ë la seguente
+e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, per√≤ generalmente
+dopo $4\tau$ o $5\tau$ la variazione √® talmente minima che gli strumenti non la misurano pi√π.\\
+La formula per la scarica invece √® la seguente
 \begin{equation*}
   i(t) = i_0e^{-\frac{t}{\tau}}
 \end{equation*}
 
 \subsubsection{Circuit RLC in serie}
-I circuiti RLC sono i pi˘ semplici circuiti che si studiano in corrente alternata. Essi infatti
+I circuiti RLC sono i pi√π semplici circuiti che si studiano in corrente alternata. Essi infatti
 sono come il seguente
 \begin{center}
   \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
@@ -484,12 +484,12 @@ sono come il seguente
 \end{center}
 Per trovare le formule, dobbiamo introdurre un nuovo concetto, il \textbf{fasore}.
 \paragraph{Fasori}
-Permettono la trasformazione da funzione sinusoidale a vettore, cosÏ da visualizzare lo sfasamento
+Permettono la trasformazione da funzione sinusoidale a vettore, cos√¨ da visualizzare lo sfasamento
 e i moduli di tutti. La formula generale
 \begin{equation*}
   y = A\sin(\omega t+\phi)
 \end{equation*}
-puÚ essere visualizzata come il seguente vettore
+pu√≤ essere visualizzata come il seguente vettore
 \begin{center}
   \begin{tikzpicture}[scale=1.5]
     \draw coordinate (O) (0,0) circle (1);
@@ -511,8 +511,8 @@ puÚ essere visualizzata come il seguente vettore
     \markangle[orange]{O}{V1}{V2}{0.7}{1.3}{$\phi$}
   \end{tikzpicture}
 \end{center}
-Possiamo quindi, per chiarire meglio, rappresentare i circuiti elementari in alternata. CosÏ Ë
-pi˘ chiaro vedere i vettori che rappresentano corrente e la forza elettromotrice.
+Possiamo quindi, per chiarire meglio, rappresentare i circuiti elementari in alternata. Cos√¨ √®
+pi√π chiaro vedere i vettori che rappresentano corrente e la forza elettromotrice.
 \begin{center}
   \begin{tikzpicture}
     \draw coordinate (O) (0,0) circle (1);
@@ -562,7 +562,7 @@ pi˘ chiaro vedere i vettori che rappresentano corrente e la forza elettromotrice
 \end{center}
 Possiamo vedere quindi il rapporto tra corrente e forza elettromotrice.\\ [\baselineskip]
 Possiamo usare quindi questa tecnica per vedere come definire la corrente in un circuito LRC. Per
-comodit‡, poniamo la corrente sull'asse delle $x$ cosÏ che venga pi˘ facile il disegno.
+comodit√†, poniamo la corrente sull'asse delle $x$ cos√¨ che venga pi√π facile il disegno.
 \begin{center}
   \begin{tikzpicture}
     \coordinate (O) at (0,0);
@@ -594,47 +594,46 @@ comodit‡, poniamo la corrente sull'asse delle $x$ cosÏ che venga pi˘ facile il d
 
 Per andare a spiegare questo disegno, andiamo a definire alcune delle lettere usate. Essendo in
 alternata, sia il condensatore, sia l'induttanza creeranno delle reattanze. Quindi la d.d.p.\ ai
-capi dei componenti viene
+capi dei componenti diventa 
 \begin{equation*}
   \mathcal{E}_L = x_L\cdot i_0 \quad \mathcal{E}_C = x_C\cdot i_0 \quad \mathcal{E}_R = R\cdot i_0
 \end{equation*}
-L'unica incognita che possiamo avere Ë la corrente $i_0$, quindi dobbiamo trovare il modo per
+L'unica incognita che possiamo avere √® la corrente $i_0$, quindi dobbiamo trovare il modo per
 ricavarla.\\
 Secondo la legge di Kirchohoff delle maglie, possiamo dire che
 \begin{equation*}
   \vec{\mathcal{E}} = \vec{\mathcal{E}_R} + \vec{\mathcal{E}_L} + \vec{\mathcal{E_C}}
 \end{equation*}
-Se osserviamo il disegno perÚ, essendo questi dei vettori, possiamo semplicemente fare la somma
+Essendo questi dei vettori, possiamo semplicemente fare la somma
 vettoriale e quindi andare a calcolare l'ipotenusa del triangolo evidenziato.
 \begin{align*}
   \mathcal{E}^2 &= R^2i_0^2+(x_L-x_C)^2i_0^2\\
   \mathcal{E}^2 &= i_0^2[R^2+(x_L-x_C)^2]\\
   i_0 &= \frac{\mathcal{E}_0}{\sqrt{R^2+(x_L-x_C)^2}}
 \end{align*}
-Osserviamo anche che la forma della corrente ricorda molto la legge di Ohm. Infatti viene definita
-\textbf{impedenza}
+Questo porta alla definizione della legge per la corrente
+Viene definita \textbf{impedenza}
 \begin{equation*}
   Z = \sqrt{R^2+(x_L-x_C)^2} 
 \end{equation*}
-Questo porta alla definizione della legge per la corrente
 \begin{equation*}
   i(t) = \frac{\mathcal{E}_0}{Z}\sin \left( \omega t+\phi \right)
 \end{equation*}
-L'unica cosa che manca da trovare Ë $\phi$, lo sfasamento. Nel disegno Ë gi‡ evidenziato ed Ë
-evidente che non Ë altro se non un angolo tra due vettori, quindi si deduce che
+L'unica cosa che manca da trovare √® $\phi$, lo sfasamento. Nel disegno √® gi√† evidenziato ed √®
+evidente che non √® altro se non un angolo tra due vettori, quindi si deduce che
 \begin{equation*}
   \phi = \arctan \left( \frac{x_L-x_C}{R} \right)
 \end{equation*}
-Ora possiamo un'ultima cosa: quale deve essere la frequenza del generatore perchÈ la reattanza 
-capacitiva e quella induttiva si equivalgano? In altri termini, come possiamo semplificare
-il circuito in modo che abbia, di fatto, solo la resistenza? Viene cosÏ definita \textbf{condizione
-di risonanza} se la frequenza Ë pari a
+Quale deve essere la frequenza del generatore perch√© la reattanza 
+capacitiva e quella induttiva si equivalgano? In altri termini, quando possiamo semplificare
+il circuito in modo che abbia solo la resistenza? Nella \textbf{condizione di risonanza}
+la frequenza √® pari a
 \begin{equation*}
   f = \frac{1}{2\pi\sqrt{LC}}
 \end{equation*}
 
 \subsection{Leggi di Kirchhoff}
-Per capire queste leggi, Ë necessario aver chiaro tre termini
+Per capire queste leggi, √® necessario aver chiaro tre termini
 \begin{description}
   \item[Nodo] Un punto in cui convergono almeno 3 conduttori
   \item[Ramo] Una parte di circuito tra 2 nodi
@@ -657,18 +656,18 @@ Per spiegarli, prendiamo il seguente circuito
 		to[R] (2,-2);
 	\end{circuitikz}
 \end{center}
-Vediamo due nodi (gi‡ evidenziati dai cerchi). Sono presenti 3 rami (tutti i modi per arrivare
+Vediamo due nodi (gi√† evidenziati dai cerchi). Sono presenti 3 rami (tutti i modi per arrivare
 da un nodo all'altro) e 3 maglie (la maglia sinistra con 2 resistenze e una batteria, quellad destra
 con una sola resistenza e una batteria e quella che comprende i rami esterni).\\
-Una caratteristica da ricordare Ë che \emph{ci sono tante correnti quanti rami}. Risolvere questi
-circuiti quindi significa trovare intensit‡ e verso di queste correnti.
+Una caratteristica da ricordare √® che \emph{ci sono tante correnti quanti rami}. Risolvere questi
+circuiti quindi significa trovare intensit√† e verso di queste correnti.
 
 \subsubsection{Legge di Kirchhoff dei nodi}
-La corrente entrante in un nodo Ë pari a quella uscente.
+La corrente entrante in un nodo √® pari a quella uscente.
 \begin{equation*}
 \sum_k i_k = 0
 \end{equation*}
-Questo Ë anche definito come \textbf{Principio di conservazione di carica}.
+Questo √® anche definito come \textbf{Principio di conservazione di carica}.
 
 \subsubsection{Legge di Kirchhoff delle maglie}
 Per arrivare alla formula, prendiamo come esempio il seguente circuito
@@ -695,10 +694,10 @@ verso scelto e tornando sullo stesso nodo (attraversando una maglia), sommiamo a
 forze o le resistenze che si incontrano. Si ottiene quindi la formula descritta.
 
 \subsubsection{Utilizzo delle leggi di Kirchhoff}
-Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di approcciarsi Ë
+Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di approcciarsi √®
 \begin{enumerate}
   \item Individuare le incognite (le correnti) e scegliere un verso di percorrenza in modo arbitrario
-  \item Creare un sistema a $n$-equazioni dove $n$ Ë il numero di incognite (in generale 3)
+  \item Creare un sistema a $n$-equazioni dove $n$ √® il numero di incognite (in generale 3)
   \item Come prima equazione, usare la LKN (Legge di Kirchhoff dei Nodi) scegliendo arbitrariamente
   i versi delle correnti nel nodo
   \item Come seconda e terza equazione, descrivere le maglie seguendo il verso scelto
@@ -706,13 +705,13 @@ Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di
 \end{enumerate}
 
 \subsection{Mutua induzione}
-La mutua induzione Ë il fenomeno dell'induzione che avviente tra due o pi˘ circuiti diversi. Ad
+La mutua induzione √® il fenomeno dell'induzione che avviente tra due o pi√π circuiti diversi. Ad
 esempio se un circuito $1$ agisce su di un circuito $2$,
 \begin{equation*}
   \Phi_2(\vec{B}) = Mi_2
 \end{equation*}
-dove $M$ Ë un valore che varia da circuito a circuito.\\
-Si noti che di conseguenza, per la legge di Faraday-Neuman-Lenz, si generer‡ una forza 
+dove $M$ √® un valore che varia da circuito a circuito.\\
+Si noti che di conseguenza, per la legge di Faraday-Neuman-Lenz, si generer√† una forza 
 elettromotrice da un circuito all'altro. Quindi possiamo scrivere
 \begin{equation*}
   \mathcal{E}^{1\to2}= - M \frac{\dif i}{\dif t}
@@ -720,10 +719,10 @@ elettromotrice da un circuito all'altro. Quindi possiamo scrivere
 
 
 \subsection{Corrente Alternata}
-Se fin'ora si Ë lavorato con corrente continua fornita da una forza elettromotrice, quasi tutta
-la corrente che si utilizza quotidianamente Ë alternata. Per generare corrente alternata, si
-pongano due magneti con polarit‡ opposte uno di fronte all'altro. Tra i due si ponga una serie
-di spire che ruotano. Questa rotazione generer‡ una corrente. Il disegno dunque Ë molto simile
+Se fin'ora si √® lavorato con corrente continua fornita da una forza elettromotrice, quasi tutta
+la corrente che si utilizza quotidianamente √® alternata. Per generare corrente alternata, si
+pongano due magneti con polarit√† opposte uno di fronte all'altro. Tra i due si ponga una serie
+di spire che ruotano. Questa rotazione generer√† una corrente. Il disegno dunque √® molto simile
 a quello del motore elettrico
 \begin{center}
      \begin{tikzpicture}
@@ -757,7 +756,7 @@ a quello del motore elettrico
          \node at (0.5,-1.2){$\vec{B}$};
      \end{tikzpicture}
 \end{center}
-Facendo girare le spire, il flusso varier‡. Infatti si avr‡
+Facendo girare le spire, il flusso varier√†. Infatti si avr√†
 \begin{equation*}
   \Phi(\vec{B})=BS\cos\theta = BS\cos\omega t
 \end{equation*}
@@ -766,13 +765,13 @@ quindi applicando la legge di Faraday-Neuman-Lenz
   &\mathcal{E} = -\frac{\dif\Phi(\vec{B})}{\dif t} = -\frac{\dif}{\dif t}[BS\cos\omega t] =\\
   &-BA \frac{\dif}{\dif t}[\cos\omega t]=\omega BS\sin\omega t= \mathcal{E}_0\sin\omega t 
 \end{align*}
-Notiamo quindi che la forza elettromotrice che viene scaturita ha intensit‡ sinusoidale, quindi
-lo Ë anche la corrente. Infatti si definisce una funzione $i(t)$ che varia a seconda del tempo
+Notiamo quindi che la forza elettromotrice che viene scaturita ha intensit√† sinusoidale, quindi
+lo √® anche la corrente. Infatti si definisce una funzione $i(t)$ che varia a seconda del tempo
 \begin{equation*}
   i(t) = \frac{\mathcal{E}}{R}\sin\omega t = i_0\sin\omega t
 \end{equation*}
-dove $i_0$ Ë il valore di picco. Si definisce anche una corrente efficace $i_{eff}$ che Ë la
-corrente che dissipa la stessa potenza in corrente continua. Il suo valore Ë
+dove $i_0$ √® il valore di picco. Si definisce anche una corrente efficace $i_{eff}$ che √® la
+corrente che dissipa la stessa potenza in corrente continua. Il suo valore √®
 \begin{equation*}
   i_{eff} = \frac{i_0}{\sqrt{2}}
 \end{equation*}
@@ -789,9 +788,9 @@ Si introduce anche un nuovo elemento circuitale il generatore di corrente altern
 \end{center}
 
 \subsection{Trasformatore}
-Il trasformatore Ë uno dei dispositivi pi˘ usati al mondo. Il suo scopo Ë quello di 
+Il trasformatore √® uno dei dispositivi pi√π usati al mondo. Il suo scopo √® quello di 
 \emph{trasformare} un voltaggio in uno maggiore o minore, quasi senza perdita di energia. Di 
-seguito verr‡ schematizzato il trasformatore
+seguito verr√† schematizzato il trasformatore
 \begin{center}
   \begin{tikzpicture}
     \fill[fill=gray!50] (-0.1,1.1) -- ++(2.2,0) -- ++(0,-0.3) -- ++(-2.2,0) -- cycle;
@@ -811,11 +810,11 @@ seguito verr‡ schematizzato il trasformatore
   \end{tikzpicture}
 \end{center}
 Sia la spira di sinistra quella \textbf{primaria} e sia quella di destra la \textbf{secondaria}.
-PerchÈ un trasformatore abbia senso di esistere deve avere un numero diverso di spire a destra
+Perch√© un trasformatore abbia senso di esistere deve avere un numero diverso di spire a destra
 e a sinistra. Il blocco di ferro-metallo al centro serve ad incanalare tutte le linee di forza, 
-cosÏ che non si sprechino. Si trovano le seguenti formule
+cos√¨ che non si sprechino. Si trovano le seguenti formule
 \begin{equation*}
   \frac{\mathcal{E}_p}{\mathcal{E}_s} = \frac{n_p}{n_s} = \frac{i_s}{i_p}
 \end{equation*}
 Si presti attenzione alla sequenza di scrittura in quanto la corrente invere primario e secondario.
-Si noti anche che $\frac{n_s}{n_p}$ Ë definito \emph{rapporto di trasformazione}.
+Si noti anche che $\frac{n_s}{n_p}$ √® definito \emph{rapporto di trasformazione}.
