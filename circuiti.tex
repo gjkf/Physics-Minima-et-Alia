@@ -58,8 +58,8 @@ Il loro simbolo è
 \end{center}
 
 \paragraph{Leggi di Ohm}\label{par:circElettr:elem:res:ohm}
-Le leggi di Ohm mettono in relazione ddp e resistenza, e le caratteristiche fisiche di una 
-resistenza.
+Le leggi di Ohm mettono in definiscono la differenza di potenziale e le caratteristiche fisiche di 
+una resistenza.
 
 \begin{alignat*}{2}
 R &= \frac{\Delta V}{i} &\qquad R &= \rho\frac{l}{S}
@@ -128,6 +128,16 @@ Essendo l'elemento dell'induttanza un solenoide, possiamo isolare $L$ e scrivere
 dove $\mu$ è la permeabilità magnetica che può essere assoluta (\hyperref[tab:mu0]{$\mu_0$}) o
 relativa ($\mu_r\mu_0$), $N$ il numero di spire, $S$ la superficie e $l$ la lunghezza del 
 solenoide. L'unità di misura è l'\textit{Henry} (H).
+
+\subsubsection{Interruttore}
+L'interruttore permette di interrompere il flusso di carica, ovvero di aprire o chiudere il 
+circuito. Il suo simbolo è
+\begin{center}
+  \begin{circuitikz}
+    \draw(0,0) to[switch] (2,0);
+  \end{circuitikz}
+\end{center}
+
 
 \subsection{Corrente elettrica}
 La corrente elettrica è frutto di una d.d.p.\ applicata in un circuito. Essa, per definizione è
@@ -641,23 +651,23 @@ Per capire queste leggi, è necessario aver chiaro tre termini
 \end{description}
 Per spiegarli, prendiamo il seguente circuito
 \begin{center}
-	\begin{circuitikz}\ctikzset{bipoles/length=.8cm}
-		\draw (0,0) 
-		to[short] (1,0)
-		to[R,-o](2,0)
-		to[short] (3,0)
-		to[battery1] (3,-1)
-		to[short] (3,-2)
-		to[short,-o] (2,-2)
-		to[short](0,-2)
-		to[battery1](0,-1)
-		to[short](0,0);
-		\draw (2,0)
-		to[R] (2,-2);
-	\end{circuitikz}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+    \draw (0,0) 
+    to[short] (1,0)
+    to[R,-o](2,0)
+    to[short] (3,0)
+    to[battery1] (3,-1)
+    to[short] (3,-2)
+    to[short,-o] (2,-2)
+    to[short](0,-2)
+    to[battery1](0,-1)
+    to[short](0,0);
+    \draw (2,0)
+    to[R] (2,-2);
+  \end{circuitikz}
 \end{center}
 Vediamo due nodi (già evidenziati dai cerchi). Sono presenti 3 rami (tutti i modi per arrivare
-da un nodo all'altro) e 3 maglie (la maglia sinistra con 2 resistenze e una batteria, quellad destra
+da un nodo all'altro) e 3 maglie (la maglia sinistra con 2 resistenze e una batteria, quella destra
 con una sola resistenza e una batteria e quella che comprende i rami esterni).\\
 Una caratteristica da ricordare è che \emph{ci sono tante correnti quanti rami}. Risolvere questi
 circuiti quindi significa trovare intensità e verso di queste correnti.
@@ -672,17 +682,19 @@ Questo è anche definito come \textbf{Principio di conservazione di carica}.
 \subsubsection{Legge di Kirchhoff delle maglie}
 Per arrivare alla formula, prendiamo come esempio il seguente circuito
 \begin{center}
-	\begin{circuitikz}\ctikzset{bipoles/length=.8cm}
-		\draw (0,0)
-		to[battery1 = $\mathcal{E}_1$] (0,-1)
-		to[R = $R_1$] (0,-2)
-		to[R = $R_2$] (4,-2)
-		to[R = $R_3$] (4,-1)
-		to[battery1 = $\mathcal{E}_2$] (4,0)
-		to[battery1 = $\mathcal{E}_3$] (2,0)
-		to[R = $R_4$] (1,0)
-		to (0,0);
-	\end{circuitikz}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+    \draw (0,0)
+    to[battery1, l = $\mathcal{E}_1$] (0,-1)
+    to[R = $R_1$,i<_=$i_1$] (0,-2)
+    to[R = $R_2$,i<_=$i_2$] (4,-2)
+    to[R = $R_3$,i<_=$i_3$] (4,-1)
+    to[battery1, l = $\mathcal{E}_2$] (4,0)
+    to[battery1, l = $\mathcal{E}_3$] (2,0)
+    to[R = $R_4$,i<_=$i_4$] (1,0)
+    to (0,0);
+
+    \draw[-stealth] (2,-0.5) arc(-260:70:0.4); 
+  \end{circuitikz}
 \end{center}
 Kirchhoff descrive che
 \begin{equation*}
@@ -698,10 +710,11 @@ Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di
 \begin{enumerate}
   \item Individuare le incognite (le correnti) e scegliere un verso di percorrenza in modo arbitrario
   \item Creare un sistema a $n$-equazioni dove $n$ è il numero di incognite (in generale 3)
-  \item Come prima equazione, usare la LKN (Legge di Kirchhoff dei Nodi) scegliendo arbitrariamente
+  \item Come prima equazione, usare la Legge di Kirchhoff dei Nodi scegliendo arbitrariamente
   i versi delle correnti nel nodo
   \item Come seconda e terza equazione, descrivere le maglie seguendo il verso scelto
-  \item Risolvere il sistema lineare
+  \item Risolvere il sistema lineare. Nel caso in cui una corrente sia negativa, il suo risultato
+    è $\abs{i}$.
 \end{enumerate}
 
 \subsection{Mutua induzione}

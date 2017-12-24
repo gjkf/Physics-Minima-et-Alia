@@ -1,10 +1,11 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Magnetismo}\label{sec:magnetismo}
-Il magnetismo si occupa di come i magneti interagiscano fra di loro. Ogni magnete genera un
+Il magnetismo si occupa del campo magnetico e dei suoi effetti. Ogni magnete genera un
 campo magnetico ($\vec{B}$). La sua direzione è sempre dal polo NORD a quello SUD. Ogni magnete ha
 sempre due poli e anche se lo si divide si otterranno magneti bipolari.\\ 
-La sua unità di misura è il \emph{Tesla} ($T = \frac{N}{Am}$)\\
+L'unità di misura di $\vec{B}$ è il \emph{Tesla} ($T = \frac{N}{Am}$)\\
+Si noti che $\mu = \mu_0\mu_r$ e \hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$.\\
 Per gli esercizi si vada a pagina~\pageref{ex:magnetismo}.
 
 \subsection{Forza in un campo magnetico}
@@ -13,8 +14,8 @@ Per gli esercizi si vada a pagina~\pageref{ex:magnetismo}.
 \end{equation*}
 Si ricordi che questo è un \hyperref[subsec:vettori:prodottoVettoriale]{prodotto vettoriale}.\\
 $l$ rappresenta la lunghezza del cavo che attraversa il campo magnetico\\
-$\vec{i}$: è la corrente che attraversa il cavo. IL verso determinerà se da considerarsi positiva o
-negativa nel sistema di riferimento scelto.
+$\vec{i}$: è la corrente che attraversa il cavo. Il verso può essere positivo o
+negativo in base al sistema di riferimento scelto.
 
 \subsection{Legge di Biot-Savart}
 La legge di Biot-Savant definisce un campo magnetico generato da un filo rettilineo percorso da
@@ -24,10 +25,8 @@ corrente esce, orario altrimenti. Un modo per ricordarselo più facilmente è il
 mano destra e si usi il pollice per indicare il verso e la direzione della corrente. Si chiudano poi
 a pugno le altre dita. Il verso delle dita chiuse, è quello del campo magnetico.
 \begin{equation*}
-B = \frac{\mu_0}{2\pi}\frac{i}{d}
+  B = \frac{\mu}{2\pi}\frac{i}{d}
 \end{equation*}
-\hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$\\
-\hyperref[tab:pi]{$\pi$}: $3.14$\\
 $i$: corrente\\
 $d$: distanza dal filo\\ [\baselineskip]
 
@@ -42,11 +41,11 @@ vengono usati per indicare il verso del filo o del campo, come i seguenti
       cross/.default={1pt}
     }
     \draw (-1,0) circle (0.3);
-    \filldraw (-1,0) circle (0.01);
+    \filldraw (-1,0) circle (0.04);
     \draw (1,0) circle (0.3);
-    \draw (1,0) node[cross=2pt]{};
-    \node[text width=1.5cm] at (-1,-0.7){Uscente dal foglio};
-    \node[text width=1.5cm] at (1,-0.7){Entrante nel foglio};
+    \draw (1,0) node[cross=3pt]{};
+    \node[text width=1.5cm] at (-1,-0.7){Entrante nel foglio};
+    \node[text width=1.5cm] at (1,-0.7){Uscente dal foglio};
   \end{tikzpicture}
 \end{center}
 
@@ -54,17 +53,17 @@ vengono usati per indicare il verso del filo o del campo, come i seguenti
 La legge di Ampére descrive la forza che intercorre tra due fili paralleli attraversati da una
 corrente.
 \begin{equation*}
-F = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+F = \frac{\mu}{2\pi}\frac{i_1i_2}{d}l
 \end{equation*}
-\hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}\,\text{N/A}^2$\\
-\hyperref[tab:pi]{$\pi$}: $3.14$\\
 $i$: corrente\\
-$d$: distanza tra i due fili\\[\baselineskip]
+$d$: distanza tra i due fili\\
+$l$: lunghezza del filo\\ [\baselineskip]
 Molto spesso si vuole definire la forza su di una certa dimensione del filo, quindi si ottiene
 la formula in questa forma:
 \begin{equation*}
-\frac{F}{l} = \frac{\mu_0}{2\pi}\frac{i_1i_2}{d}l
+\frac{F}{l} = \frac{\mu}{2\pi}\frac{i_1i_2}{d}l_1
 \end{equation*}
+$l_1$: lunghezza di cavo interessata\\ [\baselineskip]
 La formula calcola il modulo del vettore. La forza è attrattiva se i versi delle correnti sono 
 uguali, repulsiva altrimenti.
 
@@ -73,95 +72,94 @@ I solenoidi (anche detti bobine) sono degli strumenti che, attraversati da corre
 campo magnetico uniforme al loro interno mentre all'esterno è $0$. Essi sono composti da spire,
 disposte in questo modo
 \begin{center} % https://tex.stackexchange.com/questions/129860/helix-on-a-cylinder
-	\tdplotsetmaincoords{70}{15}
-	\begin{tikzpicture}[tdplot_main_coords, rotate=90, scale=0.5]
-	
-		% --- Independent parameters ---
-		\def\h{15}                          % cylinder height
-		\pgfmathtruncatemacro\tA{299}      % A angle
-		\def\zA{1}                         % A applicate
-		\pgfmathtruncatemacro\tB{110}      % B angle
-		\def\zB{5}                         % B applicate
-		\pgfmathtruncatemacro\n{5}         % number of additional turns
-		\pgfmathtruncatemacro\NbPt{500}    % number of dots for drawing the helix portion
-		\def\rhelixdots{0.05}              % radius of dots forming helix
-		\def\rAB{0.05}                     % radius of A and B dots
-		
-		% lower circle
-		%\draw[black,very thin] (1,0,0) 
-		%\foreach \t in {2,3,...,360}
-		%{
-		%	--({cos(\t)},{sin(\t)},0)
-		%}
-		%--cycle;
-		
-		% upper circle
-		%\draw[black,very thin] (1,0,\h) 
-		%\foreach \t in {2,4,...,360}
-		%{
-		%	--({cos(\t)},{sin(\t)},\h)
-		%}
-		%--cycle;
-		
-		% --- Draw helix ---
-		\pgfmathsetmacro\tone{\tA}
-		\pgfmathsetmacro\tlast{\tB+\n*360}
-		\pgfmathsetmacro\ttwo{\tone+(\tlast-\tone)/(\NbPt-1)}
-		\pgfmathsetmacro\p{360*(\zB-\zA)/(\tB-\tA+360*\n)}
-		\foreach \t in {\tone,\ttwo,...,\tlast}{%
-			\fill[black!80] ({cos(\t)},{sin(\t)},{\p*(\t-\tA)/360+\zA}) circle[radius=\rhelixdots];
-		}
-		
-		% --- Draw A and B ---
-		%\fill[blue] ({cos(\tA)},{sin(\tA)},\zA) circle [radius=\rAB]node[right]{$A$};
-		%\fill[blue] ({cos(\tB)},{sin(\tB)},\zB) circle [radius=\rAB]node[left]{$B$};
-	\end{tikzpicture}
+  \tdplotsetmaincoords{70}{15}
+  \begin{tikzpicture}[tdplot_main_coords, rotate=90, scale=0.5]
+
+    % --- Independent parameters ---
+    \def\h{15}                          % cylinder height
+    \pgfmathtruncatemacro\tA{299}      % A angle
+    \def\zA{1}                         % A applicate
+    \pgfmathtruncatemacro\tB{110}      % B angle
+    \def\zB{5}                         % B applicate
+    \pgfmathtruncatemacro\n{5}         % number of additional turns
+    \pgfmathtruncatemacro\NbPt{500}    % number of dots for drawing the helix portion
+    \def\rhelixdots{0.05}              % radius of dots forming helix
+    \def\rAB{0.05}                     % radius of A and B dots
+    
+    % lower circle
+    %\draw[black,very thin] (1,0,0) 
+    %\foreach \t in {2,3,...,360}
+    %{
+    %	--({cos(\t)},{sin(\t)},0)
+    %}
+    %--cycle;
+    
+    % upper circle
+    %\draw[black,very thin] (1,0,\h) 
+    %\foreach \t in {2,4,...,360}
+    %{
+    %	--({cos(\t)},{sin(\t)},\h)
+    %}
+    %--cycle;
+    
+    % --- Draw helix ---
+    \pgfmathsetmacro\tone{\tA}
+    \pgfmathsetmacro\tlast{\tB+\n*360}
+    \pgfmathsetmacro\ttwo{\tone+(\tlast-\tone)/(\NbPt-1)}
+    \pgfmathsetmacro\p{360*(\zB-\zA)/(\tB-\tA+360*\n)}
+    \foreach \t in {\tone,\ttwo,...,\tlast}{%
+            \fill[black!80] ({cos(\t)},{sin(\t)},{\p*(\t-\tA)/360+\zA}) circle[radius=\rhelixdots];
+    }
+    
+    % --- Draw A and B ---
+    %\fill[blue] ({cos(\tA)},{sin(\tA)},\zA) circle [radius=\rAB]node[right]{$A$};
+    %\fill[blue] ({cos(\tB)},{sin(\tB)},\zB) circle [radius=\rAB]node[left]{$B$};
+  \end{tikzpicture}
 \end{center}
 \begin{equation*}
-  B = \mu_0  \frac{n}{l}i
+  B = \mu \frac{n}{l}i
 \end{equation*}
-\hyperref[tab:mu0]{$\mu_0$}: $4\pi\cdot10^{-7}$\\
 $n$: numero di spire\\
 $l$: lunghezza del solenoide\\
 $i$: corrente
 
 \subsection{Motore elettrico}
-Nonostante il nome possa far credere che funziona solo attraverso l'elettricità, il motore elettrico 
+Nonostante il nome possa far credere che funzioni solo attraverso l'elettricità, il motore elettrico 
 svolge la sua funzione grazie ad una coesione di elettricità e magnetismo. Il disegno seguente 
 cercherà di chiarire le idee.
 \begin{center}
-	\begin{tikzpicture}
-		% Magnets
-		\coordinate (N1) at (0,1);
-		\coordinate (N2) at (0,-1);
-		\coordinate (S1) at (3,1);
-		\coordinate (S2) at (3,-1);
-		% Plate
-		\coordinate (P1) at (1,0.5);
-		\coordinate (P2) at (2,-0.5);
-		
-		% Magnets
-		\draw[thick] (-0.5,1) -- (N1) -- (N2) -- (-0.5,-1);
-		\draw[thick] (3.5,1) -- (S1) -- (S2) -- (3.5,-1);
-		% Plate
-		\draw[thick] (P1) -- (P2);
-		
-		% Magnetic lines
-		\foreach \a in {0.8,0,-0.8}{
-			\draw[gray, very thin, -stealth] (0.2, \a) -- ++(2.6,0);
-		}
-		
-		\draw[-stealth] (P1) -- ++(0,0.7);
-		\draw[-stealth] (P2) -- ++(0,-0.7);
-		
-		% Annotations
-		\node at (-0.5,0){$N$};
-		\node at (3.5,0){$S$};
-		\node at (1.7,0.3){$P$};
-		\node at (0.5,-1.2){$\vec{B}$};
-		\node at ($(P1)+(0,0.9)$){$\vec{F}$};
-		\node at ($(P2)+(0,-0.9)$){$\vec{F}$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    % Magnets
+    \coordinate (N1) at (0,1);
+    \coordinate (N2) at (0,-1);
+    \coordinate (S1) at (3,1);
+    \coordinate (S2) at (3,-1);
+    % Plate
+    \coordinate (P1) at (1,0.5);
+    \coordinate (P2) at (2,-0.5);
+    
+    % Magnets
+    \draw[thick] (-0.5,1) -- (N1) -- (N2) -- (-0.5,-1);
+    \draw[thick] (3.5,1) -- (S1) -- (S2) -- (3.5,-1);
+    % Plate
+    \draw[thick] (P1) -- (P2);
+    
+    % Magnetic lines
+    \foreach \a in {0.8,0,-0.8}{
+            \draw[gray, very thin, -stealth] (0.2, \a) -- ++(2.6,0);
+    }
+    
+    \draw[-stealth] (P1) -- ++(0,0.7);
+    \draw[-stealth] (P2) -- ++(0,-0.7);
+    
+    % Annotations
+    \node at (-0.5,0){$N$};
+    \node at (3.5,0){$S$};
+    \node at (1.7,0.3){$P$};
+    \node at (0.5,-1.2){$\vec{B}$};
+    \node at ($(P1)+(0,0.9)$){$\vec{F}$};
+    \node at ($(P2)+(0,-0.9)$){$\vec{F}$};
+  \end{tikzpicture}
 \end{center}
 Come funziona? Innanzitutto abbiamo un campo magnetico $N-S$ e una spira rettangolare $P$ attraverso 
 la quale passa corrente (solitamente è caratterizzata da un vasto numero di strati). Si fa passare 
@@ -171,39 +169,39 @@ perpendicolare al campo) la corrente viene invertita così che la piastra contin
 forza motrice è quella che si genera e verrà poi usata.\\
 Per capire meglio il movimento si guardi il disegno qua sotto
 \begin{center}
-	\begin{tikzpicture}
-		\coordinate (P1) at (0,0);
-		\coordinate (P2) at (1,0);
-		
-		\coordinate (P3) at (1.6,0.3);
-		\coordinate (P4) at (2.4,-0.3);
-		
-		\coordinate (P5) at (3.5,0.5);
-		\coordinate (P6) at (3.5,-0.5);
-		
-		\draw[thick] (P1) -- (P2);
-		\draw[thick] (P3) -- (P4);
-		\draw[thick] (P5) -- (P6);
-		
-		\draw[-stealth] (P1) -- ++(0,0.4)
-			node[pos=1,above]{$\vec{F}$};
-		\draw[-stealth] (P2) -- ++(0,-0.4)
-			node[pos=1,below]{$\vec{F}$};
-			
-		\draw[-stealth] (P3) -- ++(0,0.4)
-			node[pos=1,above]{$\vec{F}$};
-		\draw[-stealth] (P4) -- ++(0,-0.4)
-			node[pos=1,below]{$\vec{F}$};
-			
-		\draw[-stealth] (P5) -- ++(0,0.4)
-			node[pos=1,above]{$\vec{F}$};
-		\draw[-stealth] (P6) -- ++(0,-0.4)
-			node[pos=1,below]{$\vec{F}$};
-			
-		\node at (0.5,-1.5){$M =\text{ massimo} = Fb$};
-		\node at (2.5,-2){$M=Fb'=Fb\sin\theta$};
-		\node at (4,-1.5){$M=0$};
-	\end{tikzpicture}
+  \begin{tikzpicture}
+    \coordinate (P1) at (0,0);
+    \coordinate (P2) at (1,0);
+    
+    \coordinate (P3) at (1.6,0.3);
+    \coordinate (P4) at (2.4,-0.3);
+    
+    \coordinate (P5) at (3.5,0.5);
+    \coordinate (P6) at (3.5,-0.5);
+    
+    \draw[thick] (P1) -- (P2);
+    \draw[thick] (P3) -- (P4);
+    \draw[thick] (P5) -- (P6);
+    
+    \draw[-stealth] (P1) -- ++(0,0.4)
+            node[pos=1,above]{$\vec{F}$};
+    \draw[-stealth] (P2) -- ++(0,-0.4)
+            node[pos=1,below]{$\vec{F}$};
+            
+    \draw[-stealth] (P3) -- ++(0,0.4)
+            node[pos=1,above]{$\vec{F}$};
+    \draw[-stealth] (P4) -- ++(0,-0.4)
+            node[pos=1,below]{$\vec{F}$};
+            
+    \draw[-stealth] (P5) -- ++(0,0.4)
+            node[pos=1,above]{$\vec{F}$};
+    \draw[-stealth] (P6) -- ++(0,-0.4)
+            node[pos=1,below]{$\vec{F}$};
+            
+    \node at (0.5,-1.5){$M =\text{ massimo} = Fb$};
+    \node at (2.5,-2){$M=Fb'=Fb\sin\theta$};
+    \node at (4,-1.5){$M=0$};
+  \end{tikzpicture}
 \end{center}
 
 \subsection{Forza di Lorenz}
@@ -282,15 +280,15 @@ specialmente in dispositivi come televisioni a tubo catodico.\\
 Il loro funzionamento si basa su due campi $\vec{E}$ e $\vec{B}$ uniformi incrociati fra di loro.\\
 Sulla carica deve agire una forza $\vec{F}$ pari a
 \begin{equation*}
-\vec{F} = q\vec{E} + q\vec{v}\times\vec{B}
+  \vec{F} = q\vec{E} + q\vec{v}\times\vec{B}
 \end{equation*}
 Una carica passa nel selettore se e solo se la sua velocità è pari a
 \begin{equation*}
-v = \frac{E}{B}
+  v = \frac{E}{B}
 \end{equation*}
 
 \subsection{Flusso}
-Il flusso ($\Phi$) di un campo magnetico $\vec{B}$ è molto simile al flusso di un campo elettrico
+Il flusso ($\Phi$) di un campo magnetico $\vec{B}$ è pari a 
 \begin{equation*}
   \Phi_S(\vec{B}) = \sum^n_{i=1} \vec{B}\cdot\Delta\vec{S}_i
 \end{equation*}
