@@ -2607,3 +2607,46 @@ risolvendo per $V$ otteniamo
 \begin{equation*}
   V = \boxed{2.67\,\text{V}}
 \end{equation*}
+
+\paragraph{Esercizio 6}
+Un lungo filo metallico conduttore è piegato di $\ang{60}$ e si appoggia su un piano 
+perpendicolare ad un campo magnetico uniforme $B_0 = 1\,\text{T}$. Un secondo filo metallico
+molto lungo è tirato con una velocità $v=2\,\text{m/s}$ mentre si appoggia sul cavo piegato
+in modo da formare un triangolo equilatero con i punti di contatto (si veda la figura). All'
+istante $t=0$, il triangolo ha lato $l_0 = 0.5\,\text{m}$. Entrambi i cavi hanno una resistenza 
+lineare unfirme di $\rho = 0.1\,\Omega\text{/m}$. Supponendo perfetto contatto tra i due cavi, si
+esprima la forza elettromotrice indotta in funzione del tempo in termini di $B_0$, $v$, $l_0$ e 
+$t$. \textbf{Qual è il valore di questa forza dopo $5\,\text{s}$? Trova la corrente in questo 
+istante}.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (3,0) -- (0,0) -- (60:3);
+    \draw[thick, shorten <= -.5cm, shorten >= -.5cm] (2,0) -- (60:2);
+    \draw[-stealth, thick] (30:2) -- (30:2.5);
+  \end{tikzpicture}
+\end{center}
+
+\divisor
+
+Ad un istante $t$, l'asta ha velocità $vt$ rispetto al piano della parte curva. Quindi la 
+lunghezza del cavo che fa contatto è pari a
+\begin{equation*}
+  l = l_0 + 2vt\tan\ang{30} = l_0+\frac{2}{\sqrt{3}}vt
+\end{equation*}
+Man mano che si muove, il flusso continuerà a cambiare di intensità, quindi la forza 
+elettromotrice continuerà a variare. Infatti
+\begin{equation*}
+  \mathcal{E} = B_0vl = B_0v \left( l_0+\frac{2}{\sqrt{3}}vt \right)
+\end{equation*}
+A $t=5$, basta soltanto sostituire per ottenere
+\begin{equation*}
+  \mathcal{E} = B_0v \left( l_0+\frac{2}{\sqrt{3}}vt \right) \rightarrow 1\cdot2 
+  \left[ 0.5+\left( \frac{2}{\sqrt{3}} \right)\cdot 2\cdot5 \right] = \boxed{24.1\,\text{V}}
+\end{equation*}
+La resistenza del filo è costante ed è pari a $R = 3l\rho$ perché consideriamo tutto il circuito
+chiuso. Vediamo che la resistenza è dipendente dal tempo (per la presenza del fattore $l$).
+Di conseguenza la corrente non è altro che
+\begin{equation*}
+  i = \frac{\mathcal{E}}{R} = \frac{B_0v\cancel{l}}{3\cancel{l}\rho} \rightarrow 
+  i = \boxed{6.67\,\text{A}}
+\end{equation*}
