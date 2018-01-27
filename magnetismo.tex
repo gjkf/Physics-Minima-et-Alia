@@ -123,6 +123,31 @@ $n$: numero di spire\\
 $l$: lunghezza del solenoide\\
 $i$: corrente
 
+\subsection{Energia di un campo magnetico}
+In modo analogo al campo elettrico, si può definire un'energia e una densità magnetici. Per fare 
+ciò analizziamo un circuito RL in serie. Per Kirchhoff
+\begin{equation*}
+  \mathcal{E} + \mathcal{E}_{ind} = Ri
+\end{equation*}
+Dove $\mathcal{E}_{ind}$ è la forza elettromotrice indotta dal solenoide. Sostituendo
+\begin{equation*}
+  \mathcal{E} -L\der{i}{t} = Ri
+\end{equation*}
+Moltiplicando ambo i membri per $i\dif t$ per ottenere un'energia
+\begin{equation*}
+  \mathcal{E} = L\frac{\dif i}{\cancel{\dif t}}i\cancel{\dif t}+Ri^2\dif t
+\end{equation*}
+Il termine $Ri^2\dif t$ è semplicemente l'effetto Joule. Invece il termine $Li\dif i$ è proprio
+l'energia del campo magnetico generato dal solenoide. Quindi dato che a noi serve un valore
+complessivo, non istantaneo, integriamo
+\begin{equation*}
+  U_B = \int_0^i Li\dif i = \left.\frac{Li^2}{2}\right|_0^i = \frac{1}{2}Li^2
+\end{equation*}
+La densità magnetica invece si ricava
+\begin{equation*}
+  u_B = \frac{U_B}{Sl} = \frac{1}{2}\mu_0B^2
+\end{equation*}
+
 \subsection{Motore elettrico}
 Nonostante il nome possa far credere che funzioni solo attraverso l'elettricità, il motore elettrico 
 svolge la sua funzione grazie ad una coesione di elettricità e magnetismo. Il disegno seguente 

@@ -1,4 +1,4 @@
-!TEX ROOT=formularioFisica.tex
+%!TEX ROOT=formularioFisica.tex
 
 \section{Dinamica}\label{sec:dinamica}
 La dinamica è la branca della fisica che studia il moto dei corpi servendosi delle forze che ne
@@ -15,8 +15,8 @@ Un corpo è in equilibrio quando la somma delle forze è 0, $F_y = 0\land F_x = 
 Le forze si dividono in \emph{conservative} e \emph{dissipative}. Quando agisce una forza conservativa
 l'energia si mantiene, quando una dissipativa si perde energia. Si noti che
 \begin{align*}
-  \text{Energia dissipata} =&\\
-  \text{Energia meccanica finale } &- \text{ Energia meccanica iniziale}
+  \text{Energia dissipata} =
+  \text{Energia meccanica}_2 - \text{ Energia meccanica}_1
 \end{align*}
 
 \begin{center}
@@ -29,7 +29,7 @@ l'energia si mantiene, quando una dissipativa si perde energia. Si noti che
             node[pos=1,above]{$F_p = mg$};
   \end{tikzpicture}
 \end{center}
-La forza normale ha verso opposto alla forza peso ma direzione e modulo uguale.
+La forza normale ha verso opposto alla forza premente ma direzione e modulo uguale.
 
 \subsection{Attrito}
 Ci sono vari tipi di attrito: \emph{statico}, \emph{dinamico} e \emph{volvente} ma tutti si basano
@@ -53,22 +53,15 @@ $F_p$: forza premente
 In un piano inclinato la forza peso fa andare in basso il copo se $P_\| > \mu_s\cdot P_\perp$.
 \begin{center}
   \begin{tikzpicture}
-    \coordinate (A) at (0,0);
-    \coordinate (B) at (5,0);
-    \coordinate (C) at (0,2);
-    \coordinate (P) at (1, 1.8); % Block center
-    
-    \draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
-    \draw[thin] ($(P) + (-0.2,0.3)$) -- ($(P) + (-0.4,-0.01)$) -- 
-    ($(P) + (0.2,-0.25)$) -- ($(P) + (0.3,0.1)$) -- cycle; % Block
-    \draw[-latex, very thick, red] (P) -- ($(P) + (0, -0.5)$)
-            node[pos=0.5, below right]{$\vec{P}$}; % P
-    \draw[-latex, thick, blue] (P) -- ($(P) + (-0.2, -0.45)$)
-            node[pos=0.5, left]{$P_\perp$}; % P_perp
-    \draw[-latex, thick, cyan] (P) -- ($(P) + (0.3, -0.15)$)
-            node[pos=0.5, above right]{$P_\Vert$}; % P_par
-    \filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
-    \draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
+    \draw[very thin] (0,0) -- (5,0) -- (0,2) -- cycle; % Triangle
+    \draw[thin] (1.59, 2) -- (1.4, 1.47)  -- (2.5,1.033) -- (2.7, 1.55)  -- cycle; % Block
+    \draw[-latex, very thick, red] (2, 1.4) -- (2, 0.5) node[pos=0.5, below right]{$\vec{P}$}; % P
+    \draw[-latex, thick, blue] (2, 1.5) -- (1.65, 0.7)
+      node[pos=0.5, left]{$P_\perp$}; % P_perp
+    \draw[-latex, thick, cyan] (2, 1.5) -- (2.4, 1.35)
+      node[pos=0.5, above right]{$P_\Vert$}; % P_par
+    \filldraw[orange, fill=orange!30] (5,0) -- (4,0)  arc(180:158:1) -- cycle;
+    \draw[orange] (5,0) +(170:1.2) node{$\alpha$}; % Arc
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
@@ -90,27 +83,19 @@ $\mathcolor{orange}{\alpha}$: alzo del piano
 \subsection{Funi e carrucole}
 \begin{center}
   \begin{tikzpicture}
-    \coordinate (A) at (0,0);
-    \coordinate (B) at (5,0);
-    \coordinate (C) at (0,2);
-    \coordinate (D) at ($(C) + (-0.2, 0.2)$); % Circle center
-    \coordinate (M1) at ($(D) + (-0.2, -0.5)$);
-    \coordinate (M2) at ($(D) + (1, -0.25)$);
-    
-    \draw[very thin] (A) -- (B) -- (C) -- cycle; % Triangle
-    \filldraw[orange, fill=orange!30] (B) -- ($(B) + (-1, 0)$) arc(180:158:1) -- cycle;
-    \draw[orange] (B) +(170:1.2) node{$\alpha$}; % Arc
-    \filldraw[fill=teal!20, very thin] (D) circle (0.2)
-            node[teal]{$m$}; % Circle
-    \draw[very thin] (D) -- (C); % Line from C to circle
-    \draw[very thin] ($(D) + (-0.2, 0)$) -- (M1);
-    \draw[red] ($(M1) + (-0.2, 0)$) -- ($(M1) + (-0.2, -0.3)$) -- ($(M1) + (0.2, -0.3)$) --
-    ($(M1) + (0.2, 0)$) -- cycle
-            node[pos=0.5, below]{$m_1$}; % Box 1
-    \draw[very thin] ($(D) + (0.15, 0.15)$) -- (M2);
-    \draw[blue] ($(M2) + (0.1, 0.2)$) -- ($(M2) + (0.5, 0.01)$) -- ($(M2) + (0.35, -0.4)$) --
-    ($(M2) + (-0.1, -0.2)$) -- cycle
-            node[pos=0, right]{$m_2$};
+    \draw[very thin] (0,0) -- (5,0) -- (0,2) -- cycle; % Triangle
+    \filldraw[orange, fill=orange!30] (5,0) -- (4,0)  arc(180:158:1) -- cycle;
+    \draw[orange] (5,0) +(170:1.2) 
+      node{$\alpha$}; % Arc
+    \filldraw[fill=teal!20, very thin] (-0.5,2.5) circle (0.289) 
+      node[teal]{$m$}; 
+    \draw[very thin] (-0.3,2.3) -- (0,2); 
+    \draw[red] (-1.1,1.2)--(-0.45,1.2)--(-0.45,0.2)--(-1.1,0.2)--cycle
+      node[below=0.5,right]{$m_1$};
+    \draw (-0.3,2.7)--(1.5,1.8);
+    \draw (-0.8,1.2)--(-0.8,2.5);
+    \draw[thin,blue] (1.59, 2) -- (1.4, 1.47)  -- (2.5,1.033) -- (2.7, 1.55) -- cycle 
+      node[below=0.5,right]{$m_2$}; % Block
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
@@ -119,7 +104,7 @@ a = \frac{\mathcolor{red}{m_1}g - \mathcolor{blue}{m_2}g\sin\mathcolor{orange}{\
 \end{equation*}
 Si noti che questa formula è particolare per questo caso. Si noti anche che 
 $\dfrac{\mathcolor{teal}{m}}{2}$ è
-da aggiungere solo se si ha la massa della carrucola e quindi il suo peso non è trascurabile.\\
+da aggiungere solo se la massa della carrucola non è trascurabile.\\
 Per una formula più generale si usi
 \begin{equation*}
 a= \frac{\sum \vec{F}}{\sum m}
@@ -180,9 +165,9 @@ della forza con intensità maggiore
     \node at (.6,0.3) {B};
     \node at (2.5,1)[red] {Risultante};
     \draw[purple] (5,0)--(5,2.4)--(6.7,2.4)--(6.7,0)--(5,0);
-    \draw[blue,->,dashed] (5.8,1.2)--(9.3,1.2);
+    \draw[blue,->,dashed] (5.8,1.2)--(8.5,1.2);
     \draw[green,->,dashed] (5.8,0.3)--(4.7,0.3);
-    \draw[red,->,thick] (5.8,1.9)--(8.2,1.9);
+    \draw[red,->,thick] (5.8,1.9)--(7.7,1.9);
     \draw [<->] (5.8,1.9)--(5.8,1.21);
     \draw [<->] (5.8,1.19)--(5.8,0.3);
     \node at (5.6,2) {C};
@@ -195,6 +180,44 @@ e si dimostra che
 \begin{equation*}
   AC:CB=F_B:F_A
 \end{equation*}
+
+\subsubsection{Forza centripeta e centrifuga}
+Una corpo che si muove di moto circolare uniforme ha un accelerazione centripeta $a_c$, la forza 
+centripeta perciò è:   
+\begin{equation*}
+  F_c =m\cdot a_c= m\cdot\frac{v^{2}}{r}
+\end{equation*}
+$v$: velocita del corpo\\
+$r$: distanza tra il corpo e il centro della circonferenza
+\begin{center}	
+  \begin{tikzpicture}
+    \draw[black,dashed] (-1,-0.1) arc [start angle = 180, end angle = 0,
+    x radius = 1, y radius = 1];
+    \draw[<-,thick,red] (0.2,0) -- (1,0)
+    node[pos=0.4, below]{$F_c$};
+    \draw[-latex, blue] (0.95,0) -- (0.95, 0.9)
+    node[pos=0.7, right]{$v$};
+    \filldraw[fill=blue!50] (0.8,-0.4) rectangle (1.1,0.4);	
+  \end{tikzpicture}
+\end{center}
+Una macchina dunque in curva non uscirà di strada se 
+\begin{equation*}
+  m\cdot\frac{v^{2}}{r} \leq \mu_s\cdot F_p
+\end{equation*}
+$\mu_s$: attrito statico\\
+$F_p$: forza premente\\ [\baselineskip]
+
+La "forza centrifuga" è invece solo una forza apparente che sembra esistere nel sistema di 
+riferimento non inerziale del corpo in movimento che ha modulo opposto alla forza centripeta.\\
+I sistemi possono essere essere analizzati come sistemi inerziali in cui 
+\begin{equation*}
+  \sum \text{Forze}=F_{\text{centripeta}}
+\end{equation*}
+o sistemi non-inerziali in cui 
+\begin{equation*}
+\sum \text{Forze}=0
+\end{equation*}
+e in cui la $F_{\text{centrifuga}}$ è una delle forze.
 
 \subsection{Lavoro, Energia e Potenza}\label{subsec:dinamica:potenziale}
 \begin{equation*}
@@ -338,6 +361,8 @@ $_2$: relativo al secondo corpo\\
 $v$: velocità finale
 
 \subsubsection{Proiettile contro un corpo}
+Se un proiettile colpisce un sacco e rimane bloccato, il baricentro del sacco si alzerà di 
+un'altezza $h$.
 \begin{center}
   \begin{tikzpicture}
     \coordinate (ROT) at (1, 2);
@@ -364,15 +389,10 @@ $v$: velocità finale
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
-  \mathcolor{teal}{v_p} = 
-  \frac{\mathcolor{red}{M} + \mathcolor{teal}{m}}{\mathcolor{teal}{m}}\sqrt{2g\mathcolor{blue}{h}}
-\end{equation*}
-  \begin{equation*}
   \mathcolor{blue}{h} = 
   \frac{\mathcolor{teal}{v_p}^2\mathcolor{teal}{m}^2}{2g\left(\mathcolor{red}{M} +
   \mathcolor{teal}{m}\right)^2}
 \end{equation*}
-\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
 $v_p$: velocità del proiettile\\
 $h$: altezza finale del sacco
 

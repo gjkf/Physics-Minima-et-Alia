@@ -17,7 +17,7 @@ Se vista in un modo più generale si trova la pressione tra due punti
 p_2 = p_1 + \delta g\Delta h
 \end{equation*}
 \begin{center}
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=0.6]
     \draw (0,0) -- ++(0,-3) -- ++(1,0) -- ++(0,3);
     \filldraw (0.5,-1) circle (0.1);
     \filldraw (0.5,-2) circle (0.1);
@@ -42,10 +42,10 @@ Si ricordi che $\text{Densità}=\frac{\text{Massa}}{\text{Volume}}$.
     (0,0) -- ++(0.5,0) -- ++(0,-1) -- ++(1,0) -- ++(0,1) -- ++(0.25,0) --
     ++(0,-1.5) -- ++(-1.75,0) -- ++(0,1.5);
     \draw[dashed] (0.5,0) -- +(1,0);
-    \node at (0.25,0.25){$A_1$};
-    \draw[-stealth] (0.25, 0.4) -- ++(0,0.6);
-    \node at (1.7,0.25){$A_2$};
-    \draw[stealth-] (1.7,0.4) -- ++(0,0.6);
+    \node at (0-.25,-0.25){$A_1$};
+    \draw[stealth-] (0.25, 0.4) -- ++(0,0.6);
+    \node at (2,-0.25){$A_2$};
+    \draw[-stealth,very thick] (1.7,0.4) -- ++(0,0.6);
   \end{tikzpicture}
 \end{center}
 Il torchio idraulico permette partendo da una forza applicata su un pistone (di area $A_1$) di ottenere
