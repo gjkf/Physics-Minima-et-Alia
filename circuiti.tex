@@ -369,9 +369,22 @@ in continua, la formula che la regola è quella della capacità elettrica
   \end{circuitikz}
 \end{center}
 In questa situazione, il condensatore non ha più lo scopo di immagazzinare carica e poi rilasciarla
-ma è come una specie di resistenza che sfasa la corrente.
+ma è come una specie di resistenza che sfasa la corrente.\\
+Per la definizione di corrente
 \begin{equation*}
-  i(t) = C \mathcal{E}\omega\sin \left( \omega t+\frac{\pi}{2} \right)
+  i(t) = \der{q}{t}
+\end{equation*}
+Per definizione inoltre
+\begin{equation*}
+  i(t) = \der{q}{t} = \der{[C\mathcal{E}(t)]}{t} = \der{[C\mathcal{E}_0\sin\omega t]}{t}
+\end{equation*}
+Derivando ora
+\begin{equation*}
+  i(t) = C\mathcal{E}_0\der{[\sin\omega t]}{t} = C\mathcal{E}_0\omega\cos\omega t
+\end{equation*}
+Per definizione poniamo $i_0=C\mathcal{E}_0\omega$ e trasformiamo in seno per poter confrontare
+\begin{equation*}
+  i(t) = i_0\sin \left( \omega t+\frac{\pi}{2} \right)
 \end{equation*}
 Questo significa che la corrente è in \textbf{anticipo} rispetto alla forza elettromotrice.\\
 Dato che il condensatore oppone una specie di resistenza, questa prende il nome di 
@@ -394,7 +407,15 @@ cambia, non è possibile ottenere questo effetto.
 L'induttanza quindi oppone resistenza creando una corrente contraria per la legge di 
 Faraday-Neuman-Lenz. Quindi
 \begin{equation*}
-  i(t) = \frac{\mathcal{E}_0}{\omega L}\sin \left( \omega t-\frac{\pi}{2} \right)
+  \der{i}{t} = \frac{\mathcal{E}_0}{L}\sin\omega t
+\end{equation*}
+per la legge di Kirchhoff. Quindi isolando
+\begin{equation*}
+  i(t) = -\frac{\mathcal{E}_0}{\omega L}\cos\omega t
+\end{equation*}
+trasformando in seno e ponendo $i_0=\frac{\mathcal{E}_0}{\omega L}$
+\begin{equation*}
+  i(t) = i_0\sin \left( \omega t-\frac{\pi}{2} \right)
 \end{equation*}
 Anche l'induttanza crea resistenza, essa prende il nome di \textbf{reattanza induttiva} e ha come
 valore
