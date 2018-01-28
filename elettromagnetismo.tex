@@ -125,3 +125,128 @@ Tornando al problema originale, la circuitazione diventa quindi
 \begin{equation*}
   \oint_\Gamma \vec{B}\cdot\dif\vec{l} = \mu_0 \left( i+\varepsilon_0\der{\Phi(\vec{E})}{t} \right)
 \end{equation*}
+
+\subsection{Onde elettromagnetiche}
+La grande scoperta di Maxwell è stata quella delle onde elettromagnetiche. Esse sono composte in 
+uguale parte da un campo elettrico e uno magnetico. I due campi hanno forma sinusoidale e sono
+perpendicolari fra di loro, nonché in fase.\\
+La \textbf{velocità} di un'onda è pari a
+\begin{equation*}
+  v = \frac{1}{\sqrt{\varepsilon_0\mu_0} }=c
+\end{equation*}
+\hyperref[tab:c]{$c$}\\
+Il fatto che abbiano la velocità della luce, induce Maxwell a pensare che anche l'ottica sia un caso
+particolare di onda elettromagnetica.\\
+Sono onde \textbf{trasversali} ciò significa che si propagano in un piano perpendicolare a quello di
+propagazione
+\begin{center}
+  \begin{tikzpicture}[x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+    % Axes
+    \draw (-1,0,0) node[above] {$x$} -- (5,0,0);
+    \draw (0,0,0) -- (0,2,0) node[above] {$y$};
+    \draw (0,0,0) -- (0,0,2) node[left] {$z$};
+    % Propagation
+    \draw[->,ultra thick] (5,0,0) -- node[above] {$c$} (6,0,0);
+    % Waves
+    \draw[thick] plot[domain=0:4.5,samples=200] (\x,{cos(deg(pi*\x))},0);
+    \draw[gray,thick] plot[domain=0:4.5,samples=200] (\x,0,{cos(deg(pi*\x))});
+    % Arrows
+    \foreach \x in {0.1,0.3,...,4.4} {
+      \draw[->,help lines] (\x,0,0) -- (\x,{cos(deg(pi*\x))},0);
+      \draw[->,help lines] (\x,0,0) -- (\x,0,{cos(deg(pi*\x))});
+    }
+    % Labels
+    \node[above right] at (0,1,0) {$\bm{E}$};
+    \node[below] at (0,0,1) {$\bm{B}$};
+  \end{tikzpicture}
+\end{center}
+In questo disegno possiamo vedere le due onde essere perpendicolari fra di loro ed in fase. Esse
+inoltre si propagano su un piano perpendicolare a quello di propagazione.\\
+Vige anche una proprietà che relaziona i due campi
+\begin{equation*}
+  c = \frac{E}{B}
+\end{equation*}
+
+\subsubsection{Intensità dell'onda}
+L'intensità dell'onda (spesso definita anche irradiamento o irraggiamento) è la quantità di energia
+che può trasportare l'onda.\\
+L'intensità è definita come
+\begin{equation*}
+  I = \frac{P}{S}
+\end{equation*}
+ma
+\begin{equation*}
+  P = \frac{U}{t}
+\end{equation*}
+quindi
+\begin{equation*}
+  I = \frac{U}{tS}
+\end{equation*}
+Ma
+\begin{equation*}
+  U = u\cdot\text{Vol}
+\end{equation*}
+Qual è il volume? Il volume lo possiamo considerare comequello che è presente in un periodo, ad
+esempio
+\begin{center}
+  \begin{tikzpicture}[x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+    % Axes
+    \draw (-1,0,0) node[above] {$x$} -- (5,0,0);
+    \draw (0,0,0) -- (0,2,0) node[above] {$y$};
+    \draw (0,0,0) -- (0,0,2) node[left] {$z$};
+    % Propagation
+    \draw[->,ultra thick] (5,0,0) -- node[above] {$c$} (6,0,0);
+    % Waves
+    \draw[thick] plot[domain=0:4.5,samples=200] (\x,{cos(deg(pi*\x))},0);
+    \draw[gray,thick] plot[domain=0:4.5,samples=200] (\x,0,{cos(deg(pi*\x))});
+    % Arrows
+    \foreach \x in {0.1,0.3,...,4.4} {
+      \draw[->,help lines] (\x,0,0) -- (\x,{cos(deg(pi*\x))},0);
+      \draw[->,help lines] (\x,0,0) -- (\x,0,{cos(deg(pi*\x))});
+    }
+    \draw[|<->|] (pi/2,1.3,0) -- ++(3/4*pi,0,0);
+    % Labels
+    \node[above right] at (0,1,0) {$\bm{E}$};
+    \node[below] at (0,0,1) {$\bm{B}$};
+    \node[above] at (pi,1.5,0) {$\lambda=cT$};
+  \end{tikzpicture}
+\end{center}
+e quindi il nostro volume diventerebbe, considerando $S$ la superficie su cui stanno i vettori,
+\begin{equation*}
+  \text{Vol} = ScT
+\end{equation*}
+e quindi tornando a sostituire
+\begin{equation*}
+  I = \frac{uScT}{ST} = \bar{u}c
+\end{equation*}
+È da considerarsi una $u$ media in quanto ci sono due campi che variano istante per istante, punto
+per punto. Ma quanto vale? Essendo due campi, possiamo dire che
+\begin{equation*}
+  u = u_E + u_B = \frac{1}{2}\varepsilon_0E^2+\frac{1}{2\mu_0}B^2
+\end{equation*}
+Maxwell aveva anche notato una cosa però
+\begin{align*}
+  u_E &= \frac{1}{2}\varepsilon_0E^2=\frac{1}{2}\varepsilon_0(cB)^2=\frac{1}{2}c^2B^2=\\
+      &= \frac{1}{2}\varepsilon_0 \frac{1}{\varepsilon_0\mu_0}B^2= \frac{1}{2\mu_0}B^2=u_B
+\end{align*}
+e questo indica che il campo elettrico e il campo magnetico contribuiscono in egual misura
+all'intensità dell'onda.\\
+Sapendo questo, prima di adattare la formula precedente, dobbiamo trovare un valore medio di $E$
+e di conseguenza uno medio di $B$.
+\begin{equation*}
+  \bar{E^2}=\frac{1}{T}\int_0^T E_0^2\sin^2\alpha\dif\alpha=\frac{E_0^2}{2}
+\end{equation*}
+E quindi si definisce, un po' come la corrente nei circuiti
+\begin{equation*}
+  E_{eff} = \frac{E_0}{\sqrt{2}}
+\end{equation*}
+Analogamente si dimostra per $B$. Quindi
+\begin{equation*}
+  \bar{u}=\frac{1}{2}\varepsilon_0 \frac{E_0^2}{2}+\frac{1}{2\mu_0}\frac{B_0^2}{2}=
+  \frac{1}{4}\varepsilon_0E_0^2+\frac{1}{4\mu_0}B_0^2
+\end{equation*}
+Sostituendo infine nella formula iniziale
+\begin{equation*}
+  I=\frac{1}{2}\varepsilon_0E_0^2c=\frac{2}{2\mu_0}B_0^2c=\varepsilon_0E_{eff}^2c=\frac{1}{\mu_0}
+  B_{eff}^2c
+\end{equation*}

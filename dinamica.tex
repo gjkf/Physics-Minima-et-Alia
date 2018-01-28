@@ -220,55 +220,66 @@ o sistemi non-inerziali in cui
 e in cui la $F_{\text{centrifuga}}$ è una delle forze.
 
 \subsection{Lavoro, Energia e Potenza}\label{subsec:dinamica:potenziale}
+Il \emph{lavoro} è una grandezza scalare ed il prodotto della forza applicata sul corpo e lo 
+spostamento del corpo.\\L'unita di misura del \emph {lavoro} è il Joule(J).
 \begin{equation*}
-\vec{L} = \vec{F} \cdot \vec{S} = \Delta E
+  \vec{L} = \vec{F} \cdot \mathcolor{blue}{\vec{x}}
+  = F\cdot \textcolor{blue}{x} \cdot \cos\mathcolor{red}{\alpha}
 \end{equation*}
-\begin{equation*}
-E_c = \frac{1}{2}mv^2
-\end{equation*}
-\begin{equation*}
-P = \frac{L}{t}
-\end{equation*}
-\begin{equation*}
-U = mgh
-\end{equation*}
-\begin{equation*}
-U_1 + E_1 = U_2 + E_2
-\end{equation*}
-\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
-$L$: lavoro\\
-$F$: forza\\
-$S$: spostamento\\
-$E_c$: energia cinetica\\
-$P$: potenza\\
-$U$: energia potenziale\\
-$m$: massa del corpo\\
-$v$: velocità del corpo\\[\baselineskip]
-Il \emph{Lavoro} è un vettore che si compone della forza applicata sul corpo e del suo spostamento.\\
-L'\emph{Enegia cinetica} è l'energia di un corpo in movimento.\\
-La \emph{Potenza} indica la quantità di energia scambiata nel tempo.\\
-L'\emph{Energia potenziale} è quanto energia potrebbe generare quel corpo. Dipende dall'altezza.\\
-
-Queste sono formule generali, che danno le definizioni. Negli esercizi verrà particolarmente utile
-$U_1 + E_1 = U_2 + E_2$ in quanto permette di trovare la velocità o la massa o l'altezza di un corpo
-in due diverse situazioni.\\
-Per gli esercizi si vada a pagina~\pageref{ex:potenziale}.\\[\baselineskip]
-
 \begin{center}
   \begin{tikzpicture}
-    \draw (0,0) to[out=-90,in=-90] (4,0);
-    \draw[dashed] (0,0) -- (4,0)
-            node[pos=0, above]{$mgh$}
-            node[pos=1, above]{$mgh$};
-    \draw[dashed] (4,0) -- (4,-1)
-            node[pos=0.5, right]{$h$};
-    \node[above] at (2,-1) {$\frac{1}{2}mv^2$}; 
+    \draw  (0,0) rectangle (1.2,0.8);
+    \draw [-latex,thick] (0.6,0.4)--(3,1);
+    \draw [dashed](0.6,0.4)--(3,0.4);
+    \node [red] at (1.75,0.5) {$\alpha$};
+    \draw [->,blue](0.6,-0.2)--(6,-0.2);
+    \node[blue] at (3,0){$\vec {x}$};
   \end{tikzpicture}
 \end{center}
-Se agisce una forza dissipativa (come quella di attrito), il corpo non arriverà a $h$.\\
-Si usi $mgh$ solo per altezze relativamente piccole. Se si comincia ad usare una grande distanza, si
-usino le formule della gravitazione.
-
+La \emph {potenza} invece misura quanto rapidamente viene compiuto lavoro, ha come unita di misura 
+il Watt(W).
+\begin{equation*}
+  P = \frac{L}{t}
+\end{equation*}
+$t$: tempo \\ [\baselineskip]
+La potenza di una forza $F$ che agisce su un corpo che si muove di moto rettilineo uniforme è
+\begin{equation*}
+  P=F\cdot v
+\end{equation*}
+$v$: velocità del corpo\\ [\baselineskip]
+L'\emph{enegia cinetica} è l'energia di un corpo in movimento.\\
+\begin{equation*}
+  E_c = \frac{1}{2}mv^2
+\end{equation*}
+$m$: massa del corpo\\
+$v$: velocità del corpo\\ [\baselineskip]
+Inoltre la differenza di Energia cinetica è :
+\begin{equation*}
+  \Delta E_{cinetica}=Lavoro
+\end{equation*}
+L'\emph{Energia potenziale} è l'energia che un corpo (sulla terra) acquisisce allontanandosi dalla
+superficie. L'energia potenziale indica quanta energia un corpo (se fermo) al massimo può generare.
+\begin{equation*}
+  U = mgh
+\end{equation*}
+$m$: massa del corpo\\
+$h$: distanza dalla superficie terrestre\\ [\baselineskip]
+Si può dimostrare che
+\begin{equation*}
+  -\Delta U = L
+\end{equation*}
+è dunque l'unita di misura dell'energia è il Joule.\\ [\baselineskip]
+L'energia meccanica $E$ è definita come
+\begin{equation*}
+  E=E_{cinetica}+E_{potenziale}
+\end{equation*}
+è stato dimostrato sperimentalmente che l'energia meccanica si conserva (quando è assente 
+l'attrito)
+\begin{equation*}
+  U_1 + E_{cinetica1} = U_2 + E_{cinetica2}
+\end{equation*}
+Negli esercizi sarà particolarmente utile in quanto permette di trovare la velocità o l'altezza di
+un corpo con calcoli semplici.\\ [\baselineskip]
 Vediamo ora alcune formule particolari:
 \subsubsection{Legge di Hooke e energia elastica}
 \begin{equation*}
@@ -397,8 +408,7 @@ $v_p$: velocità del proiettile\\
 $h$: altezza finale del sacco
 
 \subsubsection{Urti obliqui}
-Un urto obliquo è come nel seguente caso, ovvero quando due corpi collidono e partono in direzioni
-diverse.\\
+Vi è un urto obliquo quando due corpi collidono e si muovono in direzioni diverse.
 \begin{center}
   \begin{tikzpicture}
     \coordinate (C1) at (-1,0);
@@ -430,6 +440,9 @@ diverse.\\
     \mathcolor{teal}{m_B}\mathcolor{teal}{v_b}\cos-\mathcolor{blue}{\beta} = 0
   \end{cases*}
 \end{equation*}
+$v_0$: velocità iniziale del corpo $A$\\
+$v_A$: velocità finale del corpo $A$\\
+$v_B$: velocità finale del corpo $B$
 
 \subsection{Centro di Massa}\label{subsec:dinamica:cm}
 Il centro di massa è un punto in un corpo. In quel punto si potrebbe concentrare tutta la massa del
