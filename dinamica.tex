@@ -3,22 +3,26 @@
 \section{Dinamica}\label{sec:dinamica}
 La dinamica è la branca della fisica che studia il moto dei corpi servendosi delle forze che ne
 sono responsabili. Isaac Newton ha enunciato i principi della dinamica e in suo onore la forza é 
-  misurata in Newton (N).\\
+misurata in Newton (N).\\
 Per gli esercizi si vada a pagina~\pageref{ex:dinamica}.
 \subsection{Secondo Principio della Dinamica}
+Una forza è una grandezza vettoriale che porta una modificazione alla velocità del corpo.
 \begin{equation*}
 \vec{F} = m\vec{a}
 \end{equation*}
+$F$: forza applicata\\
+$m$: massa del corpo\\
+$a$: accelerazione\\ [\baselineskip]
 Se due corpi interagiscono tra loro, si sviluppano due forze, dette comunemente azione e reazione: 
 sono uguali in modulo e direzione, ma opposte in verso.\\
-Un corpo è in equilibrio quando la somma delle forze è 0, $F_y = 0\land F_x = 0$.\\
+Un corpo è in equilibrio quando la somma delle forze è 0, $\sum F_y = 0\land\sum F_x = 0$.\\
 Le forze si dividono in \emph{conservative} e \emph{dissipative}. Quando agisce una forza conservativa
 l'energia si mantiene, quando una dissipativa si perde energia. Si noti che
 \begin{align*}
   \text{Energia dissipata} =
   \text{Energia meccanica}_2 - \text{ Energia meccanica}_1
 \end{align*}
-
+Perché un corpo su un tavolo piano sta in equilibrio?
 \begin{center}
   \begin{tikzpicture}
     \draw (0,0) -- (2,0);
@@ -29,17 +33,18 @@ l'energia si mantiene, quando una dissipativa si perde energia. Si noti che
             node[pos=1,above]{$F_p = mg$};
   \end{tikzpicture}
 \end{center}
-La forza normale ha verso opposto alla forza premente ma direzione e modulo uguale.
+Perché è presente la forza normale che ha verso opposto alla forza premente ma direzione e modulo 
+uguale.
 
 \subsection{Attrito}
 Ci sono vari tipi di attrito: \emph{statico}, \emph{dinamico} e \emph{volvente} ma tutti si basano
 sullo stessa idea: moltiplicare il coefficiente di attrito tra le superfici per la forza premente.
 Il coefficiente di attrito rappresenta il termine di proporzionalità tra la forza di attrito e la 
-forza normale con la quale una superfi cie agisce su un’altra superficie. Il coefficiente di 
+forza normale con la quale una superficie agisce su un’altra superficie. Il coefficiente di 
 attrito è una proprietà che caratterizza entrambe le superfici, non è una caratteristica di una 
 singola superficie o di un singolo materiale.
 \begin{equation*}
-  F_s = \mu_sF_p\quad (\text{corpo fermo})
+  F_s \leq \mu_sF_p\quad (\text{corpo fermo})
 \end{equation*}
 \begin{equation*}
   F_d = \mu_dF_p\quad (\text{corpo in movimento})
@@ -280,8 +285,10 @@ l'attrito)
 \end{equation*}
 Negli esercizi sarà particolarmente utile in quanto permette di trovare la velocità o l'altezza di
 un corpo con calcoli semplici.\\ [\baselineskip]
-Vediamo ora alcune formule particolari:
+
 \subsubsection{Legge di Hooke e energia elastica}
+Una molla compressa o allungata esercita una forza elastica e possiede energia potenziale. È da 
+notare che i due estremi di una molla esercitano forze uguali ma contrarie.
 \begin{equation*}
 \vec{F} = -k\vec{x}
 \end{equation*}
@@ -289,8 +296,7 @@ Vediamo ora alcune formule particolari:
 U_e = \frac{1}{2}k\Delta x^2
 \end{equation*}
 $k$: costante elastica della molla\\
-$\vec{x} \approx \Delta x$: variazione di posizione\\[\baselineskip]
-Queste formule sono relative a molle.\\
+$\vec{x}$: spostamento dalla direzione di riposo\\[\baselineskip]
 
 \subsection{Quantità di moto e teorema dell'impulso}\label{subsec:dinamica:impulso}
 \label{subsec:qtaMoto}
@@ -506,8 +512,8 @@ Studiando la statica di un corpo rigido, si dimostra che
 \end{equation*}
 
 \subsubsection{Teorema di König}
-Il teorema di König descrive un moto roto-traslato. Ad esempio una ruota che si muove sull'asfalto
-(ruota sul suo asse e trasla sull'asfalto).
+Il teorema di König descrive l'energia cinetica in un moto roto-traslato. Ad esempio una ruota che 
+si muove sull'asfalto (ruota sul suo asse e trasla sull'asfalto).
 \begin{equation*}
   E_c = \frac{1}{2} I\omega^2 + \frac{1}{2}mv_{CM}^2
 \end{equation*}

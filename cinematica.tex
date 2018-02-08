@@ -12,6 +12,7 @@ Si noti e ricordi che
 \end{equation*}
 
 \subsection{Moto Rettilineo Uniforme}\label{subsec:cinematica:mru}
+Un corpo si muove di moto rettilineo uniforme se la sua velocità è costante.
 \begin{equation*}
 x = x_0 + vt
 \end{equation*}
@@ -21,6 +22,7 @@ $v$: velocità\\
 $t$: tempo
 
 \subsection{Moto Rettilineo Uniformemente Accelerato}
+Un corpo si muove di moto rettilineo accelerato se la sua velocità varia nel tempo.
 \begin{equation*}
 v = v_0 + at
 \end{equation*}
@@ -38,6 +40,7 @@ $x$: posizione finale\\
 $x_0$: posizione iniziale\\
 $\Delta x$: $x - x_0$
 \subsection{Moto Parabolico}\label{subsec:cinematica:mp}
+Il moto di tutti i corpi lanciati sulla Terra è di tipo parabolico.\\
 \begin{center}
 	\begin{tikzpicture}
 		\draw[thin] (0,0) -- (5,0);
@@ -56,9 +59,10 @@ $\Delta x$: $x - x_0$
 			node[pos=0.5, left]{$v_{0_y}$};
 	\end{tikzpicture}
 \end{center}
-Ovviamente valgono sempre le formule del \textit{Moto Rettilineo} e \textit{Moto rettilineo 
+Viene descritto dalle formule del \textit{Moto Rettilineo} e \textit{Moto rettilineo 
 uniformemente accelerato}.\\
-$v_{x}$ è costante per tutto il moto, $v_{y}$ è $0$ quando si trova nel punto di massima altezza.
+Il vettore velocità può essere scomposto nelle sue due componenti. $v_{x}$ è costante per tutto il 
+moto, $v_{y}$ è $0$ quando si trova nel punto di massima altezza.
 
 \subsubsection{Tempo}
 \begin{equation*}
@@ -89,12 +93,13 @@ $v_0$: velocità iniziale (vettore)
 $v_0$: velocità iniziale (vettore)
 
 \subsubsection{Velocità in un punto}
+La velocità varia ogni istante direzione e intensità.
 \begin{equation*}
 v = \sqrt{v_{0_x}^2+v_{0_y}^2}
 \end{equation*}
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$
 
-\subsection{Moto Circolare Uniforme} \label{subsec:mcu}
+\subsection{Moto Circolare Uniforme}\label{subsec:mcu}
 \begin{center}
 	\begin{tikzpicture}
 		\draw (0,0) circle (1);
@@ -113,7 +118,7 @@ La velocità angolare ($\mathcolor{orange}{\omega}$) è costante per ogni punto 
 indica quanto veloce un corpo ruota.\\[\baselineskip]
 Si noti anche che $\mathcolor{red}{r}$ indica la distanza dal centro di rotazione al corpo in oggetto.
 \\[\baselineskip]
-\textbf{Velocità tangenziale}
+\subsubsection{Velocità tangenziale}
 \begin{equation*}
 \mathcolor{blue}{v_t} = \frac{2\pi\mathcolor{red}{r}}{T} =
 \mathcolor{orange}{\omega}\mathcolor{red}{r}
@@ -122,7 +127,7 @@ $r$: raggio della circonferenza\\
 $T$: periodo del moto, ovvero quanto impiega a compiere un giro completo\\
 $\mathcolor{orange}{\omega}$: velocità angolare
 
-\textbf{Velocità angolare}
+\subsubsection{Velocità angolare}
 \begin{equation*}
 \mathcolor{orange}{\omega} = \frac{\alpha}{t} = \frac{2\pi}{T}
 \end{equation*}
@@ -130,7 +135,7 @@ $\alpha$: angolo percorso\\
 $t$: tempo\\
 $T$: periodo del moto
 
-\textbf{Accelerazione centripeta}
+\subsubsection{Accelerazione centripeta}
 Il vettore velocità cambia ogni istante quindi è presente un accelezione Questa è definita 
 accelerazione centripeta che risulta perpendicolare al $v_t$ e rivolta verso il centro della 
 circonferenza.
@@ -160,7 +165,6 @@ $x$: posizione dell'oggetto\\
 $\alpha$: accelerazion angolare
 
 \subsection{Moto Circolare Uniformemente Accelerato}\label{subsec:cinematica:mrua}
-\label{subsec:mrua}
 È un moto circolare avente accelerazione costante in modulo.
 \begin{equation*}
 \theta = \theta_0 + \mathcolor{orange}{\omega}t

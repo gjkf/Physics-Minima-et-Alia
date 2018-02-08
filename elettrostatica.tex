@@ -7,7 +7,8 @@ dalla somma di tutte le cariche degli elettroni all'interno di ogni corpo. La su
 \emph{Coulomb} ($C$).\\[\baselineskip]
 Si noti che nelle seguenti formule, $\varepsilon$ è definito come 
 $\varepsilon = \varepsilon_0\varepsilon_r$ dove $\varepsilon_0$ è \hyperref[tab:e0]{la costante
-dielettrica nel vuoto} e $\varepsilon_r$ è la costante dielettrica nel mezzo.\\
+dielettrica nel vuoto} e $\varepsilon_r$ è la costante dielettrica nel mezzo. Si considererà 
+inoltre $k = \frac{k_0}{\varepsilon_r}$ con $k_0$ come \hyperref[tab:k0]{costante di Coulomb}.\\
 Per gli esercizi si vada a pagina~\pageref{ex:elettrostatica}.
 
 \subsection{Legge di Coulomb}
@@ -15,9 +16,8 @@ Attraverso la legge di Coulomb (da non essere confusa con il teorema di Coulomb)
 intercorre tra due corpi carichi. Si noti che questa formula può essere usata solo se i corpi sono 
 puntiformi e fermi.
 \begin{equation*}
-F = k_0\frac{Q_1Q_2}{r^2} = \frac{1}{4\pi\varepsilon}\frac{Q_1Q_2}{r^2}
+  F = k\frac{Q_1Q_2}{r^2} = \frac{1}{4\pi\varepsilon}\frac{Q_1Q_2}{r^2}
 \end{equation*}
-\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$
 
 \subsection{Campo elettrico}
 Il campo elettrico è generato da una carica. Esso è un campo vettoriale, ciò significa che ad ogni
@@ -25,62 +25,45 @@ suo punto si associa un vettore.\\
 Verranno ora riportate tutte le formule che permettono di trovare o il modulo o il vettore di un
 campo elettrico.
 
-\begin{alignat*}{2}
-  E &= k_0\frac{Q}{r^2} & &\text{Solo se puntiforme}\\
-  \vec{E} &= \frac{\vec{F}}{q} &\qquad \vec{E} &= \sum\limits_{i=0}^{n} \vec{E}_n\\
-  E &= -\frac{\Delta V}{\Delta x} & &
-\end{alignat*}
-%E &= \frac{\sigma}{2\varepsilon_0} & &\text{Se in un condensatore, si divida solo per } \varepsilon\\
-%E &= -\frac{\Delta V}{\Delta x} & & \\
-\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$\\
-$\Delta V$: d.d.p\\
-$\Delta x$: distanza tra le superfici
-
-\subsubsection{Energia del campo elettrico}
-\begin{equation*}
-U_E = \frac{1}{2}QV = \frac{1}{2}CV^2 = \frac{1}{2}\frac{Q^2}{C}
-\end{equation*}
-$Q$: carica delle pareti\\
-$V$: differenza di potenziale\\
-$C$: capacità del condensatore\\ [\baselineskip]
-
-La densità invece è pari a
-\begin{equation*}
-  u_E = \frac{1}{2}\varepsilon_0E^2
-\end{equation*}
+\begin{align*}
+  E &= k\frac{Q}{r^2} &\qquad\text{Solo se puntiforme}\\
+  \vec{E} &= \frac{\vec{F}}{q} &
+\end{align*}
+$Q$: carica generatrice del campo\\
+$q$: carica che si trova all'interno del campo generato da $Q$
 
 \subsubsection{Campo di una superficie piana infinita}
-Il campo elettrico può essere uniforme, ovvero a tutti i punti si associa un vettore uguale.
+Un campo elettrico uniforme associa un vettore uguale a tutti i punti. $\sigma$ rappresenta la 
+densità di carica $\left(\frac{Q}{A}\right)$ dove $Q$ è la carica e $A$ l'area del piano.
 \begin{center}
   \begin{tikzpicture}
     \draw[dashed] (0,0) -- ++(1,0);
     \draw (1,0) -- ++(2,0);
     \draw[dashed] (3,0) -- ++(1,0);
     \draw[-stealth] (2,0.5) -- ++(0,-0.45)
-            node[pos=0.5, left]{$\vec{E}$};
+      node[pos=0.5, left]{$\vec{E}$};
     \draw[-stealth] (2,-0.5) -- ++(0,0.45)
-            node[pos=0.5, left]{$\vec{E}$};
+      node[pos=0.5, left]{$\vec{E}$};
     \node at (1,0.5){$\sigma < 0$};
-    
+
     \draw[dashed] (0,-2) -- ++(1,0);
     \draw (1,-2) -- ++(2,0);
     \draw[dashed] (3,-2) -- ++(1,0);
     \draw[stealth-] (2,-1.5) -- ++(0,-0.45)
-            node[pos=0.5, left]{$\vec{E}$};
+      node[pos=0.5, left]{$\vec{E}$};
     \draw[stealth-] (2,-2.5) -- ++(0,0.45)
-            node[pos=0.5, left]{$\vec{E}$};
+      node[pos=0.5, left]{$\vec{E}$};
     \node at (1,-1.5){$\sigma > 0$};
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
-E = \frac{\left\lvert\sigma\right\rvert}{2\epsilon_0}
+  E = \frac{\left\lvert\sigma\right\rvert}{2\epsilon_0}
 \end{equation*}
-$\sigma$: densità di carica $\left(\frac{Q}{A}\right)$
 
 \subsubsection{Campo elettrico all'interno di un condensatore}
 Il campo elettrico è costante in ogni punto all'interno del condensatore. All'esterno è $0$.
 \begin{center}
-  \begin{tikzpicture}
+  \begin{tikzpicture}[scale=0.75]
     \draw[thick] (0,0) -- ++(4,0);
     \foreach \ca in {0,0.5,1,...,4}{
       \node at (\ca,0.5){$+$};
@@ -92,14 +75,28 @@ Il campo elettrico è costante in ogni punto all'interno del condensatore. All'e
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
-E = \frac{\sigma}{\varepsilon}
+  E = \frac{\sigma}{\varepsilon}
 \end{equation*}
 $\sigma$: densità di carica $\left(\frac{Q}{A}\right)$
 
-\subsection{Teorema di Coulomb}
-Il teorema di Coulomb definisce il campo elettrico per una qualsiasi superficie.
+\subsubsection{Energia del campo elettrico}
 \begin{equation*}
-E = \frac{\sigma}{\epsilon_0}
+  U_E = \frac{1}{2}QV = \frac{1}{2}CV^2 = \frac{1}{2}\frac{Q^2}{C}
+\end{equation*}
+$Q$: carica delle pareti\\
+$V$: differenza di potenziale\\
+$C$: capacità del condensatore\\ [\baselineskip]
+
+La densità invece è pari a
+\begin{equation*}
+  u_E = \frac{1}{2}\varepsilon_0E^2
+\end{equation*}
+
+\subsection{Teorema di Coulomb}
+Il teorema di Coulomb permette di definire l'intensità di $E$ in prossimità della superficie di un
+corpo, conoscendo la densità di carica.
+\begin{equation*}
+  E = \frac{\sigma}{\epsilon_0}
 \end{equation*}
 
 \subsection{Flusso} \label{subsec:flusso}
@@ -128,48 +125,53 @@ Verranno ora riportate le formule per calcolare il flusso di una superficie.
 \subsection{Teorema di Gauss}
 Il teorema di Gauss definisce il flusso di una superficie \emph{chiusa}.
 \begin{equation*}
-\Phi_{S_{CH}}\left(\vec{E}\right) = \frac{\sum\limits_{i=0}^{n}Q_i}{\varepsilon}
+  \Phi_{S_{CH}}\left(\vec{E}\right) = \frac{\sum\limits_{i=0}^{n}Q_i}{\varepsilon}
 \end{equation*}
 
 \subsection{Lavoro di un campo elettrico}
-Quanto lavoro deve fare un campo elettrico per spostare una carica? Questa sottsezione è dedicata 
-proprio a questo.
+L'energia potenziale elettrica ($U$) e il potenziale elettrico ($V$) sono definiti:
+\begin{alignat*}{2}
+  U &= k_0\frac{Q_1Q_2}{r} &\qquad V &= k_0\frac{Q}{r}\\
+  \Delta V &= E\Delta x &&
+\end{alignat*}
+\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$\\
+$Q$: carica\\
+$r$: distanza\\[\baselineskip]
+Le superfici equipotenziali sono superfici in cui $V$ è costante per ogni punto.\\[\baselineskip]
+Quanto lavoro deve fare un campo elettrico per spostare una carica?
 \begin{equation*}
   L = q\left[V_f - V_i\right]
 \end{equation*}
+$q$: carica spostata\\
 $V_i$: potenziale iniziale\\
-$V_f$: potenziale finale\\ [\baselineskip]
-
-Al lavoro sono direttamente collegati \textbf{l'energia potenziale elettrica} ($U$) e 
-\textbf{il potenziale elettrico} ($V$). Vengono ora riportate le formule per calcolarle.
-
-\begin{alignat*}{2}
-U &= k_0\frac{Q_1Q_2}{r} &\qquad V &= k_0\frac{Q}{r}
-\end{alignat*}
-\hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$
+$V_f$: potenziale finale
 
 \subsubsection{Lavoro di una carica in un condensatore}
 Il lavoro di una carica è equivalente all'energia interna.
+\begin{equation*}
+  \Delta V = -\Delta E\Delta s
+\end{equation*}
+$\Delta s$: direzione di coordinate tra $V_i$ e $V_f$ lungo la direzione del campo
 
 \subsection{Capacità elettrica}\label{sub:elettrostatica:capacita}
-La capacità elettrica indica quanta carica può immagazzinare un conduttore isolato. Verranno ora 
+La capacità elettrica indica quanta carica può immagazzinare un conduttore. Verranno ora 
 riportate le formule per calcolarla.
-
 \begin{alignat*}{2}
-C &= \frac{Q}{V} &\qquad &\\
-C &= 4\pi\varepsilon & &\text{Specificamente in una sfera isolata}\\
-C &= \frac{S\varepsilon}{d} & &\text{Specificamente in un condensatore piano}
+  C &= \frac{Q}{V} &\qquad &\\
+  C &= \frac{S\varepsilon}{d} & &\text{Specificamente in un condensatore piano}
 \end{alignat*}
+$Q$: carica immagazzinata\\
+$V$: differenza di potenziale\\ [\baselineskip]
 Nell'ultima formula, $d$ indica la distanza tra le due armature di un condensatore e $S$ l'area 
 delle superfici del condensatore. Un condensatore può essere di qualunque forma o dimensione si
 voglia. L'ultima formula è la più generale ci sia.
 
 \subsection{Circuitazione}
-La circuitazione ($C$) indica quanta carica passa per una linea chiusa ($\Gamma$).
-
+La circuitazione di un campo elettrico lungo il percorso da noi scelto è la somma dei prodotti 
+scalari tra i vettori del campo $\vec{E}$ e lo spostamento $\Delta x$.
 \begin{equation*}
-C_\Gamma\left(\vec{E}\right) = \sum\limits_{i=0}^{n}\vec{E}_i\cdot\vec{l}_i = 
-\sum\limits_{i=0}^{n} E_i\cdot l_i\cos\theta
+  C_\Gamma\left(\vec{E}\right) = \sum\limits_{i=0}^{n}\vec{E}_i\cdot\vec{l}_i = 
+  \sum\limits_{i=0}^{n} E_i\cdot l_i\cos\theta
 \end{equation*}
 $l$: differenza di spostamento\\
 Si noti che $theta$ è rispetto alla tangente, non alla normale come nel 
@@ -182,15 +184,19 @@ Si noti che $theta$ è rispetto alla tangente, non alla normale come nel
     \draw (0,0) -- ++(2,0);
     \draw[-stealth] (O) -- (B)
       node[pos=0.6,left]{$\vec{E}$};
-    \markangle{O}{A}{B}{0.5}{1.4}{$\theta$}
+    \markangle{O}{A}{B}{0.5}{1.5}{$\theta$}
   \end{tikzpicture}
 \end{center}
+Un campo è conservativo se la circuitazione lungo una linea chiusa è pari a $0$. Questo è il
+caso del campo elettrico.
 
 \subsection{Dielettrico all'interno di un condensatore}
 Come cambia il campo elettrico all'interno di un condensatore se si inserisce un dielettrico?
 \begin{equation*}
-E_{RIS} = \frac{\sigma-\sigma_p}{\varepsilon}
+  E_{RIS} = \frac{\sigma-\sigma_p}{\varepsilon}
 \end{equation*}
+$\sigma$: densità di carica del conduttore\\
+$\sigma_p$: densità di carica del dielettrico
 
 \subsection{Velocità di deriva in un conduttore metallico}
 È la velocità media degli elettroni nel conduttore metallico.
@@ -201,4 +207,3 @@ E_{RIS} = \frac{\sigma-\sigma_p}{\varepsilon}
 $n$: numero di elettroni di conduzione\\
 $A$: sezione del conduttore\\
 $i$: carica massima
-

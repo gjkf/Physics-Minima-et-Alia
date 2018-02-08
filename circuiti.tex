@@ -15,11 +15,13 @@ I generatori producono tutti una certa \textbf{Differenza di potenziale} o d.d.p
 Questa d.d.p. è regolata dalla legge di Ohm (vedi pagina~\pageref{par:circElettr:elem:res:ohm}). 
 In genere la
 lettera che denota un generatore di differenza di potenziale è o $V$ (dall'unità di misura, Volt),
-o $\mathcal{E}$. La vera differenza si ha soltanto quando ci sono generatori \textbf{reali} in cui
+o $\mathcal{E}$. Vi è grande differenza soltanto tra generatori \textbf{reali} in cui
 è presente una resistenza interna, quindi si ha che
 \begin{equation*}
   \mathcal{E} = \overbrace{Ri}^{V} + ri
 \end{equation*}
+$R$: resistenza totale degli elementi circuitali\\
+$r$: resistenza interna\\ [\baselineskip]
 Generalmente la $\mathcal{E}$ viene anche definita \textbf{forza elettromotrice}.\\
 Il suo valore può anche essere definito in funzione del lavoro ($L$) che il generatore deve
 fare per spostare una carica ($q$) da un polo all'altro
@@ -62,7 +64,7 @@ Le leggi di Ohm mettono in definiscono la differenza di potenziale e le caratter
 una resistenza.
 
 \begin{alignat*}{2}
-R &= \frac{\Delta V}{i} &\qquad R &= \rho\frac{l}{S}
+  R &= \frac{\Delta V}{i} &\qquad R &= \rho\frac{l}{S}
 \end{alignat*}
 La prima mette in relazione la ddp e la corrente con la resistenza.\\
 La seconda mette in relazione la resistività ($\rho$), la lunghezza del corpo ($l$) e la sezione 
@@ -152,47 +154,47 @@ l'altro. Se sono in parallelo invece la corrente si divide, mantenendo costante 
 
 \subsubsection{Capacità equivalente di condensatori in \emph{serie}}
 \begin{center}
-	\begin{circuitikz}
-		\draw
-		(0,0)
-		to [short] (1,0)
-		to [C=$C_1$] (2,0)
-		to [short] (3,0)
-		to [C=$C_2$] (4,0)
-		to [short] (5,0);
-	\end{circuitikz}
+  \begin{circuitikz}
+    \draw
+    (0,0)
+    to [short] (1,0)
+    to [C=$C_1$] (2,0)
+    to [short] (3,0)
+    to [C=$C_2$] (4,0)
+    to [short] (5,0);
+  \end{circuitikz}
 \end{center}
 Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
 \begin{equation*}
-\frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}
+  \frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}
 \end{equation*}
 
 \subsubsection{Capacità equivalente di condensatori in \emph{parallelo}}
 \begin{center}
-	\begin{circuitikz}
-		\draw 
-		(-1,0)
-		to [short, o-] (0,0)
-		to [short, *-] (0,1)
-		to [short] (1,1)
-		to [C=$C_1$] (2,1)
-		to [short] (3,1)
-		to [short] (3,0)
-		
-		(0,0) 
-		to [short, *-] (0,-1)
-		to [short] (1,-1)
-		to [C=$C_2$] (2,-1)
-		to [short] (3,-1)
-		to [short] (3,0)
-		
-		(3,0)
-		to [short, *-o] (4,0);
-	\end{circuitikz}
+  \begin{circuitikz}
+    \draw 
+    (-1,0)
+    to [short, o-] (0,0)
+    to [short, *-] (0,1)
+    to [short] (1,1)
+    to [C=$C_1$] (2,1)
+    to [short] (3,1)
+    to [short] (3,0)
+
+    (0,0) 
+    to [short, *-] (0,-1)
+    to [short] (1,-1)
+    to [C=$C_2$] (2,-1)
+    to [short] (3,-1)
+    to [short] (3,0)
+
+    (3,0)
+    to [short, *-o] (4,0);
+  \end{circuitikz}
 \end{center}
 Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
 \begin{equation*}
-C_e = C_1 + C_2
+  C_e = C_1 + C_2
 \end{equation*}
 
 \subsubsection{Proprietà di condensatori in serie ed in parallelo}
@@ -201,56 +203,56 @@ condensatori.\\[\baselineskip]
 Due condensatori \textbf{in serie} mantengono la stessa $Q$.\\
 Due condensatori \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
 
-\subsubsection{Resistenza quivalente di resistenze in \emph{serie}}
+\subsubsection{Resistenza equivalente di resistenze in \emph{serie}}
 \begin{center}
-	\begin{circuitikz}
-		\draw
-		(0,0)
-		to [short] (1,0)
-		to [R=$R_1$] (2,0)
-		to [short] (3,0)
-		to [R=$R_2$] (4,0)
-		to [short] (5,0);
-	\end{circuitikz}
+  \begin{circuitikz}
+    \draw
+    (0,0)
+    to [short] (1,0)
+    to [R=$R_1$] (2,0)
+    to [short] (3,0)
+    to [R=$R_2$] (4,0)
+    to [short] (5,0);
+  \end{circuitikz}
 \end{center}
-Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
+Questo ``circuito'' può essere ridotto ad un solo resistenza la cui resistenza deve essere
 \begin{equation*}
-R_e = R_1 + R_2
+  R_e = R_1 + R_2
 \end{equation*}
 
-\subsubsection{Resistenza quivalente di resistenze in \emph{parallelo}}
+\subsubsection{Resistenza equivalente di resistenze in \emph{parallelo}}
 \begin{center}
-	\begin{circuitikz}
-		\draw 
-		(-1,0)
-		to [short, o-] (0,0)
-		to [short, *-] (0,1)
-		to [short] (1,1)
-		to [R=$R_1$] (2,1)
-		to [short] (3,1)
-		to [short] (3,0)
-		
-		(0,0) 
-		to [short, *-] (0,-1)
-		to [short] (1,-1)
-		to [R=$R_2$] (2,-1)
-		to [short] (3,-1)
-		to [short] (3,0)
-		
-		(3,0)
-		to [short, *-o] (4,0);
-	\end{circuitikz}
+  \begin{circuitikz}
+    \draw 
+    (-1,0)
+    to [short, o-] (0,0)
+    to [short, *-] (0,1)
+    to [short] (1,1)
+    to [R=$R_1$] (2,1)
+    to [short] (3,1)
+    to [short] (3,0)
+
+    (0,0) 
+    to [short, *-] (0,-1)
+    to [short] (1,-1)
+    to [R=$R_2$] (2,-1)
+    to [short] (3,-1)
+    to [short] (3,0)
+
+    (3,0)
+    to [short, *-o] (4,0);
+  \end{circuitikz}
 \end{center}
-Questo ``circuito'' può essere ridotto ad una sola resistenza la cui capacità deve essere
+Questo ``circuito'' può essere ridotto ad una sola resistenza la cui resistenza deve essere
 \begin{equation*}
-\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}
+  \frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}
 \end{equation*}
 Vige anche questa proprietà:
 \begin{equation*}
-R_1i_1 = R_2i_2
+  R_1i_1 = R_2i_2
 \end{equation*}
 
-\subsubsection{Proprietà di condensatori in serie ed in parallelo}
+\subsubsection{Proprietà di resistenze in serie ed in parallelo}
 Una caratteristca di questi due collegamenti è quello che rimane costante tra le 
 resistenze.\\[\baselineskip]
 Due resistenze \textbf{in serie} mantengono la stessa $i$.\\
@@ -259,23 +261,28 @@ Due resistenze \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
 \subsubsection{Tabella riassuntiva delle formule}
 
 \begin{center}
-      \begin{tabular}{c | c | c}
-        & Serie & Parallelo \\ \midrule
-        Condensatori & $\frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}$ & $C_e = C_1 + C_2$\\
-        Resistenze & $R_e = R_1 + R_2$ & $\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}$\\
-    \end{tabular}
+  \begin{tabular}{c | c | c}
+    & Serie & Parallelo \\ \midrule
+    Condensatori & $\frac{1}{C_e} = \frac{1}{C_1} + \frac{1}{C_2}$ & $C_e = C_1 + C_2$\\
+    Resistenze & $R_e = R_1 + R_2$ & $\frac{1}{R_e} = \frac{1}{R_1} + \frac{1}{R_2}$\\
+  \end{tabular}
 \end{center}
 
 \subsection{Potenza elettrica}
+Un componenete percorso da corrente, dissipa una certa potenza.
 \subsubsection{Continua}
 \begin{equation*}
-P = Vi
+  P = Vi
 \end{equation*}
-Se per conduttori ohmici
+che per una resistenza si può scrivere come
 \begin{equation*}
-P = Ri^2 = \frac{V^2}{R}
+  P = Ri^2 = \frac{V^2}{R}
 \end{equation*}
+$R$: resistenza\\
+$i$: corrente\\
+$V$: d.d.p.
 \subsubsection{Alternata}
+In corrente alternata la potenza varia ogni istante. Il valore medio è
 \begin{equation*}
   \overline{P} = \mathcal{E}_{eff}i_{eff}\cos\phi
 \end{equation*}
@@ -288,24 +295,22 @@ nel secondo invece
 \begin{equation*}
   \overline{P} = 0
 \end{equation*}
-Se si vuole la potenza istantanea si usi
+La potenza istantanea è invece
 \begin{equation*}
   P(t) = \frac{\mathcal{E}_0}{Z}\sin(\omega t - \phi) \mathcal{E}_0\sin(\omega t) 
 \end{equation*}
-
+$\phi$: angolo di sfasamento
 \subsection{Effetto Joule}
 L'effetto Joule è uno dei tre effetti causati da una corrente che attraversa un conduttore. 
-In questo caso determina il fatto che ogni conduttore attraversato da una corrente genera calore.
+In questo caso determina il fatto che una corrente che attraversa un conduttore, genera calore.
 \begin{equation*}
-Q = Ri^2t
+  Q = Ri^2t
 \end{equation*}
 $Q$: quantità di calore in Joule\\
 $t$: tempo\\ [\baselineskip]
-
 Spesso viene usato il \emph{kilowattora} che equivale a $3.6\cdot10^6\,\text{J}$.
-
 \subsection{Circuiti principali}
-Verranno ora riportati i pincipali circuiti che si incontrerano, sia in corrente continua che in
+Verranno ora riportati i pincipali circuiti che si incontreranno, sia in corrente continua che in
 alternata.
 
 \subsubsection{Puramente resistivi}
@@ -357,7 +362,7 @@ L'incognita caratteristica di questo circuito è la carica sulle armature del co
 in continua, la formula che la regola è quella della capacità elettrica
 (pagina~\pageref{sub:elettrostatica:capacita}).
 \begin{equation*}
-  C = \frac{q}{V}
+  C = \frac{Q}{V}
 \end{equation*}
 
 \paragraph{Alternata}
@@ -369,7 +374,7 @@ in continua, la formula che la regola è quella della capacità elettrica
   \end{circuitikz}
 \end{center}
 In questa situazione, il condensatore non ha più lo scopo di immagazzinare carica e poi rilasciarla
-ma è come una specie di resistenza che sfasa la corrente.\\
+ma sfasa la corrente.\\
 Per la definizione di corrente
 \begin{equation*}
   i(t) = \der{q}{t}
@@ -387,7 +392,7 @@ Per definizione poniamo $i_0=C\mathcal{E}_0\omega$ e trasformiamo in seno per po
   i(t) = i_0\sin \left( \omega t+\frac{\pi}{2} \right)
 \end{equation*}
 Questo significa che la corrente è in \textbf{anticipo} rispetto alla forza elettromotrice.\\
-Dato che il condensatore oppone una specie di resistenza, questa prende il nome di 
+Quindi il condensatore oppone una specie di resistenza, questa prende il nome di 
 \textbf{reattanza capacitiva} il cui valore è
 \begin{equation*}
   x_C = \frac{1}{\omega C}
@@ -404,7 +409,7 @@ cambia, non è possibile ottenere questo effetto.
     (2,2) to[short] (0,2) to[short] (0,0);
   \end{circuitikz}
 \end{center}
-L'induttanza quindi oppone resistenza creando una corrente contraria per la legge di 
+L'induttanza quindi oppone una specie di resistenza creando una corrente contraria per la legge di 
 Faraday-Neuman-Lenz. Quindi
 \begin{equation*}
   \der{i}{t} = \frac{\mathcal{E}_0}{L}\sin\omega t
@@ -417,8 +422,8 @@ trasformando in seno e ponendo $i_0=\frac{\mathcal{E}_0}{\omega L}$
 \begin{equation*}
   i(t) = i_0\sin \left( \omega t-\frac{\pi}{2} \right)
 \end{equation*}
-Anche l'induttanza crea resistenza, essa prende il nome di \textbf{reattanza induttiva} e ha come
-valore
+Anche l'induttanza crea una specie di resistenza, essa prende il nome di 
+\textbf{reattanza induttiva} e ha come valore
 \begin{equation*}
   x_L = \omega L
 \end{equation*}
@@ -438,30 +443,30 @@ I circuiti RC sono così denominati perché contengono una resistenza e un conde
 \paragraph{Carica}
 Questo circuito non ha alcuna funzione se non quella di caricare il condensatore fino a capacità 
 massima (anche se, come vedremo, non accadrà mai). Dato che il processo di carica non è istantaneo,
-dipende dal tempo. Infatti si vuole studiare il variare della carica ($q(t)$), corrente ($i(t)$) e
+dipende dal tempo. Si vuole studiare il variare della carica ($q(t)$), corrente ($i(t)$) e
 della differenza di potenziale ($V(t)$) del condensatore.\\
 Rispettivamente sono
 \begin{align*}
-q(t)&=C\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)\\
-i(t)&=\frac{\mathcal{E}}{R}e^{-\frac{t}{\tau}}\\
-V(t)&=\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)
+  q(t)&=C\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)\\
+  i(t)&=\frac{\mathcal{E}}{R}e^{-\frac{t}{\tau}}\\
+  V(t)&=\mathcal{E}\left(1-e^{-\frac{t}{\tau}}\right)
 \end{align*}
 Dove $\tau=RC$ è la \emph{costante di tempo} che varia da circuito a circuito.\\ [\baselineskip]
 Perché il condensatore non si caricherà mai? Ora andiamo
-a disegnare il grafico della carica otteniamo
+a disegnare il grafico della carica
 \begin{center}
   \begin{tikzpicture}
     \draw[-stealth] (-0.5,0) -- (3,0);
     \draw[-stealth] (0,-0.5) -- (0,2);
     \draw[domain=0:3] plot({\x},{(1-e^(-\x))});
     \draw[dashed] (0,1) -- (3,1)
-            node[pos=0.5,above]{$y=\mathcal{E}$};
+      node[pos=0.5,above]{$y=\mathcal{E}$};
   \end{tikzpicture}
 \end{center}
-Come notiamo, il grafico tende sempre a raggiungere il valore massimo però senza mai raggiungerlo,
+Come notiamo, il grafico tende a raggiungere il valore massimo però senza mai raggiungerlo,
 infatti
 \begin{equation*}
-\lim\limits_{t\to+\infty}q(t) = \mathcal{E}
+  \lim\limits_{t\to+\infty}q(t) = \mathcal{E}
 \end{equation*}
 In ogni caso il condensatore raggiunge una carica quasi totale dopo $4\tau$ o $5\tau$.
 
@@ -495,13 +500,13 @@ possiamo risolvere l'equazione differenziale
 \begin{equation*}
   \mathcal{E} = L \frac{\dif i}{\dif t}+Ri
 \end{equation*}
-e risolvendo per $i$, o andare per induzione. Se nel circuito RC l'incognita caratteristica è
+Se nel circuito RC l'incognita caratteristica è
 $q(t)$, in questo è $i(t)$. Se la carica aveva come massimo $C\mathcal{E}$, la corrente ha
-come massimo, secondo la legge di Ohm, $\frac{\mathcal{E}}{R}$. Quindi
+come massimo, secondo la legge di Ohm, $\frac{\mathcal{E}}{R}$. Si dimostra che
 \begin{equation*}
   i(t) = \frac{\mathcal{E}}{R} \left( 1-e^{-\frac{t}{\tau}} \right)
 \end{equation*}
-dove $\tau = \frac{L}{R}$ e rappresenta la costante di tempo del circuito.\\
+dove $\tau = \frac{L}{R}$ rappresenta la costante di tempo del circuito.\\
 Anche in questo caso il grafico della corrente è
 \begin{center}
   \begin{tikzpicture}
@@ -512,7 +517,7 @@ Anche in questo caso il grafico della corrente è
       node[pos=0.5,above]{$y=i$};
   \end{tikzpicture}
 \end{center}
-e capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, però generalmente
+capiamo che in teoria la corrente non raggiungerebbe mai il valore di regime, però generalmente
 dopo $4\tau$ o $5\tau$ la variazione è talmente minima che gli strumenti non la misurano più.\\
 La formula per la scarica invece è la seguente
 \begin{equation*}
@@ -520,8 +525,8 @@ La formula per la scarica invece è la seguente
 \end{equation*}
 
 \subsubsection{Circuit RLC in serie}
-I circuiti RLC sono i più semplici circuiti che si studiano in corrente alternata. Essi infatti
-sono come il seguente
+I circuiti RLC sono i più semplici circuiti completi che si studiano in corrente alternata. Essi 
+infatti sono come il seguente
 \begin{center}
   \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
     \draw(0,0) to[sV] (2,0) 
@@ -540,7 +545,7 @@ e i moduli di tutti. La formula generale
 \end{equation*}
 può essere visualizzata come il seguente vettore
 \begin{center}
-  \begin{tikzpicture}[scale=1.5]
+  \begin{tikzpicture}
     \draw coordinate (O) (0,0) circle (1);
     \coordinate (A) at (1,0);
     \coordinate (V1) at (0.86,0.5);
@@ -714,7 +719,7 @@ circuiti quindi significa trovare intensità e verso di queste correnti.
 \subsubsection{Legge di Kirchhoff dei nodi}
 La corrente entrante in un nodo è pari a quella uscente.
 \begin{equation*}
-\sum_k i_k = 0
+  \sum_k i_k = 0
 \end{equation*}
 Questo è anche definito come \textbf{Principio di conservazione di carica}.
 
@@ -737,7 +742,7 @@ Per arrivare alla formula, prendiamo come esempio il seguente circuito
 \end{center}
 Kirchhoff descrive che
 \begin{equation*}
-\sum_k \mathcal{E}_k = \sum_j R_ji_j
+  \sum_k \mathcal{E}_k = \sum_j R_ji_j
 \end{equation*}
 Ovvero scegliendo un verso (orario o antiorario) se la corrente ha stesso verso le si da il valore $+$,
 altrimenti $-$. Stessa cosa per la forza elettromotrice. Proseguendo da un nodo qualsiasi secondo il
@@ -750,7 +755,7 @@ Negli esercizi non possiamo usare direttamente queste leggi. Il modo generale di
   \item Individuare le incognite (le correnti) e scegliere un verso di percorrenza in modo arbitrario
   \item Creare un sistema a $n$-equazioni dove $n$ è il numero di incognite (in generale 3)
   \item Come prima equazione, usare la Legge di Kirchhoff dei Nodi scegliendo arbitrariamente
-  i versi delle correnti nel nodo
+    i versi delle correnti nel nodo
   \item Come seconda e terza equazione, descrivere le maglie seguendo il verso scelto
   \item Risolvere il sistema lineare. Nel caso in cui una corrente sia negativa, il suo risultato
     è $\abs{i}$.
@@ -777,36 +782,36 @@ pongano due magneti con polarità opposte uno di fronte all'altro. Tra i due si 
 di spire che ruotano. Questa rotazione genererà una corrente. Il disegno dunque è molto simile
 a quello del motore elettrico
 \begin{center}
-     \begin{tikzpicture}
-         % Magnets
-         \coordinate (N1) at (0,1);
-         \coordinate (N2) at (0,-1);
-         \coordinate (S1) at (3,1);
-         \coordinate (S2) at (3,-1);
-         % Plate
-         \coordinate (P1) at (1,0.5);
-         \coordinate (P2) at (2,-0.5);
+  \begin{tikzpicture}
+    % Magnets
+    \coordinate (N1) at (0,1);
+    \coordinate (N2) at (0,-1);
+    \coordinate (S1) at (3,1);
+    \coordinate (S2) at (3,-1);
+    % Plate
+    \coordinate (P1) at (1,0.5);
+    \coordinate (P2) at (2,-0.5);
 
-         % Magnets
-         \draw[thick] (-0.5,1) -- (N1) -- (N2) -- (-0.5,-1);
-         \draw[thick] (3.5,1) -- (S1) -- (S2) -- (3.5,-1);
-         % Plate
-         \draw[thick] (P1) -- (P2);
+    % Magnets
+    \draw[thick] (-0.5,1) -- (N1) -- (N2) -- (-0.5,-1);
+    \draw[thick] (3.5,1) -- (S1) -- (S2) -- (3.5,-1);
+    % Plate
+    \draw[thick] (P1) -- (P2);
 
-         % Magnetic lines
-         \foreach \a in {0.8,0,-0.8}{
-                 \draw[gray, very thin, -stealth] (0.2, \a) -- ++(2.6,0);
-         }
+    % Magnetic lines
+    \foreach \a in {0.8,0,-0.8}{
+      \draw[gray, very thin, -stealth] (0.2, \a) -- ++(2.6,0);
+    }
 
-         \draw[-stealth] (P1) -- ++(0,0.7);
-         \draw[-stealth] (P2) -- ++(0,-0.7);
+    \draw[-stealth] (P1) -- ++(0,0.7);
+    \draw[-stealth] (P2) -- ++(0,-0.7);
 
-         % Annotations
-         \node at (-0.5,0){$N$};
-         \node at (3.5,0){$S$};
-         \node at (1.7,0.3){$P$};
-         \node at (0.5,-1.2){$\vec{B}$};
-     \end{tikzpicture}
+    % Annotations
+    \node at (-0.5,0){$N$};
+    \node at (3.5,0){$S$};
+    \node at (1.7,0.3){$P$};
+    \node at (0.5,-1.2){$\vec{B}$};
+  \end{tikzpicture}
 \end{center}
 Facendo girare le spire, il flusso varierà. Infatti si avrà
 \begin{equation*}
@@ -868,5 +873,5 @@ così che non si sprechino. Si trovano le seguenti formule
 \begin{equation*}
   \frac{\mathcal{E}_p}{\mathcal{E}_s} = \frac{n_p}{n_s} = \frac{i_s}{i_p}
 \end{equation*}
-Si presti attenzione alla sequenza di scrittura in quanto la corrente invere primario e secondario.
+Si presti attenzione alla sequenza di scrittura.
 Si noti anche che $\frac{n_s}{n_p}$ è definito \emph{rapporto di trasformazione}.

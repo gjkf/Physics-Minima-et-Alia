@@ -25,20 +25,20 @@
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,
-	bordercolor=OliveGreen,#1]{#2}}
+bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,
-	bordercolor=Plum,#1]{#2}}
+bordercolor=Plum,#1]{#2}}
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
 
 \setlength{\marginparwidth}{2cm} % For better TODO's display
 
 \usepackage{hyperref}
 \hypersetup{
-	colorlinks,
-	citecolor=black,
-	filecolor=black,
-	linkcolor=blue,
-	urlcolor=black
+  colorlinks,
+  citecolor=black,
+  filecolor=black,
+  linkcolor=blue,
+  urlcolor=black
 }
 \usepackage[all]{hypcap} % To fix caption loading of hyperref
 
@@ -67,29 +67,29 @@
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} % |v|
 
 \newcommand\markangle[7][red]{% [color] origin A B radius radiusmark mark
-	% fill red circle
-	\begin{scope}
-		\path[clip] (#2) -- (#3) -- (#4);
-		\fill[color=#1,fill opacity=0.5,draw=#1,name path=circle]
-		(#2) circle (#5);
-	\end{scope}
-	% middle calculation
-	\path[name path=line one] (#2) -- (#3);
-	\path[name path=line two] (#2) -- (#4);
-	\path[%
-	name intersections={of=line one and circle, by={inter one}},
-	name intersections={of=line two and circle, by={inter two}}
-	] (inter one) -- (inter two) coordinate[pos=.5] (middle);
-	% put mark
-	\node at ($(#2)!#6!(middle)$) {#7};
+  % fill red circle
+  \begin{scope}
+    \path[clip] (#2) -- (#3) -- (#4);
+    \fill[color=#1,fill opacity=0.5,draw=#1,name path=circle]
+    (#2) circle (#5);
+  \end{scope}
+  % middle calculation
+  \path[name path=line one] (#2) -- (#3);
+  \path[name path=line two] (#2) -- (#4);
+  \path[%
+  name intersections={of=line one and circle, by={inter one}},
+  name intersections={of=line two and circle, by={inter two}}
+  ] (inter one) -- (inter two) coordinate[pos=.5] (middle);
+  % put mark
+  \node at ($(#2)!#6!(middle)$) {#7};
 }
 
 \def\mathcolor#1#{\@mathcolor{#1}}
 \def\@mathcolor#1#2#3{%
-	\protect\leavevmode
-	\begingroup
-	\color#1{#2}#3%
-	\endgroup
+  \protect\leavevmode
+  \begingroup
+  \color#1{#2}#3%
+  \endgroup
 }
 
 % For better visual in tables
@@ -105,10 +105,10 @@
 \makeatletter
 \let\oldr@@t\r@@t
 \def\r@@t#1#2{%
-	\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
-	\advance\dimen0-0.2\ht0
-	\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
-	{\box0\lower0.4pt\box2}}
+  \setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+  \advance\dimen0-0.2\ht0
+  \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
 \LetLtxMacro{\oldsqrt}{\sqrt}
 \renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
 \makeatother
@@ -116,14 +116,14 @@
 % Matrix spacing
 \makeatletter
 \renewcommand*\env@matrix[1][\arraystretch]{%
-	\edef\arraystretch{#1}%
-	\hskip -\arraycolsep
-	\let\@ifnextchar\new@ifnextchar
-	\array{*\c@MaxMatrixCols c}}
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+\array{*\c@MaxMatrixCols c}}
 \makeatother
 
 \newcommand\twodigits[1]{%
-	\ifnum#1<10 0\number#1 \else #1\fi
+  \ifnum#1<10 0\number#1 \else #1\fi
 }
 
 \usepackage[yyyymmdd]{datetime}
@@ -137,7 +137,7 @@
 \fancyfoot[C,CO]{\thepage}% page number in "outer" position of footer line
 \fancyfoot[R,RO]{Copyright \copyright 2017--\the\year$\,$Cossu Davide
 } % other info in "inner" position of footer line
-\fancyfoot[L,LO]{Version 1.0.9 \today
+\fancyfoot[L,LO]{Version 1.0.13 \today
 }
 
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
@@ -149,40 +149,40 @@
 \begin{document}
 \onecolumn
 \begin{@twocolumnfalse}
-		\clearpage
-		\vspace*{\stretch{1.5}}
-		\begin{center}
-			\begin{figure*}[!h]
-				\centering
-                                \captionsetup{justification=centering}
-				\includegraphics[scale=3]{colophon/daVinci}
-				\caption{\textit{`La fisica è, tra tutte le scienze, la più fondamentale e completa,
-						e ha avuto una profonda influenza. Studenti delle discipline più diverse si 
-						ritrovano a doverla studiare a causa dell'importanza che riveste in tutti i 
-						fenomeni.'}\\- Richard Feynman\\ [\baselineskip]
-					\textit{`Causas rerum naturalium non plures admittiri debere, quam quo et vera 
-						sint et earum ph\ae nomeni explicandis sufficiant.'}\\- Isaac Newton}
-				\label{fig:deer}
-			\end{figure*}
-			\vspace{1cm}
-			\begin{minipage}{.6\textwidth}				
-				\begin{center}
-					{\Huge\textbf{Formulario di Fisica}}\\\vspace{0.2cm}
-					{\textbf{Davide Cossu, Stefano D'Agaro}}
-				\end{center}
-				\vspace{0.5cm}
-				Questo è un formulario con le formule di fisica fatte durante i cinque anni 
-				di un liceo scientifico con alcune spiegazioni teoriche, esercizi e suggerimenti.
-			\end{minipage}
-		\end{center}
-		\vspace{\stretch{3}} % \vfill equivalent to \vspace{\fill}
-		\clearpage
+  \clearpage
+  \vspace*{\stretch{1.5}}
+  \begin{center}
+    \begin{figure*}[!h]
+      \centering
+      \captionsetup{justification=centering}
+      \includegraphics[scale=3]{colophon/daVinci}
+      \caption{\textit{`La fisica è, tra tutte le scienze, la più fondamentale e completa,
+          e ha avuto una profonda influenza. Studenti delle discipline più diverse si 
+          ritrovano a doverla studiare a causa dell'importanza che riveste in tutti i 
+        fenomeni.'}\\- Richard Feynman\\ [\baselineskip]
+        \textit{`Causas rerum naturalium non plures admittiri debere, quam quo et vera 
+      sint et earum ph\ae nomeni explicandis sufficiant.'}\\- Isaac Newton}
+      \label{fig:deer}
+    \end{figure*}
+    \vspace{1cm}
+    \begin{minipage}{.6\textwidth}				
+      \begin{center}
+        {\Huge\textbf{Formulario di Fisica}}\\\vspace{0.2cm}
+        {\textbf{Davide Cossu, Stefano D'Agaro}}
+      \end{center}
+      \vspace{0.5cm}
+      Questo è un formulario con le formule di fisica fatte durante i cinque anni 
+      di un liceo scientifico con alcune spiegazioni teoriche, esercizi e suggerimenti.
+    \end{minipage}
+  \end{center}
+  \vspace{\stretch{3}} % \vfill equivalent to \vspace{\fill}
+  \clearpage
 \end{@twocolumnfalse}
 
 \twocolumn
 {
-	\hypersetup{linkcolor=black}
-	\tableofcontents
+  \hypersetup{linkcolor=black}
+  \tableofcontents
 }
 
 \newpage
@@ -211,10 +211,10 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
     \label{tab:patm} 
     \multirow{5}[1]{*}{$p_{atm}$} & \multirow{5}[1]{1.8cm}{\centering Pressione atmosferica} & 
     $1$ & $\text{atm}$\\
-    && $1.01\cdot10^{5}$ & $\text{Pa}$\\ 
-    && $760$ & $\text{mm}\,\text{Hg}$\\
-    && $1.01\cdot10^{5}$ & $\frac{\text{N}}{\text{m}^2}$\\
-    && $1$ & $\text{bar}$\\ \midrule
+        && $1.01\cdot10^{5}$ & $\text{Pa}$\\ 
+        && $760$ & $\text{mm}\,\text{Hg}$\\
+        && $1.01\cdot10^{5}$ & $\frac{\text{N}}{\text{m}^2}$\\
+        && $1$ & $\text{bar}$\\ \midrule
     \label{tab:Na} 
     $N_A$ & Numero di Avogadro & $6.02\cdot10^{23}$ & /\\ \midrule
     \label{tab:Vm} 
@@ -222,11 +222,11 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
     \label{tab:R} 
     \multirow{2}[1]{*}{$R$} & \multirow{2}[1]{1.8cm}{\centering Costante universale dei Gas} & 
     $0.0821$ & $\frac{\text{l}\cdot\text{atm}}{\text{nK}}$\\
-    && $8.31$ & $\frac{\text{J}}{\text{nK}}$\\ \midrule
+             && $8.31$ & $\frac{\text{J}}{\text{nK}}$\\ \midrule
     \label{tab:cH2O} 
     \multirow{2}[1]{*}{$c_{H_2O}$} & \multirow{2}[1]{1.8cm}{\centering Calore specifico 
-            dell'acqua} & $4.186\cdot10^3$ & $\frac{\text{C}}{\text{kg}\cdot\text{K}}$\\
-    && $1$ & $\frac{\text{cal}}{\text{g}\cdot\text{K}}$\\\midrule
+    dell'acqua} & $4.186\cdot10^3$ & $\frac{\text{C}}{\text{kg}\cdot\text{K}}$\\
+                && $1$ & $\frac{\text{cal}}{\text{g}\cdot\text{K}}$\\\midrule
     \label{tab:cfa} 
     $\lambda_f$ & Calore di fusione dell'acqua & $3.335\cdot10^5$ & 
     $\frac{\text{J}}{\text{Kg}}$\\\midrule
@@ -298,7 +298,7 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
 Le unità in grassetto, sono le unità fondamentali.
 
 %\input{vettori}
-\input{cinematica}
+\include{cinematica}
 \input{dinamica}
 \input{gravitazione}
 \input{idrostatica}
