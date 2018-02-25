@@ -1,4 +1,4 @@
-\documentclass[8pt, a4paper, twocolumn, usenames, dvipsnames]{extarticle}
+\documentclass[8pt, a4paper, twocolumn, twoside]{extarticle}
 
 \usepackage{extsizes} % Smaller text
 \usepackage[italian]{babel} % Italian support
@@ -53,6 +53,7 @@ bordercolor=Plum,#1]{#2}}
   shapes.geometric,
   shapes.misc
 }
+\tikzset{>=stealth}
 \usepackage[siunitx]{circuitikz}
 % http://texdoc.net/texmf-dist/doc/latex/circuitikz/circuitikzmanual.pdf
 \usepackage{tikz-3dplot}
@@ -134,10 +135,22 @@ bordercolor=Plum,#1]{#2}}
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt} % no line in header area
 \fancyfoot{} % clear all footer fields
-\fancyfoot[C,CO]{\thepage}% page number in "outer" position of footer line
-\fancyfoot[R,RO]{Copyright \copyright 2017--\the\year$\,$Cossu Davide
-} % other info in "inner" position of footer line
-\fancyfoot[L,LO]{Version 1.0.13 \today
+\fancyfoot[LE,RO]{
+  \thepage
+}
+\fancyfoot[RE,LO]{
+  ``Fatti non foste a viver come bruti ma per seguir virtute e canoscenza'' - Dante Alighieri, 
+  ``Inferno''
+}
+\fancypagestyle{firststyle}{
+  \fancyhf{}
+  %\fancyfoot[C]{\thepage}
+  \fancyfoot[L]{
+    Version 1.0.13 \today
+  }
+  \fancyfoot[R]{
+    Copyright \copyright 2017--\the\year$\,$Cossu Davide
+  }
 }
 
 \newcommand*\dif{\mathop{}\!\mathrm{d}}
@@ -147,6 +160,7 @@ bordercolor=Plum,#1]{#2}}
 \everymath{\displaystyle}
 
 \begin{document}
+\thispagestyle{firststyle}
 \onecolumn
 \begin{@twocolumnfalse}
   \clearpage
@@ -295,14 +309,14 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
     Induttanza & Henry & H &Wb/A\\ \midrule
   \end{xtabular}
 \end{center}
-Le unità in grassetto, sono le unità fondamentali.
+Le unità in grassetto, sono le unità fondamentali.\newpage
 
 %\input{vettori}
-\include{cinematica}
+\input{cinematica}
 \input{dinamica}
 \input{gravitazione}
-\input{idrostatica}
-\input{idrodinamica}
+\input{fluidostatica}
+\input{fluidodinamica}
 \input{termodinamica}
 \input{onde}
 \input{elettrostatica}

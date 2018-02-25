@@ -244,3 +244,136 @@ Sostituendo infine
   I=\frac{1}{2}\varepsilon_0E_0^2c=\frac{2}{2\mu_0}B_0^2c=\varepsilon_0E_{eff}^2c=\frac{1}{\mu_0}
   B_{eff}^2c
 \end{equation*}
+
+\subsection{Circuiti oscillanti}
+I circuiti oscillanti sono dei particolari circuiti LC che generano delle onde elettromagnetiche.
+\begin{center}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+    \draw 
+    (0,0) 
+    to[battery1] (0,1) 
+    to[short] (1,1)
+    to[C] (1,0)
+    to[switch] (1,0)
+    to[short] (0,0);
+    \draw
+    (1,0)
+    to[short] (2,0)
+    to[L] (2,1)
+    to[short] (1,1);
+  \end{circuitikz}
+\end{center}
+Quando i condensatore si carica, l'interruttore non fa arrivare corrente all'induttanza. Alla
+chiusura dell'interruttore, il condensatore si scarica attraverso l'induttanza e questo genera
+nel condensatore un certo campo elettrico che, per le equazioni di Maxwell, genera un campo
+magnetico che propaga l'onda elettromagnetica.\\
+Quest'onda avrà una frequenza pari a
+\begin{equation*}
+  f = \frac{1}{2\pi\sqrt{LC}}
+\end{equation*}
+che è la stessa della corrente del circuito. Ovviamente perché l'onda venga ricevuta è necessaria
+un'antenna e un altro circuito oscillante. Per riceve l'onda originale è anche necessario che
+la frequenza del secondo circuito sia uguale a quella del primo.
+\subsection{Equazioni di Maxwell nel mezzo}
+Cosa accade alle onde elettromagnetiche quando incontrano un mezzo? Definendo
+\begin{equation*}
+  \varepsilon = \varepsilon_0\varepsilon_r \quad \mu=\mu_0\mu_r
+\end{equation*}
+Possiamo riscrivere la definizione della velocità
+\begin{equation*}
+  v = \frac{1}{\sqrt{\varepsilon\mu}} = 
+  \frac{1}{\sqrt{\varepsilon_0\mu_0}}\frac{1}{\varepsilon_r\mu_r} =
+  \frac{c}{\sqrt{\varepsilon_r\mu_r}}
+\end{equation*}
+In genere però se un'onda si scontra con un mezzo e quindi viene deviato. Possiamo quindi 
+riprendere le formule dell'ottica
+\begin{equation*}
+  n = \frac{c}{v}
+\end{equation*}
+da cui
+\begin{equation*}
+  v = \frac{c}{n}
+\end{equation*}
+e quindi
+\begin{equation*}
+  n = \sqrt{\varepsilon_r\mu_r} 
+\end{equation*}
+\subsection{Polarizzazione}
+Per polarizzare una qualsiasi onda, è necessario che questa sia trasversale. Questo è il caso delle
+onde elettromagnetiche. Polarizzare un'onda significa ``selezionare'' quali raggi passano.
+\subsubsection{Legge di Malus}
+La legge di Malus definisce l'intensità dell'onda dopo la polarizzazione a seconda se la sorgente
+è polarizzata o meno.
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \a in {0,30,60,...,360}{
+      \draw[->] (0,0) -- (\a:0.5);
+    }
+    \draw[->] (1,0) -- (2,0)
+      node[pos=0.5,below]{$I_0$};
+    \filldraw[draw=black,fill=white,rotate around={-30:(3,0)}] (3,0) ellipse (0.5 and 1);
+    \draw[thin,gray] (3,0) -- ++(60:1);
+    \draw[thin,gray] (3,0) -- ++(240:1);
+    \draw[->] (4,0) -- (5,0)
+      node[pos=0.5,below]{$I = \frac{1}{2}I_0$};
+    \node at (0,-1) {Non polarizzata};
+  \end{tikzpicture}
+\end{center}
+Queta vale se la sorgente di luce non è polarizzata, quindi una lampadina ad esempio.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->](0,0) -- ++(30:1);
+    \draw[->] (0,0) -- ++(210:1);
+    \draw[->] (1,0) -- (2,0)
+      node[pos=0.5,below]{$I_0$};
+    \filldraw[draw=black,fill=white,rotate around={-30:(3,0)}] (3,0) ellipse (0.5 and 1);
+    \draw[thin,gray](3,0) -- coordinate(A) ++(60:1);
+    \draw[thin,gray] (3,0) -- ++(240:1);
+    \draw[->](3,0) -- coordinate (B) ++(30:1);
+    \draw[->] (3,0) -- ++(210:1);
+    %\coordinate (A) at (3,0)+(30:1);
+    \coordinate (O) at (3,0);
+    %\coordinate (B) at (3,0)+(60,1);
+    \markangle{A}{O}{B}{0.6}{1.2}{$\text{ }$}
+    \node at (3.7,0.7) {$\theta$};
+    \draw[->] (4,0) -- (5,0)
+      node[pos=0.5,below]{$I = I_0\cos^2\theta$};
+    \node at (0,-1) {Polarizzata};
+  \end{tikzpicture}
+\end{center}
+
+\subsubsection{Angolo di Brewster}
+Ogni raggio riflesso e rifratto è parzialmente polarizzato. L'angolo di Brewster è quel particolare
+angolo in cui la polarizzazione è completa.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,-2) -- (0,0) -- ++(3,0) -- ++(0,-2);
+    \coordinate (In) at (0,1);
+    \coordinate (Center) at (1.5,0);
+    \coordinate (OutB) at (3,1.5);
+    \coordinate (OutR) at (3,-1.5);
+    \coordinate (OutM) at (1.5,1.5);
+    \draw[->] (In) -- (Center);
+    \draw[->] (Center) -- (OutB);
+    \draw[->] (Center) -- (OutR);
+    \draw (Center) -- (OutM);
+    \markangle[cyan]{Center}{In}{OutM}{1}{1.5}{$\theta_B$}
+    \markangle[orange]{Center}{OutB}{OutR}{1}{1.5}{$\ang{90}$}
+  \end{tikzpicture}
+\end{center}
+Dato che gli indici di rifrazione sono diversi, possiamo scrivere
+\begin{equation*}
+  n_1\sin\theta_B = n_2\sin\hat{r}
+\end{equation*}
+Però $\hat{r} = 90-\theta_B$ e quindi
+\begin{equation*}
+  n_1\sin\theta_B = n_2\sin(90-\theta_B)
+\end{equation*}
+Isolando
+\begin{equation*}
+  \frac{\sin\theta_B}{\cos\theta_B} = \frac{n_2}{n_1}
+\end{equation*}
+E quindi
+\begin{equation*}
+  \theta_B = \arctan\frac{n_2}{n_1}
+\end{equation*}

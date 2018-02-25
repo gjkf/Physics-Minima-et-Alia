@@ -56,7 +56,6 @@ Questa è l'equazione più generale dei gas.
 Questa proprietà è indispensabile in alcuni esercizi in quanto mette in relazione due situazioni e
 permette di trovare tutte le caratteristiche.
 
-
 \subsection{Prima legge di Gay-Lussac}
 Quando $p = \text{costante}$, vi è una trasformazione isobara.
 \begin{equation*}
@@ -78,7 +77,7 @@ Quando $T = \text{costante}$, vi è una trasformazione isoterma.
 \subsection{Moli e gas perfetti}
 
 \subsubsection{Equazione di stato dei gas perfetti}
-Attraverso lo sdudio sperimentale, Amedeo Avogadro notò una relazione tra pressione, temperatura
+Attraverso lo studio sperimentale, Amedeo Avogadro notò una relazione tra pressione, temperatura
 e volume assieme al numero di moli che riassunse in
 \begin{equation*}
   pV = nRT
@@ -86,9 +85,7 @@ e volume assieme al numero di moli che riassunse in
 \hyperref[tab:R]{$R$}: $0.0821\,\text{l}\cdot\text{atm/n}\cdot\text{K}$,
 $8.31\,\text{J/K}\cdot\text{mol}$\\
 $n$: numero di moli\\ [\baselineskip]
-Con questa si dimostra che due gasi con diversi $p$, $V$ e $T$ e $n$ uguale, occupano lo stesso 
-volume. In particolare $1\,\text{mol}$ a $273\,\text{K}$, a pressione ambiente di ogni gas occupa
-$22.4\,\text{L}$.
+$1\,\text{mol}$ a $273\,\text{K}$, a pressione ambiente di ogni gas occupa $22.4\,\text{L}$.
 
 \subsubsection{Numero di molecole}
 \begin{equation*}
@@ -209,13 +206,41 @@ e in un'isobara invece
 \begin{equation*}
   c_p - c_V = R
 \end{equation*}
-$c$: calore specifico molare
+$c$: calore specifico
 
 \subsubsection{Quantità di calore}
 \begin{equation*}
   Q = C\Delta t = mc\Delta T
 \end{equation*}
 $C$: capacità termica
+
+\subsubsection{Conduzione termica}
+\begin{center}
+  \begin{tikzpicture}
+    % Box
+    \draw (0,0) -- ++(1,0) -- ++(0,1) -- ++(-1,0) -- cycle;
+    \draw[dashed] (0,0) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
+    \draw (0,1) -- ++(0.5,0.4) -- ++(1,0) -- ++(-0.5,-0.4);
+    \draw[dashed] (0.5,1.4) -- ++(0,-1);
+    \draw (1.5,1.4) -- ++(0,-1);
+    \draw (1,0) -- ++(0.5,0.4);
+    
+    \node[red] at (1.2,0.5){$S$};
+    \node[blue] at (-0.5,0.5){$T_1$};
+    \node[blue] at (1.8,0.5){$T_2$};
+    \draw[|<->|] (0,-0.2) -- ++(1,0)
+      node[pos=0.5,below]{$d$};
+  \end{tikzpicture}
+\end{center}
+Se un corpo presenta una differenza di temperatura tra le sue pareti ci sarà uno scambio di calore
+$Q$
+\begin{equation*}
+  \frac{Q}{\Delta t} = \frac{\mu S}{d\Delta T}
+\end{equation*}
+$\mu$: conducibilità termica\\
+$S$: superficie\\
+$d$: spessore del corpo\\
+$\Delta T$: variazione di temperatura
 
 \subsubsection{Temperatura di equilibrio}
 Due sistemi sono in equilibrio termico quando hanno la stessa temperatura\\
@@ -303,7 +328,7 @@ $\Delta U$: variazione di energia interna
 
 \subsubsection{Tabella per i segni di $Q$ e $L$}
 La seguente tabella riassume in breve i segni che la quantità di calore e il lavoro devono avere.
-\tablefirsthead{\toprule & Segno di $Q$ e $L$ & \\ \midrule}
+\tablefirsthead{\toprule Segno &  $Q$ & $L$ \\ \midrule}
 \tablehead{Segno & $Q$ & $L$ \\ \midrule}
 \tablelasttail{\bottomrule}
 \begin{center}
@@ -372,17 +397,24 @@ $c_V$: è il calore specifico di un corpo sottoposto a una trasformazione isocor
       (E) edge (F)
       (F) edge (A);
 
-    \node[anchor=south, yshift=-0.6cm, xshift=0.5cm] at ($(A)!0.5!(B)$){Isobara};
+    \node[anchor=south, yshift=-0.6cm, xshift=0.6cm] at ($(A)!0.5!(B)$){Isobara};
     \node[anchor=south, yshift=-0cm, xshift=-0.6cm] at ($(B)!0.5!(C)$){Isocora};
     \node[above right] at ($(C)!0.5!(D)$){Isoterma};
     \node[right] at ($(D)!0.5!(E)$){Adiabatica};
+
+    \draw[decorate, decoration={snake}, red, ->] (1.5,2.5) -- ++(0.9,0);
+    \draw[decorate, decoration={snake}, red, ->] (1.5,2.2) -- ++(0,-0.7);
+    \draw[decorate, decoration={snake}, red, ->] (3,3.3) -- ++(-0.5,-0.5);
+    \draw[decorate, decoration={snake}, red, ->] (0.5,1.5) -- ++(0.9,0);
+    \draw[decorate, decoration={snake}, blue, ->] (3.3,1.5) -- ++(0,-0.9);
   \end{tikzpicture}
 \end{center}
+In rosso è se $Q > 0$, in blu se $Q<0$.
 \begin{equation*}
   L = \sum\limits_{i=0}^{n} Q_i
 \end{equation*}
 Il lavoro è anche pari all'area occpuata dal ciclo (N/$\text{m}^2\text{m}^3$).\\
-Si noti anche che in generale se il ciclo ``va'' in senso antiorario, il lavoro sarà positivo,
+Si noti anche che in generale se il ciclo ``va'' in senso orario, il lavoro sarà positivo,
 negativo altrimenti.
 
 \subsubsection{Trasformazione adiabatica}
@@ -431,24 +463,24 @@ La macchina di Carnot è la più efficiente di tutte che lavora tra le temperatu
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
-  \mu = 1-\frac{\abs{Q_1}}{\abs{Q_2}} = \abs{\frac{L}{Q_2}}
+  \eta = 1-\frac{\abs{Q_1}}{\abs{Q_2}} = \abs{\frac{L}{Q_2}}
 \end{equation*}
 \begin{equation*}
-  \mu_c = 1 - \frac{T_1}{T_2}
+  \eta_c = 1 - \frac{T_1}{T_2}
 \end{equation*}
 $T_1$: sorgente fredda\\
 $T_2$: sorgente calda\\ [\baselineskip]
-La prima formula definisce il rendimento ($\mu$) di una qualsiasi macchina termica, la seconda solo
+La prima formula definisce il rendimento ($\eta$) di una qualsiasi macchina termica, la seconda solo
 per una macchina di Carnot. $Q_1$ è il calore ceduto dalla sorgente fredda, $Q_2$ è quello fornito 
 dalla sorgente calda\\
 La macchina di Carnot dimostra che non può esserci una macchina con efficienza $1$ in quanto non
 si può avere $T_1 = 0\,\text{K}$.\\ [\baselineskip]
 La potenza in una macchina di Carnot è
 \begin{equation*}
-  P = \frac{Q_2\mu}{t} 
+  P = \frac{Q_2\eta}{t} 
 \end{equation*}
 $P$: potenza\\
-$\mu$: rendimento
+$\eta$: rendimento
 
 \subsection{Entropia}\label{subsec:termodinamica:entropia}
 Per definire l'entropia, definiamo la \textbf{disuguaglianza di Clausius} che ci aiuterà a capire la 

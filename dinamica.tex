@@ -8,7 +8,7 @@ Per gli esercizi si vada a pagina~\pageref{ex:dinamica}.
 \subsection{Secondo Principio della Dinamica}
 Una forza è una grandezza vettoriale che porta una modificazione alla velocità del corpo.
 \begin{equation*}
-\vec{F} = m\vec{a}
+  \vec{F} = m\vec{a}
 \end{equation*}
 $F$: forza applicata\\
 $m$: massa del corpo\\
@@ -17,20 +17,16 @@ Se due corpi interagiscono tra loro, si sviluppano due forze, dette comunemente 
 sono uguali in modulo e direzione, ma opposte in verso.\\
 Un corpo è in equilibrio quando la somma delle forze è 0, $\sum F_y = 0\land\sum F_x = 0$.\\
 Le forze si dividono in \emph{conservative} e \emph{dissipative}. Quando agisce una forza conservativa
-l'energia si mantiene, quando una dissipativa si perde energia. Si noti che
-\begin{align*}
-  \text{Energia dissipata} =
-  \text{Energia meccanica}_2 - \text{ Energia meccanica}_1
-\end{align*}
+l'energia si mantiene, quando una dissipativa si perde energia.\\ [\baselineskip]
 Perché un corpo su un tavolo piano sta in equilibrio?
 \begin{center}
   \begin{tikzpicture}
     \draw (0,0) -- (2,0);
     \draw (0.5,0) -- ++(0,0.5) -- ++(0.5,0) -- ++(0,-0.5) -- cycle;
     \draw[-stealth] (0.75,0.25) -- +(0,0.75)
-            node[pos=1,below]{$F_n = -mg$};
+      node[pos=1,below]{$F_n = -mg$};
     \draw[-stealth] (0.75,0.25) -- +(0,-0.75)
-            node[pos=1,above]{$F_p = mg$};
+      node[pos=1,above]{$F_p = mg$};
   \end{tikzpicture}
 \end{center}
 Perché è presente la forza normale che ha verso opposto alla forza premente ma direzione e modulo 
@@ -70,13 +66,13 @@ In un piano inclinato la forza peso fa andare in basso il copo se $P_\| > \mu_s\
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
-\mathcolor{blue}{P_\perp} = \mathcolor{red}{P}\cos\mathcolor{orange}{\alpha}
+  \mathcolor{blue}{P_\perp} = \mathcolor{red}{P}\cos\mathcolor{orange}{\alpha}
 \end{equation*}
 \begin{equation*}
-\mathcolor{cyan}{P_\Vert} = m\cdot a_x = \mathcolor{red}{P}\sin\mathcolor{orange}{\alpha}
+  \mathcolor{cyan}{P_\Vert} = m\cdot a_x = \mathcolor{red}{P}\sin\mathcolor{orange}{\alpha}
 \end{equation*}
 \begin{equation*}
-a_x = g\sin\mathcolor{orange}{\alpha}
+  a_x = g\sin\mathcolor{orange}{\alpha}
 \end{equation*}
 \hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$\\
 $m$: massa del corpo\\
@@ -104,15 +100,15 @@ $\mathcolor{orange}{\alpha}$: alzo del piano
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
-a = \frac{\mathcolor{red}{m_1}g - \mathcolor{blue}{m_2}g\sin\mathcolor{orange}{\alpha}}
-{\mathcolor{red}{m_1}+\mathcolor{blue}{m_2} + \frac{\mathcolor{teal}{m}}{2}}
+  a = \frac{\mathcolor{red}{m_1}g - \mathcolor{blue}{m_2}g\sin\mathcolor{orange}{\alpha}}
+  {\mathcolor{red}{m_1}+\mathcolor{blue}{m_2} + \frac{\mathcolor{teal}{m}}{2}}
 \end{equation*}
 Si noti che questa formula è particolare per questo caso. Si noti anche che 
 $\dfrac{\mathcolor{teal}{m}}{2}$ è
 da aggiungere solo se la massa della carrucola non è trascurabile.\\
 Per una formula più generale si usi
 \begin{equation*}
-a= \frac{\sum \vec{F}}{\sum m}
+  a= \frac{\sum \vec{F}}{\sum m}
 \end{equation*}
 Per gli esercizi relativi a queste tre sottosezioni, si vada a pagina~\pageref{ex:dinamica:piano}.
 \label{subsec:dinamica:piano}
@@ -153,7 +149,7 @@ in cui per esserci equilibrio $\sum M_o=0$ dunque
 Va notato che spesso il peso della leva viene trascurato e la formula di conseguenza per 
 l'equilibrio è
 \begin{equation*}
-   \vec{F_A} AO = \vec{F_C} CO
+  \vec{F_A} AO = \vec{F_C} CO
 \end{equation*}
 La risultante di due forze su un corpo ha intensità pari alla somma delle due forze  e il verso 
 della forza con intensità maggiore  
@@ -197,11 +193,11 @@ $r$: distanza tra il corpo e il centro della circonferenza
 \begin{center}	
   \begin{tikzpicture}
     \draw[black,dashed] (-1,-0.1) arc [start angle = 180, end angle = 0,
-    x radius = 1, y radius = 1];
+      x radius = 1, y radius = 1];
     \draw[<-,thick,red] (0.2,0) -- (1,0)
-    node[pos=0.4, below]{$F_c$};
+      node[pos=0.4, below]{$F_c$};
     \draw[-latex, blue] (0.95,0) -- (0.95, 0.9)
-    node[pos=0.7, right]{$v$};
+      node[pos=0.7, right]{$v$};
     \filldraw[fill=blue!50] (0.8,-0.4) rectangle (1.1,0.4);	
   \end{tikzpicture}
 \end{center}
@@ -220,7 +216,7 @@ I sistemi possono essere essere analizzati come sistemi inerziali in cui
 \end{equation*}
 o sistemi non-inerziali in cui 
 \begin{equation*}
-\sum \text{Forze}=0
+  \sum \text{Forze}=0
 \end{equation*}
 e in cui la $F_{\text{centrifuga}}$ è una delle forze.
 
@@ -290,10 +286,10 @@ un corpo con calcoli semplici.\\ [\baselineskip]
 Una molla compressa o allungata esercita una forza elastica e possiede energia potenziale. È da 
 notare che i due estremi di una molla esercitano forze uguali ma contrarie.
 \begin{equation*}
-\vec{F} = -k\vec{x}
+  \vec{F} = -k\vec{x}
 \end{equation*}
 \begin{equation*}
-U_e = \frac{1}{2}k\Delta x^2
+  U_e = \frac{1}{2}k\Delta x^2
 \end{equation*}
 $k$: costante elastica della molla\\
 $\vec{x}$: spostamento dalla direzione di riposo\\[\baselineskip]
@@ -301,10 +297,10 @@ $\vec{x}$: spostamento dalla direzione di riposo\\[\baselineskip]
 \subsection{Quantità di moto e teorema dell'impulso}\label{subsec:dinamica:impulso}
 \label{subsec:qtaMoto}
 \begin{equation*}
-\vec{q} = m\vec{v}
+  \vec{q} = m\vec{v}
 \end{equation*}
 \begin{equation*}
-\vec{I} = \Delta \vec{q} = \vec{F}\Delta t
+  \vec{I} = \Delta \vec{q} = \vec{F}\Delta t
 \end{equation*}
 $m$: massa del corpo\\
 $\vec{v}$: velocità del corpo\\
@@ -317,22 +313,23 @@ La quantità di moto indica la forza necessaria a fermare un oggetto in moviment
 [\baselineskip]
 Si ricordi che
 \begin{equation*}
-\sum \vec{q} = \text{ costante nel tempo}
+  \sum \vec{q} = \text{ costante nel tempo}
 \end{equation*}
 \begin{center}
   \begin{tikzpicture}
     \draw (0,0) -- (2.5,0);
     \filldraw[orange, fill opacity = 0.3] (0.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
     \filldraw[blue, fill opacity = 0.3] (1.5,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
-    
+
     \draw[-stealth] (0.5,1) -- ++(0.5,0)
-            node[pos=0.5, below]{$\vec{v}_1$};
+      node[pos=0.5, below]{$\vec{v}_1$};
     \draw[stealth-] (1.5,1) -- ++(0.5,0)
-            node[pos=0.5, below]{$\vec{v}_2$};
+      node[pos=0.5, below]{$\vec{v}_2$};
     \node[orange] at (0.75,-0.25){$m_1$};
     \node[blue] at (1.75,-0.25){$m_2$};
     \node at (-2,0){$\mathcolor{orange}{m_1\vec{v_1}}-\mathcolor{blue}{m_2\vec{v_2}} = 0$};
     \node at (-2,1){$t=0$};
+    \draw[dashed] (-3,-0.5) -- (3,-0.5);
   \end{tikzpicture}
 \end{center}
 \begin{center}
@@ -340,10 +337,10 @@ Si ricordi che
     \draw (0,0) -- (2.5,0);
     \filldraw[orange, fill opacity=0.3] (0.75,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
     \filldraw[blue, fill opacity = 0.3] (1.25,0) -- ++(0.5,0) -- ++(0,0.5) -- ++(-0.5,0) -- cycle;
-            
+
     \node[orange] at (1,-0.25){$m_1$};
     \node[blue] at (1.5,-0.25){$m_2$};
-    
+
     \node at (-2,0){$\sum\vec{q}=0$};
     \node at (-2,1){$t=t_1\land\vec{v}=\vec{0}$};
   \end{tikzpicture}
@@ -361,17 +358,17 @@ Per gli esercizi si vada a pagina~\pageref{ex:urti}.
 
 \subsubsection{Elastico}
 \begin{equation*}
-v_{1_f} = \frac{v_{1_i}\left(m_1-m_2\right) + 2m_2v_{2_i}}{m_1+m_2}
+  v_{1_f} = \frac{v_{1_i}\left(m_1-m_2\right) + 2m_2v_{2_i}}{m_1+m_2}
 \end{equation*}
 \begin{equation*}
-v_{2_f} = \frac{2m_1v_{1_i} + v_{2_i}\left(m_2-m_1\right)}{m_1+m_2}
+  v_{2_f} = \frac{2m_1v_{1_i} + v_{2_i}\left(m_2-m_1\right)}{m_1+m_2}
 \end{equation*}
 $_1$: relativo al primo corpo\\
 $_2$: relativo al secondo corpo
 
 \subsubsection{Anaelastico}
 \begin{equation*}
-m_1v_1 + m_2v_2 = v(m_1+m_2)
+  m_1v_1 + m_2v_2 = v(m_1+m_2)
 \end{equation*}
 $_1$: relativo al primo corpo\\
 $_2$: relativo al secondo corpo\\
@@ -386,23 +383,23 @@ un'altezza $h$.
     \coordinate (CenterB1) at ($(ROT) + (0, -1.5)$);
     \coordinate (CenterB2) at ($(ROT) + (2, -1.3)$);
     \coordinate (CenterP) at (0,0.5);
-    
+
     \draw (ROT) -- ($(CenterB1) + (0, 0.5)$);
     \draw (ROT) -- ($(CenterB2) + (-0.5, 0.5)$);
-    
+
     \draw[very thin] ($(CenterB1) + (-0.5, -0.5)$) -- ($(CenterB1) + (-0.5, +0.5)$) --
-    ($(CenterB1) + (0.5, 0.5)$) -- ($(CenterB1) + (0.5, -0.5)$) -- cycle % Box1
-            node[pos=0.5, above, red]{$M$};
+      ($(CenterB1) + (0.5, 0.5)$) -- ($(CenterB1) + (0.5, -0.5)$) -- cycle % Box1
+      node[pos=0.5, above, red]{$M$};
     \draw[very thin,
-    densely dashed] ($(CenterB2) + (-0.5, -0.5)$) -- ($(CenterB2) + (-0.5, +0.5)$) --
-    ($(CenterB2) + (0.5, 0.5)$) -- ($(CenterB2) + (0.5, -0.5)$) -- cycle;
+      densely dashed] ($(CenterB2) + (-0.5, -0.5)$) -- ($(CenterB2) + (-0.5, +0.5)$) --
+      ($(CenterB2) + (0.5, 0.5)$) -- ($(CenterB2) + (0.5, -0.5)$) -- cycle;
     \draw[densely dotted] (CenterB1) -- ($(CenterB1) + (2.5, 0)$);
     \draw[blue, thick] ($(CenterB1) + (2, 0)$) -- (CenterB2)
-            node[pos=0.5, right]{$h$};
+      node[pos=0.5, right]{$h$};
     \draw ($(CenterP) + (-0.2, -0.1)$) -- ($(CenterP) + (0.2, -0.1)$) --
-    ($(CenterP) + (0.2, 0.1)$) -- ($(CenterP) + (-0.2, 0.1)$) -- cycle
-            node[teal, below]{$\vec{v_p}$}
-            node[teal, above left]{$m$};
+      ($(CenterP) + (0.2, 0.1)$) -- ($(CenterP) + (-0.2, 0.1)$) -- cycle
+      node[teal, below]{$\vec{v_p}$}
+      node[teal, above left]{$m$};
   \end{tikzpicture}
 \end{center}
 \begin{equation*}
@@ -422,11 +419,11 @@ Vi è un urto obliquo quando due corpi collidono e si muovono in direzioni diver
     \coordinate (D) at (1.3,0);
     \coordinate (E1) at (2.5, 0.5);
     \coordinate (E2) at (2.5, -0.7);
-    
+
     \draw[orange] (C1) circle (0.25)
-            node[]{A};
+      node[]{A};
     \draw[teal] (C2) circle (0.25)
-            node[]{B};
+      node[]{B};
     \draw[-latex] ($(C1) + (0.35,0)$) -- ($(C2) + (-0.35,0)$);
     \draw[-latex, dashed] (D) -- ($(D) + (1.5, 0)$);
     \draw[-latex] (D) -- (E1);
@@ -463,24 +460,22 @@ verrà presa in considerazione solo una per semplicità.
 \end{alignat*}
 Per gli esercizi si vada a pagina~\pageref{ex:cm}.
 
-\subsection{Momento Angolare e Inerzia}\label{subsec:dinamica:inerzia}
+\subsection{Momento Angolare e Momento d'Inerzia}\label{subsec:dinamica:inerzia}
 Il momento angolare ($\vec{L}$) è la quantità di moto per le rotazioni.\\
 Al concetto di \emph{momento angolare} si accompagna anche quello di \textbf{momento di inerzia}. 
 L'inerzia ($I$) indica quanto un corpo si oppone alla rotazione.\\
 \begin{equation*}
   \vec{L} = \vec{r} \times \vec{q}
 \end{equation*}
-Da qui si nota la relazione stretta con la \nameref{subsec:qtaMoto}.
+Da qui si nota la relazione stretta con la \hyperref[subsec:qtaMoto]{Quantità di moto}.
 \begin{equation*}
-  L = mr^2\omega\sin\alpha = I\omega\sin\alpha
+  L = mr^2\omega = I\omega
 \end{equation*}
 \begin{equation*}
   I = mr^2 = \sum\limits_{i=0}^{n}m_ir_i^2
 \end{equation*}
 $m$: massa del corpo\\
 $\omega$: velocità angolare\\
-$v$: velocità tangenziale\\
-$\alpha$: angolo di rotazione\\
 $q$: quantità di moto\\[\baselineskip]
 Se un corpo ruota rispetto ad un asse parallelo a quello passante per il centro di massa e la distanza
 tra i due assi è $d$ e la massa totale $m$, è
@@ -490,26 +485,25 @@ tra i due assi è $d$ e la massa totale $m$, è
 \begin{center}
   \begin{tikzpicture}
     \draw[dashed] (0,1) -- (0,-1)
-            node[pos=0.1, left]{$CM$};
+      node[pos=0.1, left]{$CM$};
     \draw (0.3,1.3) -- (0.3,-0.7);
     \draw[|<->|] (0,0) -- (0.3,0.3)
-            node[pos=0.5,below]{$d$};
+      node[pos=0.5,below]{$d$};
     \draw[rotate around={15:(0,0)}] ellipse(1 and 0.5);
   \end{tikzpicture}
 \end{center}
 In aggiunta al momento angolare e al momento di inerzia, c'è la \textbf{forza angolare} ($\vec{M}$).
 Molto semplicemente è definita
 \begin{equation*}
+  \vec{M} = \vec{r}\times\vec{F}
+\end{equation*}
+\begin{equation*}
   \vec{M} = I\vec{\alpha}
 \end{equation*}
 \begin{equation*}
-  \Delta L = Mat
+  \Delta L = M\Delta t
 \end{equation*}
 $\alpha$ identifica \hyperref[subsec:mrua]{l'accelerazione angolare}.\\
-Studiando la statica di un corpo rigido, si dimostra che
-\begin{equation*}
-  \vec{M} = \vec{r} \times \vec{F}
-\end{equation*}
 
 \subsubsection{Teorema di König}
 Il teorema di König descrive l'energia cinetica in un moto roto-traslato. Ad esempio una ruota che 
@@ -524,13 +518,13 @@ Per gli esercizi si vada a pagina~\pageref{ex:inerzia}.
 
 \subsubsection{Tabella riassuntiva e di confronto}
 \begin{center}
- \begin{tabular}{M{3cm} M{3cm}}
+  \begin{tabular}{M{3cm} M{3cm}}
     \textbf{Traslatorio} & \textbf{Rotatorio}\\\hline
-    $x=v_0t+\frac{1}{2}gt^2$ & $\theta=\omega t+\frac{1}{2}\alpha t^2$\\\hline
+    $x=v_0t+\frac{1}{2}at^2$ & $\theta=\omega t+\frac{1}{2}\alpha t^2$\\\hline
     $a=\frac{\Delta v}{\Delta t}$ & $\alpha=\frac{\Delta\omega}{\Delta t}$\\\hline
     $F=ma$ & $M=I\alpha$\\\hline
     $q=mv$ & $L=I\omega$\\\hline
-    $\Delta q=F\Delta t$ & $L = M\Delta t$\\\hline
+    $\Delta q=F\Delta t$ & $\Delta L = M\Delta t$\\\hline
     $E_c=\frac{1}{2}mv^2$ & $E_c=\frac{1}{2}I\omega^2$
   \end{tabular} 
 \end{center}

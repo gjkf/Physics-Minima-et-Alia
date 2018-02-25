@@ -411,7 +411,7 @@ viene riportato un diagramma che rappresenta semplicemente la sua struttura.
     }
     \draw ($(MidBar) + (0,1.5)$) -- ++(0.5, 0) -- ++(0, -3) -- ++(-0.5, 0) -- cycle;
 
-    \draw[|<->|, teal] ($(M) + (0.9, -0.2)$) -- ++(0, -0.2)
+    \draw[|<->|, teal] ($(M) + (0.9, -0.3)$) -- ++(0, -0.4)
     node[pos=0.5, right]{$\frac{\mathcolor{blue}{l}\lambda}{\mathcolor{red}{d}}$};
 
     \node[Violet](C) at (1.5, -2) {Distruttiva};
@@ -452,18 +452,55 @@ Se è distruttiva
 \end{equation*}
 
 \subsubsection{Differenza di percorso tra i due fori}
-Nel grafico identificata come $\Delta x$
 \begin{equation*}
   \Delta x = \mathcolor{red}{d}\sin\mathcolor{orange}{\theta_n}
 \end{equation*}
-Se l'angolo è riferito ad una frangia costruttiva è anche
+Se l'angolo è riferito ad una frangia costruttiva è 
 \begin{equation*}
   \Delta x = n\mathcolor{teal}{\lambda}
 \end{equation*}
-Se l'angolo è riferito ad una frangia distruttiva è anche
+Se l'angolo è riferito ad una frangia distruttiva è 
 \begin{equation*}
   \Delta x = \left(n+\frac{1}{2}\right)\mathcolor{teal}{\lambda}
 \end{equation*}
+
+\subsection{Diffrazione}
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,0);
+    \coordinate (C) at (3,1);
+    \coordinate (MidBar) at (3.5,0);
+    \coordinate (P) at (3.5,0.6);
+
+    \draw (0,1.5) -- ++(0,-1.4);
+    \draw (0,-0.1) -- ++(0,-1);
+    
+    \draw[dashed] (A) -- (B);
+    % Bar on right
+    \coordinate (M) at ($(MidBar) + (0, 1.5)$);
+    \foreach \y\c in {0, 0.4, 0.8, ..., 3}{
+      \filldraw[Violet] 
+      ($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
+    }
+    \foreach \y/\c in {0.2, 0.6, 1, ..., 2.6}{
+      \filldraw[Goldenrod!50] 
+      ($(M) + (0,-\y)$) -- ++(0.5, 0) -- ++(0, -0.2) -- ++(-0.5, 0) -- cycle;
+    }
+    \draw ($(MidBar) + (0,1.5)$) -- ++(0.5, 0) -- ++(0, -3) -- ++(-0.5, 0) -- cycle;
+
+    \draw (A) -- (P);
+    \markangle{A}{B}{P}{1}{1.5}{$\theta_n$}
+  \end{tikzpicture}
+\end{center}
+
+Se al posto di due fori ce ne fosse solo uno la prima frangia scura si troverebbe a $\theta$ gradi
+dalla retta perpendicolare alle pareti
+\begin{equation*}
+  \theta = \arcsin\frac{n\lambda}{d}
+\end{equation*}
+$\lambda$: lunghezza d'onda\\
+$d$: larghezza fenditura
 
 \subsection{Lenti e Specchi}\label{subsec:onde:lenti}
 L'obiettivo fondamentale dell'ottica è mettere a fuoco degli oggetti. Generalmente si riscontrano
@@ -542,7 +579,7 @@ rovesciata.
 \subsubsection{Ingrandimento}
 \begin{equation*}
   G = \frac{\mathcolor{red}{h_I}}{\mathcolor{blue}{h_O}} =
-  -\frac{\mathcolor{blue}{q}}{\mathcolor{red}{q}}
+  -\frac{\mathcolor{blue}{q}}{\mathcolor{red}{p}}
 \end{equation*}
 
 \subsubsection{Diottria}
