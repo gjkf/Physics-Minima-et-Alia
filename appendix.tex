@@ -135,7 +135,6 @@ Il cerchio è una figura fondamentale, si dimostra che:
   \text{Circonferenza}&=2\pi r\\
   \text{Area}&=\pi r^2
 \end{align*}
-
 \begin{center}     
   \begin{tikzpicture}
     \draw (0,0) circle (1cm);
@@ -147,7 +146,11 @@ $\pi$ è un numero irrazionale definito appunto come rapporto la lunghezza della
 diametro, il suo valore approssimato è $3,14159$. \\	
 Facendo ruotare un cerchio di $180$ gradi si ottiene una sfera. Il volume di una sfera è pari a
 \begin{equation*}
-  V=\frac{4}{3}\pi r^{2}
+  V=\frac{4}{3}\pi r^3
+\end{equation*}
+La superficie invece
+\begin{equation*}
+  S = 4\pi r^2
 \end{equation*}
 
 \subsection{Equazioni}
@@ -226,7 +229,7 @@ una varibile in un determinato tempo. Vengono definite in molti modi
   ma quello più comune in fisica è il terzo.\\
   Prendiamo un esempio per capire cosa la derivata ricerchi.
   \begin{center}
-    \begin{tikzpicture}[scale=2]
+    \begin{tikzpicture}[scale=1]
       \clip (-0.5,-0.5) rectangle (5,4.2);
       \draw[step=1, very thin] (0,0) grid (4,4);
       \draw[-latex, thick] (0,0) -- (4,0)
@@ -250,7 +253,7 @@ una varibile in un determinato tempo. Vengono definite in molti modi
   \end{align*}
   A queste formule vanno aggiunti alcuni teoremi
   \begin{align*}
-    &\frac{\dif\left[k\cdot f(x) \right]}{\dif x}=kf(x)\qquad
+    &\frac{\dif\left[k\cdot f(x) \right]}{\dif x}=k\frac{\dif f(x)}{\dif x}\qquad
     \frac{\dif[f(x)\pm g(x)]}{\dif x}=\frac{f(x)}{\dif x}\pm \frac{g(x)}{\dif x}\\
     &\frac{\dif [f(x)\cdot g(x)]}{\dif x}=\frac{\dif f(x)}{\dif x}g(x) + 
     f(x)\frac{\dif g(x)}{\dif x}\\

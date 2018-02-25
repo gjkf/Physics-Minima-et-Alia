@@ -16,7 +16,8 @@ Questa d.d.p. è regolata dalla legge di Ohm (vedi pagina~\pageref{par:circElett
 In genere la
 lettera che denota un generatore di differenza di potenziale è o $V$ (dall'unità di misura, Volt),
 o $\mathcal{E}$. Vi è grande differenza soltanto tra generatori \textbf{reali} in cui
-è presente una resistenza interna, quindi si ha che
+è presente una resistenza interna e generatori \textbf{ideali} in cui questa resistenza è nulla , 
+quindi si ha che
 \begin{equation*}
   \mathcal{E} = \overbrace{Ri}^{V} + ri
 \end{equation*}
@@ -671,7 +672,7 @@ Viene definita \textbf{impedenza}
   Z = \sqrt{R^2+(x_L-x_C)^2} 
 \end{equation*}
 \begin{equation*}
-  i(t) = \frac{\mathcal{E}_0}{Z}\sin \left( \omega t+\phi \right)
+  i(t) = \frac{\mathcal{E}_0}{Z}\sin \left( \omega t-\phi \right)
 \end{equation*}
 L'unica cosa che manca da trovare è $\phi$, lo sfasamento. Nel disegno è già evidenziato ed è
 evidente che non è altro se non un angolo tra due vettori, quindi si deduce che

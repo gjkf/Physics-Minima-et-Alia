@@ -263,7 +263,7 @@ I circuiti oscillanti sono dei particolari circuiti LC che generano delle onde e
     to[short] (1,1);
   \end{circuitikz}
 \end{center}
-Quando i condensatore si carica, l'interruttore non fa arrivare corrente all'induttanza. Alla
+Quando il condensatore si carica, l'interruttore non fa arrivare corrente all'induttanza. Alla
 chiusura dell'interruttore, il condensatore si scarica attraverso l'induttanza e questo genera
 nel condensatore un certo campo elettrico che, per le equazioni di Maxwell, genera un campo
 magnetico che propaga l'onda elettromagnetica.\\
@@ -271,11 +271,12 @@ Quest'onda avrà una frequenza pari a
 \begin{equation*}
   f = \frac{1}{2\pi\sqrt{LC}}
 \end{equation*}
-che è la stessa della corrente del circuito. Ovviamente perché l'onda venga ricevuta è necessaria
-un'antenna e un altro circuito oscillante. Per riceve l'onda originale è anche necessario che
-la frequenza del secondo circuito sia uguale a quella del primo.
+Ovviamente perché l'onda venga ricevuta è necessaria un'antenna e un altro circuito oscillante. 
+Per ricevere l'onda originale è anche necessario che la frequenza del circuito ricevente sia uguale
+a quella del mittente.
+
 \subsection{Equazioni di Maxwell nel mezzo}
-Cosa accade alle onde elettromagnetiche quando incontrano un mezzo? Definendo
+Cosa accade alle onde elettromagnetiche che venendo dal vuoto incontrano un mezzo? Definendo
 \begin{equation*}
   \varepsilon = \varepsilon_0\varepsilon_r \quad \mu=\mu_0\mu_r
 \end{equation*}
@@ -285,7 +286,7 @@ Possiamo riscrivere la definizione della velocità
   \frac{1}{\sqrt{\varepsilon_0\mu_0}}\frac{1}{\varepsilon_r\mu_r} =
   \frac{c}{\sqrt{\varepsilon_r\mu_r}}
 \end{equation*}
-In genere però se un'onda si scontra con un mezzo e quindi viene deviato. Possiamo quindi 
+In genere però se un'onda si scontra con un mezzo e quindi viene rifratto. Possiamo quindi 
 riprendere le formule dell'ottica
 \begin{equation*}
   n = \frac{c}{v}
@@ -299,10 +300,10 @@ e quindi
   n = \sqrt{\varepsilon_r\mu_r} 
 \end{equation*}
 \subsection{Polarizzazione}
-Per polarizzare una qualsiasi onda, è necessario che questa sia trasversale. Questo è il caso delle
-onde elettromagnetiche. Polarizzare un'onda significa ``selezionare'' quali raggi passano.
+Polarizzare un'onda significa ``selezionare'' una parte e bloccarne un'altra.
 \subsubsection{Legge di Malus}
-La legge di Malus definisce l'intensità dell'onda dopo la polarizzazione a seconda se la sorgente
+I polaroid sono dei filtri polarizzatori, caratterizzati da un'asse di trasmissione.\\
+La legge di Malus definisce l'intensità dell'onda dopo il polaroid a seconda se la sorgente
 è polarizzata o meno.
 \begin{center}
   \begin{tikzpicture}
@@ -317,6 +318,8 @@ La legge di Malus definisce l'intensità dell'onda dopo la polarizzazione a seco
     \draw[->] (4,0) -- (5,0)
       node[pos=0.5,below]{$I = \frac{1}{2}I_0$};
     \node at (0,-1) {Non polarizzata};
+    \draw [->] (6,0) -- ++(60:1);
+    \draw [->] (6,0) -- ++(240:1);
   \end{tikzpicture}
 \end{center}
 Queta vale se la sorgente di luce non è polarizzata, quindi una lampadina ad esempio.
@@ -339,12 +342,15 @@ Queta vale se la sorgente di luce non è polarizzata, quindi una lampadina ad es
     \draw[->] (4,0) -- (5,0)
       node[pos=0.5,below]{$I = I_0\cos^2\theta$};
     \node at (0,-1) {Polarizzata};
+    \draw[->] (6,0) -- ++(60:1);
+    \draw[->] (6,0) -- ++(240:1);
   \end{tikzpicture}
 \end{center}
+$\theta$: angolo tra l'asse di trasmissione e quello della luce polarizzata
 
 \subsubsection{Angolo di Brewster}
 Ogni raggio riflesso e rifratto è parzialmente polarizzato. L'angolo di Brewster è quel particolare
-angolo in cui la polarizzazione è completa.
+angolo in cui la polarizzazione è massima ed è rappresentato dal seguente disegno.
 \begin{center}
   \begin{tikzpicture}
     \draw (0,-2) -- (0,0) -- ++(3,0) -- ++(0,-2);
@@ -361,17 +367,13 @@ angolo in cui la polarizzazione è completa.
     \markangle[orange]{Center}{OutB}{OutR}{1}{1.5}{$\ang{90}$}
   \end{tikzpicture}
 \end{center}
-Dato che gli indici di rifrazione sono diversi, possiamo scrivere
+Dato che gli indici di rifrazione sono diversi, possiamo scrivere per la relazione di Snell
 \begin{equation*}
   n_1\sin\theta_B = n_2\sin\hat{r}
 \end{equation*}
-Però $\hat{r} = 90-\theta_B$ e quindi
+e vedendo che $\hat{r} = 90-\theta_B$ e quindi
 \begin{equation*}
-  n_1\sin\theta_B = n_2\sin(90-\theta_B)
-\end{equation*}
-Isolando
-\begin{equation*}
-  \frac{\sin\theta_B}{\cos\theta_B} = \frac{n_2}{n_1}
+  n_1\sin\theta_B = n_2\sin(90-\theta_B) = \cos\theta_B
 \end{equation*}
 E quindi
 \begin{equation*}

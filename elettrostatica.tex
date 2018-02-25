@@ -24,11 +24,9 @@ Il campo elettrico è generato da una carica. Esso è un campo vettoriale, ciò 
 suo punto si associa un vettore.\\ 
 Verranno ora riportate tutte le formule che permettono di trovare o il modulo o il vettore di un
 campo elettrico.
-
-\begin{align*}
-  E &= k\frac{Q}{r^2} &\qquad\text{Solo se puntiforme}\\
-  \vec{E} &= \frac{\vec{F}}{q} &
-\end{align*}
+\begin{equation*}
+  E = k\frac{Q}{r^2}\qquad \vec{E} = \frac{\vec{F}}{q}
+\end{equation*}
 $Q$: carica generatrice del campo\\
 $q$: carica che si trova all'interno del campo generato da $Q$
 
@@ -79,6 +77,46 @@ Il campo elettrico è costante in ogni punto all'interno del condensatore. All'e
 \end{equation*}
 $\sigma$: densità di carica $\left(\frac{Q}{A}\right)$
 
+\subsubsection{Campo elettrico generato da un filo carico}
+Un filo infinitamente lungo genera un campo $E$ uscente se carico positivamente ed entrante se
+negativamente.
+\begin{equation*}
+  E = \frac{2k\lambda}{r}
+\end{equation*}
+$\lambda$: densità lineare di carica\\
+$r$: distanza dal filo
+
+\subsubsection{Campo elettrico generato da una sfera}
+\begin{center}
+  \begin{tikzpicture}[scale=0.2]
+    \draw [black,thick] (0,0)  circle (5) ;
+    \fill[ball color=white!] (0,0) circle (5); 
+    \draw[red,dashed] (0.01,-0.01)--(5,3.63);
+    \draw [red,thick,->](5,3.63)--(6,4.35);
+    \node at (5,3.61){.};
+    \draw[blue,dashed] (0,0)--(-1.4,-2.44);
+    \draw [blue,thick,->](-1.4,-2.5)--(-1.9,-3.39);
+    \node at (-1.39,-2.5){.};
+    \draw [dashed](0,0)--(5,0);
+    \node at (2.6,-0.4) {R};
+  \end{tikzpicture}
+\end{center}
+Una sfera uniformente carica genera un campo E \\ all'esterno pari a:
+\begin{equation*}
+  E=k\frac{Q}{\textcolor{red}{r^{\textcolor{black}{2}}}}
+\end{equation*}
+$Q$: carica dellla sfera\\
+$r$: distanza dal centro della sfera\\ [\baselineskip]
+all'interno invece
+\begin{equation*}
+  E=k\frac{Q}{R^{3}}\textcolor{blue}{r}
+\end{equation*}
+$Q$: carica dellla sfera\\
+$R$: raggio della sfera\\
+$r$: distanza dal centro della sfera\\ [\baselineskip]
+Nel caso si trattasse di una sfera cava all'esterno la formula è invariata, all'interno E è sempre 
+0.
+
 \subsubsection{Energia del campo elettrico}
 \begin{equation*}
   U_E = \frac{1}{2}QV = \frac{1}{2}CV^2 = \frac{1}{2}\frac{Q^2}{C}
@@ -102,23 +140,24 @@ corpo, conoscendo la densità di carica.
 \subsection{Flusso} \label{subsec:flusso}
 Il flusso ($\Phi$) è la quantità di campo elettrico ($\vec{E}$), che 
 attraversa una superficie ($\vec{S}$).\\
-Verranno ora riportate le formule per calcolare il flusso di una superficie.
+Verranno ora riportate le formule per calcolare il flusso.
 
 \begin{alignat*}{2}
-  \Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\vec{E}_\cdot\vec{S_i} &\quad &\\
+  \Phi_S\left(\vec{E}\right) &= \sum\limits_{i=0}^{n}\vec{E}_i\cdot\vec{S_i} &\quad &\\
   \Phi_S\left(\vec{E}\right) &= E\cdot S\cos\theta & &\text{Se } S \text{ è piana e } E \text{ 
   uniforme} 
 \end{alignat*}
 \begin{center}
   \begin{tikzpicture}
     \coordinate (O) at (1,0);
-    \coordinate (A) at (1,2);
+    \coordinate (A) at (1,1.5);
     \coordinate (B) at (1.5,1);
     \draw (0,0) -- ++(2,0);
     \draw (O) -- (A);
     \draw[-stealth] (O) -- (B)
       node[pos=0.6,right]{$\vec{E}$};
     \markangle{O}{A}{B}{0.5}{1.4}{$\theta$}
+    \draw (-1,-0.2) -- ++(3,0) -- ++(30:1) -- ++(-3,0) -- cycle;
   \end{tikzpicture}
 \end{center}
 
@@ -136,11 +175,12 @@ L'energia potenziale elettrica ($U$) e il potenziale elettrico ($V$) sono defini
 \end{alignat*}
 \hyperref[tab:k0]{$k_0$}: $9.11\cdot10^9\,\text{N}\cdot\text{m}^2\text{/C}^2$\\
 $Q$: carica\\
-$r$: distanza\\[\baselineskip]
+$r$: distanza\\
+$\Delta x$: direzione di coordinate tra $V_i$ e $V_f$ lungo la direzione del campo\\[\baselineskip]
 Le superfici equipotenziali sono superfici in cui $V$ è costante per ogni punto.\\[\baselineskip]
 Quanto lavoro deve fare un campo elettrico per spostare una carica?
 \begin{equation*}
-  L = q\left[V_f - V_i\right]
+  L = q\left[V_i - V_f\right]
 \end{equation*}
 $q$: carica spostata\\
 $V_i$: potenziale iniziale\\
@@ -149,22 +189,24 @@ $V_f$: potenziale finale
 \subsubsection{Lavoro di una carica in un condensatore}
 Il lavoro di una carica è equivalente all'energia interna.
 \begin{equation*}
-  \Delta V = -\Delta E\Delta s
+  \Delta V = -\Delta E\Delta x
 \end{equation*}
-$\Delta s$: direzione di coordinate tra $V_i$ e $V_f$ lungo la direzione del campo
+$\Delta x$: direzione di coordinate tra $V_i$ e $V_f$ lungo la direzione del campo
 
 \subsection{Capacità elettrica}\label{sub:elettrostatica:capacita}
 La capacità elettrica indica quanta carica può immagazzinare un conduttore. Verranno ora 
 riportate le formule per calcolarla.
 \begin{alignat*}{2}
   C &= \frac{Q}{V} &\qquad &\\
-  C &= \frac{S\varepsilon}{d} & &\text{Specificamente in un condensatore piano}
+  C &= \frac{S\varepsilon}{d} & &\text{Specificamente in un condensatore piano}\\
+  C &= kr & &\text{In un condensatore sferico di raggio } r
 \end{alignat*}
 $Q$: carica immagazzinata\\
-$V$: differenza di potenziale\\ [\baselineskip]
-Nell'ultima formula, $d$ indica la distanza tra le due armature di un condensatore e $S$ l'area 
-delle superfici del condensatore. Un condensatore può essere di qualunque forma o dimensione si
-voglia. L'ultima formula è la più generale ci sia.
+$V$: differenza di potenziale\\ 
+$d$: distanza tra le armature\\
+$S$: superficie del condensatore\\[\baselineskip]
+Un condensatore può essere di qualunque forma o dimensione si voglia
+
 
 \subsection{Circuitazione}
 La circuitazione di un campo elettrico lungo il percorso da noi scelto è la somma dei prodotti 
