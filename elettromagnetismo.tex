@@ -241,7 +241,7 @@ Quindi
 \end{equation*}
 Sostituendo infine
 \begin{equation*}
-  I=\frac{1}{2}\varepsilon_0E_0^2c=\frac{2}{2\mu_0}B_0^2c=\varepsilon_0E_{eff}^2c=\frac{1}{\mu_0}
+  I=\frac{1}{2}\varepsilon_0E_0^2c=\frac{1}{2\mu_0}B_0^2c=\varepsilon_0E_{eff}^2c=\frac{1}{\mu_0}
   B_{eff}^2c
 \end{equation*}
 
@@ -298,84 +298,4 @@ da cui
 e quindi
 \begin{equation*}
   n = \sqrt{\varepsilon_r\mu_r} 
-\end{equation*}
-\subsection{Polarizzazione}
-Polarizzare un'onda significa ``selezionare'' una parte e bloccarne un'altra.
-\subsubsection{Legge di Malus}
-I polaroid sono dei filtri polarizzatori, caratterizzati da un'asse di trasmissione.\\
-La legge di Malus definisce l'intensità dell'onda dopo il polaroid a seconda se la sorgente
-è polarizzata o meno.
-\begin{center}
-  \begin{tikzpicture}
-    \foreach \a in {0,30,60,...,360}{
-      \draw[->] (0,0) -- (\a:0.5);
-    }
-    \draw[->] (1,0) -- (2,0)
-      node[pos=0.5,below]{$I_0$};
-    \filldraw[draw=black,fill=white,rotate around={-30:(3,0)}] (3,0) ellipse (0.5 and 1);
-    \draw[thin,gray] (3,0) -- ++(60:1);
-    \draw[thin,gray] (3,0) -- ++(240:1);
-    \draw[->] (4,0) -- (5,0)
-      node[pos=0.5,below]{$I = \frac{1}{2}I_0$};
-    \node at (0,-1) {Non polarizzata};
-    \draw [->] (6,0) -- ++(60:1);
-    \draw [->] (6,0) -- ++(240:1);
-  \end{tikzpicture}
-\end{center}
-Queta vale se la sorgente di luce non è polarizzata, quindi una lampadina ad esempio.
-\begin{center}
-  \begin{tikzpicture}
-    \draw[->](0,0) -- ++(30:1);
-    \draw[->] (0,0) -- ++(210:1);
-    \draw[->] (1,0) -- (2,0)
-      node[pos=0.5,below]{$I_0$};
-    \filldraw[draw=black,fill=white,rotate around={-30:(3,0)}] (3,0) ellipse (0.5 and 1);
-    \draw[thin,gray](3,0) -- coordinate(A) ++(60:1);
-    \draw[thin,gray] (3,0) -- ++(240:1);
-    \draw[->](3,0) -- coordinate (B) ++(30:1);
-    \draw[->] (3,0) -- ++(210:1);
-    %\coordinate (A) at (3,0)+(30:1);
-    \coordinate (O) at (3,0);
-    %\coordinate (B) at (3,0)+(60,1);
-    \markangle{A}{O}{B}{0.6}{1.2}{$\text{ }$}
-    \node at (3.7,0.7) {$\theta$};
-    \draw[->] (4,0) -- (5,0)
-      node[pos=0.5,below]{$I = I_0\cos^2\theta$};
-    \node at (0,-1) {Polarizzata};
-    \draw[->] (6,0) -- ++(60:1);
-    \draw[->] (6,0) -- ++(240:1);
-  \end{tikzpicture}
-\end{center}
-$\theta$: angolo tra l'asse di trasmissione e quello della luce polarizzata
-
-\subsubsection{Angolo di Brewster}
-Ogni raggio riflesso e rifratto è parzialmente polarizzato. L'angolo di Brewster è quel particolare
-angolo in cui la polarizzazione è massima ed è rappresentato dal seguente disegno.
-\begin{center}
-  \begin{tikzpicture}
-    \draw (0,-2) -- (0,0) -- ++(3,0) -- ++(0,-2);
-    \coordinate (In) at (0,1);
-    \coordinate (Center) at (1.5,0);
-    \coordinate (OutB) at (3,1.5);
-    \coordinate (OutR) at (3,-1.5);
-    \coordinate (OutM) at (1.5,1.5);
-    \draw[->] (In) -- (Center);
-    \draw[->] (Center) -- (OutB);
-    \draw[->] (Center) -- (OutR);
-    \draw (Center) -- (OutM);
-    \markangle[cyan]{Center}{In}{OutM}{1}{1.5}{$\theta_B$}
-    \markangle[orange]{Center}{OutB}{OutR}{1}{1.5}{$\ang{90}$}
-  \end{tikzpicture}
-\end{center}
-Dato che gli indici di rifrazione sono diversi, possiamo scrivere per la relazione di Snell
-\begin{equation*}
-  n_1\sin\theta_B = n_2\sin\hat{r}
-\end{equation*}
-e vedendo che $\hat{r} = 90-\theta_B$ e quindi
-\begin{equation*}
-  n_1\sin\theta_B = n_2\sin(90-\theta_B) = \cos\theta_B
-\end{equation*}
-E quindi
-\begin{equation*}
-  \theta_B = \arctan\frac{n_2}{n_1}
 \end{equation*}

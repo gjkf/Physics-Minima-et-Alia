@@ -96,16 +96,31 @@ ricavare risolvendo
 \end{equation*}
 
 \begin{center}
-  \begin{tikzpicture}[scale=0.5]
-    \filldraw[cyan] (0,0) circle (1);
-    \draw[->] (0,-1.2) -- ++(0,-0.9)
+  \begin{tikzpicture}[scale=0.2]
+    \draw [black,thick] (0,0)  circle (5);
+    \fill[ball color=cyan!] (0,0) circle (5); 
+    \draw [dashed](0,0)--(5,0);
+    \node at (2.6,-0.4) {R};
+    \draw[->] (0,-5.5) -- ++(0,-2.9)
       node[pos=0.5,right]{$F_p$};
-    \draw[->] (-0.2,1.2) -- ++(0,0.4)
+    \draw[->] (-0.5,5.5) -- ++(0,1.9)
       node[pos=0.5,left]{$F_a$};
-    \draw[->] (0.2,1.2) -- ++(0,0.5)
+    \draw[->] (0.5,5.5) -- ++(0,2.2)
       node[pos=0.5,right]{$F_{\text{archimede}}$};
   \end{tikzpicture}
 \end{center}
+
+%\begin{center}
+%  \begin{tikzpicture}[scale=0.5]
+%    \filldraw[cyan] (0,0) circle (1);
+%    \draw[->] (0,-1.2) -- ++(0,-0.9)
+%      node[pos=0.5,right]{$F_p$};
+%    \draw[->] (-0.2,1.2) -- ++(0,0.4)
+%      node[pos=0.5,left]{$F_a$};
+%    \draw[->] (0.2,1.2) -- ++(0,0.5)
+%      node[pos=0.5,right]{$F_{\text{archimede}}$};
+%  \end{tikzpicture}
+%\end{center}
 
 \subsection{Portata}
 La portata descrive quanto fluido attraversa una sezione nel tempo.

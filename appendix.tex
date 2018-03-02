@@ -224,43 +224,85 @@ Alcune propietà invece dei logaritmi sono
 Le derivate sono una delle basi della fisica, infatti sono utilizzate per calcolare il valore di 
 una varibile in un determinato tempo. Vengono definite in molti modi 
 \begin{equation*}
-  f'(t_0) \qquad \Dif f(t)_{t=t_0}\qquad \left.\frac{\dif f}{\dif t}\right|_{t=t_0}
-  \end{equation*}
-  ma quello più comune in fisica è il terzo.\\
-  Prendiamo un esempio per capire cosa la derivata ricerchi.
-  \begin{center}
-    \begin{tikzpicture}[scale=1]
-      \clip (-0.5,-0.5) rectangle (5,4.2);
-      \draw[step=1, very thin] (0,0) grid (4,4);
-      \draw[-latex, thick] (0,0) -- (4,0)
-        node[pos=1, below]{$t$};
-      \draw[-latex, thick] (0,0) -- (0,4)
-        node[pos=1, left]{$x$};
+  f'(t_0) \qquad
+  \Dif f(t)_{t=t_0}\qquad
+  \frac{\dif f}{\dif t}|_{t=t_0}\qquad
+  \dot{f}
+\end{equation*}
+ma quello più comune in fisica è il terzo.\\
+Prendiamo un esempio per capire cosa la derivata ricerchi.
+\begin{center}
+  \begin{tikzpicture}[scale=1]
+    \clip (-0.5,-0.5) rectangle (5,4.2);
+    \draw[step=1, very thin] (0,0) grid (4,4);
+    \draw[-latex, thick] (0,0) -- (4,0)
+      node[pos=1, below]{$t$};
+    \draw[-latex, thick] (0,0) -- (0,4)
+      node[pos=1, left]{$x$};
 
-      \draw[domain=0:4, very thick, red] plot(\x,{\x^2});
-      \draw[domain=0:3, dashed, thick, green] plot(\x,{3/2*\x});
-      \draw[domain=0.5:4, thick, blue] plot(\x, {2*\x-1});
-    \end{tikzpicture}
-  \end{center}
-  La funzione (che descrive il moto di un corpo) è in rosso, in verde è rappresentata la velocità 
-  media tra $0$ e $2$ secondi e in blu invece è rappresentata la velocità istantanea a 1,5 secondi. 
-  La velocità istantanea in un determinato tempo è ottenuta con le derivate.\\
-  Sono diverse le formule per derivare una funzione ma quelle più usate sono:
-  \begin{align*}
-    \frac{\dif k}{\dif x}&=0 &\quad \frac{\dif x^\alpha}{\dif x}&=\alpha x^{\alpha-1}\\
-    \frac{\dif\sin x}{\dif x}&=\cos x & \frac{\dif\cos x}{\dif x}&=-\sin x\\
-    \frac{\dif\log_ax}{\dif x}&=\frac{1}{x}\log_ae & \frac{\dif a^{x}}{\dif x}&=a^{x}\ln a
-  \end{align*}
-  A queste formule vanno aggiunti alcuni teoremi
-  \begin{align*}
-    &\frac{\dif\left[k\cdot f(x) \right]}{\dif x}=k\frac{\dif f(x)}{\dif x}\qquad
-    \frac{\dif[f(x)\pm g(x)]}{\dif x}=\frac{f(x)}{\dif x}\pm \frac{g(x)}{\dif x}\\
-    &\frac{\dif [f(x)\cdot g(x)]}{\dif x}=\frac{\dif f(x)}{\dif x}g(x) + 
-    f(x)\frac{\dif g(x)}{\dif x}\\
-    &\frac{\dif \left[\frac{f(x)}{g(x)}\right]}{\dif x} =
-    \frac{\frac{\dif f(x)}{\dif x}g(x)-f(x)\frac{\dif g(x)}{\dif x}}{[g(x)]^2}
-  \end{align*}
-  Un esempio: un corpo partendo da fermo cade dunque la sua posizione è descritta da 
-  $x=0.5\cdot9.81\cdot t^{2}$. La derivata della funzione è 
-  $\frac{\dif x}{\dif t}=0,5\cdot9,81\cdot2\cdot t$. 
-  Quindi la sua velocità dopo 3 secondi è pari a $29,4$m/s($0,5\cdot9,81\cdot3$).
+    \draw[domain=0:4, very thick, red] plot(\x,{\x^2});
+    \draw[domain=0:3, dashed, thick, green] plot(\x,{3/2*\x});
+    \draw[domain=0.5:4, thick, blue] plot(\x, {2*\x-1});
+  \end{tikzpicture}
+\end{center}
+La funzione (che descrive il moto di un corpo) è in rosso, in verde è rappresentata la velocità 
+media tra $0$ e $2$ secondi e in blu invece è rappresentata la velocità istantanea a 1,5 secondi. 
+La velocità istantanea in un determinato tempo è ottenuta con le derivate.\\
+Sono diverse le formule per derivare una funzione ma quelle più usate sono:
+\begin{align*}
+  \frac{\dif k}{\dif x}&=0 &\quad \frac{\dif x^\alpha}{\dif x}&=\alpha x^{\alpha-1}\\
+  \frac{\dif\sin x}{\dif x}&=\cos x & \frac{\dif\cos x}{\dif x}&=-\sin x\\
+  \frac{\dif\log_ax}{\dif x}&=\frac{1}{x}\log_ae & \frac{\dif a^{x}}{\dif x}&=a^{x}\ln a
+\end{align*}
+A queste formule vanno aggiunti alcuni teoremi
+\begin{align*}
+  &\frac{\dif\left[k\cdot f(x) \right]}{\dif x}=k\frac{\dif f(x)}{\dif x}\qquad
+  \frac{\dif[f(x)\pm g(x)]}{\dif x}=\frac{f(x)}{\dif x}\pm \frac{g(x)}{\dif x}\\
+  &\frac{\dif [f(x)\cdot g(x)]}{\dif x}=\frac{\dif f(x)}{\dif x}g(x) + 
+  f(x)\frac{\dif g(x)}{\dif x}\\
+  &\frac{\dif \left[\frac{f(x)}{g(x)}\right]}{\dif x} =
+  \frac{\frac{\dif f(x)}{\dif x}g(x)-f(x)\frac{\dif g(x)}{\dif x}}{[g(x)]^2}
+\end{align*}
+Un esempio: un corpo partendo da fermo cade dunque la sua posizione è descritta da 
+$x=0.5\cdot9.81\cdot t^{2}$. La derivata della funzione è 
+$\frac{\dif x}{\dif t}=0,5\cdot9,81\cdot2\cdot t$. 
+Quindi la sua velocità dopo 3 secondi è pari a $29,4$m/s($0,5\cdot9,81\cdot3$).
+
+\subsection{Integrale}
+L'integrazione indefinita di $f(x)$ è  un operazione che determina tutte le funzioni $F(x)+k$ tali 
+che $\frac{d(F(x)+k)}{dx}=f(x)$ ovvero $\int f(x)dx = F(x)+k$.\\
+Queste sono le formule più ricorrenti dell'integrale definito: 
+\begin{gather*}
+  \int kf(x)\,\dif x=k \int f(x)\,\dif x+k\\ 
+  \int\left[a(x)+b(x)\right] \dif x= \int a(x)\,\dif x + \int b(x)\,\dif x+k\\
+  \int x^{\alpha}\,\dif x =\frac{x^{\alpha+1}}{\alpha+1}+k \\
+  \int a^{x}\,\dif x=a^{x}\log_{a}e+k\\
+  \int \sin(x)\,\dif x = -\cos(x)+k\\
+  \int \cos(x)\,\dif x = \sin(x)+k\\
+  \int \frac{1}{x}\,\dif x= \ln \abs{x}+k 
+\end{gather*}
+L'integrale definto invece è $\int_{a}^{b}=F(b)-F(a)$ dove a e b sono due punti finiti. 
+L'area occupata da una funzione tra i punti a e b è 
+\begin{equation*}
+  A=(b-a)V_{\text{medio}}=\int_{a}^{b}f(x)\,\dif x
+\end{equation*}
+Si prenda ad esempio $y=\dfrac{1}{x}$ tra $a=1$ e $b=3$ 
+\begin{center}
+  \begin{tikzpicture}
+    \clip (-0.5,-0.5) rectangle (5,4);
+    \draw[-latex, thick] (0,0) -- (4.3,0)	
+      node[pos=1, below]{$t$};	
+    \draw[-latex, thick] (0,0) -- (0,3.3)	
+      node[pos=1, left]{$x$};	
+    \draw[domain=0.331:4, very thick, red] plot(\x,{\x^-1});	
+    \node[blue] at (1,-.2) {a};
+    \draw [red,dashed,thick] (1,0)--(1,1);
+    \node[blue] at (3,-.2) {b};
+    \draw[red,dashed,thick] (3,0)--(3,.4);
+    \draw [white] (2,0.02)--(2,.48);
+  \end{tikzpicture}
+\end{center}
+L'integrale indefinito è $\int \frac{1}{x}\,\dif x=\log x+k$, l'area è dunque 
+\begin{equation*}
+  A=\int_{1}^{3} \frac{1}{x} dx =log(3)-log(1) \approx 1,01
+\end{equation*}

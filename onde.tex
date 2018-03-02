@@ -98,6 +98,88 @@ $E$: energia della sorgente\\
 $S$: superficie investita dalla luce ($4\pi r^2$)\\
 $P$: potenza
 
+
+\subsection{Polarizzazione}
+Polarizzare un'onda significa ``selezionare'' una parte e bloccarne un'altra.
+\subsubsection{Legge di Malus}
+I polaroid sono dei filtri polarizzatori, caratterizzati da un'asse di trasmissione.\\
+La legge di Malus definisce l'intensità dell'onda dopo il polaroid a seconda se la sorgente
+è polarizzata o meno.
+\begin{center}
+  \begin{tikzpicture}
+    \foreach \a in {0,30,60,...,360}{
+      \draw[->] (0,0) -- (\a:0.5);
+    }
+    \draw[->] (1,0) -- (2,0)
+      node[pos=0.5,below]{$I_0$};
+    \filldraw[draw=black,fill=white,rotate around={-30:(3,0)}] (3,0) ellipse (0.5 and 1);
+    \draw[thin,gray] (3,0) -- ++(60:1);
+    \draw[thin,gray] (3,0) -- ++(240:1);
+    \draw[->] (4,0) -- (5,0)
+      node[pos=0.5,below]{$I = \frac{1}{2}I_0$};
+    \node at (0,-1) {Non polarizzata};
+    \draw [->] (6,0) -- ++(60:1);
+    \draw [->] (6,0) -- ++(240:1);
+  \end{tikzpicture}
+\end{center}
+Queta vale se la sorgente di luce non è polarizzata, quindi una lampadina ad esempio.
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->](0,0) -- ++(30:1);
+    \draw[->] (0,0) -- ++(210:1);
+    \draw[->] (1,0) -- (2,0)
+      node[pos=0.5,below]{$I_0$};
+    \filldraw[draw=black,fill=white,rotate around={-30:(3,0)}] (3,0) ellipse (0.5 and 1);
+    \draw[thin,gray](3,0) -- coordinate(A) ++(60:1);
+    \draw[thin,gray] (3,0) -- ++(240:1);
+    \draw[->](3,0) -- coordinate (B) ++(30:1);
+    \draw[->] (3,0) -- ++(210:1);
+    \coordinate (A) at (3.5,0.86);
+    \coordinate (O) at (3,0);
+    \coordinate (B) at (3.86,0.5);
+    \markangle{O}{A}{B}{0.6}{1.2}{$\text{ }$}
+    \node at (3.75,0.7) {$\theta$};
+    \draw[->] (4,0) -- (5,0)
+      node[pos=0.5,below]{$I = I_0\cos^2\theta$};
+    \node at (0,-1) {Polarizzata};
+    \draw[->] (6,0) -- ++(60:1);
+    \draw[->] (6,0) -- ++(240:1);
+  \end{tikzpicture}
+\end{center}
+$\theta$: angolo tra l'asse di trasmissione e quello della luce polarizzata
+
+\subsubsection{Angolo di Brewster}
+Ogni raggio riflesso e rifratto è parzialmente polarizzato. L'angolo di Brewster è quel particolare
+angolo in cui la polarizzazione è massima ed è rappresentato dal seguente disegno.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,-2) -- (0,0) -- ++(3,0) -- ++(0,-2);
+    \coordinate (In) at (0,1);
+    \coordinate (Center) at (1.5,0);
+    \coordinate (OutB) at (3,1.5);
+    \coordinate (OutR) at (3,-1.5);
+    \coordinate (OutM) at (1.5,1.5);
+    \draw[->] (In) -- (Center);
+    \draw[->] (Center) -- (OutB);
+    \draw[->] (Center) -- (OutR);
+    \draw (Center) -- (OutM);
+    \markangle[cyan]{Center}{In}{OutM}{1}{1.5}{$\theta_B$}
+    \markangle[orange]{Center}{OutB}{OutR}{1}{1.5}{$\ang{90}$}
+  \end{tikzpicture}
+\end{center}
+Dato che gli indici di rifrazione sono diversi, possiamo scrivere per la relazione di Snell
+\begin{equation*}
+  n_1\sin\theta_B = n_2\sin\hat{r}
+\end{equation*}
+e vedendo che $\hat{r} = 90-\theta_B$ e quindi
+\begin{equation*}
+  n_1\sin\theta_B = n_2\sin(90-\theta_B) = \cos\theta_B
+\end{equation*}
+E quindi
+\begin{equation*}
+  \theta_B = \arctan\frac{n_2}{n_1}
+\end{equation*}
+
 \subsection{Rifrazione}\label{subsec:onde:rifrazione}
 Questa sezione si occuperà della luce rifratta/riflessa.\\
 Per gli esercizi si vada a pagina~\pageref{ex:rifrazione}.\\ [\baselineskip]
@@ -148,7 +230,6 @@ caratteristiche:
   \frac{\lambda_1}{\lambda_2} = \frac{c}{v_2}
 \end{equation*}
 Da notare che $\dfrac{c}{v_2}$ vale solo se la luce dal vuoto passa in un altro mezzo.\\
-
 %\subsubsection{Relazione di Snell}
 %La relazione di Snell mette appunto in relazione gli indici di rifrazione con gli angoli $\hat{i}$ 
 %e $\hat{r}$.
@@ -512,6 +593,57 @@ dalla retta perpendicolare alle pareti
 $\lambda$: lunghezza d'onda\\
 $d$: larghezza fenditura
 
+\subsubsection{Reticolo di diffrazione}
+Se invece ci fossero molti fori distanziati in maniera regolare, gli angoli per cui si riscontrano
+frange chiare sono
+\begin{equation*}
+  \theta = \arcsin \frac{n\lambda}{d}
+\end{equation*}
+$n$: numero intero appartenente a $\mathbb{N}$\\
+$\lambda$: lunghezza d'onda\\
+$d$: distanza tra i fori
+
+\subsection{Interferenza su lamine sottili}
+La luce che incide su lamine sottili è in parte rifratta e in parte riflessa
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (O1) at (1,0);
+    \coordinate (OO1) at (1,1);
+    \coordinate (A1) at (0,1);
+    \coordinate (B1) at (2,1);
+    \coordinate (O2) at (2,-1.5);
+    \coordinate (OO2) at (2,-0.5);
+    \coordinate (A2) at (1,0);
+    \coordinate (B2) at (3,0);
+    \coordinate (C2) at (4,1);
+
+    \draw (0,0) -- ++(4,0);
+    \fill[gray, fill opacity = 0.3] (0,0) -- ++(4,0) -- ++(0,-1.5) -- ++(-4,0) -- cycle;
+    
+    \draw[->] (A1) -- (O1);
+    \draw[->] (O1) -- (B1);
+    \draw[thin,gray] (O1) -- (OO1);
+    \markangle{O1}{A1}{OO1}{0.5}{1.4}{$\alpha$}
+
+    \draw[->] (A2) -- (O2);
+    \draw[->] (O2) -- (B2);
+    \draw[->] (B2) -- (C2);
+    \draw[thin,blue] (O2) -- (OO2);
+    \markangle{O2}{A2}{OO2}{0.5}{1.4}{$\beta$}
+    
+    \node at (2.5,1.5) {1};
+    \node at (4.5,0.5) {2};
+  \end{tikzpicture}
+\end{center}
+I raggi 1 e 2 interagendo daranno luogo ad interferenza costruttiva se
+\begin{equation*}
+  D = \frac{\lambda}{2n} \left( m+\frac{1}{2} \right)
+\end{equation*}
+$D$: spessore\\
+$\lambda$: lunghezza d'onda nel vuoto
+$n$: indice di rifrazione
+$m$: numero intero appartenente a $\mathbb{N}$
+
 \subsection{Lenti e Specchi}\label{subsec:onde:lenti}
 L'obiettivo fondamentale dell'ottica è mettere a fuoco degli oggetti. Generalmente si riscontrano
 due problemi di vista: \emph{miopia} (difficoltà a mettere a fuoco lunghe distanze) e 
@@ -594,14 +726,11 @@ rovesciata.
 
 \subsubsection{Diottria}
 Nell'ottica, per trovare la distanza focale della lente da usare negli occhiali, si usi
-\begin{equation*}
-  \frac{1}{f} =  \frac{1}{d} 
-\end{equation*}
-dove $d$ è la distanza da ottenere.
 \begin{align*}
   \text{Miopia:}\,\frac{1}{f}&=\frac{1}{d}-\frac{1}{d_{max}}\\
   \text{Ipermetropia:}\,\frac{1}{f}&=\frac{1}{d}-\frac{1}{d_{min}} 
 \end{align*}
+dove $d$ è la distanza da ottenere.
 $d_{max}$: massima distanza a cui si vede chiaramente\\
 $d_{min}$: minima distanza a cui si vede chiaramente
 

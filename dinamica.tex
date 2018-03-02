@@ -113,6 +113,44 @@ Per una formula più generale si usi
 Per gli esercizi relativi a queste tre sottosezioni, si vada a pagina~\pageref{ex:dinamica:piano}.
 \label{subsec:dinamica:piano}
 
+\subsection{Forza centripeta e centrifuga}
+Una corpo che si muove di moto circolare uniforme ha un accelerazione centripeta $a_c$, la forza 
+centripeta perciò è:   
+\begin{equation*}
+  F_c =m\cdot a_c= m\cdot\frac{v^{2}}{r}
+\end{equation*}
+$v$: velocita del corpo\\
+$r$: distanza tra il corpo e il centro della circonferenza
+\begin{center}	
+  \begin{tikzpicture}
+    \draw[black,dashed] (-1,-0.1) arc [start angle = 180, end angle = 0,
+      x radius = 1, y radius = 1];
+    \draw[<-,thick,red] (0.2,0) -- (1,0)
+      node[pos=0.4, below]{$F_c$};
+    \draw[-latex, blue] (0.95,0) -- (0.95, 0.9)
+      node[pos=0.7, right]{$v$};
+    \filldraw[fill=blue!50] (0.8,-0.4) rectangle (1.1,0.4);	
+  \end{tikzpicture}
+\end{center}
+Una macchina dunque in curva non uscirà di strada se 
+\begin{equation*}
+  m\cdot\frac{v^{2}}{r} \leq \mu_s\cdot F_p
+\end{equation*}
+$\mu_s$: attrito statico\\
+$F_p$: forza premente\\ [\baselineskip]
+
+La "forza centrifuga" è invece solo una forza apparente che sembra esistere nel sistema di 
+riferimento non inerziale del corpo in movimento che ha modulo opposto alla forza centripeta.\\
+I sistemi possono essere essere analizzati come sistemi inerziali in cui 
+\begin{equation*}
+  \sum \text{Forze}=F_{\text{centripeta}}
+\end{equation*}
+o sistemi non-inerziali in cui 
+\begin{equation*}
+  \sum \text{Forze}=0
+\end{equation*}
+e in cui la $F_{\text{centrifuga}}$ è una delle forze.
+
 \subsection{Momento}
 Un corpo rigido è in equilibrio se $\sum M_o=0$.\\ Il momento($M_0$) è l'efficacia di una forza 
 nel far ruotare un corpo intorno ad un punto ed è definito come   
@@ -182,43 +220,6 @@ e si dimostra che
   AC:CB=F_B:F_A
 \end{equation*}
 
-\subsubsection{Forza centripeta e centrifuga}
-Una corpo che si muove di moto circolare uniforme ha un accelerazione centripeta $a_c$, la forza 
-centripeta perciò è:   
-\begin{equation*}
-  F_c =m\cdot a_c= m\cdot\frac{v^{2}}{r}
-\end{equation*}
-$v$: velocita del corpo\\
-$r$: distanza tra il corpo e il centro della circonferenza
-\begin{center}	
-  \begin{tikzpicture}
-    \draw[black,dashed] (-1,-0.1) arc [start angle = 180, end angle = 0,
-      x radius = 1, y radius = 1];
-    \draw[<-,thick,red] (0.2,0) -- (1,0)
-      node[pos=0.4, below]{$F_c$};
-    \draw[-latex, blue] (0.95,0) -- (0.95, 0.9)
-      node[pos=0.7, right]{$v$};
-    \filldraw[fill=blue!50] (0.8,-0.4) rectangle (1.1,0.4);	
-  \end{tikzpicture}
-\end{center}
-Una macchina dunque in curva non uscirà di strada se 
-\begin{equation*}
-  m\cdot\frac{v^{2}}{r} \leq \mu_s\cdot F_p
-\end{equation*}
-$\mu_s$: attrito statico\\
-$F_p$: forza premente\\ [\baselineskip]
-
-La "forza centrifuga" è invece solo una forza apparente che sembra esistere nel sistema di 
-riferimento non inerziale del corpo in movimento che ha modulo opposto alla forza centripeta.\\
-I sistemi possono essere essere analizzati come sistemi inerziali in cui 
-\begin{equation*}
-  \sum \text{Forze}=F_{\text{centripeta}}
-\end{equation*}
-o sistemi non-inerziali in cui 
-\begin{equation*}
-  \sum \text{Forze}=0
-\end{equation*}
-e in cui la $F_{\text{centrifuga}}$ è una delle forze.
 
 \subsection{Lavoro, Energia e Potenza}\label{subsec:dinamica:potenziale}
 Il \emph{lavoro} è una grandezza scalare ed il prodotto della forza applicata sul corpo e lo 
