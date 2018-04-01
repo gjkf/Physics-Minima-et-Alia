@@ -248,7 +248,7 @@ Sostituendo infine
 \subsection{Circuiti oscillanti}
 I circuiti oscillanti sono dei particolari circuiti LC che generano delle onde elettromagnetiche.
 \begin{center}
-  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
+  \begin{tikzpicture}\ctikzset{bipoles/length=.8cm}
     \draw 
     (0,0) 
     to[battery1] (0,1) 
@@ -261,7 +261,7 @@ I circuiti oscillanti sono dei particolari circuiti LC che generano delle onde e
     to[short] (2,0)
     to[L] (2,1)
     to[short] (1,1);
-  \end{circuitikz}
+  \end{tikzpicture}
 \end{center}
 Quando il condensatore si carica, l'interruttore non fa arrivare corrente all'induttanza. Alla
 chiusura dell'interruttore, il condensatore si scarica attraverso l'induttanza e questo genera
