@@ -1910,7 +1910,7 @@ Se la corrente nel resistore di $6\,\Omega$ della figura è di $2\,A$:
 \end{itemize}
 \begin{center}
   \ctikzset{bipoles/length=.8cm}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw 
     (-1,0) node[above]{a}
     to [short, o-] (0,0)
@@ -1945,7 +1945,7 @@ Se la corrente nel resistore di $6\,\Omega$ della figura è di $2\,A$:
 
     \draw(4.5,0)
     to [short, *-o] (5.5,0) node[above]{b};
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 \divisor
 
@@ -1959,7 +1959,7 @@ Per prima cosa, si semplifichino le resistenze da $8\,\Omega$ che sono in parall
 Quindi ora il circuito è come questo
 \begin{center}
   \ctikzset{bipoles/length=.8cm}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw 
     (-1,0) node[above]{a}
     to [short, o-] (0,0)
@@ -1982,7 +1982,7 @@ Quindi ora il circuito è come questo
 
     \draw(4.5,0)
     to [short, *-o] (5.5,0) node[above]{b};
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 
 Semplifichiamolo ulterirormente riducendo le resistenze in serie
@@ -1996,7 +1996,7 @@ Semplifichiamolo ulterirormente riducendo le resistenze in serie
 E il circuito ora rimane molto semplicemente
 \begin{center}
   \ctikzset{bipoles/length=.8cm}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw
     (-1,0) node[above]{a}
     to [short, o-] (0,0)
@@ -2014,7 +2014,7 @@ E il circuito ora rimane molto semplicemente
     to [short] (3,-1)
     to [short, -*] (3,0)
     to [short, -o] (4,0) node[above]{b};
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 
 Sapevamo che nella resistenza da $6\,\Omega$ del primo circuito passvano $2\,A$. Dato che si trova 
@@ -2052,7 +2052,7 @@ Calcolare la resistenza $R_{eq}$ vista ai morsetti \textbf{A-B}
 
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}[scale=1.9]
+  \begin{circuitikz}[scale=1.9]
     \draw (1,0) to[R=$R_1$, -*] (1,1) node[above]{A} % A
     to[R=$R_2$, -*] (2,1) node[above]{C}
     to[R=$R_5$] (3,1)
@@ -2061,7 +2061,7 @@ Calcolare la resistenza $R_{eq}$ vista ai morsetti \textbf{A-B}
     to[short, -*] (1,0) node[below]{B};
     \draw (2,1) to[R=$R_3$] (1,0);
     \draw (2,1) to[R=$R_4$] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 \divisor
 
@@ -2074,7 +2074,7 @@ ipotizziamo che in A si trovi il polo positivo (metterlo in B non cambierebbe nu
 schema chiarisce i versi delle correnti.
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}[scale=1.9]
+  \begin{circuitikz}[scale=1.9]
     \draw (1,0) to[R=$R_1$, i^=$i_4$, -*] (1,1) node[above]{A} % A
     to[R=$R_2$, i^=$i$, -*] (2,1) node[above]{C}
     to[R=$R_5$, i^=$i_1$] (3,1)
@@ -2083,7 +2083,7 @@ schema chiarisce i versi delle correnti.
     to[short, -*] (1,0) node[below]{B};
     \draw (2,1) to[R=$R_3$, i^=$i_2$] (1,0);
     \draw (2,1) to[R=$R_4$, i^=$i_3$] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Come possiamo notare in C la corrente si divide in 3: $i_1$, $i_2$ e $i_3$. Questo cosa ci dice? Che i
 tre collegamenti sono fra di loro in parallelo! Una proprietà dei collegamenti in serie è che la 
@@ -2101,7 +2101,7 @@ Per rendere tutto più chiaro, cominciamo a fare i calcoli e semplificare il cir
 
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}[scale=1.9]
+  \begin{circuitikz}[scale=1.9]
     \draw (1,0) to[R=$R_1$, i^=$i_4$, -*] (1,1) node[above]{A} % A
     to[R=$R_2$, i^=$i$, -*] (2,1) node[above]{C}
     to[short] (3,1)
@@ -2110,7 +2110,7 @@ Per rendere tutto più chiaro, cominciamo a fare i calcoli e semplificare il cir
     to[short, -*] (1,0) node[below]{B};
     \draw (2,1) to[R=$R_3$, i^=$i_2$] (1,0);
     \draw (2,1) to[R=$R_4$, i^=$i_3$] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Avendo già stabilito il verso di percorrenza della corrente e i tipi di collegamento, semplifichiamo
 $R_{5/6}$, $R_4$ e $R_3$.
@@ -2121,12 +2121,12 @@ $R_{5/6}$, $R_4$ e $R_3$.
 
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}[scale=1.9]
+  \begin{circuitikz}[scale=1.9]
     \draw (1,0) to[R=$R_1$, i^=$i_4$, -*] (1,1) node[above]{A} % A
     to[R=$R_2$, i^=$i$, -*] (2,1) node[above]{C}
     to[R=$R_{3/4/5/6}$, i^=$i$, -*] (2,0) node[below]{D}
     to[short, -*] (1,0) node[below]{B};
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Ora semplifichiamo le due resistenze in serie ($R_2$ e l'ultima calcolata)
 \begin{align*}
@@ -2136,14 +2136,14 @@ Ora semplifichiamo le due resistenze in serie ($R_2$ e l'ultima calcolata)
 
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}[scale=1.9]
+  \begin{circuitikz}[scale=1.9]
     \draw (0.5,0) to[R=$R_1$, i^=$i_4$] (0.5,1)
     to[short, -*] (1,1) node[above]{A} % A
     to[short] (1.5,1)
     to[R=$R_{2/3/4/5/6}$, i^=$i$] (1.5,0)
     to[short, -*] (1,0) node[below]{B}
     to[short] (0.5,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 E ora possiamo vedere che le due resistenze sono in parallelo fra di loro e quindi possiamo
 semplificarle con facilità
@@ -2164,7 +2164,7 @@ Per la disposizione mostrata in figura si trovino:
 \end{itemize}
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw (0,0) to[short, o-] (3,0)
     to[short] (4,0)
     to[C, l_=12<\micro\farad>] (4,2)
@@ -2173,7 +2173,7 @@ Per la disposizione mostrata in figura si trovino:
     \draw (2,0) to[C=4<\micro\farad>] (2,1)
     to[C=15<\micro\farad>] (2,2);
     \path node[above] (0,1) {$200\,\text{V}$};
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 \divisor
 
@@ -2187,14 +2187,14 @@ due condensatori in serie.
 Ora il circuito è come questo
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw (0,0) to[short, o-] (1,0)
     to[short] (2,0)
     to[C, l_=12<\micro\farad>] (2,2)
     to[short] (2,2)
     to[short, -o] (0,2);
     \draw (1,0) to[C=3.15<\micro\farad>] (1,2);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Ora basta solo trovare l'equivalente di questi due in parallelo.
 \begin{equation*}
@@ -2263,13 +2263,13 @@ L'energia immagazzinata in un condensatore in funzione del tempo è
 Partiamo dal disegno del circuito
 \begin{center}
   \ctikzset{bipoles/length=1cm}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw (0,0) 
     to[battery1] (0,1)
     to[R] (3,1)
     to[C] (3,0)
     to[switch] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 
 Ora, osservando la formula che ci viene data, possiamo riscriverla

@@ -34,9 +34,9 @@ fare per spostare una carica ($q$) da un polo all'altro
 La corrente generata da questi generatori è corrente \textbf{continua}, ovvero che mantiene il
 verso nel tempo. Il simbolo utilizzato piu frequentemente è
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw(0,0) to[battery1,v>=9<\volt>] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Il polo positivo è quello più grande e la corrente va da $+$ a $-$.
 
@@ -44,9 +44,9 @@ Il polo positivo è quello più grande e la corrente va da $+$ a $-$.
 La corrente generata da questi generatori è corrente \textbf{alternata}, ovvero non ha un verso
 e cambia intensità istante per istante in modo sinusoidale. Il simbolo più usato è
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw(0,0) to[sV, l=9<\volt>] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 
 \subsubsection{Resistenze}
@@ -55,9 +55,9 @@ resistenza alla corrente che le attraversa, permettendo quindi una tensione mino
 elemento. La loro unità di misura è l'Ohm ($\Omega$).\\
 Il loro simbolo è
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw(0,0) to[R, l=10<\kilo\ohm>] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 
 \paragraph{Leggi di Ohm}\label{par:circElettr:elem:res:ohm}
@@ -79,9 +79,9 @@ rilasciata in un attimo la carica immagazzinata in un certo tempo.\\
 La loro unità di misura è il Farad (F).\\
 Il loro simbolo è
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw(0,0) to[C=1<\micro\farad>] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 La capacità di un condensatore è regolata dalle formule descritte a 
 pagina~\pageref{sub:elettrostatica:capacita}.
@@ -91,7 +91,7 @@ L'induttanza è strettamente collegata al fenomeno dell'auto induzione, che è s
 alla \hyperref[subsec:mag:fnl]{Legge di Faraday-Neuman-Lenz}. Per capirla, prendiamo come
 esempio il seguente circuito
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.8cm}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
     \draw 
     (0,0) 
     to[battery1] (1,0)
@@ -99,7 +99,7 @@ esempio il seguente circuito
     to[R] (2,1)
     to[short] (0,1)
     to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Per la legge di Biot-Savart, si genererà un campo magnetico quando si chiude il circuito e scorrerà
 della corrente. Per la Legge di Faraday-Neuman-Lenz (pag.~\pageref{subsec:mag:fnl}) 
@@ -107,9 +107,9 @@ la variazione di campo magnetico produrrà una corrente indotta all'interno di q
 si oppone alla corrente nel momento della carica e la favorisce nella scarica. Questo ci porta all'
 introduzione di un nuovo elemento circuitale: l'induttanza
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw(0,0) to[L] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Il flusso del cicuito è proporzionale alla corrente per la legge di Faraday-Neuman-Lenz. Quindi
 possiamo scrivere
@@ -136,9 +136,9 @@ solenoide. L'unità di misura è l'\textit{Henry} (H).
 L'interruttore permette di interrompere il flusso di carica, ovvero di aprire o chiudere il 
 circuito. Il suo simbolo è
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw(0,0) to[switch] (2,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 
 
@@ -155,7 +155,7 @@ l'altro. Se sono in parallelo invece la corrente si divide, mantenendo costante 
 
 \subsubsection{Capacità equivalente di condensatori in \emph{serie}}
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw
     (0,0)
     to [short] (1,0)
@@ -163,7 +163,7 @@ l'altro. Se sono in parallelo invece la corrente si divide, mantenendo costante 
     to [short] (3,0)
     to [C=$C_2$] (4,0)
     to [short] (5,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
 \begin{equation*}
@@ -172,7 +172,7 @@ Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità
 
 \subsubsection{Capacità equivalente di condensatori in \emph{parallelo}}
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw 
     (-1,0)
     to [short, o-] (0,0)
@@ -191,7 +191,7 @@ Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità
 
     (3,0)
     to [short, *-o] (4,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Questo ``circuito'' può essere ridotto ad un solo condensatore la cui capacità deve essere
 \begin{equation*}
@@ -206,7 +206,7 @@ Due condensatori \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
 
 \subsubsection{Resistenza equivalente di resistenze in \emph{serie}}
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw
     (0,0)
     to [short] (1,0)
@@ -214,7 +214,7 @@ Due condensatori \textbf{in parallelo} mantengono la stessa ddp ($\Delta V$).
     to [short] (3,0)
     to [R=$R_2$] (4,0)
     to [short] (5,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Questo ``circuito'' può essere ridotto ad un solo resistenza la cui resistenza deve essere
 \begin{equation*}
@@ -223,7 +223,7 @@ Questo ``circuito'' può essere ridotto ad un solo resistenza la cui resistenza 
 
 \subsubsection{Resistenza equivalente di resistenze in \emph{parallelo}}
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw 
     (-1,0)
     to [short, o-] (0,0)
@@ -242,7 +242,7 @@ Questo ``circuito'' può essere ridotto ad un solo resistenza la cui resistenza 
 
     (3,0)
     to [short, *-o] (4,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Questo ``circuito'' può essere ridotto ad una sola resistenza la cui resistenza deve essere
 \begin{equation*}
@@ -320,11 +320,11 @@ semplici circuiti che possano esistere
 
 \paragraph{Continua}
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}    
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
     \draw(0,0) to[battery1, v=12<\volt>]   
     (2,0) to[R=1<\kilo\ohm>]
     (2,2) to[short] (0,2) to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Qui le leggi di Ohm si mantengono valide e quindi il cicruito può essere risolto molto 
 semplicemente applicando
@@ -334,11 +334,11 @@ semplicemente applicando
 
 \paragraph{Alternata}
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}    
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
     \draw(0,0) to[sV, l=12<\volt>]   
     (2,0) to[R=1<\kilo\ohm>]
     (2,2) to[short] (0,2) to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Essendo in corrente alternata, l'unica incognita possibile è la corrente
 \begin{equation*}
@@ -353,11 +353,11 @@ ha diversi comportamenti a seconda del tipo di corrente che lo attraversa.
 
 \paragraph{Continua}
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}    
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
     \draw(0,0) to[battery1, v=12<\volt>]   
     (2,0) to[C=1<\micro\farad>]
     (2,2) to[short] (0,2) to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 L'incognita caratteristica di questo circuito è la carica sulle armature del condensatore. Essendo
 in continua, la formula che la regola è quella della capacità elettrica
@@ -368,11 +368,11 @@ in continua, la formula che la regola è quella della capacità elettrica
 
 \paragraph{Alternata}
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}    
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
     \draw(0,0) to[sV, l=12<\volt>]   
     (2,0) to[C=1<\micro\farad>]
     (2,2) to[short] (0,2) to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 In questa situazione, il condensatore non ha più lo scopo di immagazzinare carica e poi rilasciarla
 ma sfasa la corrente.\\
@@ -404,11 +404,11 @@ I circuiti puramente induttivi non hanno ragion d'essere in corrente continua in
 dell'induttanza è quello di fare variare il flusso magnetico che si genera. Se la corrente non
 cambia, non è possibile ottenere questo effetto.
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}    
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}    
     \draw(0,0) to[sV, l=12<\volt>]   
     (2,0) to[L=1<\henry>]
     (2,2) to[short] (0,2) to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 L'induttanza quindi oppone una specie di resistenza creando una corrente contraria per la legge di 
 Faraday-Neuman-Lenz. Quindi
@@ -432,14 +432,14 @@ Anche l'induttanza crea una specie di resistenza, essa prende il nome di
 \subsubsection{Circuiti RC}
 I circuiti RC sono così denominati perché contengono una resistenza e un condensatore.
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
     \draw(1,0)
     to[battery1] (0,0)
     to[short] (0,1)
     to[C] (2,1)
     to[R] (2,0)
     to[switch] (1,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 \paragraph{Carica}
 Questo circuito non ha alcuna funzione se non quella di caricare il condensatore fino a capacità 
@@ -486,7 +486,7 @@ La scarica di un condensatore avviene in maniera molto simile alla carica.
 \subsubsection{Circuiti RL}
 I circuiti RL sono circuiti composti da una resistenza e un induttore
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
     \draw(0,0) 
     to[battery1] (1,0)
     to[switch] (2,0)
@@ -494,7 +494,7 @@ I circuiti RL sono circuiti composti da una resistenza e un induttore
     to[L] (1,1)
     to[short] (0,1)
     to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 In una situazione come questa abbiamo come unica incognita variabile è $i(t)$. Per ricavarla 
 possiamo risolvere l'equazione differenziale
@@ -529,13 +529,13 @@ La formula per la scarica invece è la seguente
 I circuiti RLC sono i più semplici circuiti completi che si studiano in corrente alternata. Essi 
 infatti sono come il seguente
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}
+  \begin{circuitikz}\ctikzset{bipoles/length=.9cm}
     \draw(0,0) to[sV] (2,0) 
     to[R] (2,2)
     to[L] (1,2)
     to[C] (0,2)
     to[short] (0,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Per trovare le formule, dobbiamo introdurre un nuovo concetto, il \textbf{fasore}.
 \paragraph{Fasori}
@@ -696,7 +696,7 @@ Per capire queste leggi, è necessario aver chiaro tre termini
 \end{description}
 Per spiegarli, prendiamo il seguente circuito
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.8cm}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
     \draw (0,0) 
     to[short] (1,0)
     to[R,-o](2,0)
@@ -709,7 +709,7 @@ Per spiegarli, prendiamo il seguente circuito
     to[short](0,0);
     \draw (2,0)
     to[R] (2,-2);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Vediamo due nodi (già evidenziati dai cerchi). Sono presenti 3 rami (tutti i modi per arrivare
 da un nodo all'altro) e 3 maglie (la maglia sinistra con 2 resistenze e una batteria, quella destra
@@ -727,7 +727,7 @@ Questo è anche definito come \textbf{Principio di conservazione di carica}.
 \subsubsection{Legge di Kirchhoff delle maglie}
 Per arrivare alla formula, prendiamo come esempio il seguente circuito
 \begin{center}
-  \begin{tikzpicture}\ctikzset{bipoles/length=.8cm}
+  \begin{circuitikz}\ctikzset{bipoles/length=.8cm}
     \draw (0,0)
     to[battery1, l = $\mathcal{E}_1$] (0,-1)
     to[R = $R_1$,i<_=$i_1$] (0,-2)
@@ -739,7 +739,7 @@ Per arrivare alla formula, prendiamo come esempio il seguente circuito
     to (0,0);
 
     \draw[-stealth] (2,-0.5) arc(-260:70:0.4); 
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 Kirchhoff descrive che
 \begin{equation*}
@@ -840,9 +840,9 @@ Quindi in generale
 \end{equation*}
 Si introduce anche un nuovo elemento circuitale il generatore di corrente alternata
 \begin{center}
-  \begin{tikzpicture}
+  \begin{circuitikz}
     \draw (0,0) to[short] (1,0) to[sV] (2,0) to[short] (3,0);
-  \end{tikzpicture}
+  \end{circuitikz}
 \end{center}
 
 \subsection{Trasformatore}
