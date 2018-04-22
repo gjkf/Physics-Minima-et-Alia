@@ -334,3 +334,65 @@ Sostituendo ora, sono solo conti
   &=c^2{(\Delta t)}^2-{(\Delta x)}^2-{(\Delta y)}^-{(\Delta z)}^2\\
   &={(\Delta\sigma)}^2
 \end{align*}
+
+\subsection{Causalità}
+Come si può definire la causalità di due eventi se due osservatori li vedono in rapporti diversi?
+\begin{center}
+  \begin{tikzpicture}
+    \coordinate (A) at (1,1.5);
+    \coordinate (B) at (4.5,2);
+    \draw[->,thick] (-0.5,0) -- (5,0)
+      node[pos=0.9,below]{$x$};
+    \draw[->,thick] (0,-0.5) -- (0,3)
+      node[pos=0.9,left]{$ct$};
+    \draw[->,thick] (0,0) -- (1,3)
+      node[pos=0.9,above left]{$ct'$};
+    \draw[->,thick] (0,0) -- +(10:5)
+      node[pos=0.9,below right]{$x'$};
+    \draw[->,dashed,very thin] (0,0) -- (3,3);
+    \filldraw (B) circle (0.05)
+      node[above]{B};
+    \filldraw (A) circle (0.05)
+      node[above]{A};
+    \draw[dashed] (B) -- (0,2);
+    \draw[dashed] (A) -- (0,1.5);
+    \draw[dashed] (B) -- +(10:-4.2);
+    \draw[dashed] (A) -- +(10:-0.5);
+  \end{tikzpicture}
+\end{center}
+Come possiamo vedere dall'esempio, secondo l'osservatore $S$, l'evento A viene prima di B, secondo
+$S'$ invece è il contrario. Quindi come può essere A causa di B in modo assoluto? Prese le due
+coordinate $A(x_A,ct_A)$ e $B(x_B,ct_B)$, si ha che se 
+\begin{equation*}
+  \abs{x_B-x_A}\leq c\abs{t_B-t_A}
+\end{equation*}
+allora i due eventi si dicono \textbf{causalmente connessi}. In questo caso infatti si ha che
+\begin{equation*}
+  \left( \Delta\sigma \right)^2=\left( \Delta t \right)^2-\left( \Delta x \right)^2\geq0
+\end{equation*}
+Da questa caratteristica si possono dedurre alcune cose, tra le quali, i coni del presente, 
+passato e futuro.
+\begin{center}
+  \begin{tikzpicture}[scale=0.75]
+    \draw[thick,->] (-4,0) -- (4,0)
+      node[pos=0.9,below]{$x$};
+    \draw[thick,->] (0,-4) -- (0,4)
+      node[pos=0.9,right]{$ct$};
+    \draw (-4,-4) -- (4,4);
+    \draw (-4,4) -- (4,-4);
+    \filldraw[cyan,fill opacity=0.3] (0,3) ellipse (3 and 0.3);
+    \filldraw[orange,fill opacity=0.3] (0,-3) ellipse (3 and 0.3);
+    \filldraw[red,fill opacity=0.3] (3,0) ellipse (0.3 and 3);
+    \filldraw[red,fill opacity=0.3] (-3,0) ellipse (0.3 and 3);
+    \filldraw (1,2) circle (0.05)node[above] {A};
+    \filldraw (2,1) circle (0.05)node[above] {B};
+  \end{tikzpicture}
+\end{center}
+In questo grafico, A e B non sono causalmente connessi in quanto la considione precedente non è
+più verificata.\\
+I coni le cui basi sono rosse sono denominati \textbf{coni del presente}. In questi coni, gli 
+eventi non possono essere causalmente connessi con eventi futuri.Questo perché B ad esempio 
+dovrebbe muoversi ad una velocità maggiore di $c$ per poter rientrare nel cono del futuro.\\
+Il cono con la base azurra è definito \textbf{cono del futuro}, quello con la base arancione
+\textbf{cono del passato}. In questi coni, gli eventi possono essere causalmente connessi fra di 
+loro per tutti gli osservatori, cosa che non accadeva negli altri.

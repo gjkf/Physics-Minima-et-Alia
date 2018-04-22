@@ -295,6 +295,41 @@ notare che i due estremi di una molla esercitano forze uguali ma contrarie.
 $k$: costante elastica della molla\\
 $\vec{x}$: spostamento dalla direzione di riposo\\[\baselineskip]
 
+\subsection{Oscillatore armonico}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (5,0);
+    \draw[pattern=north east lines] (0,0) -- (1,0) -- (1,1) -- (0,1);
+    \draw[decoration={coil},decorate] (1,0.5) -- (3,0.5);
+    \draw (3.5,0.5) circle (0.5);
+  \end{tikzpicture}
+\end{center}
+Quando questa massa si muove di una distanza $x_0$ e poi viene rilasciata, tenderà a tornare alla
+posizione originale. La forza che agisce è pari a $F=-ka$. È una forza non costante, quindi
+può essere vista come derivata
+\begin{equation*}
+  F = m x'' \rightarrow -kx = mx''
+\end{equation*}
+Questa ora è iventata un'equazione differenziale lineare del secondo ordine. Qundi si risolve
+\begin{equation*}
+  m\lambda^2+k=0 \rightarrow \lambda=\pm i \sqrt{\frac{k}{m}}
+\end{equation*}
+e quindi
+\begin{equation*}
+  x=c_1\cos\left(\sqrt{\frac{k}{m}}t\right)+c_2\sin\left(\sqrt{\frac{k}{m}}t\right)
+\end{equation*}
+Sapendo che $x(0)=0$, si sostituisce e ottiene $x_0=c_1$. Ora si deriva
+\begin{equation*}
+  x'=-c_1\sqrt{\frac{k}{m}}\sin\left(\sqrt{\frac{k}{m}}t\right)+
+  c_2\sqrt{\frac{k}{m}}\cos\left(\sqrt{\frac{k}{m}}t\right)
+\end{equation*}
+Ora sapendo che $x'(0)=0$, sostiuiamo e otteniamo che $c_2=\sqrt{\frac{k}{m}}$. A questo punto
+otteniamo la soluzione
+\begin{equation*}
+  x=x_0\cos\left(\sqrt{\frac{k}{m}}t\right)
+\end{equation*}
+Posto $\omega=\sqrt{\frac{k}{m}}$ si ottiene $x=x_0\cos\omega t$.
+
 \subsection{Quantità di moto e teorema dell'impulso}\label{subsec:dinamica:impulso}
 \label{subsec:qtaMoto}
 \begin{equation*}

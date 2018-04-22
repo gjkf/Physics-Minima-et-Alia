@@ -163,6 +163,23 @@ $\mathcolor{orange}{\omega}$: velocità angolare\\
 $x$: posizione dell'oggetto\\
 $\alpha$: accelerazion angolare
 
+\subsubsection{Moto di un pendolo}
+Galileo scoprì che il periodo di un pendolo non dipende né dalla massa né dall'angolo da cui viene
+lasciato cadere.
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (1.5,-2)
+      node[pos=0.5,above right]{$l$};
+    \filldraw (1.5,-2) circle (0.05);
+    \draw[dashed,->] (1.5,-2) to[out=230,in=-50] (-1.5,-2);
+  \end{tikzpicture}
+\end{center}
+\begin{equation*}
+  T = 2\pi\sqrt{\frac{l}{g}}
+\end{equation*}
+$l$: lunghezza\\
+\hyperref[tab:g]{$g$}: $9.81\,\text{m/s}^2$
+
 \subsection{Moto Circolare Uniformemente Accelerato}\label{subsec:cinematica:mrua}
 È un moto circolare avente accelerazione costante in modulo.
 \begin{equation*}
