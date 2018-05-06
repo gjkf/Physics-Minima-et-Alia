@@ -1,0 +1,200 @@
+%!TEX ROOT=formularioFisica.tex
+
+\section{Dimostrazioni}
+Di seguito verrano inserite delle dimostrazioni di formule che si possono incontrare nel formulario.
+La sezione non è assolutamente necessaria, è semplicemente per i più curiosi.
+
+\subsection{Dinamica}
+\subsubsection{Oscillatore armonico}
+\begin{center}
+  \begin{tikzpicture}
+    \draw (0,0) -- (5,0);
+    \draw[pattern=north east lines] (0,0) -- (1,0) -- (1,1) -- (0,1);
+    \draw[decoration={coil},decorate] (1,0.5) -- (3,0.5);
+    \draw (3.5,0.5) circle (0.5);
+  \end{tikzpicture}
+\end{center}
+Quando questa massa si muove di una distanza $x_0$ e poi viene rilasciata, tenderà a tornare alla
+posizione originale. La forza che agisce è pari a $F=-ka$. È una forza non costante, quindi
+può essere vista come derivata
+\begin{equation*}
+  F = m x'' \rightarrow -kx = mx''
+\end{equation*}
+Questa ora è iventata un'equazione differenziale lineare del secondo ordine. Qundi si risolve
+\begin{equation*}
+  m\lambda^2+k=0 \rightarrow \lambda=\pm i \sqrt{\frac{k}{m}}
+\end{equation*}
+e quindi
+\begin{equation*}
+  x=c_1\cos\left(\sqrt{\frac{k}{m}}t\right)+c_2\sin\left(\sqrt{\frac{k}{m}}t\right)
+\end{equation*}
+Sapendo che $x(0)=0$, si sostituisce e ottiene $x_0=c_1$. Ora si deriva
+\begin{equation*}
+  x'=-c_1\sqrt{\frac{k}{m}}\sin\left(\sqrt{\frac{k}{m}}t\right)+
+  c_2\sqrt{\frac{k}{m}}\cos\left(\sqrt{\frac{k}{m}}t\right)
+\end{equation*}
+Ora sapendo che $x'(0)=0$, sostiuiamo e otteniamo che $c_2=\sqrt{\frac{k}{m}}$. A questo punto
+otteniamo la soluzione
+\begin{equation*}
+  x=x_0\cos\left(\sqrt{\frac{k}{m}}t\right)
+\end{equation*}
+Posto $\omega=\sqrt{\frac{k}{m}}$ si ottiene $x=x_0\cos\omega t$.
+
+\subsubsection{Lavoro}
+Si prenda un corpo di massa $m$ con $v_0=0$ su cui è applicata una forza $\vec{F}$ per farlo
+accelerare a velocità $v$. Se si definisce $1$ l'istante iniziale e $2$ quello finale, nella
+meccanica classica il lavoro è pari a
+\begin{equation*}
+  L = \int\limits_{1}^{2} \vec{F}\dif\vec{r}
+\end{equation*}
+Dato che
+\begin{equation*}
+  \vec{F} = \der{\vec{q}}{t}
+\end{equation*}
+si ha che
+\begin{align*}
+  L &= \int\limits_{1}^{2} \der{\vec{q}}{t}\dif\vec{r}=
+  \int\limits_{1}^{2}\dif\vec{q}\der{\vec{r}}{t}=\int\limits_{1}^{2} \vec{v}\dif\vec{q}=
+  \int\limits_{1}^{2} mv\dif\vec{v}=\\
+  &=m \int\limits_{1}^{2} v\dif v=
+  \left.m \frac{v^2}{2}\right|_0^v=\frac{1}{2}mv^2
+\end{align*}
+
+\subsection{Circuiti elettrici}
+\subsubsection{Circuito RC}
+\begin{center}
+  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}
+    \draw(1,0)
+      to[battery1] (0,0)
+      to[short] (0,1)
+      to[C] (2,1)
+      to[R] (2,0)
+      to[switch] (1,0);
+  \end{tikzpicture}
+\end{center}
+Per la legge di Kirchhoff
+\begin{equation*}
+  \mathcal{E} = \mathcal{E}_R + \mathcal{E}_C
+\end{equation*}
+e quindi
+\begin{equation*}
+  \mathcal{E} = Ri + \frac{q}{C}=R\der{q}{t}+\frac{q}{C}
+\end{equation*}
+Alla chiusura dell'interruttore sappiamo che $q(0)=0$. Quindi abbiamo un problema di Cauchy.
+\begin{equation*}
+  \begin{cases}
+    \mathcal{E} = R\der{q}{t}+\frac{q}{C}\\
+    q(0) = 0
+  \end{cases}
+\end{equation*}
+L'equazione differenziale è a variabili separabili, quindi islando le funzioni in $t$
+\begin{equation*}
+  \der{q}{t}=\frac{C\mathcal{E}-q}{RC}
+\end{equation*}
+e successivamente
+\begin{align*}
+  -\int\frac{-\dif q}{C\mathcal{E}-q}&=\int\frac{1}{RC}\dif t\\
+  \ln\abs{C\mathcal{E}-q}&=\frac{1}{RC}t+c\\
+  \abs{C\mathcal{E}-q} &= e^{\frac{1}{RC}t}e^c\\
+  C\mathcal{E}-q&=\pm e^{-\frac{t}{RC}}\underbrace{e^c}_{\omega}\\
+  q&=-C-\omega e^{-\frac{t}{RC}}\\
+  q(t) &= C\mathcal{E}\left(1-e^{-\frac{t}{RC}}\right)
+\end{align*}
+Avendo anche l'altra informazione, sostituiamo
+\begin{equation*}
+  0=C\mathcal{E}-\omega e^0 \rightarrow \omega = C\mathcal{E}
+\end{equation*}
+
+\subsubsection{Circuito RL}
+\begin{center}
+  \begin{tikzpicture}\ctikzset{bipoles/length=.9cm}
+    \draw(0,0) 
+      to[battery1] (1,0)
+      to[switch] (2,0)
+      to[R] (2,1)
+      to[L] (1,1)
+      to[short] (0,1)
+      to[short] (0,0);
+  \end{tikzpicture}
+\end{center}
+Per la legge di Kirchhoff
+\begin{equation*}
+  \mathcal{E} = L\der{i}{t}+Ri
+\end{equation*}
+Essendo un'equazione differenziale lineare del primo ordine in $i(t)$, è possibile riscriverla
+come
+\begin{equation*}
+  \der{i}{t}=-\frac{R}{L}i+\frac{\mathcal{E}}{L}
+\end{equation*}
+La soluzione è perciò del tipo
+\begin{equation*}
+  i(t) = Ce^{-\frac{R}{L}}+\frac{V}{R}
+\end{equation*}
+Avendo però la condizione data dal problema di Cauchy $i(0)=0$, si ottiene
+\begin{equation*}
+  i(t)=\frac{\mathcal{E}}{R}\left( 1-e^{-\frac{R}{L}}t \right)
+\end{equation*}
+\subsection{Relatvità}
+\subsubsection{Invariante spazio-temporale}
+\begin{equation*}
+  {(\Delta\sigma)}^2={(c\Delta t)}^2-{(\Delta S)}^2
+\end{equation*}
+Dove $\Delta S$ è la differenza della variazione di tutte le coordinate. Si ha quindi che
+\begin{align*}
+  \Delta x' &= \gamma(\Delta x-v\Delta t)\\
+  \Delta y' &= \Delta y\\
+  \Delta z' &= \Delta z\\
+  \Delta t' &= \gamma \left( \Delta t-\frac{v}{c^2}\Delta x \right)
+\end{align*}
+Sostituendo
+\begin{align*}
+  {(\Delta\sigma')}^2 
+  &= {(c\Delta t')}^2-{(\Delta x')}^2-{(\Delta y')}^2-{(\Delta z')}^2\\
+  &= {\left(c\left(\gamma \left( \Delta t-\frac{v}{c^2}\Delta x \right)\right)\right)}^2-
+  {\left( \gamma \left( \Delta x-v\Delta t \right) \right)}^2-\\
+  &{(\Delta y)}^2-{(\Delta z)}^2\\
+  &= c^2\gamma^2 \left[ {(\Delta t)}^2+\frac{v^2}{c^2}{(\Delta x)}^2-\frac{2v}{c^4}{(\Delta x)}^2 -
+\frac{2v}{c^2}\Delta x\Delta t\right]-\\
+&\gamma^2({(\Delta x)}^2+v^2{(\Delta t)}^2-2\Delta x\Delta t)-{(\Delta y)}^2-{(\Delta z)}^2\\
+&=\gamma^2 \left[ c^2{(\Delta t)}^2+\frac{v^2}{c^4}{(\Delta x)}^2-v{(\Delta t)}^2 \right]-
+{(\Delta y)}^2-{(\Delta z)}^2\\
+&=\gamma^2 \left[ (c^2-v^2){(\Delta t)}^2-\left( 1-\frac{v^2}{c^2}
+  {(\Delta x)}^2 \right){(\Delta x)}^2 \right]-\\
+  &{(\Delta y)}^2-
+  {(\Delta z)}^2\\
+  &=\frac{c^2}{c^2v^2}\left[ (c^2-v^2){(\Delta t)}^2-\left( \frac{c^2-v^2}{v^2}
+  \right){(\Delta x)}^2 \right]-\\
+  &{(\Delta y)}^2-{(\Delta z)}^2\\
+  &=c^2{(\Delta t)}^2-{(\Delta x)}^2-{(\Delta y)}^-{(\Delta z)}^2\\
+  &={(\Delta\sigma)}^2
+\end{align*}
+
+\subsubsection{Lavoro relativistico}
+\subsubsection{Lavoro}
+Si prenda una particella di massa $m$ con $v_0=0$ su cui è applicata una forza $\vec{F}$ per farla
+accelerare a velocità $v$. Se si definisce $1$ l'istante iniziale e $2$ quello finale, nella
+meccanica classica il lavoro è pari a
+\begin{equation*}
+  L = \int\limits_{1}^{2} \vec{F}\dif\vec{r}
+\end{equation*}
+Dato che
+\begin{equation*}
+  \vec{F} = \der{\vec{q}}{t}
+\end{equation*}
+si ha che
+\begin{align*}
+  L &= \int\limits_{1}^{2} \der{\vec{q}}{t}\dif\vec{r}= \int\limits_{1}^{2} \vec{v}\dif\vec{q}=
+  \left.\vphantom{\int}vq\right|_0^q-\int\limits_{0}^{v} q\dif v=\\
+    &=vq-\int\limits_{0}^{v} m\gamma v\dif v=  
+    vq-m \int\limits_{0}^{v} \frac{v\dif v}{\sqrt{1-\frac{v^2}{c^2}}}=\\
+    &=vq-m \int\limits_{0}^{v} \left( 1-\frac{v^2}{c^2} \right)^{-\frac{1}{2}}\dif v=
+    vq-\frac{mc^2}{2}
+    \int\limits_{0}^{v} -\frac{2v}{c^2}\left( 1-\frac{v^2}{c^2} \right)^{-\frac{1}{2}}\dif v=\\
+    &=vq+\frac{mc^2}{2}\left.\left( 1-\frac{v^2}{c^2}  \right)^{\frac{1}{2}}\cdot2\right|_0^v=
+    vq+\frac{mc^2}{2} \left[ \frac{\left(1-\frac{v^2}{c^2}\right)^{\frac{1}{2}}}{\frac{1}{2}}-
+    \frac{1}{\frac{1}{2}}\right]=\\
+    &=vq+mc^2\left(\sqrt{1-\frac{v^2}{c^2}}-1\right)=\frac{mv}{\sqrt{1-\frac{v^2}{c^2}}}\cdot v+
+    mc^2\sqrt{1-\frac{v^2}{c^2}}-mc^2=\\
+    &=\frac{mv^2+mc^2\left( 1-\frac{v^2}{c^2} \right)}{\sqrt{1-\frac{v^2}{c^2}}}-mc^2=
+    mc^2\gamma-mc^2
+  \end{align*}
