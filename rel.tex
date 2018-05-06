@@ -309,34 +309,6 @@ definita come
   {(\Delta\sigma)}^2={(c\Delta t)}^2-{(\Delta S)}^2
 \end{equation*}
 Dove $\Delta S$ è la differenza della variazione di tutte le coordinate. Si ha quindi che
-\begin{align*}
-  \Delta x' &= \gamma(\Delta x-v\Delta t)\\
-  \Delta y' &= \Delta y\\
-  \Delta z' &= \Delta z\\
-  \Delta t' &= \gamma \left( \Delta t-\frac{v}{c^2}\Delta x \right)
-\end{align*}
-Sostituendo ora, sono solo conti
-\begin{align*}
-  {(\Delta\sigma')}^2 
-  &= {(c\Delta t')}^2-{(\Delta x')}^2-{(\Delta y')}^2-{(\Delta z')}^2\\
-  &= {\left(c\left(\gamma \left( \Delta t-\frac{v}{c^2}\Delta x \right)\right)\right)}^2-
-  {\left( \gamma \left( \Delta x-v\Delta t \right) \right)}^2-\\
-  &{(\Delta y)}^2-{(\Delta z)}^2\\
-  &= c^2\gamma^2 \left[ {(\Delta t)}^2+\frac{v^2}{c^2}{(\Delta x)}^2-\frac{2v}{c^4}{(\Delta x)}^2 -
-  \frac{2v}{c^2}\Delta x\Delta t\right]-\\
-  &\gamma^2({(\Delta x)}^2+v^2{(\Delta t)}^2-2\Delta x\Delta t)-{(\Delta y)}^2-{(\Delta z)}^2\\
-  &=\gamma^2 \left[ c^2{(\Delta t)}^2+\frac{v^2}{c^4}{(\Delta x)}^2-v{(\Delta t)}^2 \right]-
-  {(\Delta y)}^2-{(\Delta z)}^2\\
-  &=\gamma^2 \left[ (c^2-v^2){(\Delta t)}^2-\left( 1-\frac{v^2}{c^2}
-  {(\Delta x)}^2 \right){(\Delta x)}^2 \right]-\\
-  &{(\Delta y)}^2-
-  {(\Delta z)}^2\\
-  &=\frac{c^2}{c^2v^2}\left[ (c^2-v^2){(\Delta t)}^2-\left( \frac{c^2-v^2}{v^2}
-  \right){(\Delta x)}^2 \right]-\\
-  &{(\Delta y)}^2-{(\Delta z)}^2\\
-  &=c^2{(\Delta t)}^2-{(\Delta x)}^2-{(\Delta y)}^-{(\Delta z)}^2\\
-  &={(\Delta\sigma)}^2
-\end{align*}
 
 \subsection{Causalità}
 Come si può definire la causalità di due eventi se due osservatori li vedono in rapporti diversi?
@@ -415,34 +387,10 @@ meccanica classica il lavoro è pari a
 \begin{equation*}
   L = \int\limits_{1}^{2} \vec{F}\dif\vec{r}
 \end{equation*}
-Dato che
-\begin{equation*}
-  \vec{F} = \der{\vec{q}}{t}
-\end{equation*}
-si ha che
-\begin{equation*}
-  L= \int\limits_{1}^{2} \der{\vec{q}}{t}\dif\vec{r}=
-  \int\limits_{1}^{2}\dif\vec{q}\der{\vec{r}}{t}=\int\limits_{1}^{2} \vec{v}\dif\vec{q}=
-  \int\limits_{1}^{2} mv\dif\vec{v}=m \int\limits_{1}^{2} v\dif v=
-  \left.m \frac{v^2}{2}\right|_0^v=\frac{1}{2}mv^2
-\end{equation*}
 Nella dinamica relativistica invece la faccenda è più complicata.
-\begin{align*}
-  L &= \int\limits_{1}^{2} \der{\vec{q}}{t}\dif\vec{r}= \int\limits_{1}^{2} \vec{v}\dif\vec{q}=
-  \left.\vphantom{\int}vq\right|_0^q-\int\limits_{0}^{v} q\dif v=\\
-  &=vq-\int\limits_{0}^{v} m\gamma v\dif v=  
-  vq-m \int\limits_{0}^{v} \frac{v\dif v}{\sqrt{1-\frac{v^2}{c^2}}}=\\
-  &=vq-m \int\limits_{0}^{v} \left( 1-\frac{v^2}{c^2} \right)^{-\frac{1}{2}}\dif v=
-  vq-\frac{mc^2}{2}
-  \int\limits_{0}^{v} -\frac{2v}{c^2}\left( 1-\frac{v^2}{c^2} \right)^{-\frac{1}{2}}\dif v=\\
-  &=vq+\frac{mc^2}{2}\left.\left( 1-\frac{v^2}{c^2}  \right)^{\frac{1}{2}}\cdot2\right|_0^v=
-  vq+\frac{mc^2}{2} \left[ \frac{\left(1-\frac{v^2}{c^2}\right)^{\frac{1}{2}}}{\frac{1}{2}}-
-  \frac{1}{\frac{1}{2}}\right]=\\
-  &=vq+mc^2\left(\sqrt{1-\frac{v^2}{c^2}}-1\right)=\frac{mv}{\sqrt{1-\frac{v^2}{c^2}}}\cdot v+
-  mc^2\sqrt{1-\frac{v^2}{c^2}}-mc^2=\\
-  &=\frac{mv^2+mc^2\left( 1-\frac{v^2}{c^2} \right)}{\sqrt{1-\frac{v^2}{c^2}}}-mc^2=
-  mc^2\gamma-mc^2
-\end{align*}
+\begin{equation*}
+  L = mc^2\gamma-mc^2
+\end{equation*}
 Notiamo quindi che l'energia cinetica di una particella ha due componenti. Viene definita
 $E_0=mc^2$ l'energia a riposo. Si ha quindi che
 \begin{equation*}

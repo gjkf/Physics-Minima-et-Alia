@@ -32,7 +32,13 @@ bordercolor=Plum,#1]{#2}}
 
 \setlength{\marginparwidth}{2cm} % For better TODO's display
 
-\usepackage{hyperref}
+\usepackage[pdftex,
+pdfauthor={Davide Cossu, Stefano D'Agaro},
+pdftitle={Formulario di Fisica},
+pdfsubject={Fisica},
+pdfkeywords={fisica, formulario, formule},
+pdfproducer={LaTeX with hyperref},
+pdfcreator={pdflatex with hyperref}]{hyperref}
 \hypersetup{
   colorlinks,
   citecolor=black,
@@ -91,7 +97,7 @@ bordercolor=Plum,#1]{#2}}
   % put mark
   \node at ($(#2)!#6!(middle)$) {#7};
 }
-
+\makeatletter
 \def\mathcolor#1#{\@mathcolor{#1}}
 \def\@mathcolor#1#2#3{%
   \protect\leavevmode
@@ -99,7 +105,7 @@ bordercolor=Plum,#1]{#2}}
   \color#1{#2}#3%
   \endgroup
 }
-
+\makeatother
 % For better visual in tables
 \renewcommand*{\arraystretch}{2}
 % To center with m{}
@@ -228,7 +234,7 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
     \label{tab:mT}
     $m_{\text{Terra}}$ & Massa della Terra & $5.9\cdot10^{24}$ & $\text{kg}$\\ \midrule
     \label{tab:rT}
-  $r_{\text{Terra}}$ & Raggio della Terra & $6378$ & $\text{km}$\\ \midrule 
+    $r_{\text{Terra}}$ & Raggio della Terra & $6378$ & $\text{km}$\\ \midrule 
     \label{tab:patm} 
     \multirow{5}[1]{*}{$p_{atm}$} & \multirow{5}[1]{1.8cm}{\centering Pressione atmosferica} & 
     $1$ & $\text{atm}$\\
@@ -336,6 +342,7 @@ Le unità in grassetto, sono le unità fondamentali.\newpage
 \input{rel}
 \include{ex}
 \include{appendix}
+\include{dimostrazioni}
 
 % List of TODOs
 \newpage
