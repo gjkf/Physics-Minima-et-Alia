@@ -149,7 +149,7 @@ propagazione
     \draw[thick,red] plot[domain=0:4.5,samples=200] (\x,{cos(deg(pi*\x))},0);
     \draw[gray,thick,green] plot[domain=0:4.5,samples=200] (\x,0,{cos(deg(pi*\x))});
     % Arrows
-    \foreach \x in {0.1,0.3,...,4.4} {
+    \foreach \x in {0.1,0.3,...,4.4} {%
       \draw[->,help lines] (\x,0,0) -- (\x,{cos(deg(pi*\x))},0);
       \draw[->,help lines] (\x,0,0) -- (\x,0,{cos(deg(pi*\x))});
     }
@@ -193,7 +193,7 @@ Quale volume considerare? Possiamo prendere quello che è presente in un periodo
     \draw[thick,red] plot[domain=0:2.0,samples=200] (\x,{cos(deg(pi*\x))},0);
     \draw[gray,thick,green] plot[domain=0:2.0,samples=200] (\x,0,{cos(deg(pi*\x))});
     % Arrows
-    \foreach \x in {0.1,0.3,...,1.9} {
+    \foreach \x in {0.1,0.3,...,1.9} {%
       \draw[->,help lines] (\x,0,0) -- (\x,{cos(deg(pi*\x))},0);
       \draw[->,help lines] (\x,0,0) -- (\x,0,{cos(deg(pi*\x))});
     }

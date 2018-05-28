@@ -148,20 +148,20 @@ pdfcreator={pdflatex with hyperref}]{hyperref}
 \fancyhead{} % clear all header fields
 \renewcommand{\headrulewidth}{0pt} % no line in header area
 \fancyfoot{} % clear all footer fields
-\fancyfoot[LE,RO]{
+\fancyfoot[LE,RO]{%
   \thepage
 }
-\fancyfoot[RE,LO]{
+\fancyfoot[RE,LO]{%
   ``Fatti non foste a viver come bruti ma per seguir virtute e canoscenza'' - Dante Alighieri, 
   ``Inferno''
 }
-\fancypagestyle{firststyle}{
+\fancypagestyle{firststyle}{%
   \fancyhf{}
   %\fancyfoot[C]{\thepage}
-  \fancyfoot[L]{
-    Version 1.618033 \today
+  \fancyfoot[L]{%
+    Version 1.61803398 \today
   }
-  \fancyfoot[R]{
+  \fancyfoot[R]{%
     Copyright \copyright 2017--\the\year$\,$Cossu Davide
   }
 }
@@ -244,8 +244,8 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
         && $1$ & $\text{bar}$\\ \midrule
     \label{tab:Na} 
     $N_A$ & Numero di Avogadro & $6.02\cdot10^{23}$ & /\\ \midrule
-    \label{tab:z}
-    $z$ & Costante di Stefan-Boltzman & $5.67\cdot10^{-8}$ & $\frac{\text{W}}
+    \label{tab:sigma}
+    $\sigma$ & Costante di Stefan-Boltzman & $5.67\cdot10^{-8}$ & $\frac{\text{W}}
     {\text{m}^2\cdot\text{K}^4}$\\ \midrule
     \label{tab:Vm} 
     $V_m$ & Volume occupato da Gas in STP & $22.4$ & $\text{l}$\\ \midrule
@@ -289,7 +289,9 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
     $u$ & Unità di massa atomica & $1.7\cdot10^{-7}$ & $\text{kg}$\\\midrule
     \label{tab:mu0} 
     $\mu_0$ & Permeabilità magnetica nel vuoto & $4\pi\cdot10^{-7}$ & 
-    $\frac{\text{N}}{\text{A}^2}$\\
+    $\frac{\text{N}}{\text{A}^2}$\\\midrule
+    \label{tab:h}
+    $h$ & Costante di Planck & $6.62\cdot10^{-34}$ & Js\\
     \midrule
   \end{xtabular}
 \end{center}
@@ -300,7 +302,7 @@ Qui verranno riportate le costanti usate nelle formule con relativo simbolo e un
 \tablehead{Grandezza & Nome & Simbolo & Definizione \\ \midrule}
 \tablelasttail{\bottomrule}
 \begin{center}
-  \begin{xtabular}{ M{1.8cm}  M{1.8cm}  c  c }
+  \begin{xtabular}{M{1.8cm}  M{1.8cm}  c  c}
     \textbf{Lunghezza} & Metro & m & / \\ \midrule
     \textbf{Massa} & Kilogrammo & kg & / \\ \midrule
     \textbf{Tempo} & Secondo & s & / \\ \midrule
@@ -340,6 +342,7 @@ Le unità in grassetto, sono le unità fondamentali.\newpage
 \input{magnetismo}
 \input{elettromagnetismo}
 \input{rel}
+\input{quant}
 \include{ex}
 \include{appendix}
 \include{dimostrazioni}
