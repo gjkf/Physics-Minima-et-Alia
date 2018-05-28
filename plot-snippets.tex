@@ -1,0 +1,224 @@
+\usepackage{amsmath,amsfonts,amssymb,mathtools,calrsfs,mathrsfs,amsthm}
+
+\usepackage[pdftex,dvipsnames,table]{xcolor} % Colors for text
+%\usepackage{xcolor}
+\usepackage{mathabx} % For better \land, \lor and \lnot
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{siunitx}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.14}
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{external}
+\tikzsetexternalprefix{figures/}
+\tikzexternalize
+\usetikzlibrary{
+  arrows,
+  decorations,
+  decorations.pathmorphing,
+  decorations.markings,
+  calc,
+  intersections,
+  matrix,
+  spy,
+  shapes.geometric,
+  shapes.misc,
+  patterns,
+}
+\usepackage{tkz-euclide}
+\usepackage{tikz-qtree}
+\usepackage[siunitx]{circuitikz}
+% http://texdoc.net/texmf-dist/doc/latex/circuitikz/circuitikzmanual.pdf
+\usepackage{tikz-3dplot}
+
+% axis style, ticks, etc
+\pgfplotsset{every axis/.append style={
+    axis lines=middle,     % put the axis in the middle
+    axis line style={->}, % arrows on the axis
+    xlabel={$x$},          % default put x on x-axis
+    ylabel={$y$},          % default put y on y-axis
+    zlabel={$z$},          % default put z on z-axis
+    axis equal,            % 1:1 ratio
+    grid=both,             % coordinate grid
+    grid style={line width=.1pt, draw=gray!10},
+    major grid style={line width=.2pt,draw=gray!50},
+    ticks=both,            % ticks for integers
+    minor tick num=5,      % number of subticks
+    ticklabel style={font=\small,fill=white},
+    xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+    ylabel style={at={(ticklabel* cs:1)},anchor=south west},
+    zlabel style={at={(ticklabel* cs:1)},anchor= west},
+  }
+}
+
+\tikzset{>=stealth}
+% Integral bars
+\pgfplotsset{%
+  integral segments/.code={\pgfmathsetmacro\integralsegments{#1}},
+  integral segments=3,
+  integral/.style args={#1:#2}{%
+    ybar interval,
+    domain=#1+((#2-#1)/\integralsegments)/2:#2+((#2-#1)/\integralsegments)/2,
+    samples=\integralsegments+1,
+    x filter/.code=\pgfmathparse{\pgfmathresult-((#2-#1)/\integralsegments)/2}
+  }
+}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert} % ||v||
+\DeclarePairedDelimiter\abs{\lvert}{\rvert} % |v|
+
+\makeatletter
+\def\mathcolor#1#{\@mathcolor{#1}}
+\def\@mathcolor#1#2#3{%
+  \protect\leavevmode
+  \begingroup
+  \color#1{#2}#3%
+  \endgroup
+}
+\makeatother
+\newcommand{\Setsuchthat}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+\newcommand{\suchthat}{\,:}
+
+\newcommand*\dif{\mathop{}\!\mathrm{d}}
+\newcommand*\Dif{\mathop{}\!\mathrm{D}}
+\newcommand*{\der}[2]{\frac{\dif #1}{\dif #2}}
+
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+
+% For an older but clearer root. Still \oldsqrt is valid
+\usepackage{letltxmacro}
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+  \setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+  \advance\dimen0-0.2\ht0
+  \setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2} }
+\makeatother
+
+\newcommand\markangle[7][red]{% [color] origin A B radius radiusmark mark
+  % fill red circle
+  \begin{scope}
+    \path[clip] (#2) -- (#3) -- (#4);
+    \fill[color=#1,fill opacity=0.5,draw=#1,name path=circle]
+    (#2) circle (#5);
+  \end{scope}
+  % middle calculation
+  \path[name path=line one] (#2) -- (#3);
+  \path[name path=line two] (#2) -- (#4);
+  \path[%
+  name intersections={of=line one and circle, by={inter one}},
+  name intersections={of=line two and circle, by={inter two}}
+  ] (inter one) -- (inter two) coordinate[pos=.5] (middle);
+  % put mark
+  \node at ($(#2)!#6!(middle)$) {#7};
+}
+
+\newcommand\domainplot[3]{ % start end list \domainplot{0}{2}{0,1}
+  \draw[shorten <= -1cm,shorten >= -1cm] (#1) -- (#2);
+  \foreach \x in #3{
+    \coordinate (A) at (#1);
+    \coordinate (B) at (\x,0);
+    \filldraw[fill=white,draw=black] (A-|B) circle(2pt)
+    node[below]{\x};
+  }
+}
+
+\newcommand{\mysign}[1]{
+  \pgfmathtruncatemacro\tmpsign{sign(#1)}
+  \ifnum\tmpsign<0
+  -
+  \else
+  \ifnum\tmpsign>0
+  +
+  \else
+  \relax
+  \fi
+  \fi
+}
+
+\newcommand{\mytick}[1]{
+  \pgfmathtruncatemacro\tmpsign{sign(#1)}
+  \ifnum\tmpsign<0
+  \relax
+  \else
+  \ifnum\tmpsign>0
+  \relax
+  \else
+  $|$
+  \fi
+  \fi
+}
+
+\newcommand{\drawSign}[6][]{% f(x) xmin xmax delta exclpoints
+  \begin{scope}[#1,declare function={Test(\x) = #2;}]
+    \draw [->, thick] (#3,0) -- (#4,0)node[right] {$x$};
+    \pgfmathsetmacro{\NextI}{#3+#5}
+    \foreach \i in {#3,\NextI,...,#4}{
+      \node at (\i,{0.35*sign(max(min(Test(\i),1),-1))}) {$\mysign{Test(\i)}$};
+      \pgfmathtruncatemacro\signum{sign(Test(\i))}
+      \ifnum\signum=0
+      \filldraw[black] (\i,0) circle(2pt);
+      %\node[circle,fill,maximum size=2pt] at (\i,0){};
+      \node[below] at (\i,-0.2){$\i$};
+      \fi
+    }
+    \ifx&#6&%
+    \else  
+    % Excluded points
+    \foreach \x in #6{
+      \filldraw[fill=white,draw=black] (\x,0) circle(2pt);
+      \node[below] at (\x,-0.2) {$\x$};
+    }
+    \fi
+  \end{scope}
+}
+
+% Arc over text
+\usepackage{graphicx}
+\makeatletter
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\newcommand{\arc@char}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}%
+
+\newcommand{\arc}[1]{\mathpalette\arc@arc{#1}}
+
+\newcommand{\arc@arc}[2]{%
+  \sbox0{$\m@th#1#2$}%
+  \vbox{
+    \hbox{\resizebox{\wd0}{\height}{\arc@char}}
+    \nointerlineskip
+    \box0
+  }%
+}
+\makeatother
+
+% Matrix spacing
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+\array{*\c@MaxMatrixCols c}}
+\makeatother
+
+\everymath{\displaystyle}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+
+% Proof changes
+\renewcommand\qedsymbol{QED}
+%\renewenvironment{proof}[1][\proofname]{{\bfseries #1.}}{}
+
+\expandafter\let\expandafter\oldproof\csname\string\proof\endcsname
+\let\oldendproof\endproof
+\renewenvironment{proof}[1][\proofname]{%
+  \oldproof[\ttfamily \scshape \large #1]\mbox{}\\*%
+}{\oldendproof}
+
+% Hôpital's equivalence
+\newcommand{\Heq}[1]{\overset{\left[#1\right]}{\underset{\mathrm{H}}{=}}}
