@@ -14,7 +14,7 @@
 \usepgfplotslibrary{external}
 \tikzsetexternalprefix{figures/}
 \tikzexternalize
-\usetikzlibrary{
+\usetikzlibrary{%
   arrows,
   decorations,
   decorations.pathmorphing,
@@ -26,6 +26,7 @@
   shapes.geometric,
   shapes.misc,
   patterns,
+  math
 }
 \usepackage{tkz-euclide}
 \usepackage{tikz-qtree}
@@ -34,7 +35,7 @@
 \usepackage{tikz-3dplot}
 
 % axis style, ticks, etc
-\pgfplotsset{every axis/.append style={
+\pgfplotsset{every axis/.append style={%
     axis lines=middle,     % put the axis in the middle
     axis line style={->}, % arrows on the axis
     xlabel={$x$},          % default put x on x-axis
@@ -65,6 +66,90 @@
     x filter/.code=\pgfmathparse{\pgfmathresult-((#2-#1)/\integralsegments)/2}
   }
 }
+
+\makeatletter
+\def\parsenode[#1]#2\pgf@nil{%
+  \tikzset{label node/.style={#1}}
+  \def\nodetext{#2}
+}
+\tikzset{%
+  % define style for the points
+  Point/.style={%
+    shape=circle,
+    inner sep=0pt,
+    minimum size=3pt,
+  },
+  add node at x/.style 2 args={%
+    name path global=plot line,
+    /pgfplots/execute at end plot visualization/.append={%
+      \begingroup
+        \@ifnextchar[{\parsenode}{\parsenode[]}#2\pgf@nil
+        \path [name path global = position line #1-1]
+        ({axis cs:#1,0}|-{rel axis cs:0,0}) --
+        ({axis cs:#1,0}|-{rel axis cs:0,1});
+        \path [xshift=1pt, name path global = position line #1-2]
+        ({axis cs:#1,0}|-{rel axis cs:0,0}) --
+        ({axis cs:#1,0}|-{rel axis cs:0,1});
+        \path [
+        name intersections={
+          of={plot line and position line #1-1},
+          name=left intersection
+        },
+        name intersections={
+          of={plot line and position line #1-2},
+          name=right intersection
+        },
+        label node/.append style={pos=1}
+        ] (left intersection-1) -- (right intersection-1)
+        node [label node]{\nodetext};
+        % ---------------------------------------------------------
+        % draw the tangent line from a bit right of the point on
+        % the curve to the intersection with the ordinate
+        % and draw the corresponding points
+        %\draw [blue,thick] let
+        %\p1=($ (left intersection-1) - (right intersection-1) $),
+        %\p2=($ (left intersection-1)!sign(#1)*5mm!(right intersection-1) $),
+        %\p3=($ ({axis cs:0,0}) - (\p2) $),
+        %\n1={\p3/\p1}
+        %in
+        %(\p2) -- +($ {\n1}*(\x1,\y1) $)
+        %%                            node [Point,fill=Tangent] (origin intersection) {}
+        %%                            node [Point,fill=Curve] at (left intersection-1) {}
+        %;
+        %                    % ----------
+        %                    % draw the horizontal line at the curve intersection point
+        %                    % plus the label above/below the line
+        %                    \tikzmath{
+        %                        coordinate \c1;
+        %                        \c1=(left intersection-1) - (right intersection-1);
+        %                        \slope=\cy1/\cx1*sign(#1);
+        %                    }
+        %                    \pgfmathsetmacro{\AboveBelow}{ \slope>0 ? "above" : "below" }
+        %                    \draw [dotted]
+        %                        ([xshift=sign(#1)*2.5mm] left intersection-1) --
+        %                        (left intersection-1) --
+        %                            node [\AboveBelow,node font=\scriptsize] {$f(x)$}
+        %                        (left intersection-1 -| origin intersection) --
+        %                        +($ sign(#1)*(-2.5mm,0) $)
+        %                            coordinate [pos=0.5] (a)
+        %                    ;
+        %                    % draw the horizontal line at the ordinate intersection point
+        %                    \draw [dotted] (origin intersection)
+        %                        +($ sign(#1)*(-2.5mm,0) $) --
+        %                        (origin intersection);
+        %                    % draw vertical line left/right of the ordinate
+        %                    \pgfmathsetmacro{\LeftRight}{ #1<0 ? "right" : "left" }
+        %                    \draw [stealth-stealth] (origin intersection)
+        %                        +($ sign(#1)*(-1.25mm,0) $) -- (a)
+        %                            node [midway,\LeftRight,node font=\scriptsize] {$p$}
+        %                    ;
+        %                    % ---------------------------------------------------------
+      \endgroup
+    },
+  },
+}
+\makeatother
+
 \DeclarePairedDelimiter\norm{\lVert}{\rVert} % ||v||
 \DeclarePairedDelimiter\abs{\lvert}{\rvert} % |v|
 
@@ -129,7 +214,7 @@
   }
 }
 
-\newcommand{\mysign}[1]{
+\newcommand{\mysign}[1]{%
   \pgfmathtruncatemacro\tmpsign{sign(#1)}
   \ifnum\tmpsign<0
   -
@@ -142,7 +227,7 @@
   \fi
 }
 
-\newcommand{\mytick}[1]{
+\newcommand{\mytick}[1]{%
   \pgfmathtruncatemacro\tmpsign{sign(#1)}
   \ifnum\tmpsign<0
   \relax
@@ -159,7 +244,7 @@
   \begin{scope}[#1,declare function={Test(\x) = #2;}]
     \draw [->, thick] (#3,0) -- (#4,0)node[right] {$x$};
     \pgfmathsetmacro{\NextI}{#3+#5}
-    \foreach \i in {#3,\NextI,...,#4}{
+    \foreach \i in {#3,\NextI,...,#4}{%
       \node at (\i,{0.35*sign(max(min(Test(\i),1),-1))}) {$\mysign{Test(\i)}$};
       \pgfmathtruncatemacro\signum{sign(Test(\i))}
       \ifnum\signum=0
@@ -171,7 +256,7 @@
     \ifx&#6&%
     \else  
     % Excluded points
-    \foreach \x in #6{
+    \foreach \x in #6{%
       \filldraw[fill=white,draw=black] (\x,0) circle(2pt);
       \node[below] at (\x,-0.2) {$\x$};
     }
@@ -190,7 +275,7 @@
 
 \newcommand{\arc@arc}[2]{%
   \sbox0{$\m@th#1#2$}%
-  \vbox{
+  \vbox{%
     \hbox{\resizebox{\wd0}{\height}{\arc@char}}
     \nointerlineskip
     \box0

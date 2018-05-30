@@ -136,6 +136,52 @@ Avendo però la condizione data dal problema di Cauchy $i(0)=0$, si ottiene
 \end{equation*}
 
 \subsection{Relatvità}
+\subsubsection{Vento dell'etere}
+L'esperimento del vento dell'etere può essere riassunto così
+\begin{center}
+  \begin{tikzpicture}[square/.style={regular polygon,regular polygon sides=4}]
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (3,0);
+    \coordinate (C) at (0,3);
+
+    \node at (A) [square,draw](A){A};
+    \node at (B) [square,draw](B){B};
+    \node at (C) [square,draw](C){C};
+
+    \draw[|<->|] (A) -- (B)
+      node[pos=0.5,below]{$L$};
+    \draw[|<->|] (A) -- (C)
+      node[pos=0.5,left]{$L$};
+
+    \foreach\y in {2,1.5,1}{%
+      \draw[->] (3,\y) -- ++(-2,0);
+    }
+  \end{tikzpicture}
+\end{center}
+Definendo $v_M$ la velocità del moto e $v_V$ la velocità del vento, si può immaginare un corpo che
+segue la rotta A-B e un altro che segue quella A-C. La teoria dice che i tempi impiegati dai due 
+moti devono essere diversi se il vento dell'etere esistesse. Infatti si ha che
+\begin{align*}
+  t_\perp&<t_\|\\
+  \intertext{Considerato che la velocità d'andata e di ritorno sono diverse, si devono sommare, si
+  hanno che la somma è pari a $\frac{L}{v_M-v_V} + \frac{L}{v_M+v_V}$}
+  \frac{2L}{\sqrt{v_M^2-v_V^2}}&<\frac{2v_M^2}{v_M^2-v_V^2}\\
+  \frac{1}{v_M^2-v_V^2}&<\frac{v_M^2}{{(v_M-v_V)}^2}\\
+  1&<\frac{v_M^2(v_M^2-v_V^2)}{(v_M^2-v_V^2)}\\
+  1&<\frac{v_M^2}{v_M^2-v_V^2}\\
+  v_M^2-v_V^2&<v_M^2
+\end{align*}
+
+\subsubsection{Dilatazione del tempo}
+\begin{align*}
+  {\left( \frac{c\Delta t}{2} \right)}^2&=l^2+{\left( \frac{v\Delta t}{2} \right)}^2\\
+  \frac{c^2}{4}{(\Delta t)}^2&=l^2+\frac{v^2{(\Delta t)}^2}{4}\\
+  (c^2-v^2){(\Delta t)}^2&={(2l)}^2\\
+  (c^2-v^){(\Delta t)}^2 &= c^2{(\Delta t')}^2\\
+  {(\Delta t)}^2&= \frac{c^2{(\Delta t')}^2}{c^2-v^2}\\
+  \Delta t &= \frac{\Delta t'}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{align*}
+
 \subsubsection{Invariante spazio-temporale}
 \begin{equation*}
   {(\Delta\sigma)}^2={(c\Delta t)}^2-{(\Delta S)}^2
@@ -171,7 +217,6 @@ Sostituendo
 \end{align*}
 
 \subsubsection{Lavoro relativistico}
-\subsubsection{Lavoro}
 Si prenda una particella di massa $m$ con $v_0=0$ su cui è applicata una forza $\vec{F}$ per farla
 accelerare a velocità $v$. Se si definisce $1$ l'istante iniziale e $2$ quello finale, nella
 meccanica classica il lavoro è pari a
@@ -198,4 +243,15 @@ si ha che
   mc^2\sqrt{1-\frac{v^2}{c^2}}-mc^2=\\
   &=\frac{mv^2+mc^2\left( 1-\frac{v^2}{c^2} \right)}{\sqrt{1-\frac{v^2}{c^2}}}-mc^2=
   c^2\gamma-mc^2
+\end{align*}
+
+\subsubsection{Rapporto Quantità di moto-energia}
+Si sa che $q=\gamma mv$ e $E=\gamma mc^2$.
+\begin{align*}
+  q&=\gamma mv\\
+  cq&=\gamma mvc\\
+  c^2q^2=\gamma^2m^2v^2c^2&\quad E^2=\gamma^2m^2c^4\\
+  E^2-cq^2&=m^2\gamma^2c^2(c^2-v^2)\\
+  E^2-cq^2&=m\frac{c^2}{c^2-v^2}c^2(c^2-v^2)\\
+  E^2-c^2q^2&=m^2c^4
 \end{align*}

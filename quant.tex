@@ -1,21 +1,22 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Fisica quantistica}
-La fisica quantistica comincia con il \textbf{problema del corpo nero}.
+La teoria quantistica nasce nei primi decenni del ventesimo secolo e si pone di studiare problemi
+fisici su scala atomica.\\
+La fisica quantistica riesce a risolvere il \textbf{problema del corpo nero}.
 
 \subsection{Problema del corpo nero}
-Ogni corpo emette radiazioni elettromagnetiche e ne assorbe alcune. Queste sono principalmente dovute
-dalla temperatura e dal calore ma sono detereminate anche dal tipo del corpo e dalla luce incidente.
-Si teorizza un corpo nero che non riflette alcuna onda. Ogni onda che riceve viene assorbita.\\
-Si definisce $a$ il fattore di assorbimento, $e$ il fattore di emissione. Si ha sempre che
-$0\leq a\leq1$ e $0\leq e\leq1$. Per un corpo normale si ha inoltre che $a=e$ ma i valori 
-appartengono a quell'intervallo. Per un corpo nero $a=e=1$.\\
-Dato che un corpo così non è realizzabile, si è creato un prototipo simile. Esso è come il seguente
+Ogni corpo emette radiazioni elettromagnetiche per il movimento delle particelle dovuto alla 
+temperatura e ne assorbe alcune. Si definisce $a$ il fattore di assorbimento, $e$ il fattore di 
+emissione. Si ha sempre che $0\leq a\leq1$ e $0\leq e\leq1$. Per un corpo nero $a=e=1$.\\
+Dato che un corpo così non è realizzabile, si è creato un corpo che si avvicina a queste 
+caratteristiche. Esso è schematicametne come il seguente
 \begin{center}
   \begin{tikzpicture}
     \draw (0,0) -- (-2,0) -- (-2,3) -- (0,3)  -- (0,1.6) (0,1.4) -- (0,0);
     \draw ($(-0.8,1.5) + (5:0.8)$) arc (5:355:0.8);
-    \draw (1,2) -- ++(210:2.4) -- ++(110:1.2) -- ++(20:1) -- ++(-70:1.2) -- ++(210:0.8) 
+    \draw[thick,Dandelion] 
+      (1,2) -- ++(210:2.4) -- ++(110:1.2) -- ++(20:1) -- ++(-70:1.2) -- ++(210:0.8) 
       -- ++(50:1.2) -- ++(160:1.3) -- ++(260:1.1);
   \end{tikzpicture}
 \end{center}
@@ -24,9 +25,10 @@ uscire. Inoltre è immerso in modo che la temperatura sia costante. Dato che non
 emetterà comunque delle onde elettromagnetiche. Andando a farle passare attraverso un prisma e a
 misurare l'intensità di ciascuna lunghezza d'onda si ottiene un grafico di questo tipo
 \begin{center}
-  \begin{tikzpicture}
-    \begin{axis}[xmin=0,ymin=0,xmax=8,ymax=8,xlabel=$\lambda$,ylabel=$I$]
+  \begin{tikzpicture}[scale=0.75]
+    \begin{axis}[xmin=0,ymin=0,xmax=8,ymax=8,xlabel=$\lambda$,ylabel=$I$,ticks=none]
       \addplot[blue,thick,domain=0.01:8,smooth,samples=500] {(4/(e^(1/(4*x))*x))};
+      \addplot[red,thick,dashed,domain=0.1:8,smooth,samples=500,unbounded coords=jump]{(7/(e^(1/2)*x))};
     \end{axis}
   \end{tikzpicture}
 \end{center}
@@ -39,21 +41,18 @@ dove $\sigma$ è la \hyperref[tab:sigma]{costante di Stefan-Boltzman}. Si ha ino
 \begin{equation*}
   \lambda_{\text{max}}\cdot T=2.9\cdot10^{-3}\,\text{mK}
 \end{equation*}
-Si arriva finalmente a dimostrare una formula, la formula di \textbf{Rayleigh-Jeans}
+Trovò l'anello mancante lo scienziato tedesco Max Planck. Si arriva finalmente a dimostrare una 
+formula, la formula di \textbf{Rayleigh-Jeans}.
 \begin{equation*}
-  I(\lambda,T) = \frac{2\pi c^2}{\lambda^5} \frac{h}{e^{\frac{hc}{\lambda k_B T}}-1}
+  I(\lambda,T) = \frac{2\pi c^2}{\lambda^5} \frac{nh}{e^{\frac{hc}{\lambda k_B T}}-1}
 \end{equation*}
+$n=1,2,3,\ldots$\\
 \hyperref[tab:h]{$h$}: $6.62\cdot10^{-34}\,\text{Js}$\\
 \hyperref[tab:c]{$c$}: $3\cdot10^8\,\text{m/s}$\\
 \hyperref[tab:kB]{$k_B$}: $1.381\cdot10^{-23}\,\text{J/K}$\\
 $T$: temperatura\\
 $\lambda$: lunghezza d'onda\\ [\baselineskip]
-Questa formula è stata creata anche grazie a Planck che ha teorizzato la quantizzazione dell'energia.
-Ovvero, si può estrarre dal secondo denominatore
-\begin{equation*}
-  \frac{hc}{\lambda}=hf
-\end{equation*}
-e quindi ottenere una formula che descrive l'energia che è nella forma
+Questa formula è stata creata anche grazie a alla quantizzazione dell'energia, ovvero
 \begin{equation*}
   E = nhf
 \end{equation*}
@@ -61,11 +60,11 @@ e questo porta alla creazione di un'energia discreta, ovvero che si diffonde non
 su tutto il fronte d'onda, bensì in pacchetti, denominati quanti.
 
 \subsection{Effetto fotoelettrico}
-L'effetto fotoelettrico è valso ad Einstein il Nobel per la Fisica. Il problema era che quando un
-metallo veniva colpito da un raggio luminoso, alcuni elettroni uscivano dal corpo. Einstein parte 
-dalla quantizzazione dell'energia, chiama i quanti, fotoni. Si definiva \textbf{lavoro di estrazione}
-il lavoro necessario a strappare l'elettrone dal corpo. Quest'ultimo è tenuto legato al corpo dalla
-\textbf{barriera di potenziale}. Il lavoro qundi diventa
+L'effetto fotoelettrico è valso ad Einstein il Nobel per la Fisica.\\
+Il problema era che quando un metallo veniva colpito da un raggio luminoso, alcuni elettroni uscivano
+dal corpo. Einstein parte dalla quantizzazione dell'energia.\\
+Si definiva \textbf{lavoro di estrazione} il lavoro necessario a strappare l'elettrone dal corpo. 
+Quest'ultimo è tenuto legato al corpo dalla \textbf{barriera di potenziale}. Il lavoro qundi diventa
 \begin{equation*}
   L = q\Delta V = e\Delta V
 \end{equation*}
@@ -94,16 +93,16 @@ L'esperimento parte da un oggetto come questo
 \end{center}
 Viene fatta passare una radiazione attraverso il tubo apposito, questa va a colpire una lastra di
 metallo da cui uscirà un elettrone che, attraverso il campo elettrico, verrà a colpire l'anodo e 
-quindi creare una differenza di potenziale. Si ha che se $f$ della radiazione è troppo bassa anche 
-con alte $I$, non si avrà effetto, invece anche con basse intensità ma alte frequenze l'effetto è
-visibile. Si ha quindi che
+quindi creare una differenza di potenziale. Si ha che se $f$ della radiazione è troppo bassa non si 
+avrà effetto. Si ha quindi che
 \begin{equation*}
   \Delta V = V_+-V_- = V
 \end{equation*}
 Il grafico che mette in relazione il potenziale e la corrente è il seguente
 \begin{center}
-  \begin{tikzpicture}[every pin edge/.style={black,thin}, pin distance=7mm]
-    \begin{axis}[xmin=-2,ymin=0,xmax=8,ymax=5,clip mode=individual,xlabel=$f$,ylabel=$i$]
+  \begin{tikzpicture}[every pin edge/.style={black,thin}, pin distance=7mm,scale=0.75]
+    \begin{axis}[xmin=-2,ymin=0,xmax=8,ymax=4,axis equal image,scale=1.5,
+      clip mode=individual,xlabel=$V$,ylabel=$i$,ticks=none]
       \addplot[red,thick,smooth,domain=0:4.5,samples=500] {rad(atan(2*x-pi/1.78))+pi/2-0.5};
       \addplot[blue,thick,smooth,domain=-0.8:4,samples=500] {rad(atan(2*x))+pi/2-0.5} 
         coordinate[pos=0] (Va)
@@ -114,12 +113,10 @@ Il grafico che mette in relazione il potenziale e la corrente è il seguente
     \end{axis}
   \end{tikzpicture}
 \end{center}
-\unsure[inline]{Controllare assi}
 Il grafico in rosso indica quello che accade quando si aumenta $V$, in blu invece quando si torna
 ad abbassare.\\
 I punti segnati sono rispettivamente il \textbf{potenziale di arresto} ($V_A$) ovvero la frequenza
-in cui non si genera corrente e \textbf{potenziale di saturazione} ($V_S$) ovvero il punto in cui
-non si genera più corrente.\\
+in cui non si genera corrente e \textbf{potenziale di saturazione} ($V_S$).\\
 Sapendo che
 \begin{equation*}
   L = eV_A = E_c
@@ -139,22 +136,22 @@ Si noti che se $E_c=0$, si trova la frequenza di soglia, ovvero
 \end{equation*}
 
 \subsection{Effetto Compton}
-L'effetto Compton parte da un'evidenza sperimentale, ovvero una parte dell'energia veniva usata per
-estrarre l'elettrone, un'altra è riflessa
+L'effetto Compton viene scoperto studiando l'effetto fotoelettrico in cui un elettrone e un fotone
+si scontrano.
 \begin{center}
   \begin{tikzpicture}[%
     wave/.style={%
         decorate,decoration={snake,post length=1.4mm,amplitude=1mm,
         segment length=2mm},thick},
     ]
-    \draw[wave,->] (0,0) -- (1,0)
+    \draw[wave,->,Dandelion] (0,0) -- (1,0)
       node[pos=0.5,above]{Raggi X}
       node[pos=0.5,below]{$\lambda$};
     \draw[very thin] (1.5,0) -- (4,0);
     \draw (2,1) -- ++(45:0.5) -- ++(-90:2) -- ++(225:0.5) -- cycle;
-    \draw[wave,->,thin] (2.3,0) -- ++(45:1) 
+    \draw[wave,->,thin,Dandelion] (2.3,0) -- ++(45:1) 
       node[pos=1,above right] {$\lambda'$};
-    \draw[wave,->,thin] (2.3,0) -- ++(-30:1)
+    \draw[->,thin] (2.3,0) -- ++(-30:1)
       node[pos=1,right] {$e^-$};
     \draw (2.8,0) arc (0:45:0.5)
       node[pos=0.5,right]{$\theta$};
@@ -187,16 +184,27 @@ da cui si evince che
 \end{equation*}
 
 \subsection{Spettrometria}
-Si è visto che facendo passare un fascio di luce attraverso una superficie di idrogeno e poi facendo
-passare il raggio attraverso un prisma, si ottengono delle serie spettrali, un po' come quelle di 
-Young. Le tre serie principali sono
+Si è visto che gli atomi emettono fotoni facendo passare il raggio attraverso un prisma, si ottengono
+delle serie spettrali. Le tre serie principali sono
 \begin{description}
   \item[Balmer] Serie del visibile
   \item[Lyman] Serie dell'ultravioletto
   \item[Paschen] Serie dell'infrarosso
 \end{description}
 Si è notato che se la sostanza aeriforme è eccitata sempre allo stesso modo, si ottiene sempre la
-stessa serie.\\
+stessa serie.
+\begin{center}
+  \begin{tikzpicture}[scale=0.75]
+    \draw[thick,red](4,0)-- (4,1);
+    \draw[thick,green](6,0)-- (6,1);
+    \draw[thick,blue](8,0)-- (8,1);
+    \draw[thick,pink](9,0)-- (9,1);
+    \draw[thick,violet](9.5,0)-- (9.5,1);
+    \draw (0,0)--(10,0)--(10,1)--(0,1)--(0,0);
+    \node at (1,-0.5) {$f$ basse};
+    \node at (9,-.5) {$f$ alte};
+  \end{tikzpicture}
+\end{center}
 Balmer ha trovato una formula sperimentale per identificare la lunghezza d'onda della $n$-esima 
 frangia
 \begin{equation*}
@@ -276,7 +284,7 @@ Andando ad analizzare i valori di $E_n$ per $n\to\infty$, si vede che tendono a 
 di Bohr, un elettrone emette energia solo quando salta da un'orbita all'altra. Quindi le serie
 di Balmer o simili sono esempi di salto quantico. Bohr arriva a formulare la seguente formula
 \begin{equation*}
- hf = \abs{E_i-E_f}
+  hf = \abs{E_i-E_f}
 \end{equation*}
 che non è altro che la conservazione dell'energia (si noti che in caso di emissione, si tolga il
 modulo). Andando a modificare la formula
@@ -303,3 +311,23 @@ le serie si ottengono
   \item[per $n_f=2$] di Balmer
   \item[per $n_f=3$] di Paschen
 \end{description}
+\paragraph{Disegno di atomo}
+\begin{center}
+  \begin{tikzpicture}[wave/.style={%
+      decorate,decoration={%
+        snake,post length=1.4mm,amplitude=1mm,
+        segment length=2mm
+      },thick
+    },
+    ]
+    \draw (0,0); 
+    \draw (0,0) circle (1);
+    \draw (0,0) circle (1.5);
+    \draw (0,0) circle (2);
+    \filldraw (0,0) circle (0.2);
+    \filldraw (1,0.86*2) circle (0.05);
+    \draw[->] (1,0.86*2) to[out=160,in=90] (0.5,0.86);
+    \filldraw (0.5,0.86) circle (0.05);
+    \draw[wave,->,Dandelion] (0.5,0.86) -- +(45:1.5);
+  \end{tikzpicture}
+\end{center}

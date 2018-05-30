@@ -1,16 +1,15 @@
 %!TEX ROOT=formularioFisica.tex
 
 \section{Relatività}
-La relatività rivoluziona il significato della Fisica moderna. Grazie ad Einstein ma non solo, si è
-aperto un nuovo capitolo.
+La relatività dà inisio alla Fisica moderna.\\
+Grazie ad Einstein ma non solo, si è aperto un nuovo capitolo.
 
 \subsection{Trasformazioni Galileiane}
-Per comprendere la relatività, bisogna sapere che sistemi di riferimento si usavano in precedenza.
-Essi erano ancora quelli di Galileo, del 1600. Si distinugono due tipi di sistemi di riferimento:
+Si distinugono due tipi di sistemi di riferimento:
 \textbf{inerziali} che soddisfano il principio di inerzia di Newton e \textbf{non inerziali} che
-invece non lo soddisfano. Di sistemi inerziali assoluti, nella realtà, non ce ne sono.\\
-Un sistema che si muove di Moto Rettilineo Uniforme rispetto ad un sistema inerziale. Questo sistema
-è anch'esso inerziale. Andiamo a disegnare un sistema con un punto e il sistema che si è mosso.
+invece non lo soddisfano.\\
+Un sistema che si muove di Moto Rettilineo Uniforme rispetto ad un altro sistema inerziale. È 
+anch'esso inerziale. Andiamo a disegnare questi due sistemi inerziali.
 \begin{center}
   \begin{tikzpicture}[scale=0.75]
     \coordinate (O) at (0,0);
@@ -29,11 +28,11 @@ Un sistema che si muove di Moto Rettilineo Uniforme rispetto ad un sistema inerz
     \filldraw (P) circle (0.05);
     \filldraw (P') circle (0.05);
 
-    \draw[->, thick] (O) -- (P')
-      node[pos=0.5,right]{$\vec{r}$};
-    \draw[->, thick] (O') -- (P')
+    \draw[->, thick,cyan] (O) -- (P')
+      node[pos=0.5,below right]{$\vec{r}$};
+    \draw[->, thick,blue] (O') -- (P')
       node[pos=0.3,above left]{$\vec{r'}$};
-    \draw[->, thick] (O) -- (O')
+    \draw[->, thick,red] (O) -- (O')
       node[pos=0.8, below left]{$\vec{r_0}$};
     %\draw[->, thick] (P) -- (P')
     %  node[pos=0.5,right]{$\vec{v}$};
@@ -42,8 +41,7 @@ Un sistema che si muove di Moto Rettilineo Uniforme rispetto ad un sistema inerz
     \node[above right] at (P'){P'};
   \end{tikzpicture}
 \end{center}
-Con il calcolo vettoriale, possiamo sapere che $\vec{r} = \vec{r_0}+\vec{r'}$. In $t=0$, si ha che
-$S \equiv S'$.\\
+In $t=0$, si ha che $S$ e $S'$ coincidono.\\
 All'istante $t_1\,(t_1\neq0)$ si ha che
 \begin{equation*}
   \vec{r_1} = \vec{r_1'} + \vec{v}t_1
@@ -56,11 +54,11 @@ Trovando la differenza
 \begin{equation*}
   \Delta \vec{r} = \Delta\vec{r'}+\vec{v}\Delta t
 \end{equation*}
-Dividendo per $t$
+Dividendo per $\Delta t$
 \begin{equation*}
-  \frac{\Delta\vec{r}}{t}=\frac{\Delta\vec{r'}}{t}+\vec{v}
+  \frac{\Delta\vec{r}}{\Delta t}=\frac{\Delta\vec{r'}}{\Delta t}+\vec{v}
 \end{equation*}
-Che, considerando il rapporto spazio/tempo, si riscrive come
+si ottiene
 \begin{equation*}
   \vec{u} = \vec{u'}+\vec{v}
 \end{equation*}
@@ -81,7 +79,8 @@ assoluto e non dipende dal sistema di riferimento}.
 
 \subsection{Esperimento di Michelson-Morley}
 Nell'arco di venti e più anni, i due scienziati Michelson e Morley dimostrarono che la velocità della
-luce non variava e che quindi il vento dell'etere, precedentemente teorizzato, non esisteva.
+luce non variava e che quindi il vento dell'etere, precedentemente teorizzato per conciliare 
+meccanica classica e studio della luce, non esisteva.
 \subsubsection{Il vento dell'etere}
 L'esperimento del vento dell'etere può essere riassunto così
 \begin{center}
@@ -105,18 +104,11 @@ L'esperimento del vento dell'etere può essere riassunto così
   \end{tikzpicture}
 \end{center}
 Definendo $v_M$ la velocità del moto e $v_V$ la velocità del vento, si può immaginare un corpo che
-segue la rotta A-B e un altro che segue quella A-C. LA teoria dice che i tempi impiegati dai due 
+segue la rotta A-B e un altro che segue quella A-C. La teoria dice che i tempi impiegati dai due 
 moti devono essere diversi se il vento dell'etere esistesse. Infatti si ha che
-\begin{align*}
-  t_\perp&<t_\|\\
-  \intertext{Considerato che la velocità d'andata e di ritorno sono diverse, si devono sommare, si
-  hanno che la somma è pari a $\frac{L}{v_M-v_V} + \frac{L}{v_M+v_V}$}
-  \frac{2L}{\sqrt{v_M^2-v_V^2}}&<\frac{2v_M^2}{v_M^2-v_V^2}\\
-  \frac{1}{v_M^2-v_V^2}&<\frac{v_M^2}{{(v_M-v_V)}^2}\\
-  1&<\frac{v_M^2(v_M^2-v_V^2)}{(v_M^2-v_V^2)}\\
-  1&<\frac{v_M^2}{v_M^2-v_V^2}\\
-  v_M^2-v_V^2&<v_M^2
-\end{align*}
+\begin{equation*}
+  t_\perp<t_\|
+\end{equation*}
 e questo verifica la tesi.\\ [\baselineskip]
 Essendo l'etere solidale al sole, le due velocità perpendicolari e parallele dovevano essere
 diverse. Ma, attraverso un interferometro che hanno continuato a migliorare, hanno dimostrato che
@@ -125,13 +117,11 @@ in maniere diverse. Questo avrebbe dovuto causare nell'interferometro diverse co
 interferenza ma questo non si è mai visto.
 
 \subsection{Principi fondamentali della relatività ristretta}
-La prima forumulazione della relatività, è quella ristretta. Essa si fonda su due principi cardine:
+La prima forumulazione della relatività si fonda su due principi cardine:
 \begin{enumerate}
   \item \textbf{Tutte le formule devono avere la stessa forma per ogni tipo di sistema inerziale}
   \item \textbf{La luce nel vuoto ha la stessa velocità per ogni sistema} 
 \end{enumerate}
-Questi due principi mettono in crisi la fisica classica. Infatti le recenti Equazioni di Maxwell non
-erano invarianti secondo le trasformazioni galileiane.
 
 \subsection{Simultaneità}
 Einstein propone un esperimento mentale per illustrare che due eventi non sono simultanei se si tiene
@@ -174,15 +164,14 @@ il treno con l'ossevatore $O'$ si sarà spostato. Quindi si ha una situazione de
       node[pos=0.5,below]{$\frac{v\Delta t}{2}$};
   \end{tikzpicture}
 \end{center}
-Andando quindi a risolvere per $\Delta t$ abbiamo che
-\begin{align*}
-  {\left( \frac{c\Delta t}{2} \right)}^2&=l^2+{\left( \frac{v\Delta t}{2} \right)}^2\\
-  \frac{c^2}{4}{(\Delta t)}^2&=l^2+\frac{v^2{(\Delta t)}^2}{4}\\
-  (c^2-v^2){(\Delta t)}^2&={(2l)}^2\\
-  (c^2-v^){(\Delta t)}^2 &= c^2{(\Delta t')}^2\\
-  {(\Delta t)}^2&= \frac{c^2{(\Delta t')}^2}{c^2-v^2}\\
-  \Delta t &= \frac{\Delta t'}{\sqrt{1-\frac{v^2}{c^2}}}
-\end{align*}
+
+\begin{equation*}
+  {\left( \frac{c\Delta t}{2} \right)}^2=l^2+{\left( \frac{v\Delta t}{2} \right)}^2
+\end{equation*}
+Risolvendo e mettendo a sistema si ottiene
+\begin{equation*}
+  \Delta t = \frac{\Delta t'}{\sqrt{1-\frac{v^2}{c^2}}}
+\end{equation*}
 Quindi abbiamo che $\Delta t\neq\Delta t'$. Anzi, per $v\ll c$ si ha che $\Delta t \to \Delta t'$.
 $\Delta t'$ viene definito \textbf{tempo proprio}. Il termine
 \begin{equation*}
@@ -192,28 +181,23 @@ tornerà spesso fuori anche nelle trasformazioni di Lorentz, non è un caso si r
 
 \subsection{La velocità limite della luce}
 Se si prende il fattore $\gamma$ e lo si studia, si capirà subito che non può esserci una velocità
-maggiore $c$. Andando a fare un semplice studio di funzione si vede che
-\begin{equation*}
-  \mathcal{D}_\gamma = ]{-c},{c}[
-\end{equation*}
-ma poiché in fisica le velocità sono in genere positive, su può considerare solo $0 < v < c$.
-Vediamo inoltre che $\gamma(-v) = \gamma(v)$. Andando a calcolare la derivata prima si trova
+maggiore $c$. Andando a fare un semplice studio di funzione si vede che, andando a calcolare la 
+derivata prima si trova
 \begin{equation*}
   \der{\gamma(v)}{v} = \frac{v \left( 1-\frac{v^2}{c^2} \right)}{c^2\sqrt{1-\frac{v^2}{c^2}}}
 \end{equation*}
-Andando a studiare il segno vediamo che in $v=0$ ha un minimo. Andando a calcolare $\gamma(0)=1$.
+Andando a studiare il segno vediamo che in $v=0$ ha un minimo. $\gamma(0)=1$.
 Infine andando a fare il limite
 \begin{equation*}
   \lim\limits_{v\to c^-} \gamma = +\infty 
 \end{equation*}
 si vede che $v=c$ è asintoto verticale e che quindi non è possibile superare la velocità della 
 luce.\\
-Questo, assieme al fatto che
+Poiché
 \begin{equation*}
   \frac{\Delta t}{\Delta t'}=\gamma > 1
 \end{equation*}
-produce il fatto che $\Delta t > \Delta t'$ e che quindi si verifica una \textbf{dilatazione 
-temporale}.
+si verifica l'esistenda di una \textbf{dilatazione temporale}.
 
 \subsection{Trasformazioni di Lorentz}
 Le trasformazioni di Lorentz hanno la caratteristica di rendere invarianti le equazioni di Maxwell.
@@ -237,10 +221,10 @@ Presi due istanti $t_1',t_2'$ si ha che
 Che è esattamente lo stesso risultato ottenuto da Einstein nei suoi esperimenti mentali.
 
 \subsection{Contrazione delle lunghezze}
-Presi due sistemi di riferimento $S,S'$ che si muovono di moto rettilineo uniforme e un corpo di
-lunghezza $L$ solidale a $S'$, i ue sistemi misureranno $L$ per $S$ e $L'$ per $S'$. Si ha
+Presi due sistemi di riferimento $O,O'$ che si muovono di moto rettilineo uniforme tra di loro e un
+corpo di lunghezza $L$ fermo per $O'$, i due sistemi misureranno $L$ per $S$ e $L'$ per $S'$. Si ha
 \begin{equation*}
-  L'= x_B'-x_A'\quad L=x_B-x_A
+  O'\,\text{misurerà}\,L'= x_B'-x_A'\quad O\,\text{misurerà}\,L=x_B-x_A
 \end{equation*}
 Si ha inoltre che $x'=\gamma(x-vt)$. Calcolando allora
 \begin{equation*}
@@ -254,7 +238,7 @@ e che quindi le due lunghezze non sono misurate uguali dai due sistemi di riferi
 
 \subsection{Piano di Minkowsky}
 Minkowsky ha preso le trasformazioni di Lorentz e le ha guardate da un punto di vista puramente
-matematico. Il suo piano è un piano simile
+matematico. Il suo piano è un piano di questo tipo
 \begin{center}
   \begin{tikzpicture}
     \draw[->,thick] (-0.5,0) -- (3,0)
@@ -266,10 +250,10 @@ matematico. Il suo piano è un piano simile
 Come mai $ct$ nell'asse delle $y$? Se un punto $P$ è definito da 4 variabili $P(x,y,z,t)$, non si
 può avere tre unità di misura di lunghezza e una di tempo. Per uniformarle, si è moltiplicato il
 tempo per una velocità (sempre costante), ottenendo una lunghezza.\\
-Ma se un punto ha 4 coordinate, come può chiamarsi ``piano''? Sempre perché definiamo $y'=y$ e
-$z'=z$. Quindi otteniamo che da $\mathbb{R}^4$ arriviamo a $\mathbb{R}^2$. Notiamo inoltre che il
-piano, rispetto alla fisica classica, ha invertiti tempo e posizione.\\ [\baselineskip]
-Andando a scrivere le equazioni di Lorentz con un termina $\beta = \frac{v}{c}$
+Lo spazio quadridimensionale $\mathbb{R}^4$ è stato semplificato in $\mathbb{R}^2$ in quanto le
+coordinate $y$ e $z$ sono costanti. Notiamo inoltre che il piano, rispetto alla fisica classica, 
+ha invertiti tempo e posizione.\\ [\baselineskip]
+Andando a scrivere le equazioni di Lorentz con $\beta = \frac{v}{c}$
 \begin{equation*}
   \begin{cases}
     x' =\gamma(x-\beta ct)\\
@@ -303,12 +287,12 @@ il piano ora diventa così
 Da questo vediamo una cosa che è fondamentale. $t_A=t_B$ ma $t'_A\neq t'_B$.
 
 \subsection{Invariante spazio-temporale}
-Minkowsky aveva trovato un'invariante nelle equazioni di Lorentz. Essa era $\sigma$. Infatti è
-definita come
+Minkowsky aveva trovato un'invariante nelle equazioni di Lorentz. Essa era $(\Delta\sigma)^2$. 
+Infatti è definita come
 \begin{equation*}
   {(\Delta\sigma)}^2={(c\Delta t)}^2-{(\Delta S)}^2
 \end{equation*}
-Dove $\Delta S$ è la differenza della variazione di tutte le coordinate. Si ha quindi che
+Dove $\Delta S$ è la differenza della variazione di tutte le coordinate.
 
 \subsection{Causalità}
 Come si può definire la causalità di due eventi se due osservatori li vedono in rapporti diversi?
@@ -336,8 +320,7 @@ Come si può definire la causalità di due eventi se due osservatori li vedono i
   \end{tikzpicture}
 \end{center}
 Come possiamo vedere dall'esempio, secondo l'osservatore $S$, l'evento A viene prima di B, secondo
-$S'$ invece è il contrario. Quindi come può essere A causa di B in modo assoluto? Prese le due
-coordinate $A(x_A,ct_A)$ e $B(x_B,ct_B)$, si ha che se 
+$S'$ invece è il contrario. Si ha che se 
 \begin{equation*}
   \abs{x_B-x_A}\leq c\abs{t_B-t_A}
 \end{equation*}
@@ -345,10 +328,11 @@ allora i due eventi si dicono \textbf{causalmente connessi}. In questo caso infa
 \begin{equation*}
   \left( \Delta\sigma \right)^2=\left( \Delta t \right)^2-\left( \Delta x \right)^2\geq0
 \end{equation*}
-Da questa caratteristica si possono dedurre alcune cose, tra le quali, i coni del presente, 
-passato e futuro.
+In caso contrario (ovvero quando $(\Delta\sigma)^2<0$) i due eventi non sono causalmente legati.\\
+Da questa caratteristica si possono dedurre alcune cose, tra le quali, cosa sia il presente, il
+passato e il futuro.
 \begin{center}
-  \begin{tikzpicture}[scale=0.75]
+  \begin{tikzpicture}[scale=0.55]
     \draw[thick,->] (-4,0) -- (4,0)
       node[pos=0.9,below]{$x$};
     \draw[thick,->] (0,-4) -- (0,4)
@@ -363,10 +347,9 @@ passato e futuro.
     \filldraw (2,1) circle (0.05)node[above] {B};
   \end{tikzpicture}
 \end{center}
-In questo grafico, A e B non sono causalmente connessi in quanto la considione precedente non è
-più verificata.\\
+In questo grafico, A e B non sono causalmente connessi.\\
 I coni le cui basi sono rosse sono denominati \textbf{coni del presente}. In questi coni, gli 
-eventi non possono essere causalmente connessi con eventi futuri.Questo perché B ad esempio 
+eventi non possono essere causalmente connessi a eventi futuri. Questo perché un corpo
 dovrebbe muoversi ad una velocità maggiore di $c$ per poter rientrare nel cono del futuro.\\
 Il cono con la base azurra è definito \textbf{cono del futuro}, quello con la base arancione
 \textbf{cono del passato}. In questi coni, gli eventi possono essere causalmente connessi fra di 
@@ -382,30 +365,23 @@ In questo modo si mantiene il principio di conservazione della quantità di moto
 relativistico.
 \subsubsection{Lavoro}
 Si prenda una particella di massa $m$ con $v_0=0$ su cui è applicata una forza $\vec{F}$ per farla
-accelerare a velocità $v$. Se si definisce $1$ l'istante iniziale e $2$ quello finale, nella
-meccanica classica il lavoro è pari a
+accelerare a velocità $v$. Se si definisce $1$ l'istante iniziale e $2$ quello finale,
+il lavoro è pari a
 \begin{equation*}
-  L = \int\limits_{1}^{2} \vec{F}\dif\vec{r}
-\end{equation*}
-Nella dinamica relativistica invece la faccenda è più complicata.
-\begin{equation*}
-  L = mc^2\gamma-mc^2
+  L = \int\limits_{1}^{2} \vec{F}\dif\vec{r}=
+  mc^2\gamma-mc^2
 \end{equation*}
 Notiamo quindi che l'energia cinetica di una particella ha due componenti. Viene definita
-$E_0=mc^2$ l'energia a riposo. Si ha quindi che
+$E_0=mc^2$ l'energia a riposo, un'energia scoperta mai osservata prima d'ora che un corpo ha in 
+virtù della sua massa. Si ha quindi che
 \begin{equation*}
   E_0=mc^2\quad E_c=(\gamma-1)mc^2\quad E_{\text{tot}}=E_c+E_0=m\gamma c^2
 \end{equation*}
 \subsubsection{Rapporto quantità di moto-energia}
-Si sa che $q=\gamma mv$ e $E=\gamma mc^2$. Se si sottraggono e si fanno successive operazioni
-\begin{align*}
-  q&=\gamma mv\\
-  cq&=\gamma mvc\\
-  c^2q^2=\gamma^2m^2v^2c^2&\quad E^2=\gamma^2m^2c^4\\
-  E^2-cq^2&=m^2\gamma^2c^2(c^2-v^2)\\
-  E^2-cq^2&=m\frac{c^2}{c^2-v^2}c^2(c^2-v^2)\\
-  E^2-c^2q^2&=m^2c^4
-\end{align*}
+Si sa che $q=\gamma mv$ e $E=\gamma mc^2$. Si deduce che
+\begin{equation*}
+  E^2-c^2q^2=m^2c^4
+\end{equation*}
 Questo torna particolarmente utile nel caso in cui la particella in questione sia un fotone con
 $m=0$. Si ha in tal caso
 \begin{equation*}
